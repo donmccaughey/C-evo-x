@@ -12,6 +12,22 @@ C-evo-x is a fork of [C-evo][11] 1.2.0, a freeware empire building game by
 C-evo and C-evo-x are in the public domain.
 
 
+## Building
+
+The main C-evo-x source is located in the `Project\` directory.  Borland Delphi
+4.0 or later is required to build the game.  The `Integrated.dpr` file is the
+Delphi project that builds the game as a single executable named
+`Integrated.exe`.
+
+Alternately, the `CevoWin32.dpr` and `cevo.dpr` projects build the
+`CevoWin32.exe` and `cevo.dll` files respectively; the executable loads and
+runs the game code located in the DLL.
+
+All three projects expect to find directories named `Project\tmp` and
+`Project\tmp\units` for build outputs and will fail if these directories are
+missing.
+
+
 ## Related
 
 [vn917/cevo][31], a fork of C-evo by [Vasilii Novikov][32].

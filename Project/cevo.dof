@@ -39,8 +39,8 @@ MaxStackSize=16777216
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=d:\c-evo\dev
-UnitOutputDir=d:\c-evo\dev\dcu
+OutputDir=..\tmp
+UnitOutputDir=..\tmp\units
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
@@ -50,7 +50,7 @@ DebugSourceDirs=
 UsePackages=0
 [Parameters]
 RunParams=
-HostApplication=D:\c-evo\dev\CevoDotNet.exe
+HostApplication=..\tmp\CEvoWin32.exe
 [Version Info]
 IncludeVerInfo=0
 AutoIncBuild=0
@@ -77,7 +77,6 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
-$(DELPHI)\Bin\dcldb40.bpl=Borland Database Components
 $(DELPHI)\Bin\dclqrt40.bpl=QuickReport Components
 $(DELPHI)\Bin\dclocx40.bpl=Borland Sample Imported ActiveX Controls
 [HistoryLists\hlConditionals]
@@ -87,21 +86,26 @@ Item0=SCR
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlUnitOutputDirectory]
-Count=2
-Item0=d:\c-evo\dev\dcu
-Item1=d:\c-evo\dev\project
+Count=4
+Item0=..\tmp\units
+Item1=tmp\units
+Item2=d:\c-evo\dev\dcu
+Item3=d:\c-evo\dev\project
 [HistoryLists\hlOutputDirectorry]
-Count=2
-Item0=d:\c-evo\dev
-Item1=..
+Count=4
+Item0=..\tmp
+Item1=tmp
+Item2=d:\c-evo\dev
+Item3=..
 [HistoryLists\hlHostApplication]
-Count=6
-Item0=D:\c-evo\dev\CevoDotNet.exe
-Item1=D:\c-evo\dev\CevoWin32.exe
-Item2=D:\c-evo\dev\Project\CevoWin32.exe
-Item3=D:\c-evo\CevoWin32.exe
-Item4=D:\c-evo\dev\Loader.exe
-Item5=D:\c-evo\dev\Win32Loader.bat
+Count=7
+Item0=..\tmp\CEvoWin32.exe
+Item1=D:\c-evo\dev\CevoDotNet.exe
+Item2=D:\c-evo\dev\CevoWin32.exe
+Item3=D:\c-evo\dev\Project\CevoWin32.exe
+Item4=D:\c-evo\CevoWin32.exe
+Item5=D:\c-evo\dev\Loader.exe
+Item6=D:\c-evo\dev\Win32Loader.bat
 [HistoryLists\hlRunParameters]
 Count=2
 Item0=-man

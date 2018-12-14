@@ -1,3 +1,6 @@
+*.cfg
+*.~dp
+*.~pa
 .DS_Store
 tmp
 

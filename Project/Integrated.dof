@@ -39,8 +39,8 @@ MaxStackSize=16777216
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=d:\c-evo\dev
-UnitOutputDir=d:\c-evo\dev\dcu
+OutputDir=..\tmp
+UnitOutputDir=..\tmp\units
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
@@ -76,3 +76,14 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlUnitOutputDirectory]
+Count=2
+Item0=..\tmp\units
+Item1=tmp\units
+[HistoryLists\hlOutputDirectorry]
+Count=2
+Item0=..\tmp
+Item1=tmp
