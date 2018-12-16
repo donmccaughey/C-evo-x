@@ -1,0 +1,120 @@
+#CHOOSE AMERICANS
+#n the Americans
+#s America
+#a American
+#COLOR FFAFAF
+#SYMBOLS Nation1, 48
+#AGE0 StdCities, 6, 0, 0, Nation1, 38
+#AGE1 StdCities, 6, 0, 0, Nation1, 38
+#AGE2 0, 0, 0, 0, Nation1, 38
+#AGE3 0, 0, 0, 0, Nation1, 38
+
+#CITIES
+	Washington
+	New York
+	Boston
+	Philadelphia
+	Atlanta
+	Chicago
+	San Francisco
+	Buffalo
+	St. Louis
+	Detroit
+	New Orleans
+	Baltimore
+	Denver
+	Cincinnati
+	Dallas
+	Los Angeles
+	Kansas City
+	San Diego
+	Richmond
+	Las Vegas
+	Phoenix
+	Seattle
+	Albuquerque
+	Portland
+	Minneapolis
+	Houston
+	Riverside
+	Anaheim
+	Nassau-Suffolk
+	Tampa
+	Oakland
+	Pittsburgh
+	Miami
+	Cleveland
+	Newark
+	Fort Worth
+	San Jose
+	Orlando
+	Sacramento
+	Fort Lauderdale
+	Indianapolis
+	San Antonio
+	Norfolk
+	Columbus
+	Milwaukee
+	Charlotte
+	Paterson
+	Salt Lake City
+	Greensboro
+	Austin
+	Nashville-Davidson
+	Providence
+	Raleigh
+	Hartford
+	New Brunswick
+	Memphis
+	West Palm Beach
+	Long Branch
+	Jacksonville
+	Rochester
+	Grand Rapids
+	Oklahoma City
+	Louisville
+	Greenville
+	Dayton
+	Fresno
+	Birmingham
+	Honolulu
+	Albany
+	Tucson
+	Tulsa
+	Oxnard
+	Syracuse
+	Omaha
+	Tacoma
+	Akron
+	Knoxville
+	El Paso
+	Bakersfield
+	Allentown
+	Gary
+	Harrisburg
+	Scranton
+	Toledo
+	Jersey City
+	Baton Rouge
+	Youngstown
+	Springfield
+	Sarasota
+	Wilmington
+	Little Rock
+	Ann Arbor
+	McAllen
+	Stockton
+	Charleston
+	Wichita
+	New Haven
+	Mobile
+	Columbia
+	Colorado Springs
+
+#UNITS StdUnits
+	20,	040,	Militia
+
+#UNITS Nation1
+	8,	134,	Cavalry
+	18,	136,	Sherman
+	28,	202,	Ironclad

@@ -1,0 +1,118 @@
+#CHOOSE JAPANESE
+#n the Japanese
+#s Japan
+#a Japanese
+#COLOR 57AB27
+#SYMBOLS Nation1, 45
+#AGE0 StdCities, 1, 0, 0, Nation1, 35
+#AGE1 StdCities, 1, 0, 0, Nation1, 35
+#AGE2 0, 0, 0, 0, Nation1, 35
+#AGE3 0, 0, 0, 0, Nation1, 35
+
+#CITIES
+	Kyoto
+	Osaka
+	Edo
+	Satsuma
+	Kagoshima
+	Nara
+	Nagoya
+	Izumo
+	Nagasaki
+	Yokohama
+	Shimonoseki
+	Matsuyama
+	Sapporo
+	Hakodate
+	Ise
+	Toyama
+	Fukushima
+	Suo
+	Bizen
+	Echizen
+	Izumi
+	Omi
+	Echigo
+	Kozuke
+	Sado
+	Tokyo
+	Kobe
+	Fukuoka
+	Kawasaki
+	Hiroshima
+	Kitakyushu
+	Sendai
+	Chiba
+	Sakai
+	Kumamoto
+	Okayama
+	Sagamihara
+	Hamamatsu
+	Funabashi
+	Higashiosaka
+	Hachioji
+	Niigata
+	Amagasaki
+	Shizuoka
+	Himeji
+	Matsudo
+	Kanazawa
+	Urawa
+	Kawaguchi
+	Ichikawa
+	Utsunomiya
+	Omiya
+	Yokosuka
+	Oita
+	Kurashiki
+	Gifu
+	Hirakata
+	Toyonaka
+	Wakayama
+	Nishinomiya
+	Fukuyama
+	Fujisawa
+	Takatsuki
+	Asahikawa
+	Machida
+	Iwaki
+	Nagano
+	Toyohashi
+	Suita
+	Toyota
+	Takamatsu
+	Koriyama
+	Kawagoe
+	Okazaki
+	Kochi
+	Tokorozawa
+	Kashiwa
+	Akita
+	Naha
+	Miyazaki
+	Koshigaya
+	Aomori
+	Akashi
+	Morioka
+	Yokkaichi
+	Maebashi
+	Kasugai
+	Ichihara
+	Yao
+	Otsu
+	Tokushima
+	Ichinomiya
+	Kakogawa
+	Neyagawa
+	Ibaraki
+	Fukui
+	Yamagata
+	Hiratsuka
+	Mito
+	Sasebo
+
+#UNITS Nation1
+	1,	040,	Militia
+	5,	101,	Samurai
+	15,	102,	Samurai
+	25,	300,	Fighter

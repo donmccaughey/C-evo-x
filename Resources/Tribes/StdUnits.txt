@@ -1,0 +1,131 @@
+0,	074,	Army of Slaves
+1,	075,	Free Citizens
+3,	071,	Diver
+4,	073,	Glider
+7,	064,	Longboats
+10,	010,	Settlers
+11,	011,	Engineers
+13,	021,	Special Commando
+14,	030,	Freight
+16,	017,	Building Site
+17,	041,	Town Guard
+20,	100,	Warriors
+21,	100,	Bowmen
+22,	100,	Warriors
+23,	100,	Warriors
+24,	101,	Legion
+25,	101,	Pikemen
+26,	101,	Phalanx
+27,	101,	Archers
+30,	102,	Guard
+31,	102,	Guard
+32,	102,	Guard
+33,	102,    Guard
+34,	103,	Musketeers
+35,	103,	Musketeers
+36,	103,	Musketeers
+37,	103,	Musketeers
+40,	104,    Riflemen
+41,	104,    Riflemen
+42,	104,    Riflemen
+43,	104,    Riflemen
+44,	105,    Infantry
+45,	105,	Infantry
+46,	105,	Infantry
+47,	105,	Infantry
+50,	106,	Marines
+51,	106,	Marines
+52,	106,	Marines
+53,	106,	Marines
+54,	110,	Mechanized Infantry
+55,	110,	Mechanized Infantry
+56,	110,	Mechanized Infantry
+57,	110,	Mechanized Infantry
+60,	130,    Horsemen
+61,	130,	Horsemen
+62,	130,    Horsemen
+63,	130,    Horsemen
+64,	131,    Horsemen
+65,	131,    Horsemen
+66,	131,    Horsemen
+67,	131,    Horsemen
+70,	132,	Knights
+71,	132,	Knights
+72,	132,	Knights
+73,	132,	Knights
+74,	133,	Dragoons
+75,	133,	Dragoons
+76,	133,	Dragoons
+77,	133,	Dragoons
+80,	134,	Cavalry
+81,	134,	Cavalry
+82,	134,	Cavalry
+83,	134,	Cavalry
+84,	135,    Tank
+85,	135,    Tank
+86,	135,    Tank
+87,	135,    Tank
+90,	136,	Armor
+91,	136,	Armor
+92,	136,	Armor
+93,	136,	Armor
+100,	170,	Ballista
+101,	170,	Combat Tower
+102,	170,	Catapult
+103,	170,	Catapult
+104,	171,	Cannon
+105,	171,	Cannon
+106,	171,	Cannon
+107,	171,	Cannon
+110,	172,	Howitzer
+111,	172,	Howitzer
+112,	172,	Howitzer
+113,	172,	Howitzer
+114,	173,	Missile Launcher
+115,	173,	Missile Launcher
+116,	173,	Missile Launcher
+117,	173,	Missile Launcher
+120,	200,	Sail
+121,	200,	Sail
+122,	200,	Sail
+123,	200,	Sail
+124,	201,	Galleon
+125,	201,	Frigate
+126,	201,    Corvette
+127,	201,    Corvette
+130,	202,	Ironclad
+131,	202,	Destroyer
+132,	202,	Cruiser
+133,	202,	Cruiser
+134,	203,	Missile Cruiser
+135,	203,	Battle Ship
+136,	203,	Battle Cruiser
+137,	203,	Battle Ship
+140,	210,	Transport
+141,	210,	Transport
+142,	210,	Transport
+143,	210,	Transport
+144,	220,	Carrier
+145,	220,	Carrier
+146,	220,	Carrier
+147,	220,	Carrier
+150,	240,	Submarine
+151,	240,	Submarine
+152,	240,	Submarine
+153,	240,	Submarine
+160,	300,	Fighter
+161,	300,	Fighter
+162,	300,	Fighter
+163,	300,	Fighter
+164,	301,	Jet Fighter
+165,	301,	Jet Fighter
+166,	301,	Helicopter
+167,	301,	Jet Fighter
+170,	310,	Bomber
+171,	310,	Bomber
+172,	310,	Zeppelin
+173,	310,	Bomber
+174,	311,	Bomber
+175,	311,	Bomber
+176,	311,	Bomber
+177,	311,	Bomber

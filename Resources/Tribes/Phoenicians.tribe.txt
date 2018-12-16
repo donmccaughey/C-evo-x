@@ -1,0 +1,74 @@
+#CHOOSE PHOENICIANS
+#n the Phoenicians
+#s Phoenicia
+#a Phoenician
+#COLOR B3FF00
+#SYMBOLS Nation1, 40
+#AGE0 StdCities, 3, 0, 0, Nation1, 30
+#AGE1 StdCities, 3, 0, 0, Nation1, 30
+#AGE2 0, 0, 0, 0, Nation1, 30
+#AGE3 0, 0, 0, 0, Nation1, 30
+
+#CITIES
+	Carthago
+	Byblus
+	Sidon
+	Tyre
+	Berot
+	Tripolis
+	Baalbeck
+	Aradus
+	Joppa
+	Ashkalon
+	Acre
+	Ugarit
+	Simyra
+	Sarafand
+	Gadir
+	Utica
+	Malaca
+	Baria
+	Carmona
+	Sexi
+	Abdera
+	Caralis
+	Panormus
+	Leptis Parva
+	Cartenna
+	Rusicade
+	Rusucurru
+	Girba
+	Leptis Magna
+	Oea
+	Sabratha
+	Carthago Nova
+	Wy't
+	Tinx
+	Rusaddit
+	Theveste
+	Bulla Regia
+	Thugga
+	Hadrumetum
+	Zama Regia
+	Thysdris
+	Madauros
+	Hippou Akra
+	Cirta
+	Cuicul
+	Tipasa
+	Lix
+	Volubilis
+	Ilici
+	Hispalis
+	Eryx
+	Motya
+	Drepanon
+	Lilybaion
+	Icosium
+	Iol
+	Eivissa
+
+#UNITS Nation1
+	0,	040,	Militia
+	10,	131,	Elephants
+	20,	201,	Caravel

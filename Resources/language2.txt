@@ -1,0 +1,71 @@
+#BELONG #A
+
+'Controls
+#SHIFTCLICK Shift+Click on item for info
+#MAPPROP %d%% Size, %d Players
+#MENU_ADVTREE Tree of Advances
+#MENU_VIEWPOINT Viewpoint
+#MENU_DEBUGMAPOFF Off
+#MENU_TELLAI Tell AI
+#BTN_MENU Main Menu
+#BTN_MANAGE Empire Management
+
+'Tooltips
+#TIP_WORKING Citizens assigned to economy
+#TIP_CIVIL Citizens assigned to civil service
+#TIP_PRIMACY Primacy selector
+#TIP_PROJECT Currently producing
+#TIP_SUPUNITS Show supported units
+#TIP_TREASURY Treasury
+
+'Advance Tree Legend
+#ADVTREE_UP0 Ground unit upgrade
+#ADVTREE_UP1 Naval unit upgrade
+#ADVTREE_UP2 Air unit upgrade
+#ADVTREE_GOV Enables government form
+#ADVTREE_OTHER Other effect
+
+'Start Dialog
+#ACTIONHEADER_CONFIG Configurator
+#ACTION_CONFIG Change language, add maps and AIs
+#ACTIONHEADER_MANUAL Manual
+#ACTION_MANUAL Rules and user interface in detail
+#ACTIONHEADER_CREDITS Credits
+#ACTION_CREDITS See who contributed to this game
+#ACTIONHEADER_AIDEV AI Development
+#ACTION_AIDEV Learn how to code your own AI for this game
+#ACTIONHEADER_WEB On the web: c-evo.org
+
+'Message Text
+#BUSY_DEINIT Deinitializing %s...
+#AGE0 = %s =\We built a permanent settlement in order to do farming, which is a much more efficient way to feed than hunting and gathering. Excess food has an effect largely unknown to our nomadic ancestors: growth.
+#DISPOSE2 %s\\Shall we rebuild this building for %d%%p?
+#SELL2 %s\\Shall we sell this building for %d%%c?
+#SHIP_UTILIZE Freight can't be utilized for colony ship production.
+
+'City Events
+#CITYEVENT_ALLIMPSMADE All improvements made
+
+'Diplomatic Statements, do not use '\'!
+#FRDEMAND_SOFT We shall be very pleased if you let us have\-%s
+#FRNOTACCEPTANYOFFER We are sorry, but nothing you could offer is of appropriate value.
+#FRNOTACCEPTANYWANT We see no value in your offer.
+
+'help.txt additions
+#HELP_WONDERMORALE1 Additional effect: +2%m in this city (does not expire).
+#HELP_WONDERMORALE2 Additional effect: +2%m in this city.
+
+'future use
+#BTN_MAPPROJECT City Projects
+#CITYPRIO Give top priority to this city
+
+#DRAFTDOMAIN
+Ground Unit
+Naval Unit
+Air Unit
+
+#AITSTAT
+No. of rounds colony ship was completed
+No. of rounds all other nations were erased 
+No. of rounds own nation was erased 
+Share of total calculation time

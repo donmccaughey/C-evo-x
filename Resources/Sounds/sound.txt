@@ -1,0 +1,132 @@
+#INVALID Hammer_o-Public_D-243_hifi.mp3
+#TURNEND Small_Sw-Public_D-262_hifi.mp3
+#REVOLUTION sg_musketeers.mp3
+#NEWGOV sg_cheers.mp3
+#ACCEPTOFFER sg_drum.mp3
+#NEWTREATY sg_cheers.mp3
+#CANCELTREATY sg_moan.mp3
+#DISBAND Boulder_-oblius-7747_hifi.mp3
+#CHEAT *
+
+#MSG_WITHDRAW sg_drum.mp3
+#MSG_BANKRUPT *
+#MSG_EXTINCT sg_sad.mp3
+#MSG_COLDWAR *
+#MSG_YOUWIN victory.mp3
+#MSG_GAMEOVER sg_drum2.mp3
+#MSG_DEFAULT *
+
+#WARNING_DISORDER sg_warning.mp3
+#WARNING_FAMINE sg_warning.mp3
+#WARNING_LOWSUPPORT sg_warning.mp3
+#WARNING_LOWFUNDS sg_warning.mp3
+
+#WONDER_BUILT sg_harp.mp3
+#WONDER_CAPTURED *
+#WONDER_EXPIRED *
+#WONDER_DESTROYED sg_sad.mp3
+
+#SHIP_BUILT sg_space.mp3
+#SHIP_TRADED *
+#SHIP_CAPTURED *
+#SHIP_DESTROYED *
+
+#NEWMODEL_0 sizzle-Sith_Mas-7716_hifi.mp3
+#NEWMODEL_1 sizzle-Sith_Mas-7716_hifi.mp3
+#NEWMODEL_2 sizzle-Sith_Mas-7716_hifi.mp3
+#NEWMODEL_3 sizzle-Sith_Mas-7716_hifi.mp3
+
+#NEWADVANCE_0 sg_invent.mp3
+#NEWADVANCE_1 sg_invent.mp3
+#NEWADVANCE_2 sg_invent.mp3
+#NEWADVANCE_3 sg_invent.mp3
+#NEWADVANCE_GRLIB *
+
+#AGE_0 *
+#AGE_1 victory.mp3
+#AGE_2 victory.mp3
+#AGE_3 victory.mp3
+
+#CONTACT_0 sg_angry.mp3
+#CONTACT_1 sg_angry.mp3
+#CONTACT_2 sg_angry.mp3
+#CONTACT_3 sg_fanfare.mp3
+#CONTACT_4 sg_fanfare.mp3
+#CONTACT_5 sg_fanfare.mp3
+#CONTACT_6 sg_fanfare.mp3
+
+#NEGO_REJECTED *
+
+#CITY_DISORDER *
+#CITY_IMPCOMPLETE *
+#CITY_UNITCOMPLETE *
+#CITY_POPPLUS *
+#CITY_POPMINUS *
+#CITY_UNITLOST Boulder_-oblius-7747_hifi.mp3
+#CITY_IMPLOST Cash_reg-public_d-296_hifi.mp3
+#CITY_SABOTAGE *
+#CITY_GROWTHNEEDSIMP *
+#CITY_POLLUTION *
+#CITY_SIEGE *
+#CITY_WONDEREX *
+#CITY_EMDELAY *
+#CITY_FOUNDED sg_mechanical.mp3
+#CITY_INVALIDTYPE *
+#CITY_SELLIMP Cash_reg-public_d-296_hifi.mp3
+#CITY_REBUILDIMP sg_gain.mp3
+#CITY_BUYPROJECT sg_gain.mp3
+#CITY_UTILIZE sg_gain.mp3
+
+#MOVE_MOUNTAIN *
+#MOVE_CAPTURE sg_marching.mp3
+#MOVE_LOAD *
+#MOVE_UNLOAD *
+#MOVE_PARACHUTE *
+#MOVE_PLANESTART *
+#MOVE_PLANELANDING *
+#MOVE_COVERT sg_steal.mp3
+#MOVE_EXPEL sg_moan.mp3
+#MOVE_DIE Boulder_-oblius-7747_hifi.mp3
+
+#NOMOVE_TIME *
+#NOMOVE_DOMAIN *
+#NOMOVE_TREATY sg_drum.mp3
+#NOMOVE_ZOC sg_nono.mp3
+#NOMOVE_SUBMARINE sg_nono.mp3
+#NOMOVE_STEALTH sg_nono.mp3
+#NOMOVE_DEFAULT *
+
+#ATTACK_021 sg_musketeers.mp3
+#ATTACK_040 sg_militia.mp3
+#ATTACK_041 sg_militia.mp3
+#ATTACK_071 sg_crash.mp3
+#ATTACK_073 sg_militia.mp3
+#ATTACK_100 sg_militia.mp3
+#ATTACK_101 sg_militia.mp3
+#ATTACK_102 sg_militia.mp3
+#ATTACK_103 sg_musketeers.mp3
+#ATTACK_104 sg_musketeers.mp3
+#ATTACK_105 sg_autogun.mp3
+#ATTACK_106 sg_autogun.mp3
+#ATTACK_110 sg_autogun.mp3
+#ATTACK_130 sg_horsemen.mp3
+#ATTACK_131 sg_horsemen.mp3
+#ATTACK_132 sg_horsemen.mp3
+#ATTACK_133 sg_cavalry.mp3
+#ATTACK_134 sg_cavalry.mp3
+#ATTACK_135 8MM_AT_C-BlackCow-8186_hifi.mp3
+#ATTACK_136 8MM_AT_C-BlackCow-8186_hifi.mp3
+#ATTACK_170 sg_crash.mp3
+#ATTACK_171 sg_crash.mp3
+#ATTACK_172 8MM_AT_C-BlackCow-8186_hifi.mp3
+#ATTACK_173 8MM_AT_C-BlackCow-8186_hifi.mp3
+#ATTACK_200 sg_crash.mp3
+#ATTACK_201 sg_crash.mp3
+#ATTACK_202 sg_battery.mp3
+#ATTACK_203 sg_battery.mp3
+#ATTACK_220 sg_battery.mp3
+#ATTACK_240 sg_battery.mp3
+#ATTACK_300 sg_plane.mp3
+#ATTACK_301 sg_jet.mp3
+#ATTACK_310 sg_plane.mp3
+#ATTACK_311 sg_jet.mp3

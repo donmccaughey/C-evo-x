@@ -1,0 +1,93 @@
+#CHOOSE EGYPTIANS
+#n the Egyptians
+#s Egypt
+#a Egyptian
+#COLOR 37CFAF
+#SYMBOLS Nation1, 42
+#AGE0 StdCities, 0, 0, 0, Nation1, 32
+#AGE1 StdCities, 0, 0, 0, Nation1, 32
+#AGE2 0, 0, 0, 0, Nation1, 32
+#AGE3 0, 0, 0, 0, Nation1, 32
+
+#CITIES
+	Thebes
+	Memphis
+	Heliopolis
+	Elephantine
+	Alexandria
+	Pi-Ramesses
+	Giza
+	Byblos
+	El-Amarna
+	Hieraconpolis
+	Abydos
+	Al-Qaira
+	Asyut
+	Avaris
+	Lisht
+	Buto
+	Edfu
+	Pithom
+	Busiris
+	Kahun
+	Athribis
+	Mendes
+	El-Ashmunein
+	Tenis
+	Naukratis
+	Syene
+	Medinet Habu
+	Buhen
+	Hatnub
+	El-Kharga
+	Qift
+	Quessir
+	Fawakhir
+	Deir El-Medina
+	Fayyum
+	Sais
+	Maidum
+	Abusir
+	Zawyet al-Aryan
+	Saqqara
+	Mazghuma
+	Hawara
+	Saylah
+	Dara
+	Tukh
+	El-Kula
+	Karnak
+	Kom Ombo
+	Phile
+	Rosetta
+	Tjel
+	Edwa
+	Gebel el-Tarif
+	Hipponius
+	Dishasha
+	Kafr Hammar
+	Tarkhan
+	Esna
+	Armant
+	Naga ed-Dair
+	Deir el-Bahari
+	Naqada
+	El-Ballas
+	Tentyra
+	Qaw el-Kebir
+	Ikkur	
+	Quban
+	Kumma
+	Semma
+	Uronarti
+	Shalfak
+	Mirgissa
+	Faras
+	Abu Simbel
+	Bir Nakhlai
+	Aniba
+
+#UNITS Nation1
+	2,	040,	Militia
+	12,	101,	Archers
+	22,	102,	Pikemen

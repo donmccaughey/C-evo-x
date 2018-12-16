@@ -1,0 +1,129 @@
+#CHOOSE VIKINGS
+#n the Vikings
+#s Vikings
+#a Viking
+#COLOR 9FBB8B
+#SYMBOLS Nation2, 93
+#AGE0 StdCities, 2, 0, 0, Nation2, 83
+#AGE1 StdCities, 2, 0, 0, Nation2, 83
+#AGE2 0, 0, 0, 0, Nation2, 83
+#AGE3 0, 0, 0, 0, Nation2, 83
+
+#CITIES
+	Trondheim
+	Kaupang
+	Uppsala
+	Hladir
+	Arhus
+	Viborg
+	Roskilde
+	The Udal
+	Lindholm
+	Jorvik
+	Westness
+	Skara
+	Ravning Enge
+	Birka
+	Jarlshof
+	Sigtuna
+	Odense
+	Lund
+	Larne
+	Hedeby
+	Aldeigjuborg
+	Nonnebakken
+	Stockholm
+	Oslo
+	Kobenhavn
+	Goteborg
+	Malmo
+	Bergen
+	Aalborg
+	Linkoping
+	Vasteras
+	Orebro
+	Norrkopping
+	Helsingborg
+	Jonkoping
+	Reykjavik
+	Stavanger
+	Umea
+	Baerum
+	Boras
+	Sundsvall
+	Gavle
+	Frederiksberg
+	Eskilstuna
+	Halmstad
+	Huddinge
+	Esbjerg
+	Karlstad
+	Sodertalje
+	Nacka
+	Kristianstad
+	Vaxjo
+	Botkyrka
+	Skelleftea
+	Lulea
+	Kristiansand
+	Haninge
+	Gentofte
+	Fredrikstad
+	Kungsbacka
+	Randers
+	Gladsakse
+	Kolding
+	Karlskrona
+	Jarfalla
+	Taby
+	Kalmar
+	Helsingor
+	Ostersund
+	Tromso
+	Sollentuna
+	Herning
+	Gotland
+	Solna
+	Horsens
+	Molndal
+	Ornskoldsvik
+	Falun
+	Drammen
+	Vejle
+	Trollhattan
+	Varberg
+	Norrtalje
+	Silkeborg
+	Sandnes
+	Lyngby-Tarbaek
+	Skien
+	Skovde
+	Hvidovre
+	Nykoping
+	Uddevalla
+	Hassleholm
+	Asker
+	Fredericia
+	Greve
+	Borlange
+	Sarpsborg
+	Naestved
+	Hoje Tastrup
+	Ballerup
+	Svendborg
+	Lillehammer
+	Kopavogur
+	Hafnarfjordur
+	Akureyri
+	Godthab
+	Holsteinsborg
+
+#UNITS Nation2
+	60,	010,	Settlers
+	61,	040,	Militia
+	62,	101,	Pikemen
+	63,	101,	Warriors
+	64,	102,	Archers
+	65,	102,	Swordmen
+	66,	102,	Swordmen
+	67,	133,	Dragoons

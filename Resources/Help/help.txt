@@ -1,0 +1,1481 @@
+#HELPTITLE_MAIN Manual
+#HELPTITLE_QUICKSTART Quickstart
+#HELPTITLE_CONCEPTS Concepts
+#HELPTITLE_TECHLIST Advances
+#HELPTITLE_IMPLIST City Improvements
+#HELPTITLE_UNIQUELIST State Improvements
+#HELPTITLE_WONDERLIST Wonders
+#HELPTITLE_TERLIST Terrain Types
+#HELPTITLE_JOBLIST Terrain Improvements
+#HELPTITLE_MODELLIST Special Units
+#HELPTITLE_FEATURELIST Unit Features
+#HELPTITLE_FEATURE1LIST Capacities
+#HELPTITLE_FEATURE2LIST Special Features
+#HELPTITLE_FEATURE3LIST Advances
+#HELPTITLE_GOVLIST Government Forms
+#HELPTITLE_KEYS Mouse and Keyboard
+#HELPTITLE_ABOUT About This Game
+#HELPTITLE_CREDITS Credits
+#HELPTITLE_SEARCHRESULTS Search Results
+
+#HELPSPEC_TER (Terrain Type)
+#HELPSPEC_ADV (Advance)
+#HELPSPEC_FUTURE (Future Technology)
+#HELPSPEC_IMP (City Improvement)
+#HELPSPEC_NAT (State Improvement)
+#HELPSPEC_WONDER (Wonder)
+#HELPSPEC_SHIPPART (Colony Ship Part)
+#HELPSPEC_CAP (Unit Capacity)
+#HELPSPEC_FEATURE (Unit Special Feature)
+#HELPSPEC_STANDARD (Unit Advance)
+
+#TECHFORMULA %.6g*n*EXP(n/%.6g)
+#PREREQ Prerequisites
+#PREREQALT Prerequisites (2 of 3 required)
+#BASETECH (Key Technology)
+#STRENGTHUP %s: Strength multiplier +%d
+#COSTUP (Cost multiplier +%d)
+#COSTMIN (Cost multiplier increased to %d)
+#TRANSUP %s: Transport multiplier +%d
+#ADVEFFECT Functional Effect
+#EFFECT Effect
+#COSTS Costs
+#BUILDCOST Production cost: %d%%p
+#MAINTCOST Maintenance: %d%%c each turn
+#REPLACE Replacement
+#REPLACETEXT With the completion of this building, the following are obsolete and are automatically being sold:
+#EXPIRATION Expiration
+#EXPWITH Effect expires as soon as any nation invents %s.
+#EXPSLAVE All slaves are freed and stop working.
+#REQUIRED %s required
+#RAREREQUIRED Production requires %s.
+#RESFOOD Food: %d%%f
+#RESPROD Material: %d%%p
+#RESTRADE Trade: %d%%t
+#MOREIRR (+%d%%f with irrigation)
+#MOREMINE (+%d%%p with mine)
+#MOREROAD (+%d%%t with road)
+#SPECIAL Special Resources
+#SPECIALFOOD , +%d%%f
+#SPECIALPROD , +%d%%p
+#SPECIALTRADE , +%d%%t
+#TRAFO Transformation to %s
+#MOVEPLAIN Movement: Plain Terrain
+#MOVEHEAVY Movement: Difficult Terrain
+#DEFBONUS Defense Bonus: %d%%
+#JOBCOST -Construction cost: %s MP
+#JOBCOSTVAR -Construction cost: See terrain enhancement box.
+#TERIMPEXCLUDE Irrigation, mine, fortress and military base exclude each other.
+For example, when a military base is built on a tile already having a fortress,
+the fortress is being replaced by the military base.
+#TERIMPCITY A tile with a city counts as having the following improvements for unit
+movement and resource output:\-Road\-Railroad (after Railroad is
+discovered)\-Canal\-Irrigation\-Farmland.
+#HOSTILE This is hostile terrain. A unit staying here or moving through gets
+damaged proportional to the MP spent here. A full turn makes %d%% of damage.
+Terrain hostility is neutralized by a river, oasis, canal or military base.
+#DEADLANDS Dead lands can't have terrain improvements apart from road and railroad.
+#RARE On a random map, there are always 12 dead lands in total. Half of
+them are a special resource deposit, it's exactly two of each type.
+#STRENGTH Strength: %d/%d
+#SPEED Speed: %s
+#MODELNOTE (Units have different look and name for some nations.)
+#COSTBASE Production cost base value %s%%p
+#WEIGHT Weight %s%%w
+#BUILDALLOW Allows Construction of
+#MODELALLOW Enables Special Unit
+#FEATALLOW Allows Use of
+#FOLLOWADV Allows Research of
+#GOVALLOW Enables New Government Form
+#UPGRADEALLOW Military Benefit
+#SEEALSO See Also:
+#FUTURETECHHELP25 This advance represents future development. A nation can make
+up to 25 advances in this category.\\
+A future technology requires fourfold research cost. Unlike a normal advance, it can not be
+subject of technology exchange or be acquired from the Great Library.
+#FUTURETECHHELP100 This advance represents future development. A nation can make
+up to 100 advances in this category.\\
+A future technology requires fourfold research cost. Unlike a normal advance, it can not be
+subject of technology exchange or be acquired from the Great Library.
+#CRED_CAPSOUND Sounds
+#CRED_CAPAI Artificial Intelligence
+#CRED_CAPLANG This Localization
+#AUTHOR English localization by Steffen Gerlach and the C-evo community.
+#MATCHES Matches for "%s":
+#NOMATCHES Term "%s" not found.
+
+
+#CONCEPTS
+$Concepts\
+
+;INTRO Introduction\
+;START Using the Start Screen\\
+
+!Game Basics\
+;BASICS Basics\
+;SCIENCE Research\
+;DIPLOMACY Diplomacy\
+;SHIP Winning the Game\\
+
+!Unit Concepts\
+;MOVEMENT Moving Units\
+;COMMANDS Unit Commands\
+;SETTLE Colonization\
+;COMBAT Combat\
+;SPYMISSIONS Covert Operations\
+;CLASSES Unit Designs\\
+
+!City Concepts\
+;CITIES City Management\
+;PRODUCTION Production\
+;BUILDINGS Buildings\
+;SUPPORT Unit Support\\
+
+!Advanced\
+;MACRO Macro Management\
+;MAPEDIT Map Editor\
+;AIT AI Tournament
+
+
+#ABOUT
+$About This Game\
+
+&LOGO\\
+
+!The Project\
+C-evo is a non-commerical game project based on the famous "Sid Meier's
+Civilization" by Microprose. The ambition of C-evo is not, to compete with
+commercial games for the most exciting presentation. Instead, it aims at being a
+true, ageless strategy game that entertains by one thing above all:
+challenge. So the project focus is design of rules and AI. For more
+information, visit the project homepage:\
+::E2 c-evo.org\\
+
+!License\
+C-evo is a compilation of work by a number of authors. You are allowed
+to play the game and to distribute it without explicit permission. The compilation
+itself and all of its components (except for the graphics and the sounds) are in the Public
+Domain. Means you can do with it whatever you want. This also includes the binary
+code and the sources, which are available from the project homepage. As for
+the graphics, you should ask the author of an item before using it for another
+purpose than to play.\
+::C Credits\\
+
+!Modular AI\
+The game has an open AI interface, which means the player can replace the standard AI
+contained in the package by other AI algorithms, either for all or for single
+nations. C-evo allows playing with up to 8 different AIs in the same
+game. The easiest way to develop an AI is to use the C# template. You can find it in the folder where
+you installed the game.\
+::E1 AI development manual\\
+
+!System Requirements\
+-16 bit color depth or better\
+-Font smoothing recommended\\
+
+!Command Line Options\
+--man ... Show manual only\\
+
+!Uninstall\
+Use the Application Wizard from the Control Panel.\\
+
+!Reporting Bugs\
+
+To support the progress of this project, please tell me about problems you have
+encountered. But first you should\
+-Look to the list of known bugs on the project homepage. Don't
+report bugs which are already mentioned there.\
+-Look to see if there is already a newer program version than yours. This might
+have already fixed your problem, particularly if it's a quite conspicuous one.\
+-Read the corresponding manual part. Maybe your bug isn't one. (This game is
+not a Civilization II clone!)\
+-Be sure it's not a problem with the installation or with some third party
+expansion such as alternative AI. If you're not sure, uninstall the game with
+the Windows Application Wizard, reinstall it with no expansion and then test
+again. In the event of problems with an expansion, please contact its author.\\
+
+Before reporting a problem, please try to find a way to reproduce it. A report
+of a reproducable bug is much more valuable. To reproduce the bug it may well
+be enough to load the book in the turn before the problem occured and continue
+in the same way as before. This is even possible in case of a crash, because
+there's always an autosave from the last turn, it's the book with the name
+starting on "~".\\
+
+Then, send me a detailed destription of the problem. Use the web form at\
+::E3 c-evo.org/_sg/contact\
+If your book is
+necessary to reproduce the problem, please attach it. You can find the file in
+this folder:\
+&SAVED
+
+
+#CREDITS
+$Credits\
+
+@@15\\
+
+!Game Design\
+Original "Sid Meier's Civilization" and "Civilization II" design by Sid Meier
+and Brian Reynolds.\
+Changes base on suggestions by Civ fans.\\
+
+!Programming\
+Programming by Steffen Gerlach.\
+
+!Testing\
+Numerous testers. Thanks to all of them!\\
+
+!Other Contributions\
+Several textures taken from "Mayang's Free Textures".\
+City lists by Charles Nadolski.\\
+
+!Graphics\
+Most graphics are taken from free Civ II modpacks. Some of the authors are
+unknown or could not be contacted. If you notice stuff that is under commercial
+copyright, if you're missing your name in the credit list or if you do not
+agree in using your work with this project, please contact us.
+
+
+#QUICK
+$Quickstart\
+
+!!Quickstart\
+
+Basic hints to get started without studying the concepts:\\
+
+-This is a turn based game. While one nation is doing its turn, all other
+nations are inactive (except when contacted for negotiation).\
+-Your turns usually end automatically after you have given commands to all units. When
+there are no units to order, the game is waiting for you to press "End Turn".
+If the game seems to have frozen, this is probably all you have to do.\
+-Most items that you can click are marked with a white frame.\
+-There can be more than one unit in the same location. You only see the
+strongest of them then.\
+-If such a group of units is attacked, only the strongest unit of the group
+fights the attacker. If that unit is defeated by the attacker, the entire group
+of units is destroyed.\
+-You can select one of your units by clicking on it. The unit starts to blink
+then. The button with the exclamation mark opens a unit command menu, the
+commands from which always apply to the selected unit.\
+-To move a unit, use the cursor keys or the right mouse button.\
+-Click one of your cities to zoom to it. Most important to know about is the
+city production project. Click the project display in the middle of the window
+and choose a new project, for example new settlers in order to found new cities.\
+-How fast your cities produce, how fast they grow and how much they contribute
+to money funds and research depends on your management.\
+-Shift+Click on an item pops up a help screen about it in many situations.\\
+
+Note that this game has its own rules and concepts. It's not a true remake of
+another game. C-evo may remind a lot of the commercial "Civilization" series but it's
+different in many regards. This applies to the overall philosophy as well: Don't
+expect anything in this game to be CIVILIZED!\
+
+
+#INTRO
+$Introduction\
+
+@@56\
+!!Welcome to C-evo\
+
+This game lets you replay the development of the human civilization.
+You're leading the nation of your choice through six millenia,
+from the first settlement until the colonization of space. Your way is full of
+difficulties. Resources are limited, wild areas will take centuries to be
+brought under cultivation. Famine and disorder will be a constant threat for
+your growing cities.\\
+
+Your foresight is in demand. Expand your empire and improve your cities.
+Build barracks, universities and power plants, or even some of the famous
+wonders of the world. Discover new technologies and weapons.
+Push exploration forward in order to find fertile lands and to complete
+your world map. Build ships to discover far continents.\\
+
+Naturally, your nation is not the only one on earth. Nations on every continent
+have started to develop their specific culture. Be aware that there's no right
+to existence. Every empire might fall, including yours.\\
+
+Your first contact to a
+foreign nation might not be pleasant, but diplomacy offers a lot of
+possibilities. Buy, sell or exchange all kinds of knowledge. Defend your borders
+or protect them by treaties. It's even possibly to form alliances with other
+nations. But don't rely too much on your pacts, nations are contestants in
+this game! Finally, they are all heading for a goal that only one of them can
+achieve: to win.
+
+
+#BASICS
+$Basics\
+
+!!Basics\
+
+Your nation is formed by units and cities. While units are good for
+exploration, conquest and defense, cities are the source of growth, production
+and research.\\
+
+The world map is divided into quadratical tiles (which appear rhombical but, due to
+the perspective). Each tile has a certain terrain type, which defines
+its properties: resource production, defense bonus and cost of movement for
+units which move onto it. One tile can not contain more than one city, but an
+unlimited number of units of one nation. Get help about a tile by clicking on it
+while holding the shift key.\
+::T Terrain Types\\
+
+The game is turn-based, which means your opponents will not make any moves
+until you have completed your turn. By default, your turn ends automatically
+after all units have moved. If there are no units to move or if you turned on
+"Wait at End of Turn", you must use the "End Turn" button in the right bottom
+corner of the screen.\\
+
+
+#SCIENCE
+$Research\
+
+@@46\
+!!Research\
+
+A nation can discover several advances. Most of them make special buildings,
+unit features, unit designs and/or government forms available. To research a
+particular advance, the knowledge of one or two earlier advances (its
+prerequisites) might be required.\
+::A Advances\\
+
+When the game starts, you will be asked for the first advance to pursue.
+Get help about a particular advance in the list by clicking on
+it while holding the shift key.
+The speed of scientific progress depends on the number of research points (%r)
+your nation produces. If enough %r have been collected, the advance
+will be discovered, and you can choose the next scientific pursuit.
+It's always only one research project at a time, and it's no more possible to
+change the subject of research after it was chosen.
+The cost for a new advance rises with the number of advances your nation has
+discovered.\\
+
+;SCIENCECOST In detail: Cost of research
+
+
+#SCIENCECOST
+$Cost of Research\
+
+!Cost of Research\
+
+The cost for a new advance rises with the number of advances your nation has
+discovered. The exact formula for your difficulty level is:\
+&TECHFORMULA\\
+The number n starts with 4 and increases\
+-not when doing military research\
+-not when developing Computing Technology\
+-by 1 when discovering an advance received from another nation\
+-by 2 in all other cases when discovering an advance, including future technologies\
+-by 1 when acquiring an advance from the Great Library
+
+
+#DIPLOMACY
+$Diplomacy\
+
+!!Diplomacy\
+
+Two nations do not know about each other before a ground unit of one nation
+discovers an adjacent city or ground unit of the other. You can view all information
+you have about a foreign nation on the nation report screen. The extent of this
+information strongly depends on whether you're having a dossier about
+the nation or not. A dossier includes population, territory size, funds,
+a list of the nation's discovered advances, its foreign relations and all
+charts of the nation's historic development except the military.\\
+
+!Contact\
+After two nations know about each other, they can get into contact for
+diplomatic negotiation, allowing them to trade or to sign treaties. A
+negotiation is a sequence of statements exchanged between the opponents.
+However, you can not enter any text. Instead, your statements are automatically
+being generated from the options you choose. These options include making
+proposals, accepting proposals and canceling treaties.\\
+
+A negotiation ends when the opponents have nothing more to offer each other.
+Also, a negotiation can have an unagreed end if one nation breaks it.\\
+
+!Proposals\
+Most diplomatic options arise from making and accepting proposals. In general,
+a proposal is a combination of items a nation wants to receive from the other
+and items it's willing to exchange for them. Possible items are:\
+-A treaty\
+-Current dossier\
+-Military report\
+-Money\
+-Technology\
+-Unit design\
+-World map\
+-Colony ship parts (when having a space port)\\
+
+If a proposal does not contain wants, it's a present. Just like every
+other proposal, a present has to be accepted to become effective. The other way
+round, if the proposal only contains wants but no offers, it's a demand.\\
+
+Advances received from a deal with another nation are not immediately
+applicable. First your nation has to understand the new technology and to learn
+about its application. But this research takes only half of the effort of
+developing it yourself, and you don't need prerequisites.\\
+
+!Treaties\
+Possible treaties are:\\
+
+-Peace Treaty:
+Units of the two nations are not allowed to attack each other or to enter the
+other nation's territory. Units have no siege effect on the other nation's cities.\\
+
+-Friendship:
+Additionally to the effects of a Peace Treaty, the nations exchange dossiers
+each turn.\\
+
+-Alliance:
+An Alliance voids all unit movement restrictions caused by state borders or
+zones of control for the allied nations. Also, allied nations share all
+information (dossier, military, world maps) and they know about each other's unit
+movement.\\
+
+A treaty can only be cancelled in a negotiation or when a nation refuses to
+receive the other one's emissaries. After cancelling a treaty with a nation,
+a nation can't cancel another treaty with this nation within the next 3 turns.
+Cancelling a peace treaty with a nation automatically results in cancelling
+peace with all nations that it's allied with, even own allies.\\
+
+!Credibility\
+You can judge other nations by their credibiliy. The levels are:\
+-Respectable (100% credibility)\
+-Isolationistic (90% thru 99%)\
+-Unpredictable (70% thru 89%)\
+-Mendacious (less than 70%)\\
+
+Each turn in peace increases
+the credibility of a nation by 1, until the maximum credibility is reached.
+Initially, the maximum credibiliy of all nations is 100. Breaking a peace
+treaty pushes credibility down by the half and reduces the maximum achievable
+by 10. Breaking an alliance pact decreases credibility by a
+quarter. The actual credibility of a nation is known to all other nations that
+know about this nation, even without direct diplomatic contact.
+
+
+#SHIP
+$Winning the Game\
+
+!!Winning the Game\
+
+There is only one way to win this game: Colonize the stars! Let your nation be
+the first to complete a transstellar colony ship, heading for a distant world
+suitable for life. A complete colony ship has to be assembled from 12 huge
+parts:\\
+
+;:B67 6 Colony Ship Components\
+;:B68 4 Power Modules\
+;:B69 2 Habitation Modules\\
+
+The production of each of these three types has a high demand for a special
+modern resource. Only a city which exploits a tile providing this resource can
+produce it. Speeding up the production by utilizing freight, rebuilding
+improvements or spending money is not possible. The modern resources are:\
+&MODERN\\
+
+A nation does not recognize these resources before the invention of\
+::A47 Mass Production
+
+
+#MOVEMENT
+$Moving Units\
+
+!!Moving Units\
+
+Units are the mobile part of your nation. All unit moves and commands you order
+apply to the currently selected unit. This one is blinking in the main window,
+and also displayed with some extra information at the bottom of the screen
+beside the overview map. Move a unit using the cursor resp.
+numeric keys or by a right mouse click on the destination tile.\\
+
+!Restrictions\
+A unit can always move to an adjacent tile, except for the following
+situations:\
+-The destination tile is occupied by units of another nation.\
+-The unit has not enough movement points left. See below.\
+-A ground unit is trying to move onto a sea tile or vice versa.\
+-A ship is trying to move to the open sea without navigation capability.\
+-A zone of control is violated, see below.\\
+
+!Aircraft\
+Aircraft must return to the ground in every turn. An aircraft that is not
+located in a city or military base or aboard a carrier in the end of the turn
+will be lost. There is, however, a way to escape this restriction to some
+degree:\
+::F7 the Fuel feature.\\
+
+!Movement Points\
+Each move takes "time": it consumes movement points (MP). Ships and
+aircraft as well as ground units moving through plain terrain take 1 MP for
+moves, which go parallel to the tile grid (e.g. to the North-West)
+resp. 1.5 MP for transversal moves (e.g. directly to the North). For ground units in difficult
+terrain, these costs increase by 20% resp. 30% of the unit speed more than 1.5 MP.
+To move into a mountain area, a ground unit needs its full movement and will
+not move the next turn.\
+::T Terrain Types\\
+
+Example of MP needed for possible moves:\
+@MoveShot\
+-Left - A unit with initially 1.5 MP\
+-Right - A unit with initially 3 MP\\
+
+If a ground unit moves along a road, river or canal, the costs are 0.4 MP resp.
+0.6 MP, no matter of terrain type. If it can take advantage of a railroad
+connection, moves cost only 8% resp. 12% of the unit speed.\\
+The full MP of a unit, which correspond to the speed of the unit design, are being restored
+in the beginning of each turn. Damaged ships do not reach the full speed. Their
+MP are reduced proportionally to the damage, but never below 2.5 MP.\\
+For longer moves you can use the go-to function. Just right-click on the
+destination tile.\\
+
+!Zones of Control\
+There are two types of units: such with a Zone of Control (ZoC) and such
+without. A ZoC unit can't move between land tiles which are both adjacent to
+enemy ZoC units, except one of these tiles is an own city, or the destination tile is
+already occupied by an own ZoC unit. Ships, aircraft, and special commandos have no
+Zone of Control. Units that are loaded to a transport also don't have a ZoC. Units
+without ZoC can't siege tiles.\\
+
+!City Capture\
+Ground units with attack power can move into an undefended enemy city. Then
+this city has been captured by your nation and is now one of yours. Enemy units which
+had their home in the captured city are being destroyed. The size of the
+city reduces by 1, which leads to the city's destruction if it falls below the minimum city
+size of 2 then. A captured city remains in disorder for three turns.
+
+
+#COMMANDS
+$Unit Commands\
+
+@@16\
+!!Unit Commands\
+
+The command menu offers several commands for the currently selected unit,
+depending on its design and location:\
+
+-Disband: Disband unit\
+-Integrate: Integrate unit into the new unit currently produced by the city it's located in\
+-Go On: Continue movement to previously given destination\
+-Wait: Select next unit\
+-No Orders: No orders and no more automatic selection for this turn\
+-Stay Here: No orders and no more automatic selection\
+-Recover: No orders and no more automatic selection until the unit has recovered to 100% health\
+-Support From Here: Make the city which the unit is located in its home\
+-Return to Nearest City: Move unit to any own city as fast as possible\
+-Center: Center main window to unit location\
+-Pillage: Destroy terrain improvement (Pillaging costs 1 MP and destroys one
+improvement at a time.)
+
+
+#SETTLE
+$Colonization\
+
+@@29\
+!!Colonization\
+
+Settlers and engineers can build terrain improvements, which improve the
+properties of that tile:\
+
+-Settle Down: the settlers start building a new city\
+-Build ...: build terrain improvement, see below\
+-Clear Forest: change forest tile to prairie\
+-Drain Swamp: change swamp tile to grassland\
+-Afforest\
+-Transform: transform terrain type, see terrain types for transformation
+effects\
+-Clean up Pollution\\
+
+Building a terrain improvement takes a certain number
+of movement points. These MP can be collected over several turns, and more than
+one working unit can contribute. However, a unit needs 1 MP left in the
+current turn in order to start a job. Engineers MP do not have more effect than
+Settlers MP, but Engineers have more of them, that's why they work faster.\
+::J Terrain Improvements\
+::T Terrain Types
+
+
+#COMBAT
+$Combat\
+
+!!Combat\
+
+You can attack an enemy unit on an adjacent tile using keyboard or mouse,
+exactly as you'd move onto that tile. But not every attack is allowed.
+Normally, you can't attack a sea unit with a ground unit or vice versa. Ships
+can not attack from inside cities and from canals. Aircraft may only be
+attacked by other aircraft, except they're located in a city or military base.
+The weaker unit will be destroyed in the battle, the stronger will be damaged -
+the more superiority, the less damage. You can get an exact forecast of an
+attack by right-clicking on the target while holding the shift key.\\
+
+A unit's basic combat strength differs between attack and defense. The two
+values are usually noted together with a slash, e.g. a 75/25 unit design has a
+basic attack strength of 75 and a basic defense strength of 25. In a particular
+combat, these values are modified by several factors:\
+-Experience. Each level increases the strength of a unit by 25%. See below.\
+-Terrain bonus for ground units (defender only). See terrain type list.\
+-Special facilities (defender only), e.g. city wall or fortress.\
+-Fortification (defender only). A ground unit that is not loaded to a transport
+and didn't move in the previous
+turn has fortified and thus gets an additional 50% strength bonus.\
+-Aircraft in cities or bases have no defense strength, ships have their
+strength in cities and on canals reduced to half.\
+Note that these bonus values have accumulative effect, not multiplicative.\\
+
+If the attacking unit has less than 1 MP left, it doesn't have enough time
+for a well-organized attack. Its strength is reduced proportionally in that
+case.\\
+
+!Attacking a Group of Units\
+If two or more units are located at the same tile and being attacked, only one of
+them is going to defend the position. This is always the unit which was visible
+to the attacker before he attacked. Usually, the defender is the strongest unit
+present.\\
+
+;TILEDEF In detail: Tile defender\\
+
+If the defending unit is defeated and not located in a city, fortress
+or military base, all units on the same tile will be destroyed - even
+submarines and stealth aircraft.\\
+
+!Experience\
+The experience of a unit increases with the damage it receives in combat: 100%
+make one experience level. The experience levels are:\
+&EXPERIENCE\\
+
+!Recovery\
+A damaged unit regenerates proportionally to its movement points left at the
+end of a turn. If it has not moved within this turn, its health increases by
+8 resp. by 20 if it's located in a city or military base, provided the city is
+not in disorder. However, the health
+of the unit can not increase by more than a factor of 2 per turn. Units do not
+recover on water. Airplanes only recover in cities and military bases.\\
+
+!Bombardment\
+Ships and aircraft with attack power can bombard adjacent undefended enemy
+cities, provided the unit has at least 1 MP left. The population of the
+bombarded city decreases by 1, as long as this would not lead to its complete
+destruction. The unit does not take damage and not gain experience. Order
+bombardment using mouse or keyboard in the same way as an attack.\\
+
+!Expelling Units\
+A nation can expel units of nations that it has a peace treaty with from its
+territory using an own unit. This must be a ground or naval unit with at least
+1 MP left, which would be able to attack the foreign unit if there was no
+treaty. Order this action using mouse or keyboard in the same way as an attack.
+
+
+#TILEDEF
+$Tile Defender\
+
+!Tile Defender\
+
+A group of units, when attacked, is usually defended by the strongest of these
+units. But under certain conditions not. The exact scheme for choosing the tile
+defender is as follows:\
+-The supreme criterion considers the categories of the units. First choice are
+fanatic ground units, second are normal units with zone of control,
+third are normal units with no zone of control, fourth are submarines and
+stealth aircraft. Units loaded to a transport ship or plane never defend.\
+-If two or more units are in the highest category, the one with the best
+defense strength will do the job. The strength calculation considers
+experience, health and fortification. Not being considered are special features
+which are only effective against special enemies.\
+-If two or more units have the same highest defense power (not very likely),
+the one with the least production cost will defend.
+
+
+#SPYMISSIONS
+$Covert Operations\
+
+@@28\
+!!Covert Operations\
+
+Only special commandos are able to perform covert operations. You can order such an operation by
+moving a commando into a foreign city. Choose from five mission types:\
+-Sabotage production: City production will be paralysed next turn.\
+-Steal maps.\
+-Collect third nation knowledge: You acquire any knowledge this nation
+has about third nations.\
+-Prepare dossier. Call the nation screen, the research report and the charts for the details. \
+-Prepare military report.\\
+
+A peace treaty between two nations forbids operations against each other. However,
+special commandos are able to infiltrate any territory, with no respect to treaties.
+
+
+#CLASSES
+$Unit Designs\
+
+!!Unit Designs\
+
+Your nation can only produce units of known design. Warriors
+and Settlers are known right from the start, some special units become
+available with a certain advance or wonder.\
+::S Special Units\\
+
+All other unit designs you wish to produce must be developed by your
+scientists. After you have the needed base knowledge (e.g. Warrior Code for
+introducing new ground units), you can choose "Military Research" from the
+research selection, which brings you to the Military Research screen:\\
+
+@DraftShot\
+
+Legend:\
+-1: Weight\
+-2: Current modifiers\
+-3: Select features and capacities here\
+-4: Domain selection\
+-5: Properties of the new unit\\
+
+The properties of a unit design depend on two things: Firstly, on what
+technologies are available when you research it. Some scientific advances cause
+an upgrade in one or more weaponry branches, increasing the appropriate
+strength modifier - and the cost modifier, too. There are also transport
+modifiers, influencing the number of units a transport unit can carry.\\
+
+Secondly, the new unit design depends on what capacities and special features
+you select for it. Increase resp. decrease single features by clicking the
+small buttons on the left. Most of the features increase cost (%p) and weight
+(%w) of your unit. The maximum weight depends on the weapon branch and the
+technologies you have discovered. Get help on a particular feature by clicking
+on it while holding the shift key.\
+::F Unit Features\\
+
+In the end, attack strength, defense strength and transport capacity of the
+unit design are calculated with base value × modifier. If you play on the lower
+resp. higher difficulty level, the costs of a unit decrease resp.
+increase by 25%.
+
+
+#CITIES
+$City Management\
+
+@@43\
+!!City Management\
+
+The main function of a city is to collect resources from the surrounding area
+and to process them. Your nation starts with a single city, your capital. There
+are two ways to get addional cities: settle down a settler in order to found a
+new city, or capture an enemy city. Founding cities is only possible in terrain
+that allows irrigation (Grassland, Plains, Prairie, Hills, Tundra).\\
+
+Each city has its own management screen, which pops up when you click on it: \\
+
+@CityShot\
+
+The parts of this screen are described within the following sections.\\
+
+!Citizens\
+
+The population of a city is managed in large groups, each represented by one
+face on the screen. The size of the city, counted in groups, is shown in the
+top left corner of the city screen. The minimum size of a city is 2. Any event
+which would reduce the size to less than 2 means disbandment of this city. The
+maximum city size is 8 but can be increased with special city improvements.\\
+
+Each group can exploit one tile in the city area (1) to collect the resources
+of this tile. A tile can't be exploited by more than one group. Tiles which are
+already exploited by another city (own or foreign) are marked as unavailable.\\
+
+Groups which do not exploit a tile remain in the civil service as police units
+(2) - more about that in the next section.\\
+
+!Happiness\
+
+The top right panel on the city screen (3) shows the happiness status of the
+city. Three items are important for this section:\
+
+-Wealth (symbol: %l). It's generated from trade, if wealth is turned on in the
+"Economy and Tax" settings. See section "Trade" below.\
+-Morale (%m). A city always starts with 4 basic morale points, indicated on the
+city tile. The value can be increased by certain city improvements.
+Additionally, the wonders of the world increase morale in the city they're
+built in by 2%m each.\
+-Control (%o). This results from maintaining police units. Each group of citizens
+in civil service increases control by 2%o. The special unit Town Guard also
+allows to control the population.\\
+
+Morale and wealth increase the happiness of the population. It's fundamental
+for the city's function that each group of citizens is either happy
+or under control. So the sum of happiness (morale and wealth) and control must
+not fall below the population number. If it does, civil disorder is the consequence.\\
+
+Under some government forms, unrest lowers the happiness of the population in
+certain situations. For more, see\
+::G Government forms\\
+
+!Faith\
+Under fundamentalism, the happiness calculation is different. Every group of
+inhabitants produces one point of faith which is enough to make this group
+happy. So the happiness status of a city under fundamentalism doesn't require
+any attention, because there is no chance of disorder. Morale and control
+are irrelevant.\\
+
+
+!Resources\
+
+Tiles make their resources once per turn. There are three basic resource types
+collected in the city area: food (%f), material (%p) and trade (%t).
+These three resource types are processed in different ways, described in the next
+three sections.\\
+
+The output of a single tile depends on:\
+::T Terrain type\
+::J Terrain improvements\
+::G Government form\\
+
+!Food\
+The food resource (%f) represents all kind of food. The processing of this
+resource is shown on the food panel (4). It is necessary to supply the city
+population, since each group of citizens consumes 2%f per turn. There are also some unit types that
+take food support from their home city. Lacking food will be taken from the food
+storage of the city. If the storage is empty, the city will be stricken with
+famine: one group of citizens resp. one unit relying on food support will die. But usually,
+the city produces more food than necessary.
+If so, the surplus goes to the food storage. Exception: big cities (size 8 and
+bigger) with only a single surplus resource; they convert it to money.
+Whenever the storage is full and the city has not yet reached the maximum size,
+the city grows, i.e. it's getting one additional group of citizens.\\
+
+!Material\
+Material (%p) is an abstract resource type that stands for anything usable
+for production: wood, ore, oil etc. The processing of this
+resource is shown on the material panel (5). Some of the material is required to support
+units which have their home in the city. The rest of the material is being
+accumulated for production. You can change the project of the city (6) by
+clicking on it. The city map (7) shows the current improvement state of the
+city. Find more about production in the chapter "Production".\\
+
+!Trade\
+This resource type (symbol: %t) stands for resources having a value for trading.
+Trade is
+only produced by tiles in the city area, not by the tile in which the
+city itself is located - even not if this is a tile with a gold resource.
+The processing of trade is shown on the trade panel (8). Some of the
+trade income is lost due to corruption, which depends on the government
+form and increases with the distance between a city and your nation's
+capital. The rest of the %t is first being taxed according to the current tax
+rate, as adjusted in the "Economy and Tax" settings. What remains is split into
+research and wealth, as set in "Economy and Tax". Taxes (%c) go to the money
+funds, research points (%r) go to the current research project of your nation.
+Wealth (%l) increases the happiness of the city population. Note that
+collecting trade requires at least a\
+::B49 Town Hall.\\
+
+;CORRUPTION In detail: Corruption calculation\\
+
+!Siege\
+A city can't exploit a tile on which a unit of a foreign nation is located, except the
+two nations are at peace. So enemy units are able to siege your cities by blocking
+access to food, material, and trade resources. Of course you can siege enemy cities
+as well. If the area of your city is overlapping an enemy city area, siege allows
+you to stop the enemy city from exploiting a tile, so your city is able to exploit that
+tile the next turn.\\
+
+!Automatic Population Management\
+The allocation of the groups of city inhabitants to tiles in the city area and
+to civil service happens automatically and optimally. You only need to set
+the priorities for the optimization with the primacy selector (9). There are 5
+positions:\
+-Maximize Growth (default setting). Maximize the city growth with no
+compromize. Any number of other resources is sacrificed for a gain of a a
+single food point.\
+-Maximize Production. Maximize the production with no compromize, although tax
+is still considered useful for rushing projects. But any amount of food and
+research is sacrificed for a gain of a a single material point.\
+-Maximize Research. Maximize the trade-related output of the city (research and
+tax) with little compromize. Food is considered almost worthless.\
+-Hurry Production. A compromise between growth and other aims, where production
+takes precedence over research and tax income.\
+-Hurry Research. A compromise between growth and other aims, where research and
+tax income take precedence over production. Trade Goods are
+considered tax, not production for the evaluation.\\
+
+;OPTI In detail: The formulas\\
+
+Note that, under some circumstances, certain settings can't match their name
+because what they are targeting at doesn't exist. Examples: "Max Production"
+when city produces Trade Goods, "Max Growth" when
+city can't grow, "Max Research" when city doesn't have a Town Hall. The
+settings still work in these cases, but only with their second priorities,
+which might lead to unexpected results.\\
+
+Superior to the selectable primacy, the optimization always considers three
+criteria that you can't change:\
+-1st priority: Civil order is maintained\
+-2nd priority: Unit material support is granted\
+-3rd priority: Food supply for population and supported units is granted\\
+
+!Full Control\
+If you don't want to use the automatic population management for some reason,
+you can turn it off by clicking the primacy selector at the bottom segment or
+by clicking in the city area. This allows you to freely choose which tiles to
+exploit. Click an exploited tile to send the group which is allocated to it
+to civil service. Click a non-exploited tile to exploit it with a group which
+is in civil service currently. (The latter, of course, only works if there is
+such group.) This way, you can move a group from one tile to another in two
+steps.\\
+
+When the automatic management is turned off, you have to care for everything
+alone: food supply, unit support, civil disorder. You might come across
+problems that you never had before.\\
+
+!Civil Disorder\
+Whenever a city can't control its unhappy population (as described in the
+section "Happiness" above), it will fall to disorder and stop production,
+research and tax collection. In the second successive turn of disorder, the
+city will also stop unit support, so it will lose one of the units requiring
+support in each turn until the order is restored.\\
+
+The automatic population management usually prevents civil disorder. The only
+situation in which this doesn't work is when there's too much unrest. So, if
+you experience disorder in a managed city, reduce unrest by moving the units
+that cause the unrest to a position where they don't, or disband them.\\
+
+If you turned the automatic management off, it's on you to get the happiness
+balance of the city right. The most frequent response to impending disorder is
+to expand the police.
+
+
+#CORRUPTION
+$Corruption Calculation\
+
+!Corruption Calculation\
+
+The exact corruption of a city is calculated using this formula:\
+@CORRUPTION\
+-T - Trade produced by the city\
+-C - Corruption factor of the government form\
+-D - Distance between the city and the capital\
+-Dmax - Maximum theoretical distance between two cities (the whole map height
+and the half map width away from each other)\\
+
+If a nation has no capital, corruption is 50% in all cities with a courthouse
+and 100% in all other cities, no matter which government form.
+
+
+#OPTI
+$City Optimization Formulas\
+
+!City Optimization Formulas\
+
+Mathematically, the five primacy settings of the automatic population
+management only differ in the value m that is
+being maximized. The calculation of m considers food (f), production (p),
+tax (t) and research (r) after all amplifying effects:\
+-Maximize Growth: m = f, m2 = 2p + t + r\
+-Maximize Production: m = 4p + t, m2 = r, m3 = f\
+-Maximize Research: m = 2r + t + p, m2 = f\
+-Hurry Production: m = sqrt(f) * (8p + 2t + r)\
+-Hurry Research: m = sqrt(f) * (r + t + p)
+
+
+#PRODUCTION
+$Production\
+
+!!Production\
+
+After founding or capturing a city, its project is set to "Trade Goods",
+means the collected material is being converted to money. You can select another
+project by clicking on the project picture. The choice depends on the current
+knowledge level of your nation. Get help about a particular project in the list
+by clicking on it while holding the shift key. Choose from three categories of
+projects:\
+-Units\
+-City and state improvements\
+-Wonders\\
+
+If you change a city's project to another project of the same category, you
+will lose 1/3 of the collected material. If you change to a different category,
+the collected material will be sold. To
+speed up the production of a city or state improvement, you can
+rebuild an existing building for it, which redeems 2/3 of the production
+material of that building. To speed up the production of a unit (except for
+freight units), you can integrate a unit located in this city. This redeems 2/3
+of the production material of that unit, provided its health is 100% or
+reduced proportionally, if not.\\
+
+!Emigration\
+Settlers, Engineers, Slaves and Conscripts are formed from city population,
+thus the size of a city reduces when it produces a unit of these kinds. The
+production of Conscripts and Slaves means an emigration of one group of citizens,
+Settlers and Engineers take two groups. Emigration is reversible: These units
+can be added to a city, provided it has not reached the maximum size. That
+makes the population of that city grow by 1 resp. 2 groups.\\
+
+!Conscription\
+You can produce any ground unit as conscripts. The unit emigrates from the
+city then, and additionally it needs 1%f food support. The production costs of the unit
+decrease by 3 times its cost multiplier, but not below the single multiplier.
+Calling up conscripts requires the
+knowledge of\
+::A18 Conscription\\
+
+!Buying and Selling Projects\
+You can speed up a production so that the project is complete the turn after.
+This costs fourfold the amount in money as %p are outstanding. The other way
+round, you can sell a project by changing it to "Trade Goods". The collected
+resources are converted to money then.\\
+
+!Pollution\
+Each exploited material resource causes one pollution point. Each group of citizens
+tolerates one pollution point, more pollution accumulates. If the accumulated
+pollution of a city exceeds 240, a tile in the city radius will be polluted,
+thus losing half of its resource output. Pollution can be cleaned up with
+settlers and engineers.
+
+
+#BUILDINGS
+$Buildings\
+
+@@67\
+!!Buildings\
+
+Each building has a special positive effect on the city it's built in, or on
+your whole nation. There are three types of buildings, which differ in how
+often they are allowed to be built:\
+-City Improvements: Can be built once in each city.\
+-State Improvements: Can only exist once in your nation. If a city builds a
+state improvement that already existed in another one of your cities, the older
+building is being sold.\
+-Wonders: Can be built only once on earth. If a nation has built a wonder, the
+other nations can't produce this one anymore. If a wonder has been destroyed
+(because its city was destroyed), it's lost for all time.\\
+
+::B City Improvements\
+::B201 State Improvements\
+::B202 Wonders\\
+
+Most city and state improvements cause maintenance costs, which are
+taken from your nation's money funds. If the funds are too low, a random
+building is being sold.\\
+
+Click the button "Show Improvements" in the city screen to see the improvements
+built in the city. If you wish to sell or rebuild one of them, click on its
+picture. The proceeds of an improvement sale are equal to its production cost
+and go to the money funds.
+
+
+#SUPPORT
+$Unit Support\
+
+!!Unit Support\
+
+Each unit needs to be supported by its home city with one %p each
+turn. Ships with a weight of 6%w or more take double support.
+Initially, the home city of a unit is the city it was produced in. If you
+want to change the home city, move the unit to the desired city and choose the
+"Support From Here" command. Click the button "Show Support" in the city screen to
+see the units supported by the city.\\
+
+A small number of free units do not need support, indicated by a grayed (%n) instead
+of the normal support symbol (%p). This number depends on the government form. If the
+city does not produce enough material to support all of its units, one
+unit will be lost. This is usually the least worthy.\\
+
+If a city remains in disorder for more than one turn, it stops unit support; so
+if there are units to support by this city, one of them is lost in each turn.
+
+
+#MACRO
+$Macro Management\
+
+!!Macro Management\
+
+Playing this game should be fun, not a job. Macro management helps you to get
+rid of repetitive tasks, so that you can concentrate on strategy. Macro
+management does not allow to do things that you couldn't do without, but it
+allows to play in a more efficient way. However, it is not recommendable to
+make use of macro management before you have understood the basics of what you
+want to have managed.\\
+
+!Terrain Enhancement\
+This allows to define a fixed order of terrain improvements for each terrain
+type. After you have defined a terrain enhancement, you can apply it with the
+Settler command "Enhance" - the Settler will build the chosen terrain
+improvements in the order defined. With a three-button mouse, you can even
+combine this with the go-to function, just click with the middle mouse button
+onto the tile to improve, and the Settler will automatically move there and
+work.\\
+
+!City Types\
+You can define improvement queues for four types of cities. Use drag&drop to
+arrange the building order. In order to switch a city to the building queue,
+choose the desired city type as its project. Changes in the city type building
+order will automatically apply to all cities. However, the current building
+project of a cities is never being abandoned. The city type will keep chosen
+even after all improvements are complete.
+
+
+#START
+$Using the Start Screen\
+
+!Starting a Game\
+
+The start screen has three pages, switch them with the tabs at the top. To
+start a new game, go to the page "New Book". Choose the number of foreign nations
+there and your difficulty level. If you have alternative AIs
+installed, you can pick one of them instead of the standard AI by clicking the
+AI box. To start playing, press "Start".\\
+
+!Free Player Setup\
+When you check the box "Free Player Setup", you have much more freedom in defining
+competitors and difficulty levels. Only this mode allows to play multiplayer
+games in hotseat mode, to play against different AIs
+at the same time or to start AI-only games in supervisor or in tournament mode.
+Use the nine boxes to select how many human players and how many AI
+controlled nations are going to take part in the game. Just click the boxes and
+pick the competitor from a list. The left three boxes have an additional switch
+labelled "3", making these boxes a selection for 3 nations at once, so that you
+can compete against up to 14 nations in total.\\
+
+Every competitor has its own difficulty level, you can adjust it at the left
+side of the box. One bar stands for the easiest level, three bars are the
+hardest one. For example, if you play against AI and wish to
+have your game as hard as possible, put your own difficulty (i.e. that of the
+Local Player) to the highest and all the difficulties for AI nations to the lowest.\\
+
+A higher difficulty results in slower population growth, slower production and
+slower research, since the city food storage size as well as the production
+and research costs are increased.\\
+
+!Loading a Game\
+
+When you break a game and decide to save the book, it will apear in the list of
+old books. Select it and press "Open" to continue with playing. A book contains
+all turns of a game. If you'd like to open the game at another point than its
+end, use the textbox to specify the year before you open the book.\\
+
+!Maps\
+
+By default, you play on a random world map that is automatically
+generated at the beginning of the game. On the "Maps" page, you can adjust two
+parameters of this world: its size and the percentage of land.\\
+
+Alternatively, it is possible to play on a special map that someone has
+designed for C-evo, e.g. a map of the real earth. The package does not
+contain maps, but there are several ones available from the project homepage.
+Move map files to the subfolder "Maps".
+You only need the map to start a game. The map is not necessary to open the
+book later, because the map is being saved within it.
+
+
+#MAPEDIT
+$Map Editor\
+
+!!Map Editor\
+
+There is a simple editor for maps contained in the game. To run it, switch to
+the page "Maps" on the start screen. Select the map you wish to edit and press
+the "Editor" button. If you'd like to create a new map, choose "Random Map",
+adjust size and land mass of the desired map, then start the editor.\\
+
+The operation of the editor is very simple. Pick a terrain type or object
+from the list at the bottom of the screen, then paint it to the map using the
+mouse. The differentiation between ocean/coast and normal tiles/special
+resources happens automatically, you have no influence on that. Don't forget
+to add at least one deposit of each modern resource, otherwise it will be
+impossible for the players to complete the transstellar colony ship.\\
+
+It's important to define nation starting positions. A map cannot be played by
+more nations than there are starting positions on the map. If no starting positions
+are defined, this map is not playable. If you'd like to have the human player
+start at a certain one of the positions, define it as preferred.\\
+
+Maps are not shown to the player on the start screen. Instead, you can make a
+theme picture for a map. This must be a BMP file with the same name as the
+map. Just put it to the maps folder. The maximum size of the picture is 192×96
+pixels.
+
+
+#AIT
+$AI Tournament\
+
+!!AI Tournament\
+
+If you have different AIs installed, you can let them compete against each
+other in a tournament. Switch to "Free Player Setup" on the start screen and
+choose "AI Tournament" in the middle box, then
+press "Start". This will make the game reduce itself to a small dialog.
+After pressing the play button, C-evo will start to play an endless series of
+complete games (rounds). The result are simple statistics, which are updated
+after each round:\\
+
+@AITShot\
+
+The numbers stand for:\
+
+&AITSTAT
+
+#HOTKEYS
+$Mouse and Keyboard\
+
+Mouse functions in main map:\
+-Left mouse button on own unit - Select unit\
+-Left mouse button on own city - Zoom to city\
+-Left mouse button on foreign unit - Get info\
+-Left mouse button on foreign city - See city defense\
+-Left mouse button on unoccupied tile - Center view to clicked position\
+-Right mouse button - Move selected unit to clicked position\
+-Right mouse button (Supervisor) - Create unit\\
+
+Keyboard functions in main map:\
+-Cursor keys - Move selected unit\
+-"+" key on numeric pad - End turn\
+-1 thru 7 - shortcuts for the small buttons beside the overview map\
+-Many menu shortcut keys, see menus
+
+#TRADINGGOODS
+$Trade Goods\
+
+!!Trade Goods\
+
+When a city produces trade goods, the material that would usually be used for
+production will directly be converted to money.
+
+#MILRES
+$Military Research\
+
+!!Military Research\
+
+Your nation needs to do military research in order to introduce new unit
+designs.\
+:CLASSES Unit Designs
+
+#ADVHELP
+Maximum weight of air units rises to 7%w.
+*
+*
+*
+Maximum weight of ground units rises to 10%w.
+*
+*
+Makes building roads over rivers possible.
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+Allows use of conscripts.
+Makes fortress building possible.\::J See list of terrain improvements.
+*
+*
+*
+*
+*
+*
+*
+*
+*
++1%t on all plain terrain tiles with road.
+Makes terrain transformation and canal building possible.\::J See list of terrain improvements.
+Allows development of air units.
+*
+*
+Maximum weight of ground units rises to 7%w.
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
++1%t on all tiles with river.\Allows development of naval units.
+*
+Modern resources become available.\Key Technology: Other nations notice when a nation discovers mass production.
+*
+Makes building of military bases possible.\::J See list of terrain improvements.
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+Farmland terrain improvement becomes available.\::J See list of terrain improvements.
+*
+*
+*
+*
+Makes building railroads possible.\::J See list of terrain improvements.
+*
+Advanced special resources become available.\Key Technology: Other nations notice when a nation discovers science.
+*
+Maximum weight of naval units rises to 7%w.
+*
+*
+*
+Maximum weight of naval units rises to 9%w.\Increases maximum usage of armor by 1.
+*
+*
+*
+*
+*
+Key Technology: Other nations notice when a nation discovers transstellar colonization.
+*
+*
+Allows development of new ground units.
+*
+*
+*
++5% research in cities with university\+10% research in cities with research lab
++5% production in cities with factory\+10% production in cities with manufacturing plant\(does not increase pollution)
+*
+*
+
+#IMPHELP
+Enables special unit:\\::S7 Army of Slaves
+The nation steals full state information (dossier) and an advance of choice from each city captured. Stolen advances are treated the same as traded ones - they need to be understood before they can be applied, which takes half of the normal research effort, but they don't require prerequisites.
+Desert tiles can be changed to Plains/Grassland.\All units are resistant to terrain hostility.
+Building costs for wonders are decreased by a quarter.
+All coast tiles gain one additional %p.\\This wonder can only be built in coastal cities.
+The nation gets each technology that is already known to more than half of the extant nations. Advances received this way are treated the same as traded ones - they need to be understood before they can be applied, which takes half of the normal research effort, but they don't require prerequisites.
+For every temple of this nation and for every temple of every nation that it has contact to, 1%c per turn is added to the nation's treasury.
+Enables three special unit features:
+The nation gains a number of research points that corresponds to two fully-researched advances. Usually, this results in an immediate research breakthrough and another one in the next turn.\\Additionally, the wonder enables a special unit:\\::S8 Glider
+Speed +2 for all ships of the nation.\\This wonder can only be built in coastal cities.
+The cost of immediate completion of buildings and wonders is reduced to 2%c per material resource outstanding.
+*
+Research is doubled if government form is Monarchy.
+Cathedrals get +2%m.
+*
+Cities find their own individual balance between research and wealth. The wealth production is adjusted to the optimal amount.\\For cities under full control, this wonder usually prevents disorder, but not in a city producing so little trade or having so much unrest that even 100% wealth are not enough.
+Prevents the wonders of this nation from expiring. Wonders that have already expired get reactivated.
+Counts as a hydroelectric dam in each city.\\This wonder can only be built in cities adjacent to rivers or mountains.
+Moving along railroads no longer requires movement points.
+Starts the Cold War. During this period no diplomatic activities are possible. The Cold War lasts 40 turns.
+The whole world becomes visible for one turn. A dossier and military information about all nations is obtained.\\In order to produce this wonder, a nation must have a\::B66 Space Port
+*
+*
+*
+*
+*
+*
+*
+*
+All ground units to build in this city begin hardened. The health of ground units located in this city doubles in each turn.
+Storage remains half-filled after city grows.
++2%m.
+Tax and wealth +50%.
+Research +50%.
+Enables collecting trade with no limit and reduces corruption by 50%.
++200% defense for city defenders against ground units. City does not lose population when defenders are destroyed by ground units.
+Increases the maximum size of the city to 12.
+Tax and wealth +75%.
++4%m.
+Research +75%.
++1%f on coast tiles.\\This improvement can only be built in coastal cities.
++4%m.
+Production +50%, pollution +50%.
+Production +50%, pollution +50%.
+Prevents pollution completely.
+Power plant, doubles effect of factory and manufacturing plant.\(More than one power plant is not effective in a city.)\Pollution +50%.
+Power plant, doubles effect of factory and manufacturing plant.\(More than one power plant is not effective in a city.)\Pollution -50%.\\This improvement can only be built in cities adjacent to rivers or mountains.
+Power plant, doubles effect of factory and manufacturing plant.\(More than one power plant is not effective in a city.)\Does not increase pollution.
++1%p on coast tiles.\\This improvement can only be built in coastal cities.
+Enables collecting up to 3%t per tile.
+Increases the maximum size of the city to 30.
+Enables farmland benefits.
+Doubles trade benefit of the wheel.
+Research +75%.
++100% defense for city defenders against air units and protection from bombardment by such units.
++100% defense for city defenders against sea units and protection from bombardment by such units.\\This improvement can only be built in coastal cities.
+All air units to build in this city begin hardened. The health of air units located in this city doubles in each turn.
+All naval units to build in this city begin hardened. The health of sea units located in this city doubles in each turn.
+Enables collecting trade with no limit and prevents corruption in this city completely. Makes this city the capital, which affects corruption of all other cities, see under:\:RESOURCES Resource Types
+Counts as a city wall in each city on the continent where it's built. (The poles do not count as continent connection.)
+Generates a number of morale points equal to the size of the city
+The total research output of this city is doubled.
+All ground units to build in this city are elite. The health of ground units located in this city doubles in each turn.
++100% defense for this city's defenders against any attacker.
++12%f for this city
+Doubles effect of all banks.
+Special resources +100%.\\Enables the production of a transstellar colony ship and gives control of it. Losing the space port results in losing the space ship. When the space port is captured by another nation which also has a space port, this nation captures the colony ship at the same time.
+
+*
+*
+*
+
+#FEATUREHELP
+Attack base value +1.
+Defense base value +1.\Note: This feature can only be used twice for ground units resp. three times for sea and air units.
+Speed +0.5.
+Troop transport base value +1.
+Aircraft transport base value +1.\Transport planes can not be transported by carriers.\Includes Radar / Sonar feature.
+Speed +2.
+Attack base value +2 for first attack to a ground or sea target after start from city, carrier or military base.
+Unit doesn't have to return to a city, carrier or military base for one more turn with each fuel point.
+Troop transport base value +1.\Transport planes can not be transported by carriers.
+Unit can move over the open sea.
+2 tiles observation range. Locates submarines in adjacent tiles.
+Invisible to enemy units.
+Ground units ignore effect of city walls and can attack ships on adjacent coast tiles, excluding submarines.\Ships can attack cities and targets on adjacent ground tiles.
+Move in each terrain as fast as on a road.
+The health of transported units doubles in each turn.
+Attack and Defense base value each +1. Double support required. Unit can only move along road, river or canal with double movement cost or along railroad and can not be transported.
++100% defense against air units.
+Investigates adjacent cities and unit stacks (including stealth aircraft).
+Speed +1.\This feature is no longer applied after Nuclear Power is available.
+Speed +2.
+Speed +4.
+Invisible to enemy units.
+When the unit is destroyed in combat, it deals twice the normal damage.\\Fanatic ground units defend a position even if stronger defenders are present.\\This feature is not effective when the unit's nation is a Republic, Democracy or Future Society.
+When the unit destroys another one with an attack, it takes only half the normal damage.
+Unit attacks at full strength even if it has less than 1 MP left.
+2 tiles observation range. Unit fortifies if it has at least half of its initial MP left.
+The unit’s production cost is halved when the same type of unit was produced immediately before, but doubled otherwise.
+
+#GOVHELP
+-All cities are in disorder.\-No maintenance costs for city improvements.\-No unit support required.\-Lasts three turns.
+-Maximum 3%f, 2%p and 2%t per tile.\-High corruption. (Factor 3)\-Number of support free units per city: city size.\-No pollution.\-Each settler unit consumes 1%f.
+-Low corruption. (Factor 1)\-Number of support free units per city: half the city size.\-Each settler unit consumes 1%f.
+-All trade resources >0 are increased by 1.\-Moderate corruption. (Factor 2)\-Each combat unit (attack >0) in enemy territory in the end of the turn causes unrest in its home city, reducing the happiness by 2.\-Each settler unit consumes 2%f.
+-Low corruption. (Factor 1)\-No unit support required.\-Faith.\-Research output is reduced to half.\-Each settler unit consumes 1%f.
+-All resources more than 1%p are increased by 1.\-No corruption.\-Number of support free units per city: half the city size.\-Each settler unit consumes 2%f.
+-All trade resources >0 are increased by 1.\-No corruption.\-Each combat unit (attack >0) located outside own or allied territory in the end of the turn causes unrest in its home city, reducing the happiness by 2.\-Each settler unit consumes 2%f.
+-All trade resources >0 are increased by 1.\-Future technologies only require double research instead of fourfold.\-No corruption.\-Each combat unit (attack >0) located in enemy territory in the end of the turn causes unrest in its home city, reducing the happiness by 2.\-Food surplus is converted to money.\-No population growth.\-Each settler unit consumes 2%f.
+
+#TECHAGE
+Early Advances
+Industrial Age Advances
+Modern Advances
+Future Technologies
+
+#SPECIALMODEL
+-Able to improve terrain and to found cities.\-Food support by home city is required.
+-Able to improve terrain and to found cities.\-Food support by home city is required.\-Resistant to terrain hostility.
+*
+-+100% defense when defending a city.\-Always requires support.\-Under despotism, this unit suppresses unhappy population, when located in a city: +2%o!
+:SPYMISSIONS Able to do covert operations.\-Investigates adjacent cities and unit stacks (including stealth aircraft).\-2 tiles observation range.\-No zone of control.\-Does never cause unrest in home city.
+-In cities, a freight can redeem 2/3 of its production cost into the current project excepting colony ship parts.
+-Two units transport capacity.
+-Able to improve terrain.
+-Counts as an air unit during its turn, but counts as a ground unit during other nations' turns.\-Investigates adjacent cities and unit stacks.\-If this unit is not located on a land tile at the end of a turn, it will be lost.\-The glider can't be transported by ships.
+
+#JOBHELP
+:MOVEMENT Speeds up unit movement.\::A29 Trade benefit with The Wheel.
+:MOVEMENT Speeds up unit movement.\-Material +50%.\-Can only be built when a tile already has a road. The road remains present but might be hidden by the railroad.
+-Allows ships to move onto this tile.\-Neutralizes terrain hostility.\-Can not be built in mountains or arctic terrain.
+-Food resources increase depending on terrain type.
+::B51 Food +50% for cities with a supermarket\-Can only be built when a tile already has an irrigation. The irrigation remains present but is hidden by the farmland.
+-Material resources increase depending on terrain type.
+-+100% defense for ground units.\-2 tiles observation range.\:COMBAT Other effects on combat.
+-Neutralizes terrain hostility.\-2 tiles observation range.\:COMBAT Effects on combat and recovery.\::F6 Planes can load bombs here.\-Ships can only access a military base if there's a canal.
+

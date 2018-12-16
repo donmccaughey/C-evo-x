@@ -1,0 +1,149 @@
+#CHOOSE FRENCH
+#n the French
+#s France
+#a French
+#COLOR 576FC7
+#SYMBOLS Nation1, 43
+#AGE0 StdCities, 2, 0, 0, Nation1, 33
+#AGE1 StdCities, 2, 0, 0, Nation1, 33
+#AGE2 0, 0, 0, 0, Nation1, 33
+#AGE3 0, 0, 0, 0, Nation1, 33
+
+#CITIES
+	Paris
+	Orleans
+	Lyon
+	Reims
+	Tours
+	Marseille
+	Chartres
+	Avignon
+	Besancon
+	Rouen
+	Grenoble
+	Dijon
+	Amiens
+	Cherbourg
+	Poitiers
+	Toulouse
+	Bayonne
+	Strasbourg
+	Brest
+	Bordeaux
+	Lille
+	Nice
+	Nantes
+	Saint-Etienne
+	Montpellier
+	Rennes
+	Le Havre
+	Toulon
+	Angers
+	Le Mans
+	Clermont-Ferrand
+	Aix-en-Provence
+	Limoges
+	Nimes
+	Villeurbanne
+	Metz
+	Caen
+	Mulhouse
+	Boulogne-Billancourt
+	Perpignan
+	Nancy
+	Roubaix
+	Argenteuil
+	Tourcoing
+	Montreuil
+	Saint-Denis
+	Versailles
+	Nanterre
+	Creteil
+	Aulnay-sous-Bois
+	Pau
+	Vitry-sur-Seine
+	Calais
+	Colombes
+	La Rochelle
+	Asnieres
+	Champigny-sur-Marne
+	Rueil-Malmaison
+	Saint-Maur-des-Fosses
+	Bourges
+	Antibes
+	Dunkerque
+	Courbevoie
+	Beziers
+	Cannes
+	Saint-Nazaire
+	Colmar
+	Villeneuve-d'Ascq
+	Valence
+	Lorient
+	Aubervilliers
+	Drancy
+	Merignac
+	Troyes
+	La Seyne-sur-Mer
+	Quimper
+	Antony
+	Saint-Quentin
+	Neuilly-sur-Seine
+	Noisy-le-Grand
+	Sarcelles
+	Niort
+	Pessac
+	Venissieux
+	Chambery
+	Charleville-Mezieres
+	Beauvais
+	Cergy
+	Levallois-Perret
+	Cholet
+	Issy-les-Moulineaux
+	Montauban
+	Vannes
+	Hyeres
+	Evreux
+	Maisons-Alfort
+	Laval
+	Fontenay-sous-Bois
+	Ivry-sur-Seine
+	Saint-Malo
+	Arles
+	Belfort
+	Annecy
+	Sartrouville
+	Clichy
+	Chalon-sur-Saône
+	Pantin
+	Chateauroux
+	Meaux
+	La Roche-sur-Yon
+	Blois
+	Brive-la-Gaillarde
+	Evry
+	Clamart
+	Villejuif
+	Chalons-sur-Marne
+	Sevran
+	Le Blanc-Mesnil
+	Bondy
+	Frejus
+	Narbonne
+	Epinay-sur-Seine
+	Tarbes
+	Albi
+	Saint-Brieuc
+	Chelles
+	Boulogne-sur-Mer
+	Bobigny
+	Carcassonne
+
+#UNITS StdUnits
+	23,	040,	Militia
+
+#UNITS Nation1
+	3,	103,	Musketeers
+	13,	104,	National Guard
+	23,	134,	Chasseur

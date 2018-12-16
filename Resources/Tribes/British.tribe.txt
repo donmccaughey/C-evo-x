@@ -1,0 +1,125 @@
+#CHOOSE BRITISH
+#n the British
+#s Britain
+#a British
+#COLOR 978367
+#SYMBOLS Nation2, 95
+#AGE0 StdCities, 2, 0, 0, Nation2, 85
+#AGE1 StdCities, 2, 0, 0, Nation2, 85
+#AGE2 0, 0, 0, 0, Nation2, 85
+#AGE3 0, 0, 0, 0, Nation2, 85
+
+#CITIES
+	London
+	York
+	Nottingham
+	Hastings
+	Canterbury
+	Coventry
+	Warwick
+	Newcastle
+	Oxford
+	Liverpool
+	Dover
+	Brighton
+	Norwich
+	Leeds
+	Reading
+	Birmingham
+	Richmond
+	Exeter
+	Cambridge
+	Gloucester
+	Manchester
+	Bristol
+	Leicester
+	Carlisle
+	Ipswich
+	Portsmouth
+	Berwick
+	Sheffield
+	Kingston upon Hull
+	Bradford
+	Stoke-on-Trent
+	Wolverhampton
+	Plymouth
+	Derby
+	Southampton
+	Dudley
+	Newcastle upon Tyne
+	Sunderland
+	Northampton
+	Preston
+	Walsall
+	Luton
+	Southend-on-Sea
+	Bournemouth
+	Middlesbrough
+	West Bromwich
+	Blackpool
+	Oldbury
+	Swindon
+	Huddersfield
+	Bolton
+	Poole
+	Peterborough
+	Stockport
+	Rotherham
+	Watford
+	Slough
+	St Helens
+	Sutton Coldfield
+	Blackburn
+	Oldham
+	Basildon
+	Woking
+	Chelmsford
+	Colchester
+	Worthing
+	Gillingham
+	Eastbourne
+	Solihull
+	Rochdale
+	Birkenhead
+	Cheltenham
+	Halifax
+	Southport
+	Maidstone
+	Grimsby
+	Crawley
+	Hartlepool
+	Darlington
+	Wigan
+	Bath
+	South Shields
+	Stockton-on-Tees
+	Gateshead
+	Warrington
+	Worcester
+	St Albans
+	Lincoln
+	Chester
+	Salford
+	Hemel Hempstead
+	Basingstoke
+	Stevenage
+	Scunthorpe
+	Barnsley
+	Burnley
+	Harlow
+	Wakefield
+	Bedford
+	Newcastle-under-Lyme
+	Redditch
+	Chesterfield
+	Mansfield
+	High Wycombe
+	Chatham
+
+#UNITS StdUnits
+	22,	040,	Militia
+
+#UNITS Nation2
+	36,	21,	Secret Agent
+	86,	201,	Galleon
+	87,	132,	Knights

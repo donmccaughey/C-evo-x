@@ -1,0 +1,11 @@
+# TODO
+
+ - Add build steps for StdAI.dll
+
+ - Add Windows Resource Compiler to the build
+	* https://docs.microsoft.com/en-us/windows/desktop/menurc/resource-compiler
+	* Decompile Project\cevo.res into Project\cevo.rc
+	* Verify that cevo.res contains cevoxp2.ico
+
+ - Audit case of filenames, unit names and other file inclusions
+

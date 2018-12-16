@@ -1,0 +1,66 @@
+#CHOOSE PERSIANS
+#n the Persians
+#s Persia
+#a Persian
+#COLOR EB830B
+#SYMBOLS Nation1, 46
+#AGE0 StdCities, 0, 0, 0, Nation1, 36
+#AGE1 StdCities, 0, 0, 0, Nation1, 36
+#AGE2 0, 0, 0, 0, Nation1, 36
+#AGE3 0, 0, 0, 0, Nation1, 36
+
+#CITIES
+	Persepolis
+	Pasargadae
+	Susa
+	Arbela
+	Bactra
+	Ecbatana
+	Ergili
+	Dariush Kabir
+	Ghulaman
+	Zohak
+	Istakhr
+	Zanjan
+	Borazjan
+	Artacoana
+	Phrada
+	Dakyanus
+	Bampur
+	Tureng Tepe
+	Bukhara
+	Nishapur
+	Tabriz
+	Kabul
+	Ormuz
+	Khorasan
+	Kerman
+	Ctesiphon
+	Hatra
+	Rhagae
+	Hecatompylos
+	Maracanda
+	Tashkent
+	Kyreshata
+	Bisitun
+	Jiruft
+	Darabgird
+	Siraf
+	Gur
+	Shiraz
+	Shushtar
+	Kandahar
+	Tepe Hissar
+	Kashan
+	Anshan
+	Ahvaz
+	Dezful
+	Mohammerah
+	Awan
+	Simash
+	Tepe Sialk
+
+#UNITS Nation1
+	6,	040,	Militia
+	16,	101,	Pikemen
+	26,	102,	Warriors

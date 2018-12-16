@@ -1,0 +1,943 @@
+#GAME Book %d
+#MAP Map %d
+#BC %d BC
+#AD %d AD
+#SHARE %d/%d
+#SHORTNAME #S
+#OWNED #A %s
+#GENCITY #S %d
+#GENMODEL #A Model %d
+
+'City Screen Text
+#HAPPINESS Morale
+#CONTROL Control
+#FAITH Faith
+#UNREST Unrest
+#HAPPINESSDEMAND Population
+#HAPPINESSPLUS Surplus
+#STORAGE Storage
+#FOOD Food
+#DEMAND Population
+#SURPLUS Surplus
+#LACK Lack
+#MATERIAL Material
+#PROD Production
+#POLL Pollution
+#SUPPORT Units
+#PROFIT Profit
+#TRADE Trade
+#CORR Corruption
+#SCIENCE Research
+#TAX Tax
+#LUX Wealth
+#DUMP Dump
+#SUPUNITS Supported Units
+
+'Class Screen Text
+#UNITOWNER #A
+#UNITSPEED Speed
+#UNITSTRENGTH Strength
+#UNITTRANSPORT Transport
+#UNITCOST Cost
+#UNITBUILT Built
+#UNITINTRO Introduced
+#UNITADOPT Adopted
+#UNITLOST Lost in combat
+#UNITDESTROYED Defeated
+#UNITAVAILABLE Available
+#UNITINPROD In production
+#UNITKNOWN Known active
+#UNITSPECIAL Special Unit
+
+'Diplomacy Screen Text
+#FRSTATGOV Government: %s
+#FRSTATPOP Population: %d
+#FRSTATTER Territory: %d
+#FRSTATTECH Technology: %d%%
+#FRSTATEXP Exploration: %d%%
+#FRLASTCONTACT Last visit:
+#FRNOCONTACT No contact, just legends
+#FRNOVISIT No visit yet
+#FROLDCIVILREP (Old dossier dating from %s)
+#FRNOCIVILREP (No dossier available)
+#FREXTINCT Extinct in
+#FRTREATY Relation:
+#FRAND ,
+#FRCREDIBILITY (%d%% credibility)
+#FRTREASURY Treasury: %d%%c
+#FRRELATIONS Foreign relations:
+
+'Other Dialog Text
+#PRESENT Units present
+#SHOWSTRENGTH Strength: %d/%d
+#RIVER River
+#INITUNIT Military Research
+#TECHFOCUS Focus: %s
+#NEXUS Stop Research
+#SCIENCEREPORT_EXTINCT %s (fallen)
+#MODELDRAFT New unit design (%s)
+#TAXRATE Tax Rate
+#MONEYGAINPOS +%d%%c
+#MONEYGAINNEG %d%%c
+#TECHGAIN +%d%%r
+#TECHWAIT %s (%d Turns)
+#COSTDIFF1 Difficulty Level: -25%
+#COSTDIFF2 Difficulty Level: ±0
+#COSTDIFF3 Difficulty Level: +25%
+#NATEXISTS (%s)
+#CONSCRIPTS Conscript %s
+#WONDEROF %s of %s
+#WONDEROWNER (#A)
+#EXPIRED (expired)
+#DESTROYED (destroyed)
+#NOWONDER No wonders built yet
+#BUILDORDER Building order for
+#BUILDREST Not scheduled:
+#ENHANCE %s: %s MP
+#SHIPCOMP Components
+#SHIPPOW Power
+#SHIPHAB Habitation
+#SEARCH Search
+#RANMAP Random Map
+#TWOTERRAINS %s / %s
+#MPMAP Multi Player
+#NOGAMES No books yet
+#AIT_ROUND Round %d,
+
+'Dialog Titles
+#TITLE_TRIBE Choose Your Tribe
+#TITLE_GOV Choose Government
+#TITLE_TECHSELECT What Do We Research Now?
+#TITLE_FARTECH Set Focus of Research
+#TITLE_CITIES #A Cities
+#TITLE_EVENTS City Events in %s
+#TITLE_MODELS #A Units
+#TITLE_DIAGRAMS Charts
+#TITLE_SHIPS Colony Ships
+#TITLE_SHIP #A Colony Ship
+#TITLE_EMODELS Foreign Unit Designs
+#TITLE_RATES Economy
+#TITLE_DRAFT Military Research
+#TITLE_WONDERS The Wonders of the World
+#TITLE_ENHANCE Terrain Enhancement
+#TITLE_CITYTYPES City Types
+#TITLE_PROJECT What shall we build here?
+#TITLE_CITYNAME City Name
+#TITLE_MODELNAME Unit Design Name
+#TITLE_ERROR Error
+#TITLE_SCIENCE Research Report
+#TITLE_OFFERDELIVER Add Offer
+#TITLE_OFFERCOST Add Demand
+#TITLE_NUMBER Number
+#TITLE_AMOUNT Amount
+#TITLE_CHOOSETECH Choose Advance
+#TITLE_CHOOSEMODEL Choose Unit Design
+#TITLE_CHOOSESHIPPART Choose Kind
+#TITLE_CHOOSECITY Choose City
+#TITLE_BOOKNAME Name of the Book
+#TITLE_MAPNAME Name of the Map
+#TITLE_NATION #N
+#TITLE_SPYMISSION Covert Operation
+#TITLE_SUICIDE Suicide Mission
+#FRMILREP Military Report
+
+'Message Text
+#NOALTAI No other AIs installed.\Download alternative AI modules from the C-evo homepage or build your own.
+#REVOLUTION Are we going to leave the #a empire to anarchy so that we can establish a new form of administration after the chaos is overcome?
+#AUTOREVOLUTION There is a new government form open to us:\%s\\In order to
+change to this form of administration, we'd have to depose the present
+government and get over a period of anarchy. Start the Revolution?
+#NOALTGOVS A revolution will let us change the form of our government. Currently, this doesn't make sense because we have not learned yet about other government forms than despotism.
+#AGE1 = %s =\Our ancestor's knowledge is incomplete and flawed. Many questions can't be
+answered correctly from the library. We parted with dogmatism, and we will evolve our view
+of the world by precisely observing things. We call it science.
+#AGE2 = %s =\After the achievement of mass production, for the first time in
+history wealth is no more the privilege of a minority. The consequences reach
+far. The mass market allows investments of a previously unknown dimension,
+leading into a new technological era.
+#AGE3 = %s =\An old human dream might turn to reality. We have now the
+technology to start the colonization of remote solar systems. Studies indicate
+that special metals will be the key to this gigantic project.
+#ENDTURN No units waiting for commands this turn.\End turn to continue with no action.
+#CREDUP Our credibility has risen to "%s".
+#CREDDOWN Our credibility has fallen to "%s".
+#CAPTURE #N are capturing the city of %s!
+#BOMBARD #N are bombarding the unprotected city of %s!
+#EXPEL Units have been expelled from #a territory.
+#DISPOSE %s\\Shall we rebuild this building?
+#SPDESTRUCTQUERY \(Note: We will lose control of our colony ship when we dismantle the space port!) 
+#SELL %s\\Shall we sell this building?
+#LOSEMAT A complete change in project type means to start a new project. %d%%p will be sold for %d%%c.
+#LOSEMAT3 Changing the project will result in a loss of 1/3 of the material collected for the project. Continue?
+#DOUBLESTATEIMP %s\\This state improvement already exists in the city of %s. Shall we move it to this city and sell the former building when finished? 
+#READY The project will be completed next turn.
+#NOMONEY We don't have enough money\to complete this project next turn.\(%d%%c needed, %d%%c available)
+#BUY Should we spend %d%%c to complete this project next turn?
+#EMIGRATE Emigration may cause the city's collapse. Shall we delay the completion of this unit until the city has enough population to subsist?
+#ADDTOMAXSIZE This city has reached its maximum size.
+#CITYMANAGEOFF Turn off automatic population management?
+#GLIDERLOST Our glider was lost at sea.
+#PLANELOST Our aircraft has run out of fuel.
+#DAMAGED_UTILIZE Utilizing a damaged unit has reduced benefit. Continue?  
+#NOBB We lack the technology of building bridges across rivers.
+#NOCITY This type of terrain is not suitable for settlement. We should look for terrain that allows irrigation.
+#NOCAPTURER Civil units can not capture cities.
+#NOBOMBARDER Bombarding cities requires attack power.
+#ZOC This type of unit can not move within zones under foreign control.
+#FASTATTACK Attack with %d%% power?
+#NOTIMELOADGROUND This type of unit requires %s movement points to be loaded onto a transport or unloaded from one.
+#NOTIMELOADAIR An aircraft requires 100 movement points to be loaded onto a carrier or unloaded from one.
+#NOTIMEBOMBARD Bombarding a city requires 100 movement points.
+#NOTIMEEXPEL Expelling a unit requires 100 movement points.
+#NOROAD This unit can only move along roads and railroads.
+#NONAV This ship has no navigation capability.
+#NOTRANSPORT This ship has no transport capability.
+#FULLTRANSPORT This transport is fully loaded.
+#LOWFUEL This aircraft is now low on fuel. If it moves farther, it won't be able to return to a city or military base. Continue?
+#LOWFUEL_GLIDER This unit needs to return to the ground in the end of the turn. If it moves farther, it will be lost. Continue?
+#UNREST_FOREIGN %s\\This is #a territory. Moving there will increase unrest in the unit's home city. Continue anyway?
+#UNREST_NOTOWN %s\\Leaving #s will increase unrest in the unit's home city. Continue anyway?
+#NOATTACKER This is a civil unit which can not attack.
+#ATTACKSUB We can't locate this foreign submarine.
+#ATTACKSTEALTH We can't locate this foreign stealth plane.
+#PEACE_NOATTACK We signed a peace treaty with #n.
+#PEACE_NOMOVE We signed a peace treaty with #n. We are not allowed to enter their territory.
+#PEACE_NOWORK This is #a territory!\We are bound by a peace treaty.
+#NOFOREIGNINFO No new information could be found.
+#FOREIGNINFO Mission has gained us new information about:
+#DOSSIER_PREPARED The #a dossier is now availabe, including the #a charts and the current level of their scientific development.
+#VIOLATION Our forces are violating #a territory!\#N grant us time until %s to withdraw them.
+#EVIOLATION #N apologize for violating the peace treaty. They have agreed to withdraw their troops until %s.
+#WITHDRAW Our troops have been forced to withdraw from #a territory.
+#WONDERBUILT #N have completed one of the\wonders of the world:\%s
+#WONDERBUILTEXP A wonder has been built by another nation:\%s\\This is an ancient wonder which gives no benefits nowadays.
+#WONDERBUILTOWN We have completed one of the\wonders of the world:\%s
+#WONDERCAPT #N captured one of the\wonders of the world:\%s
+#WONDERCAPTOWN We have captured one of the\wonders of the world:\%s
+#WONDEREXP The effect of one of the wonders of the world has expired:\%s
+#WONDERDEST One of the wonders of the world has been destroyed:\%s
+#COLDWAR With the mutual threat of a nuclear war, the diplomatic positions of all parties have become entrenched. Negotiations are useless. The Cold War has began.
+#COLDWAREND The Cold War has ended.
+#SHIPBUILT #N have completed a part of their transstellar colony ship.
+#SHIPBITRADE1 #S and
+#SHIPBITRADE2 #s are exchanging colony ship parts.
+#SHIPUNITRADE1 #N receive
+#SHIPUNITRADE2 colony ship parts from #s.
+#SHIPCAPTURE1 #N take control of the
+#SHIPCAPTURE2 #a colony ship!
+#SHIPDESTROYED #N lost control of their colony ship.
+#LOWFUNDS Funds are running low. If we don't respond, we might be forced to sell city improvements.\Do you intend to continue anyway?
+#DISORDER %s will fall to civil disorder.\Do you intend to continue anyway?
+#DISORDER_UNREST %s will fall to civil disorder because of massive unrest.\Do you intend to continue anyway?
+#FAMINE %s is in danger of famine.\Do you intend to continue anyway?
+#FAMINE_TILES %s is in danger of famine. Too few fertile tiles are available to this city.\Do you intend to continue anyway?
+#FAMINE_UNREST %s is in danger of famine. Parts of the population had to be drafted for police service in order to get unrest under control. This weakening of the economy has now come to a degree that food production isn't sufficient anymore.\\Do you intend to continue anyway?
+#LOWSUPPORT %s does not produce enough material to support its units.\Do you intend to continue anyway?
+#LOWSUPPORT_TILES %s does not produce enough material to support its units. Too few productive tiles are available to this city.\Do you intend to continue anyway?
+#LOWSUPPORT_UNREST %s does not produce enough material to support its units. Parts of the population had to be drafted for police service in order to get unrest under control. This weakening of the economy has now come to a degree that material production isn't sufficient anymore.\\Do you intend to continue anyway?
+#RESIGN You're going to close this book.\Do you wish to save it?
+#ENDTOUR Do you wish to save this round as a book so that you can open it in Supervisor mode?
+#MODELAVAILABLE New units are ready for production.
+#RESEARCH_GENERAL We have researched %s!
+#GRLIB_GENERAL We have acquired %s from the Great Library!
+#ORACLEINCOME Income: %d%%c
+#NOSELLAGAIN %s\\A city can't sell or rebuild more than one building a turn.
+#OUTOFCONTROL %s\\This city is not under control yet.
+#NOCHANGEINANARCHY We are in anarchy, all city functions are paralysed.
+#EXTINCT = %s =\The empire of #n has fallen. Only legends will remind us of their great culture.
+#EXTINCTALL \\We are now the only nation in existence on earth.
+#GAMEOVER #N have lost all cities.\\GAME OVER.
+#TIMEUP The time is up.\Even though #n made it to considerable prosperity and great technology, and even though they maintained an important position among the nations of the world, they did not master the ultimate challenge of civilization.\\GAME OVER.
+#TIMEUPSUPER The time is up.\No nation managed to complete its colony ship.
+#SPACESHIP1 #N have launched their\transstellar colony ship.\
+#SPACESHIP2 The completion of this project has provided the proof of their superiority in every aspect of civilization.\\GAME OVER.
+#MYSPACESHIP After ages of poverty and crisis, ages of threats and bleeding military disputes, ages of radical change and incredible progress, we have finally made that old dream of mankind come true. Our ship has been launched for a world far in space to make it a new home for life.\\YOU WIN.
+#SHAREDWIN (Victory shared with: %s)
+#SHAREDWIN_CONCAT %s, %s
+#NOAI No AI installed!
+#FILENOTFOUND File "%s" was not found. 
+#AIEXCEPTION Unhandled exception in AI module %s!
+#LOADERR This book is not compatible with this version of C-evo.
+#NOFILENAME The name of the book must be a valid filename. The '%s' character is not allowed.
+#DLLERROR Could not load %s.
+#AIERROR AI module %s was not found.
+#MISSDEACT Player %d terminated without valid deactivation.
+#CLIENTERROR Could not find client of %s.
+#LOADERROR This book contains an internal problem, and it may be impossible to continue playing with it.\\You can contribute to the quality of this game by sending the file to the developer.\Go to the bug reporting website now?
+#NOSTARTPOS This map has no starting positions defined. You can not play it.
+#TOOFEWTRIBES The number of competitors can not exceed the number of nations installed.
+#DELETEQUERY The book will be removed.
+#MAPDELETEQUERY The map will be removed.
+#TURN #N\%s
+#SUPERTURN Supervisor\%s
+#FRNEWNATION We have contact to #n now.
+#FRCONTACT An emissary of #n wishes to\speak to us. Will we receive him?
+#FRREJECTED #N did not receive our emissaries.
+#FRCANCELQUERY_PEACE Shall we declare war on them?
+#FRCANCELQUERY_FRIENDLY Shall we end our friendship with them?
+#FRCANCELQUERY_ALLIANCE Shall we cancel our alliance with them?
+#FRCANCELBYREJECT_PEACE #A emissary:\Our patience is exhausted.\Prepare for war!
+#FRCANCELBYREJECT_FRIENDLY #A emissary:\This is the end of our friendship!
+#FRCANCELBYREJECT_ALLIANCE #A emissary:\We cannot maintain an alliance with a nation
+that is not willing to cooperate. You leave us no choice but to cancel this pact.
+#FRMYALLIANCE1 #N have declared war on our allies,
+#FRMYALLIANCE2 #n. We are free to support the #a empire against this aggression.
+#FRENEMYALLIANCE #N have decided to support their allies against us. Our agreements with them are voided.
+#FRANARCHY The #a empire is in anarchy. Our emissaries didn't find a settled administration to speak to.
+#FRMYANARCHY We are in anarchy. Diplomatic activities require a settled administration.
+#FRCOLDWAR We are in the Cold War. There is no receptivity for negotiation.
+#MAX2WANTS You can't combine more than two wants in one proposal.
+#MAX2OFFERS You can't combine more than two offers in one proposal.
+#NOOFFER This proposal is invalid!
+#CANCELTREATYRUSH Cancelling more than one treaty with the same nation within 3 turns is not allowed. 
+#NOSPACEPORT We do not have a space port, so we'd lose all colony ship parts that we receive. Continue anyway?  
+#SUICIDE Shall we send these\men to death?
+#RATES What shall we orient\our economy towards?
+#NORATES Statue of Liberty\is active.
+
+'Diplomatic Statements, do not use '\'!
+#FRSTART_NOTREATY Listen to what #n are offering.
+#FRSTART_PEACE Kind greetings from #n, there are concerns to speak about.
+#FRCANCELTREATY_PEACE We declare war on you.
+#FRCANCELTREATY_FRIENDLY We're ending our friendship now.
+#FRCANCELTREATY_ALLIANCE We don't see a sense in our alliance anymore. Take this pact for cancelled.
+#FRNOTICE Don't think we will tolerate your capriciousness for ever more.
+#FRBREAK This debate is a waste of time. Maybe we'll get on better some day after you thought your position over.
+#FROFFER We offer\-%s\in exchange of\-%s
+#FRPRESENT We offer you a present:\-%s
+#FRDEMAND_STRONG Give us\-%s\or you'll have to face the consequences!
+#FRDONE Is there anything else you wish to speak about?
+#FRPEACE We have prepared a permanent peace treaty to end the aggression between our two peoples and to fix our mutual borders. Will you sign it?
+#FRFRIENDLY We have great respect for the #a culture and technology. Let us stay in friendly contact to learn more about each other.
+#FRALLIANCE We see great opportunities for cooperation between our two peoples. Will you join an alliance with us, that we may present a united front against our mutual enemies?
+#FRACCEPTTREATY We accept. Might this agreement usher in a new era of relationship between our peoples.
+#FRNOTACCEPTTREATY We have no interest in that at present.
+#FRACCEPTOFFER This seems a fair offer. We accept.
+#FRACCEPTPRESENT #N gratefully accept this present.
+#FRACCEPTDEMAND_STRONG For the sake of our good relations, we decided to comply with your wishes.
+#FRNOTACCEPTOFFER This suggestion doesn't seem advantageous to us.
+#FRNOTACCEPTPRESENT #N have no need for presents like this.
+#FRNOTACCEPTDEMAND_STRONG You are demanding too much.
+#FRDELCHOICE We are interested in\-%s\What can we offer in exchange?
+#FRCOSTCHOICE Is there something you could offer us in exchange of\-%s?
+#FRBYE Not at the moment, so may this discussion end here. Goodbye.
+#PRICE_CHOOSE A price of choice
+#PRICE_CIVIL A dossier about #n
+#PRICE_MIL Military information about #n
+#PRICE_MAP The #a world map
+#PRICE_SHIPCOMP %d Colony Ship Components
+#PRICE_SHIPPOW %d Power Modules
+#PRICE_SHIPHAB %d Habition Modules
+#PRICE_ALLTECH All #a scientific knowledge
+#PRICE_ALLMODEL All #a unit design papers
+#PRICE_CONCAT %s\-%s
+#PRICECAT_ALLTECH All advances
+#PRICECAT_ALLMODEL All unit designs
+
+'Button Captions
+#BTN_OK OK
+#BTN_CANCEL Cancel
+#BTN_YES Yes
+#BTN_NO No
+#BTN_INFO Info
+
+'Button Tooltips
+#BTN_SELECT Select
+#BTN_PAGE Next Page
+#BTN_SUPPORT Show Support
+#BTN_IMPRS Improvements
+#BTN_CLASSES Units
+#BTN_WONDERS Wonders
+#BTN_BUY Buy
+#BTN_DELETE Delete
+#BTN_RENAME Rename
+#BTN_OBSOLETE Obsolete
+#BTN_NONOBSOLETE Production Allowed
+#BTN_ALLOWCONSCRIPTS Consripts Allowed
+#BTN_NOCONSCRIPTS No Consripts
+#BTN_ENDTURN End Turn!
+#BTN_SKIP Skip Showing Foreign Moves
+#BTN_NOAUTOMOVE Don't Continue Our Moves
+#BTN_STOP Stop
+#BTN_NEGO Back to Negotiation
+#BTN_DIALOG Contact this nation!
+#BTN_BREAK Break Negotiation
+#BTN_PASS Offer Nothing
+#BTN_CNTREATY Cancel Treaty
+#BTN_ACCEPT Accept Proposal
+#BTN_NOTICE Decision Noticed
+#BTN_REPLAY Replay
+#BTN_RENGAME Rename Book
+#BTN_DELGAME Remove Book
+#BTN_RENMAP Rename Map
+#BTN_DELMAP Remove Map
+#BTN_CONTENTS Contents
+#BTN_BACK Back
+#BTN_SEARCH Search
+#BTN_WANTPEACE Want peace
+#BTN_OFFERPEACE Offer peace
+#BTN_WANTFRIENDLY Want friendship
+#BTN_OFFERFRIENDLY Offer friendship
+#BTN_WANTALLIANCE Want alliance
+#BTN_OFFERALLIANCE Offer alliance
+#BTN_NEGOEARLIER Earlier Part
+#BTN_NEGOLATER Latter Part
+
+'Morphing Menu Entries
+#SUPER Supervisor
+#HUMAN Local Player
+#AIT AI Tournament
+#RANDOMAI Pick random AIs
+#NOMOD (None)
+#BTN_FOUND Settle Down
+#BTN_ADD Add to City
+#BTN_SETHOME Support From Here
+#BTN_MOVEHOME Return to Nearest City
+#BTN_BUILDROAD Build Road
+#BTN_BUILDBRIDGE Build Bridge
+#BTN_BUILDRR Build Railroad
+#BTN_BUILDRRBRIDGE Build Railroad Bridge
+#BTN_CLEAR Clear Forest
+#BTN_DRAIN Drain Swamp
+#BTN_UNDESERT Change to Plains
+#FARTECH Set Focus
+#NOFARTECH No Focus
+#UTILIZE Utilize
+#INTEGRATE Integrate
+
+'Busy Messages
+#BUSY_START Creating the World...
+#BUSY_MOD Loading %s...
+#BUSY_MODLH Loading Graphics and Sounds...
+#BUSY_INIT Initializing AI...
+#BUSY_LOAD Loading Saved Data...
+
+'Map Editor
+#MAP_START Starting Position
+#MAP_PREFSTART Preferred Starting Position
+#MAP_RANDOM Do you want to dismiss this map and replace it by an automatically generated random map?
+#MAP_CLOSE You're going to close this map.\Do you wish to save it?
+
+#STARTCONTROLS
+Quit
+Start
+Open
+New Book
+Earlier Books
+World Size:
+Land Mass:
+Free Player Setup
+Year:
+Difficulty for %s
+End:
+Map
+Editor
+*
+Difficulty:
+Foreign Nations:
+Controlled By:
+
+#AUTODIFF
+Beginner
+Easy
+Moderate
+Hard
+Insane
+
+#CONTROLS
+Cancel Commands
+Close
+Economy and Tax
+Great Wall Coverage
+Bare Terrain
+Wonders of the World
+Manual
+Test
+Military Report
+View Log
+City Types
+Center
+Go On
+Unit Commands
+Unit Class Info
+Build Military Base
+Transform
+Clean up Pollution
+Pillage
+Build Fortress
+Charts
+Stay Here
+Build Canal
+Load to Transport
+Wait
+No Orders
+Show Location Codes
+Terrain Improvement
+Options
+Unit Movement
+*
+Wait at End of Turn
+Shade Unobserved Areas
+City Report Options
+City Names
+Borders
+City Report
+Research Report
+Enhance
+Terrain Enhancement
+Colony Ships
+Macro Management
+Build Irrigation
+Build Farmland
+Afforest
+Build Mine
+Create Unit
+Grid
+AI Debug Map
+Foreign Unit Designs
+Political Map
+Attacks and Captures Only
+Don't Show
+Jump 20 Turns
+Nations
+Manipulation
+Get All Advances
+Projects Complete Each Turn
+Research Complete Each Turn
+Cities Grow Each Turn
+See Everything
+Nations Know Each Other
+Run to End of Game
+Foreign Cities
+City Report List
+City Report Screens
+Names
+No Modern Resources Needed
+Recover
+Unload
+Random Map
+Disband
+Load to This Transport
+Enemy Movement
+Slow
+Fast
+Real Fast
+Slow
+Fast
+Sound
+Off
+On (Default Implementation)
+On (Alternative Implementation)
+Scrolling
+Slow
+Fast
+Off
+Open C-evo Website
+START REVOLUTION!
+Ally Movement
+Slow
+Fast
+Don't Show
+Patrols, Attacks and Captures Only
+Patrols, Attacks and Captures Only
+Tile Size
+
+#ADVANCES
+Advanced Flight
+Amphibious Warfare
+Astronomy
+Atomic Theory
+Automobile
+Ballistics
+Banking
+Bridge Building
+Bronze Working
+Ceremonial Burial
+Chemistry
+Chivalry
+Composites
+Code of Laws
+Combined Arms
+Combustion Engine
+Communism
+Computers
+Conscription
+Construction
+The Corporation
+Space Flight
+Currency
+Democracy
+Economics
+Electricity
+Electronics
+Engineering
+Environmentalism
+The Wheel
+Explosives
+Flight
+Intelligence
+Gunpowder
+Horseback Riding
+Impulse Drive
+Industrialization
+Smart Weapons
+Invention
+Iron Working
+The Laser
+Nuclear Power
+Literature
+The Internet
+Magnetism
+Map Making
+Masonry
+Mass Production
+Mathematics
+Medicine
+Metallurgy
+Miniaturization
+Mobile Warfare
+Monarchy
+Mysticism
+Navigation
+Nuclear Fission
+Philosophy
+Physics
+Plastics
+Poetry
+Pottery
+Radio
+Recycling
+Refrigeration
+Monotheism
+The Republic
+Robotics
+Rocketry
+Railroad
+Sanitation
+Science
+Writing
+Seafaring
+Self-Contained Environment
+Stealth
+Steam Engine
+Steel
+Synthetic Food
+Tactics
+Theology
+Theory of Gravity
+Trade
+Transstellar Colonization
+University
+Advanced Rocketry
+Warrior Code
+Alphabet
+Polytheism
+Refining
+Computing Technology
+Nano Technology
+Material Technology
+Artificial Intelligence
+
+#IMPROVEMENTS
+The Pyramids
+The Temple of Zeus
+The Hanging Gardens
+The Colossus
+The Lighthouse
+The Great Library
+The Oracle
+Sun Tzu's War Academy
+Leonardo's Workshop
+Magellan's Expedition
+Michelangelo's Chapel
+*
+Newton's College
+Bach's Cathedral
+*
+The Statue of Liberty
+The Eiffel Tower
+The Hoover Dam
+The Shinkansen Express
+The Manhattan Project
+MIR Space Station
+*
+*
+*
+*
+*
+*
+*
+Trade Goods
+Barracks
+Granary
+Temple
+Marketplace
+Library
+Courthouse
+City Walls
+Aqueduct
+Bank
+Cathedral
+University
+Harbor
+Theater
+Factory
+Manufacturing Plant
+Recycling Center
+Power Station
+Hydroelectric Dam
+Nuclear Plant
+Offshore Platform
+Town Hall
+Sewer System
+Supermarket
+Superhighways
+Research Lab
+SAM Missile Battery
+Coastal Fortress
+Airport
+Dockyard
+Palace
+Great Wall
+Colosseum
+Observatory
+Military Academy
+Command Bunker
+Algae Plant
+Stock Exchange
+Space Port
+Colony Ship Component
+Power Module
+Habitation Module
+
+#FEATURES
+Weapons
+Armor
+Mobility
+Sea Transport
+Carrier
+Turbines
+Bombs
+Fuel
+Air Transport
+Navigation
+Radar / Sonar
+Submarine
+Artillery
+Alpine
+Supply Ship
+Overweight
+Air Defence
+Spy Plane
+Steam Power
+Nuclear Power
+Jet Engines
+Stealth
+Fanatic
+First Strike
+Power of Will
+Academy Training
+Line Production
+
+#TERRAIN
+Ocean
+Coast
+Grassland
+Desert
+Prairie
+Tundra
+Arctic
+Swamp
+Jungle
+Forest
+Hills
+Mountains
+*
+Fish
+Plains
+Oasis
+Wheat
+Gold
+Ivory
+Peat
+Fruit
+Game
+Wine
+Iron
+*
+Manganese
+*
+Oil
+Bauxite
+Gas
+*
+*
+Ebony
+Mineral Water
+Coal
+Diamonds
+Dead Lands
+Cobalt
+Uranium
+Mercury
+
+#DOMAIN
+Ground
+Naval
+Air
+
+#EXPERIENCE
+Green
+Disciplined
+Hardened
+Veteran
+Elite
+
+#UNITSTATUS
+Fortified
+Bomber armed
+Moving in mountains 
+Conscripts
+Withdrawn
+*
+*
+*
+Loaded
+Causes unrest
+Stay here
+*
+Move to mark
+Enhance terrain
+Recover
+
+#GOVERNMENT
+Anarchy
+Despotism
+Monarchy
+Republic
+Fundamentalism
+Communism
+Democracy
+Future Society
+
+#TREATY
+No Treaty
+*
+Peace
+Friendship
+Alliance
+
+#HAVETREATY
+Contact with #n
+*
+In peace with #n
+Friendship with #n
+Allied with #n
+
+#CREDIBILITY
+Mendacious
+Unpredictable
+Isolationistic
+Respectable
+
+#CITYEVENTS
+Civil disorder
+Production complete
+Population growth
+Population decrease
+Unit disbanded
+Improvement sold
+Production sabotaged
+Maximum size reached
+Pollution
+City under siege
+Wonder already exists
+Emigration delayed
+City founded
+Takeover complete
+Captured
+City type no longer valid
+
+#CITYTYPE
+Common city
+Science city
+Industrial city
+Metropolis
+
+#DIAGRAM
+Population
+Territory
+Military Power
+Technology
+Exploration
+Cultivation
+
+#JOBRESULT
+*
+Road
+Railroad
+Clear Forest
+Irrigation
+Farmland
+Afforest
+Mine
+Canal
+Transform
+Fortress
+Clean Up
+Military Base
+Pillage
+Settle Down
+Bridge
+Railroad Bridge
+Clear
+Plains
+Drain
+
+#ARMYLOST
+#A army destroyed.
+#A fleet destroyed.
+#A group destroyed.
+
+#SPYMISSION
+Sabotage production
+Steal maps
+Collect third nation knowledge
+Prepare dossier
+Prepare military report
+
+#WANT
+Want dossier
+Want military information
+Want world map
+*
+Want advance
+Want unit design
+Want payment
+*
+*
+*
+Want colony ship parts
+Let them offer something
+
+#OFFER
+Offer dossier
+Offer military information
+Offer world map
+*
+Offer advance
+Offer unit design
+Offer payment
+*
+*
+*
+Offer colony ship parts
+Let them want something
+
+#CITYMANAGETYPE
+Full Control
+Maximize\Research
+Hurry\Research
+Maximize\Growth
+Hurry\Production
+Maximize\Production

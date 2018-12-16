@@ -1,0 +1,117 @@
+#CHOOSE CHINESE
+#n the Chinese
+#s China
+#a Chinese
+#COLOR 00FFFF
+#SYMBOLS Nation1, 41
+#AGE0 StdCities, 1, 0, 0, Nation1, 31
+#AGE1 StdCities, 1, 0, 0, Nation1, 31
+#AGE2 0, 0, 0, 0, Nation1, 31
+#AGE3 0, 0, 0, 0, Nation1, 31
+
+#CITIES
+	Beijing
+	Shanghai
+	Guangzhou
+	Nanjing
+	Qingdao
+	Xinjian
+	Chengdu
+	Changchun
+	Tianjin
+	Datong
+	Macao
+	Anyang
+	Shantou
+	Jinan
+	Kaifeng
+	Ningpo
+	Baoding
+	Dongying
+	Shenyang
+	Dalian
+	Harbin
+	Xi'an
+	Jiulong
+	Wuhan
+	T'aipei
+	Taiyuan
+	Kaohsiung
+	Fushun
+	Anshan
+	Lanzhou
+	Zhengzhou
+	Nanchang
+	Changsha
+	Hangzhou
+	Kunming
+	Urumqi
+	Qiqihar
+	Tangshan
+	Jilin
+	Xianggang
+	Guiyang
+	Shijiazhuang
+	Baotou
+	Wuxi
+	T'aichung
+	Fuzhou
+	Zibo
+	Handan
+	Xuzhou
+	Benxi
+	Yichun
+	Hefei
+	Luoyang
+	Nanning
+	T'ainan
+	Suzhou
+	Daqing
+	Huainan
+	Hohhot
+	Jinzhou
+	Jixi
+	Fuxin
+	Liuzhou
+	Hengyang
+	Liaoyang
+	Mudanjiang
+	Xining
+	Yingkou
+	Ningbo
+	Zhangjiakou
+	Dandong
+	Changzhou
+	T'aipeihsien
+	Hegang
+	Xiangtan
+	Xiangfan
+	Xinxiang
+	Sha Tin
+	Jiamusi
+	Hunjiang
+	Nantong
+	Tuen Mun
+	Shenzhen
+	Wuhu
+	Pingdingshan
+	Bengbu
+	Zhuzhou
+	Huangshi
+	Panzhihua
+	Yantai
+	Baoji
+	Wenzhou
+	Shuangyashan
+	Xiamen
+	Chungho
+	Jiaozuo
+	Zigong
+	Zhanjiang
+	Chilung
+	Tonghua
+
+#UNITS Nation1
+	1,	040,	Militia
+	11,	104,	Riflemen
+	21,	072,	Junk

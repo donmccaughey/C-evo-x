@@ -1,0 +1,122 @@
+#CHOOSE SPANISH
+#n the Spanish
+#s Spain
+#a Spanish
+#COLOR FFFF00
+#SYMBOLS Nation1, 47
+#AGE0 StdCities, 3, 0, 0, Nation1, 37
+#AGE1 StdCities, 3, 0, 0, Nation1, 37
+#AGE2 0, 0, 0, 0, Nation1, 37
+#AGE3 0, 0, 0, 0, Nation1, 37
+
+#CITIES
+	Madrid
+	Sevilla
+	Toledo
+	Cordoba
+	Valencia
+	Salamanca
+	Barcelona
+	Valladolid
+	Zaragoza
+	Cadiz
+	Bilbao
+	Granada
+	Malaga
+	Pamplona
+	Vigo
+	Avila
+	Leon
+	Burgos
+	Oviedo
+	Santander
+	Ciudad Rodrigo
+	Calatrava
+	Cartagena
+	Murcia
+	Las Palmas
+	Palma de Mallorca
+	Alicante
+	Gijon
+	L'Hospitalet
+	A Coruna
+	Vitoria-Gasteiz
+	Santa Cruz de Tenerife
+	Badalona
+	Elche
+	Mostoles
+	Sabadell
+	Jerez de la Frontera
+	Donostia-San Sebastian
+	Fuenlabrada
+	Terrassa
+	Leganes
+	Alcala de Henares
+	Almeria
+	Getafe
+	Albacete
+	Alcorcon
+	Castellon de la Plana
+	Huelva
+	Badajoz
+	La Laguna
+	Logrono
+	Santa Coloma de Gramanet
+	Tarragona
+	Lleida
+	Jaen
+	Marbella
+	Ourense
+	Mataro
+	Algeciras
+	Dos Hermanas
+	Torrejon de Ardoz
+	Barakaldo
+	Santiago de Compostela
+	Alcobendas
+	Reus
+	Telde
+	Lugo
+	San Fernando
+	Getxo
+	Aviles
+	Caceres
+	Cornella
+	Palencia
+	Ferrol
+	Sant Boi
+	Coslada
+	Parla
+	Lorca
+	El Puerto de Santa Maria
+	Talavera de la Reina
+	Pontevedra
+	Ceuta
+	Girona
+	Melilla
+	Pozuelo de Alarcon
+	Guadalajara
+	Zamora
+	Torrent
+	Manresa
+	Ponferrada
+	El Prat
+	Chiclana de la Frontera
+	Sanlucar de Barrameda
+	Ciudad Real
+	La Linea de la Concepcion
+	Rubi
+	Alcoy
+	Gandia
+	San Sebastian de los Reyes
+	Las Rozas de Madrid
+	Torrevieja
+	Alcala de Guadaira
+
+#UNITS StdUnits
+	22,	040,	Militia
+
+#UNITS Nation1
+	7,	103,	Musketeers
+	17,	133,	Cavalry
+	27,	201,	Warship

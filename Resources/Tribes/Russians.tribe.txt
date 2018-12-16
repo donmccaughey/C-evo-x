@@ -1,0 +1,122 @@
+#CHOOSE RUSSIANS
+#n the Russians
+#s Russia
+#a Russian
+#COLOR E70000
+#SYMBOLS Nation2, 94
+#AGE0 StdCities, 2, 0, 0, Nation2, 84
+#AGE1 StdCities, 2, 0, 0, Nation2, 84
+#AGE2 0, 0, 0, 0, Nation2, 84
+#AGE3 0, 0, 0, 0, Nation2, 84
+
+#CITIES
+	Moskva
+	Sankt-Peterburg
+	Kiev
+	Minsk
+	Odesa
+	Sverdlovsk
+	Vladivostok
+	Novgorod
+	Kharkov
+	Krasnojarsk
+	Rostov-na-Donu
+	Kursk
+	Samara
+	Magnitogorsk
+	Jaroslavl
+	Novosibirsk
+	Omsk
+	Smolensk
+	Perm
+	Voronezh
+	Sevastopol
+	Ufa
+	Krivoy Rog
+	Niznij Novgorod
+	Chelabinsk
+	Dnipropetrovsk
+	Donetsk
+	Volgograd
+	Voronezh
+	Saratov
+	Zaporizhzhya
+	Lviv
+	Toljatti
+	Simbirsk
+	Izhevsk
+	Krasnodar
+	Chabarovsk
+	Irkutsk
+	Barnaul
+	Novokuzneck
+	Penza
+	Razan
+	Orenburg
+	Lipeck
+	Naberezhnyje Chelny
+	Mykolayiv
+	Tula
+	Gomel
+	Tumen
+	Kemerovo
+	Mariupol
+	Astrachan
+	Tomsk
+	Kirov
+	Ivanovo
+	Luhansk
+	Bransk
+	Cheboksary
+	Tver
+	Nizhnij Tagil
+	Makiyivka
+	Murmansk
+	Mogilev
+	Kurgan
+	Archangelsk
+	Sochi
+	Vitebsk
+	Vinnytsya
+	Orel
+	Stavropol
+	Simferopol
+	Kaluga
+	Vladimir
+	Belgorod
+	Machachkala
+	Kherson
+	Cherepovec
+	Poltava
+	Saransk
+	Tambov
+	Chita
+	Vladikavkaz
+	Grodno
+	Vologda
+	Chernihiv
+	Brèst
+	Komsomolsk-na-Amure
+	Cherkasy
+	Sumy
+	Horlivka
+	Volzhskij
+	Kostroma
+	Taganrog
+	Zhytomyr
+	Petrozavodsk
+	Dzerzhinsk
+	Surgut
+	Orsk
+	Angarsk
+	Sterlitamak
+
+#UNITS Nation2
+	70,	010,	Settlers
+	71,	040,	Militia
+	72,	102,	Pikemen
+	73,	104,	Riflemen
+	74,	133,	Cossack
+	75,	134,	Cavalry
+	76,	135,	T-34
+	77,	301,	MiG-29

@@ -23,9 +23,15 @@ Alternately, the `CevoWin32.dpr` and `cevo.dpr` projects build the
 `CevoWin32.exe` and `cevo.dll` files respectively; the executable loads and
 runs the game code located in the DLL.
 
-All three projects expect to find directories named `Project\tmp` and
-`Project\tmp\units` for build outputs and will fail if these directories are
-missing.
+External graphic, sound and text configuration files are located in the
+`Resources\` directory.
+
+The `Makefile` uses the Borland Make command supplied with Delphi 4.0 to build
+`CevoWin32.exe` and `cevo.dll` from the command line and also copies all
+resources from the `Resources\` directory.  The build output is placed in the
+`tmp\` output directory.
+
+Note that build steps for the standard AI files are currently missing.
 
 
 ## Related

@@ -1,0 +1,166 @@
+#CHOOSE GERMANS
+#n the Germans
+#s Germany
+#a German
+#COLOR AFAFAF
+#SYMBOLS Nation1, 44
+#AGE0 StdCities, 2, 0, 0, Nation1, 34
+#AGE1 StdCities, 2, 0, 0, Nation1, 34
+#AGE2 0, 0, 0, 0, Nation1, 34
+#AGE3 0, 0, 0, 0, Nation1, 34
+
+#CITIES
+	Berlin
+	Koln
+	Aachen
+	Frankfurt
+	Trier
+	Regensburg
+	Hamburg
+	Konigsberg
+	Stettin
+	Dortmund
+	Augsburg
+	Munchen
+	Bremen
+	Nurnberg
+	Lubeck
+	Stuttgart
+	Dusseldorf
+	Dresden
+	Hannover
+	Duisburg
+	Leipzig
+	Essen
+	Chemnitz
+	Karlsruhe
+	Munster
+	Bochum
+	Wuppertal
+	Bielefeld
+	Mannheim
+	Bonn
+	Gelsenkirchen
+	Halle
+	Wiesbaden
+	Monchengladbach
+	Braunschweig
+	Krefeld
+	Magdeburg
+	Kiel
+	Oberhausen
+	Rostock
+	Hagen
+	Erfurt
+	Freiburg
+	Kassel
+	Saarbrucken
+	Mainz
+	Hamm
+	Herne
+	Mulheim
+	Osnabruck
+	Ludwigshafen
+	Solingen
+	Leverkusen
+	Oldenburg
+	Neuss
+	Heidelberg
+	Darmstadt
+	Potsdam
+	Paderborn
+	Gottingen
+	Bremerhaven
+	Wurzburg
+	Recklinghausen
+	Wolfsburg
+	Bottrop
+	Heilbronn
+	Remscheid
+	Gera
+	Cottbus
+	Pforzheim
+	Offenbach
+	Ulm
+	Salzgitter
+	Ingolstadt
+	Siegen
+	Schwerin
+	Reutlingen
+	Furth
+	Koblenz
+	Moers
+	Bergisch Gladbach
+	Hildesheim
+	Witten
+	Kaiserslautern
+	Zwickau
+	Erlangen
+	Iserlohn
+	Jena
+	Gutersloh
+	Marl
+	Lunen
+	Velbert
+	Duren
+	Ratingen
+	Esslingen
+	Wilhelmshaven
+	Dessau
+	Hanau
+	Ludwigsburg
+	Flensburg
+	Minden
+	Brandenburg
+	Ludenscheid
+	Neumunster
+	Tubingen
+	Dorsten
+	Villingen-Schwenningen
+	Worms
+	Castrop-Rauxel
+	Gladbeck
+	Arnsberg
+	Delmenhorst
+	Frankfurt/Oder
+	Konstanz
+	Neubrandenburg
+	Viersen
+	Marburg
+	Rheine
+	Detmold
+	Bayreuth
+	Celle
+	Giessen
+	Bocholt
+	Troisdorf
+	Norderstedt
+	Dinslaken
+	Bamberg
+	Herten
+	Neuwied
+	Unna
+	Aschaffenburg
+	Lippstadt
+	Plauen
+	Aalen
+	Luneburg
+	Herford
+	Kempten
+	Grevenbroich
+	Gorlitz
+	Garbsen
+	Stralsund
+	Schwabisch Gmund
+	Kerpen
+	Dormagen
+	Fulda
+	Weimar
+
+#UNITS StdUnits
+	20,	040,	Militia
+
+#UNITS Nation1
+	4,	105,	Infantry
+	14,	106,	Sturmtruppen
+	24,	300,	Fokker

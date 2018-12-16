@@ -1,0 +1,14 @@
+#NORMAL
+Times New Roman, 18
+
+#SMALL
+Times New Roman, 15B
+
+#TINY
+Times New Roman, 13B
+
+#CAPTION
+Times New Roman, 21
+
+#BUTTON
+Times New Roman, 17B

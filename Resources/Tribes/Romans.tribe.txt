@@ -1,0 +1,90 @@
+#CHOOSE ROMANS
+#n the Romans
+#s Rome
+#a Roman
+#COLOR FFFFFF
+#SYMBOLS Nation1, 49
+#AGE0 StdCities, 6, 0, 0, Nation1, 39
+#AGE1 StdCities, 6, 0, 0, Nation1, 39
+#AGE2 0, 0, 0, 0, Nation1, 39
+#AGE3 0, 0, 0, 0, Nation1, 39
+
+#CITIES
+	Roma
+	Ostia
+	Paestum
+	Capua
+	Tarquinia
+	Neapolis
+	Pompeii
+	Ercolanum
+	Alba Longa
+	Aquileia
+	Tarracina
+	Casinum
+	Beneventum
+	Saturnia
+	Clusium
+	Arretium
+	Casilinum
+	Genua
+	Mediolanum
+	Sabatia
+	Asculum
+	Populonia
+	Castrum Novum
+	Fanum Fortunae
+	Venusia
+	Brundisium
+	Canusium
+	Panormus
+	Opitergium
+	Altinum
+	Patavium
+	Regium Lepicum
+	Augusta Taurinorum
+	Cremona
+	Mutina
+	Forum Livi
+	Forum Sempronii
+	Florentia
+	Pisae
+	Reate
+	Amiternum
+	Tarentum
+	Pometia
+	Tusculum
+	Nomentum
+	Lavinium
+	Signia
+	Antium
+	Velitrae
+	Praeneste
+	Aquilonia
+	Bonomia
+	Patavium
+	Volaterrae
+	Vetulonia
+	Potentia
+	Pisaurum
+	Aeclanum
+	Grumentum
+	Liternum
+	Puteoli
+	Fabrateria Nova
+	Sipontum
+	Buxentum
+	Castrum Hannibalis
+	Minervium
+	Augusta Praetoria
+	Brixia
+	Sena Iulia
+	Hispellum
+
+#UNITS StdUnits
+	22,	040,	Militia
+
+#UNITS Nation1
+	9,	101,	Principes
+	19,	131,	Celeres
+	29,	200,	Liburna
