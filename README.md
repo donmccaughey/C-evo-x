@@ -36,8 +36,10 @@ Note that build steps for the standard AI files are currently missing.
 
 ## Related
 
-[vn917/cevo][31], a fork of C-evo by [Vasilii Novikov][32].
+- [cevo at GitLab][31], a fork of C-evo by [Vasilii Novikov][32].
+- [C-evo at Launchpad][33], a fork of C-evo by [Jiří Hajda][34].
 
 [31]: https://gitlab.com/vn971/cevo
 [32]: https://diasp.de/u/vn971
-
+[33]: https://launchpad.net/c-evo
+[34]: https://launchpad.net/~chronoscz
