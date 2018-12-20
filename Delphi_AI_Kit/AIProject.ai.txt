@@ -1,0 +1,3 @@
+#NAME AI Project
+#GAMEVERSION 1.1.0
+#PATH AI Development Kit\AIProject.dll

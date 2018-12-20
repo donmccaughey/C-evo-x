@@ -1,0 +1,855 @@
+<html>
+<head>
+<title>The AI Development Kit</title>
+
+<style type="text/css">
+<!--
+h1 {font-size:20pt;font-family:Arial,Helvetica;color:#C00000;}
+h2 {font-size:14pt;font-family:Arial,Helvetica;color:#C00000;}
+h3 {font-size:11pt;font-family:Arial,Helvetica;font-weight:bold;color:#000000;}
+p {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+p.question {font-size:11pt;font-family:Arial,Helvetica;font-weight:bold;color:#000000;}
+li {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+td {font-size:11pt;font-family:Arial,Helvetica;color:#000000;vertical-align:top;}
+td.header {font-size:11pt;font-family:Arial,Helvetica;color:#000000;background-color:#CCCCCC;vertical-align:top;}
+td.turntime {font-size:11pt;font-family:Arial,Helvetica;color:#000000;background-color:#CCCCFF;vertical-align:top;}
+//-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#000080" alink="#FF0000">
+
+<h1>The AI Development Kit</h1>
+
+<p>This is the documentation of the AI development kit that comes with the
+C-evo standard package. The kit is meant to be a starting point for
+developing your own AI module for C-evo. Please, always consider that the whole
+C-evo project is
+still in the course of development, which counts for this text as well. If you
+have ideas how to improve the content or the structure of this
+document, or in case you notice any problem or have a question,
+<a href="http://c-evo.org/_sg/contact">contact me</a>!
+There's also a <a href="http://c-evo.org/aiforum/">web forum</a> for
+C-evo AI developers.
+
+<p>The programming language of this kit is Pascal. In order to work with it,
+you need a Pascal compiler capable of generating Win32-DLLs, for example:
+<ul>
+<li>FreePascal for Win32, see <a href="http://www.freepascal.org">freepascal.org</a>. The
+mandatory downloads are about 3 MB together and already sufficient to compile the code.
+<li>Borland Delphi. I tested with D4/Standard, older or newer Delphi versions
+might make minor code changes necessary. Delphi is more convenient for this use
+than FreePascal, because of the Windows-based development environment with
+integrated debugging.
+</ul>
+
+<p>Note that using this kit is not the only way to make an AI for C-evo. You can
+alternatively build an AI DLL from the scratch using your programming
+language of choice. The DLL interface
+documentation is to be found <a href="http://c-evo.org/aidev.html">here</a>.
+There is also another, completely
+different AI template (using C++) available from the
+<a href="http://c-evo.org/files">files section</a> of the project homepage.
+
+<br><br><h3>Important</h3>
+<p>Trying to program a C-evo AI makes no sense if you don't have good
+knowledge in two fields:
+<ul>
+<li>C-evo
+<li>Programming
+</ul>
+
+<br><h3>Files of the Kit</h3>
+<p><ul>
+<li><i>AIProject.dpr</i> - The project. When using a command line compiler,
+compile this file. The code is tailor-made for
+CustomAI.pas, these two files are the heart of the kit and make sense only
+together.
+<li><i>CustomAI.pas</i> - Contains the class TCustomAI, which is the base class of
+your AI. It encapsulates the server communication. You don't need to
+change this class, but you have to know its interface well. This
+interface is the main subject of this manual!
+<li><i>Protocol.pas</i> - This source file is part of any C-evo related code module,
+even of the game itself. It defines common values and data structures.
+Don't change it!
+<li><i>Switches.pas</i> - Compiler switches which ensure correct and optimized
+compilation. If you add new files to your AI, I suggest to include this file.
+<li><i>AIProject.ai.txt</i> - A template for your AI description file, see <a href="#inst">Installing Your AI</a>. 
+</ul>
+
+
+<br><h3>Debug and Release Version</h3>
+
+<p>The AI can be compiled in a debug or in a release version. The debug version
+does no optimization and adds several checks. It should be used during
+development. The release version of the AI contains only what is necessary for
+playing with it, thus being smaller and faster. The release version is the one
+that you should publish.
+
+<p>In Delphi, switch
+between debug and release by the <i>Optimization</i> checkbox in the project
+settings: Optimization means release, no optimization means debug.
+In FreePascal, make the debug version by defining the symbol <i>DEBUG</i>
+(for example, by passing the command line option <i>-dDEBUG</i> to the compiler).
+Without this symbol, FreePascal compiles the release version. (Unfortunately,
+this is only theory since FreePascal doesn't seem to generate a valid DLL with
+assertions enabled, so you have to debug the AI in the release version.)
+
+
+<br><br><h3>Concepts</h3>
+
+<p>First, you have to say goodbye to something that you're used to from playing
+the game: Names. For example, you can't define or even <i>find out</i> the names of your cities.
+The same counts for the names of your unit classes, not to speak of their
+pictures. This is because the game core does not support names.
+All objects are indentified by numbers only. Names and pictures are
+generated by the user interface in its own estimation, because humans like
+playing with names and pictures more than with numbers. AI likes numbers more,
+so be happy that you're spared by the names...
+
+<p>The source code files listed above are not meant to be edited.
+You're doing the
+AI implementation by creating a new unit <i>AI.pas</i> with a new class
+<i>TAI</i> derived from
+<i>TCustomAI</i>. (The names are fixed because AIProject.dpr relies on them.)
+Your class TAI has nothing to do but to override virtual methods of the
+base class by own implementations. You can choose which methods to override.
+Even if your class doesn't implement any
+method, the compiled AI works. (But, of course, does almost nothing.)
+
+<p>Each nation has its own AI object, so inside the TCustomAI and TAI classes
+it's all about only one nation. The whole AI module is capable of controlling
+more than one nation, but this is implemented by the kit infrastructure, you
+don't have to care for it.
+
+<p>Apart from that, the code is not object oriented. Units,
+unit classes (called <i>models</i>), cities and other items are not modelled
+as Object Pascal classes. Instead, the items of the game are identified by
+numbers (always zero-based) and managed in arrays of records.
+
+
+<br><br><h2>Playground Coordinates</h2>
+
+<p>You have to deal with three types of playground coordinates: location codes,
+(a,b)-coordinates and vicinity codes. A <i>location code</i> is a unique integer code for a tile.
+For example, you can use it to find the city that is located at a certain tile,
+or to find all units which are located inside a certain city (because they have
+the same location code as the city). All location
+codes in the range 0..MapSize-1 are valid, all other location
+codes are invalid. Whenever there is a field or parameter that refers to a single
+tile resp. location in the communication with the game, it contains a location code.
+
+<p>The other coordinate types are <i>relative</i>, they always relate
+to a base tile. This base tile can be chosen freely.
+<i>(a,b)-coordinates</i> are universal relative coordinates that are capable of addressing
+any other tile in relation to the base tile. Such a coordinate is a pair of
+two components, a and b, which both
+count the distance to the base tile. The a-component
+steps south-east and the b-component south-west:
+
+<p><img src="_aidev3.gif">
+
+<p>The base tile always has the (a,b)-coordinate <i>(0,0)</i>.
+
+<p>The other relative coordinates, <i>vicinity codes</i>, can only address the vicinity
+of the base tile. Vicinity codes are small integers.
+There are two subtypes: Vicinity-21 and Vicinity-8.
+Vicinity-21 codes contain the base tile and 20 surrounding tiles, in a shape
+equal to a city exploitation radius or to an enhanced unit visibility range.
+The vicinity has 21 tiles, they have codes in the range 1..26. The base tile
+has the code 13 (= constant <i>CityOwnTile</i>). One application of Vicinity-21
+is addressing tiles inside a city's exploitation radius - the city own tile is
+the base tile then. Sometimes, the codes
+are used as indices for bit arrays. For example, if the exploited tiles
+of a city are 11000000000010 (binary), this means that the city exploits the
+tiles with the Vicinity-21 codes 1, 12 and 13:
+
+<p><img src="_aidev4.gif">
+
+<p>Vicinity-8 codes are the most limited coordinates, they
+address only the 8 adjacent tiles of the base tile. The base tile
+itself has <i>no</i> Vicinity-8 code:
+
+<p><img src="_aidev5.gif">
+
+<p>(a,b)-coordinates and vicinity-8 codes are introduced by this kit in order
+to make AI programming
+easier. You must not use them, it's up to you which coordinate types to use in
+which AI calculation. However, they can be very
+valuable for AI algorithms that consider
+geographic neighbourhood and distances. The Sample AI contains several
+applications that you can take for examples.
+
+<p>The unit <i>CustomAI</i> provides some conversion functions between the
+different coordinate types:
+
+<p><i>procedure ab_to_Loc(Loc0,a,b: integer; var Loc: integer);</i>
+<br>This function calculates the location code of the tile which has the
+passed (a,b)-coordinates
+in relation to the base tile with location code Loc0.
+If there is no such tile because the relative coordinates are beyond the
+northern resp. southern end of the world, the code returned is less than 0 resp. greater than
+MapSize-1. The calculation respects the cylindrical world (no left or right end).
+
+<p><i>procedure Loc_to_ab(Loc0,Loc: integer; var a,b: integer);</i>
+<br>This function calculates the (a,b)-coordinates of the tile with
+location code <i>Loc</i>
+in relation to the base tile with location code Loc0.
+Because of the cylindrical world, this calculation is ambiguous. The function
+always returns the absolutely smallest possible values for a and b, e.g. (-1,1)
+instead of (lx-1,-lx+1).
+
+<p><i>procedure ab_to_V8(a,b: integer; var V8: integer);</i>
+<br>Converts an (a,b)-coordinate into a Vicinity-8 code.
+
+<p><i>procedure V8_to_ab(V8: integer; var a,b: integer);</i>
+<br>Converts a Vicinity-8 code into an (a,b)-coordinate.
+
+<p><i>procedure ab_to_V21(a,b: integer; var V21: integer);</i>
+<br>Converts an (a,b)-coordinate into a Vicinity-21 code.
+
+<p><i>procedure V21_to_ab(V21: integer; var a,b: integer);</i>
+<br>Converts a Vicinity-21 code into an (a,b)-coordinate.
+
+<p><i>procedure V8_to_Loc(Loc0: integer; var VicinityLoc: TVicinity8Loc);</i>
+<br>Returns the location codes of <i>all</i> tiles adjacent to the base tile
+at Loc0. The array index in VicinityLoc is the Vicinity-8 code. Tiles beyound
+a pole are indicated by an invalid location code.
+
+<p><i>procedure V21_to_Loc(Loc0: integer; var VicinityLoc: TVicinity21Loc);</i>
+<br>Returns the location codes of <i>all</i> tiles in the 21-tile vicinity
+of the base tile at Loc0. The array index in VicinityLoc is the
+Vicinity-21 code. Array indices which are not a valid Vicinity-21 code are set
+to an invalid location code. The same counts for tiles beyound a pole.
+
+
+<p><br><h2>The Overridables</h2>
+
+<p>There are three ways of control and information flow between the game and
+your AI: <i>Overridables</i>, <i>Functions</i> and the <i>ReadOnly-block</i>,
+described within this section and the following ones.
+
+<p>A few of the methods of TCustomAI are overridable. By overriding such a
+method, you can handle a call to your AI, for example the call to make your
+turn. Each overridable has already a default implementation in TCustomAI
+that remains
+effective if you do not override it in TAI. This default implementation
+does <i>nothing</i>.
+
+<p>The overridables <i>WantNegotiation</i> and <i>DoNegotiation</i> are
+described under <a href="#dip">Diplomacy</a>. Two others,
+<i>SetDataDefaults</i> and <i>SetDataRandom</i>, will be explained in the section
+<a href="#save">Saving Data</a>. Apart from those four, the overridables are:
+
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Overridable</td><td class="header">Event</td><td class="header">To do</td></tr>
+<tr><td class="turntime">DoTurn</td><td>It's your turn.</td>
+<td>Move units, manage cities etc.</td></tr>
+<tr><td class="turntime">ChooseResearchAdvance</td><td>Research completed.</td>
+<td>Return next advance to research. Prerequisites must be researched!
+Return -1 for random choice.
+If you return <i>adMilitary</i>, you must define the model to develop within this
+overridable.</td></tr>
+<tr><td class="turntime">ChooseStealAdvance</td><td>Enemy city captured while owning the Temple of Zeus.</td>
+<td>Return advance to steal from captured city. Return -1 for random choice.</td></tr>
+<tr><td class="turntime">ChooseGovernment</td><td>Anarchy is over.</td><td>Return desired new government form.</td></tr>
+<tr><td class="turntime">OnNegoRejected_CancelTreaty</td><td>Other nation has rejected your contact request. The <i>Opponent</i> field tells which nation that was.</td><td>Return <i>true</i> if you want to cancel the treaty that you have with this nation.</td></tr>
+<tr><td>OnBeforeEnemyAttack</td><td>Enemy unit will attack you. This unit is not necessarily in your enemy unit list, because it might be covered by a stronger unit at the same tile. Get information about the unit from the UnitInfo parameter of the overridable. Additional parameters also tell the exact outcome of the battle, although it has not yet happened.
+<br>This overridable is also called when enemies bombard one of your cities or expel a commando.</td><td>Whatever you like, but don't call in-turn functions.</td></tr>
+<tr><td>OnAfterEnemyAttack</td><td>Always follows to OnBeforeEnemyAttack. Attack has been performed now, either the attacking unit or your defender is destroyed. An attacked city might be destroyed.</td><td>Whatever you like, but don't call in-turn functions.</td></tr>
+<tr><td>OnBeforeEnemyCapture</td><td>Enemy unit is going to capture one of your cities. Capturing unit is already removed from origin tile, thus not in your enemy unit list, only specified by the UnitInfo parameter of the overridable. The city is still in your city list.</td><td>Whatever you like, but don't call in-turn functions.</td></tr>
+<tr><td>OnAfterEnemyCapture</td><td>Always follows to OnBeforeEnemyCapture. Capture has been performed now, city is destroyed or in enemy city list, unit is in enemy unit list and located at city tile.</td><td>Whatever you like, but don't call in-turn functions.</td></tr>
+</table>
+
+<p>The overridables marked blue are the <i>in-turn</i> overridables, only they can call in-turn functions.
+
+
+<p><br><h2>The Functions</h2>
+
+<p>Functions are the tools to implement the play of the nation,
+call them in order to give commands like moving a unit etc.
+Functions are methods declared by the base class TCustomAI.
+
+<p>Most of the functions return a server return code as result. These return
+codes are described in the file Protocol.pas. If this code doesn't have the <i>rExecuted</i> bit set,
+it's an error code, means the function has not been executed. Common
+server return codes are:
+<br><i>eNoTurn</i> - function can not be called from this overridable
+<br><i>eInvalid</i> - you have called the function with invalid parameters
+<br><i>eViolation</i> - function can't be executed, because this operation does
+not comply with the rules of the game
+<br><i>eNotChanged</i> - function was executed, but didn't change anything
+<br>Other return codes are function-specific and listed below.
+      
+<p>All available functions are described in the tables below.
+Parameters are integers except where stated different.
+Most functions can only be called from in-turn overridables. These functions are
+marked blue in the table.
+
+
+<br><br><h3>General Functions</h3>
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Function</td><td class="header">Parameters</td><td class="header">Usage</td></tr>
+
+<tr><td>IsResearched</td><td>Advance</td>
+<td>Returns whether a specific advance is already
+researched or not. The function returns <i>false</i> also for advances that are
+traded from other nations but not researched yet (tsSeen).</td></tr>
+
+<tr><td>ResearchCost</td><td>-</td><td>Returns the research points necessary to complete the current research, independent on the points that are already collected (RO.Research).</td></tr>
+
+<tr><td>ChangeAttitude</td><td>Nation<br>Attitude</td><td>Change your nation's attitude to another nation.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">Revolution</td><td>-</td><td>Do the revolution!<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">ChangeRates</td><td>Tax<br>Lux</td><td>Change tax and luxury rate, both must be multiples of 10.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">PrepareNewModel</td><td>Domain</td><td>Prepares military research. Pass the domain of the new model that you want to develop.
+<br>Makes only sense from overridable <i>ChooseResearchAdvance</i>!<br>Return Codes: eOK, eNoPreq</td></tr>
+
+<tr><td class="turntime">SetNewModelFeature</td><td>Feature<br>Count</td><td>Lets you specify a feature or capacity of the new model that you want to develop. PrepareNewModel must have been called before in this turn! To turn on binary features like Stealth, pass 1 as count. The result of the change, including strength and cost, can be read from RO.DevModel.
+<br>Makes only sense from overridable <i>ChooseResearchAdvance</i>!<br>Return Codes: eOK, eNoModel, eNoPreq, eDomainMismatch</td></tr>
+
+<tr><td class="turntime">AdvanceResearchable</td><td>Advance</td><td>Returns true if the specified advanced can be researched now.<br>Makes only sense from overridable <i>ChooseResearchAdvance</i>!</td></tr>
+
+<tr><td class="turntime">AdvanceStealable</td><td>Advance</td><td>Returns true if the specified advanced can be stolen now.<br>Makes only sense from overridable <i>ChooseStealAdvance</i>!</td></tr>
+</table>
+
+
+<br><br><h3>Unit Functions</h3>
+<p>Most of these functions have an integer <i>uix</i> as first parameter.
+These functions can only be applied to one of your units, not to foreign
+ones. The uix
+parameter specifies the unit which to apply the function to and is not
+explicitely listed in the table below.
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Function (Unit_...)</td><td class="header">Parameters</td><td class="header">Usage</td></tr>
+
+<tr><td>FindMyDefender</td><td>Loc<br>var uix</td><td>Determines, which of your units would defend the tile with the specified location, when attacked. The unit index is returned in uix. It's a value &lt;0 when your nation has no units at this location.</td></tr>
+
+<tr><td>FindEnemyDefender</td><td>Loc<br>var euix</td><td>Determines, which enemy unit would defend the tile with the specified location, when attacked. The enemy unit index is returned in euix. It's a value &lt;0 when there is no known enemy unit at this location.</td></tr>
+
+<tr><td class="turntime">Move</td><td>ToLoc</td><td>Move unit to another tile, as fast as possible. Be aware that the unit can die during this operation due to hostile terrain. This is indicated by the function return code having the <i>rUnitRemoved</i> flag set.
+Usually, the unit is moved to the specified tile (ToLoc). Only in the following two situations, it's moved to the most convenient adjacent tile:
+<br>- ToLoc is occupied by a unit of another nation
+<br>- an undefended foreign city is at ToLoc, but the unit is not able to capture cities
+<br>So you can also use this function in preparation of attacks, bombardments and covert operations.
+<br>If it takes more than one turn to reach the destination, the unit starts movement but will not remember the destination in the next turn. You have to call Unit_Move again in each turn, until the unit reaches the destination tile.
+The return code <i>eNoWay</i> tells that the unit can not at all move there on its own.
+<br>If formerly unknown foreign units or cities appear along the way, the function stops immediately, even if the destination is not reached yet.
+<br>Alternatively to a location code, you can pass <i>maNextCity</i> as destination, which causes the unit to move to the nearest of your cities.
+<br>Return codes (complete move done): eOK+rLocationReached, eOK+rMoreTurns, eEnemySpotted+rLocationReached, eEnemySpotted+rMoreTurns, eLoaded+rLocationReached, eLoaded+rMoreTurns
+<br>Return codes (move not or not completely done): eNoWay, eEnemySpotted, eDied, eEnemySpotted_Died, eHiddenUnit, eStealthUnit, eZOC_EnemySpotted, eNoCapturer</td></tr>
+
+<tr><td class="turntime">Attack</td><td>ToLoc</td><td>Let the unit attack an enemy unit, bombard an enemy city or expel a commando at the specified <i>adjacent</i> tile.
+<br>Return codes: eLost, eWon, eBloody, eBombarded, eExpelled, eHiddenUnit, eStealthUnit, eNoTime_Attack, eNoTime_Bombard, eNoTime_Expel, eDomainMismatch, eTreaty, eNoBombarder</td></tr>
+
+<tr><td class="turntime">DoMission</td><td>MissionType<br>ToLoc</td><td>Let special commando do covert operation in <i>adjacent</i> foreign city at ToLoc.
+<br>Return codes: eMissionDone, eNoTime_Move, eTreaty</td></tr>
+
+<tr><td class="turntime">MoveForecast</td><td>ToLoc<br>var&nbsp;RemainingMovement</td><td>Calculates the movement points the unit would have left for the current turn after moving to ToLoc. Returns false if the unit can't reach this tile within the turn.</td></tr>
+
+<tr><td class="turntime">AttackForecast</td><td>ToLoc<br>AttackMovement<br>var&nbsp;RemainingHealth</td><td>Calculates the health that the unit would have left after attacking the enemy unit at ToLoc. The movement points left for the attack must be specified, values &lt;100 reduce the attack power. If the attacker would be lost, the calculated health value is the negative remaining health of the defender.
+<br>Returning false indicates that this unit can't attack there.</td></tr>
+
+<tr><td class="turntime">DefenseForecast</td><td>euix<br>ToLoc<br>var&nbsp;RemainingHealth</td><td>Calculates the health that the defender at ToLoc would have left after an attack of the enemy unit with index <i>euix</i> in the enemy unit list. If the defender would be lost, the calculated health value is the negative remaining health of the attacker.
+<br>Returning false indicates that this unit can't attack there.</td></tr>
+
+<tr><td class="turntime">Disband</td><td>-</td><td>Disband the unit. If it's located in a city with a project it can be utilized for, utilize it.
+<br>Return codes: eUtilized, eRemoved</td></tr>
+
+<tr><td class="turntime">StartJob</td><td>NewJob</td><td>Let settlers start/change terrain improvement job. Pass <i>jNone</i> to cancel the current job only. Be aware that the unit can die during this operation due to hostile terrain. This is indicated by the function return code having the <i>rUnitRemoved</i> flag set.
+<br>Return Codes: eOK, eDied, eJobDone, eJobDone_Died, eCity, eNoPreq, eTreaty, eDeadLands, eNoCityTerrain, eNoBridgeBuilding</td></tr>
+
+<tr><td class="turntime">SetHomeHere</td><td>-</td><td>Change the home city of the unit to the city it's located in.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">Load</td><td>-</td><td>Load the unit to a transport unit at the same tile.<br>Return codes: eOK, eNoTime_Load, eNoLoadCapacity</td></tr>
+
+<tr><td class="turntime">Unload</td><td>-</td><td>Unload the unit from its transport.<br>Return codes: eOK, eNoTime_Load, eDomainMismatch</td></tr>
+
+<tr><td class="turntime">SelectTransport</td><td>-</td><td>Prefer this transport when loading units. Voids any former call to this function.<br>Return codes: eOK</td></tr>
+
+<tr><td class="turntime">AddToCity</td><td>-</td><td>Add settlers, slaves or conscripts to the city they're located in.<br>Return codes: eOK, eMaxSize</td></tr>
+
+</table>
+
+
+<br><br><h3>City Functions</h3>
+<p>Most of these functions have an integer <i>cix</i> as first parameter.
+These functions can only be applied to one of your cities, not to foreign
+ones. The cix parameter specifies the city which to apply the function to
+and is not explicitely listed in the table below.
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Function (City_...)</td><td class="header">Parameters</td><td class="header">Usage</td></tr>
+
+<tr><td>FindMyCity</td><td>Loc<br>var cix</td><td>Find the city at the specified location. The city index is returned in cix. It's a value &lt;0 when your nation has no city at this location.</td></tr>
+
+<tr><td>FindEnemyCity</td><td>Loc<br>var ecix</td><td>Find enemy city at the specified location. The enemy city index is returned in ecix. It's a value &lt;0 when there is no known enemy city at this location.</td></tr>
+
+<tr><td>HasProject</td><td>-</td><td>Returns true whenever the city is producing something different from trade goods.</td></tr>
+
+<tr><td>CurrentImprovementProject</td><td>-</td><td>Returns the city improvement, national project or wonder that is currently in production. If the city is producing a unit or trade goods, the function returns a value &lt;0.</td></tr>
+
+<tr><td>CurrentUnitProject</td><td>-</td><td>Returns the model index of the unit that is currently in production. If the city is not producing a unit, the function returns a value &lt;0.</td></tr>
+
+<tr><td class="turntime">GetTileInfo</td><td>TileLoc<br>var TileInfo: TTileInfo</td>
+<td>Fills the fields of TileInfo with the resource production of this tile when it would be exploited by this city.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">GetReport</td><td>var Report: TCityReport</td>
+<td>Get a detailed report of this city. (Similar to what a player sees on the city screen.) The information is returned in the fields of <i>Report</i>:
+<br><i>Working</i> - number of working citizens
+<br><i>Happy</i> - number of happy citizens, can be higher than number of working citizens if more working citizens would be happy
+<br><i>FoodRep, ProdRep, Trade</i> - total per turn collected food, material and trade points after improvement effects
+<br><i>PollRep</i> - pollution
+<br><i>Corruption, Tax, Lux, Science</i> - corruption, tax, luxury and science output of city
+<br><i>Support, Eaten</i> - production and food taken for citizens and unit support
+<br><i>Storage</i> - size of food storage
+<br><i>Deployed</i> - number of deployed units
+<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">GetHypoReport</td><td>HypoTiles<br>HypoTax<br>HypoLux<br>var Report: TCityReport</td>
+<td>Same as City_GetReport, but hypothecial: Report as if the city would exploit different
+tiles, and if tax and luxury rates were different.
+<br>Calling City_GetHypoReport(cix, MyCity[cix].Tiles, RO.TaxRate, RO.LuxRate) results in the same report as City_GetReport.</td></tr>
+
+<tr><td class="turntime">GetAreaInfo</td><td>var AreaInfo: TCityAreaInfo</td><td>Fills AreaInfo with availability information about all tiles in the exploitation radius of the city. Index in AreaInfo.Available is the Vicinity-21 code.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">StartUnitProduction</td><td>mix</td><td>Change city's project to a unit with the specified model index.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">StartEmigration</td><td>mix<br>AllowDisbandCity: boolean<br>AsConscripts: boolean</td><td>Same as StartUnitProduction, but additionally allows producing conscripts and/or disbanding the city.</td></tr>
+
+<tr><td class="turntime">StartImprovement</td><td>iix</td><td>Change city's project to city improvement, national project or wonder.<br>Return codes: eOK, eNoPreq, eObsolete</td></tr>
+
+<tr><td class="turntime">Improvable</td><td>iix</td><td>Returns true if this improvement, national project or wonder can be built in this city. This includes the check if this improvement already exists in this city (resp. in the world in case of a wonder).</td></tr>
+
+<tr><td class="turntime">StopProduction</td><td>-</td><td>Cancel the city's project, change the collected material to money and let the city produce trade goods instead.<br>Return code: eOK</td></tr>
+
+<tr><td class="turntime">BuyProject</td><td>-</td><td>Buy the city's project, so that it's complete the next turn.<br>Return codes: eOK, eOutOfControl</td></tr>
+
+<tr><td class="turntime">SellImprovement</td><td>iix</td><td>Sell the specified city improvement or national project.<br>Return codes: eOK, eOutOfControl, eOnlyOnce</td></tr>
+
+<tr><td class="turntime">RebuildImprovement</td><td>iix</td><td>Rebuild the specified city improvement or national project for the building currently in production.<br>Return codes: eOK, eOutOfControl, eOnlyOnce</td></tr>
+
+<tr><td class="turntime">SetTiles</td><td>NewTiles</td><td>Set tiles to exploit by a city. The parameter <i>NewTiles</i> is a bit array with the Vicinity-21 code as index. Currently unexploited tiles with 1-bits will be exploited, currently exploited tiles with 0-bits will be unexploited.
+<br>This function does not work partially. If not all tiles can be set as requested, the function does nothing and returns an error.<br>Return codes: eOK, eTileNotAvailable, eNoWorkerAvailable</td></tr>
+
+<tr><td class="turntime">OptimizeTiles</td><td>ResourceWeights</td><td>Optimize the exploitation of tiles in the city area. Food supply and unit support are ensured, if possible.
+Extra food, material, tax and science are maximized according to the parameter, which can be one of the values below "resource weights" in Protocol.pas. The optimization also works in connection with Luxury or Michelangelo's Chapel.</td></tr>
+
+</table>
+
+
+<br><br><h3>Negotiation Functions</h3>
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Function</td><td class="header">Parameters</td><td class="header">Usage</td></tr>
+<tr><td>Nego_CheckMyAction</td><td>-</td><td>Lets you check whether the currently set MyAction/MyOffer is valid. The return value does not contain the <i>rExecuted</i> flags if not.<br>Only allowed from overridable <i>DoNegotiation</i>!</td></tr>
+</table>
+
+
+<a name="debug"></a>
+<br><br><h3>Development Support Functions</h3>
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td>DebugMessage</td><td>Level<br>Text: string</td><td>Display an AI debug message. Note that debug messages are turned off by default. Open the debug message popup menu with a right mouse click into the AI debug message window, choose there which message levels to display.</td></tr>
+<tr><td>SetDebugMap</td><td>var DebugMap</td><td>Set a map of debug numbers, one for each tile. In the game, you can turn the number display on using the menu. The values are directly read from the array (32 bit) passed to this function everytime the map display is updated, means you only have to call this function once.<br>Never set the debug map to a local variable, only to memory that lives as long as your AI, e.g. fields of the AI object.</td></tr>
+</table>
+
+
+<p><br><h2>The ReadOnly-Block</h2>
+
+<p>The TCustomAI class contains a field <i>RO</i>, which is a pointer to a
+complex data structure. This data structure contains a lot of information
+about your nation and its view of the world. This is an important source of
+information for you, but it is read-only! The data is managed by the game,
+so please never change it directly by writing it. This would
+mean to cheat! This counts for all structures and fields pointed directly or
+indirectly by RO, as well as for the fields <i>Map</i>, <i>MyUnit</i>,
+<i>MyCity</i> and <i>MyModel</i> of
+the AI class, which are actually nothing but shortcuts for parts of RO.
+The only exception to the read-only rule are the fields <i>Data</i>
+and <i>Status</i>, which are described under <a href="#save">Saving Data</a>.
+
+<p>The data structure which the RO pointer refers to has the type
+<i>TPlayerContext</i>, defined in the file <i>Protocol.pas</i>.
+Please see this file for the definition details of this structure and the
+structures that are pointed to from it. The fields of these structures are
+commented inside the Protocol.pas.
+
+<br><br><h3>Unit and City Lists: Beware of Gaps!</h3>
+<p>The unit and city lists (MyUnit/RO.Un, MyCity/RO.City, RO.EnemyUn,
+RO.EnemyCity) might have gaps, means non-existing objects at an array position
+between existing objects. Such non-existing objects are indicated by a
+Location &lt;0. Commands will not work for them. Furthermore, the
+items in these lists might change their position within the list
+whenever the server prepares your turn. So you can <i>not</i>
+identify cities and units of former turns by their array index! (You could
+use their ID instead.) The enemy units might even
+change their indices while the enemies are moving. However, indices never
+change while your AI is processing an overridable.
+
+
+<br><br><h3>The Map</h3>
+<p>The playground map information (AI.Map or AI.RO.Map) is represented
+as a list of 32-bit values. The value at array index x provides information
+about the tile at location x. In order to save memory, several blocks of bits
+of these 32-bit values are used for different purpose. Means,
+you can <i>not</i> use the 32-bit value of a tile directly, you always have to
+extract the bits containing the information that you need. You're doing this
+by applying an AND operation with the appropriate bit mask or single flag to the value.
+The table below shows the bit structure of the map values in detail
+and gives some examples of usage:
+
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Bits</td><td class="header">Bit mask/flag</td><td class="header">Content</td><td class="header">Example of usage: test whether tile at location...</td></tr>
+<tr><td>0..4</td><td>fTerrain</td>
+  <td>terrain type if tile is already discovered,<br>fUNKNOWN if not</td>
+  <td>...is ground tile:<br><i>if (Map[Loc] and fTerrain)>=fGrass</i></td></tr>
+<tr><td>5..6</td><td>fSpecial</td>
+  <td>1 or 2 if tile has special resource,<br>0 if not</td>
+  <td>...is a wheat tile:
+  <br><i>if ((Map[Loc] and fTerrain)=fPrairie) and ((Map[Loc] and fSpecial)=fSpecial1)</i>
+  <br>or shorter:
+  <br><i>if (Map[Loc] and (fTerrain or fSpecial))=(fPrairie or fSpecial1)</i></td></tr>
+<tr><td>7</td><td>fRiver</td><td>river</td><td>&nbsp;</td></tr>
+<tr><td>8</td><td>fRoad</td><td>road</td>
+  <td rowspan=2>...has road or railroad:<br><i>if (Map[Loc] and (fRoad or fRR))<>0</i></td></tr>
+<tr><td>9</td><td>fRR</td><td>railroad</td></tr>
+<tr><td>10</td><td>fCanal</td><td>canal</td><td>&nbsp;</td></tr>
+<tr><td>11</td><td>fPoll</td><td>pollution</td><td>&nbsp;</td></tr>
+<tr><td>12..15</td><td>fTerImp</td>
+  <td>terrain improvement code if tile has<br>Irrigation, Farm, Mine, Fort or Base,<br>tiNone if not</td>
+  <td>...has fort:<br><i>if (Map[Loc] and fTerImp)=tiFort</i></td></tr>
+<tr><td>16</td><td>fGrWall</td><td>tile is protected by great wall</td><td>&nbsp;</td></tr>
+<tr><td>17</td><td>fSpiedOut</td><td>enemy city resp. enemy unit stack has been investigated by a special commando or spy plane</td><td>&nbsp;</td></tr>
+<tr><td>18</td><td>fStealthUnit</td><td>tile is occupied by enemy stealth plane</td><td>&nbsp;</td></tr>
+<tr><td>19</td><td>fHiddenUnit</td><td>tile is occupied by enemy submarine</td><td>&nbsp;</td></tr>
+<tr><td>20</td><td>fObserved</td><td>tile information is from this turn</td><td>&nbsp;</td></tr>
+<tr><td>21</td><td>fOwned</td><td>unit/city here is own one</td>
+  <td rowspan=3>...has foreign unit:
+  <br><i>if ((Map[Loc] and fUnit)<>0) and ((Map[Loc] and fOwned)=0)</i>
+  <br>or shorter:
+  <br><i>if (Map[Loc] and (fUnit or fOwned))=fUnit</i></td></tr>
+<tr><td>22</td><td>fUnit</td><td>unit present</td></tr>
+<tr><td>23</td><td>fCity</td><td>city present</td></tr>
+<tr><td>24</td><td>fDeadLands</td><td>dead lands</td><td>&nbsp;</td></tr>
+<tr><td>25..26</td><td>fModern</td>
+  <td>fCobalt, fUranium or fMercury,<br>0 if no modern resource</td>
+  <td>...has a modern resource:<br><i>if (Map[Loc] and fModern)<>0</i></td></tr>
+<tr><td>28</td><td>fOwnZoCUnit</td><td>own ZoC unit present at this tile</td><td>&nbsp;</td></tr>
+<tr><td class="turntime">29</td><td class="turntime">fInEnemyZoC</td><td>tile is in zone of control of known unit of foreign nation that you're not allied with
+  <br>this information is only valid during your own turn</td>
+  <td>test whether at least one of two tiles is not in foreign zone of control:
+  <br><i>if ((Map[Loc1] and fEnemyControl)=0) or ((Map[Loc2] and fEnemyControl)=0)</i>
+  <br>or shorter:
+  <br><i>if (Map[Loc1] and Map [Loc2] and fEnemyControl)=0</i></td></tr>
+<tr><td class="turntime">30</td><td class="turntime">fPeace</td><td>tile belongs to territory of nation that you're in peace with but not allied
+  <br>this information is only valid during your own turn</td><td>&nbsp;</td></tr>
+</table>
+
+<p>Concerning terrain types, note that there are small differences between the
+software internal and the player view. <i>Jungle</i> and <i>Forest</i> are the same
+internally, named forest. <i>Plains</i> do not exist as terrain type, they are grassland with a
+special resource of type 1 (fSpecial1). <i>Dead Lands</i> also not exist as
+terrain type. They always have the terrain type <i>Desert</i>, also having the same
+properties as desert in every aspect, except that settlers can't work there.
+To distinguish dead land tiles from desert, these tiles have the <i>fDeadLands</i>
+flag set. The special resources of dead lands (modern resources) are specified
+by the fModern bits, while the fSpecial bits are always 0.
+
+
+<a name="dip"></a>
+<p><br><h2>Diplomacy</h2>
+
+<p>The diplomacy implementation of an AI based on this kit has two parts. One part (overridable
+<i>WantNegotiation</i>) is the decision whether to contact another nation or
+not. This overridable is called by the kit framework for each known foreign nation
+in the beginning of your turn (before DoTurn) and again in the end of your turn
+(after DoTurn). The <i>NegoTime</i> parameter tells you which case it is.
+You should return <i>true</i> if you wish to ask this nation for
+negotiation. For
+example, if you'd like to contact Enemy <i>p</i> after moving your units, return
+<i>false</i> from <i>WantNegotiation(p,BeginOfTurn)</i> but <i>true</i> from
+<i>WantNegotiation(p,EndOfTurn)</i>. The kit does not support negotiations in
+the middle of your turn. The third possible value of the NegoTime parameter,
+<i>EnemyCalled</i>, tells that the other nation is asking you for contact,
+means it's their turn, not yours. With the EnemyCalled parameter, this is not an
+in-turn overridable, otherwise it is.
+
+<p>The second part of your diplomacy implementation is the negotiation
+(overridable <i>DoNegotiation</i>). Negotiations are built around making and
+accepting offers. An offer contains
+prices which will be delivered when the offer gets accepted as well as prices
+which have to be paid in order to accept the offer. Each price is represented
+by a 32 bit code, depending on its kind:
+
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Price</td><td class="header">Code</td></tr>
+<tr><td>Your nation's state report</td><td>opCivilReport + me shl 16</td></tr>
+<tr><td>Opponent's state report</td><td>opCivilReport + Opponent shl 16</td></tr>
+<tr><td>Your nation's military report</td><td>opMilReport + me shl 16</td></tr>
+<tr><td>Opponent's military report</td><td>opMilReport + Opponent shl 16</td></tr>
+<tr><td>World map</td><td>opMap</td></tr>
+<tr><td>Next closer treaty</td><td>opTreaty + tr+1, tr = current treaty</td></tr>
+<tr><td>End current treaty</td><td>opTreaty + tr-1, tr = current treaty</td></tr>
+<tr><td>Colony Ship Parts</td><td>opShipParts + t shl 16 + n, t = part type, n = number</td></tr>
+<tr><td>Money</td><td>opMoney + v, v = value</td></tr>
+<tr><td>Tribute</td><td>opTribute + v, v = value</td></tr>
+<tr><td>Advance</td><td>opTech + ad, ad = advance</td></tr>
+<tr><td>All advances</td><td>opAllTech</td></tr>
+<tr><td>Unit design</td><td>opModel + mix, mix = model index</td></tr>
+<tr><td>All unit designs</td><td>opAllModel</td></tr>
+<tr><td>Price of choice</td><td>opChoose</td></tr>
+</table>
+
+<p>Offering to deliver things you do not have is not allowed. Also, offers containing
+more than one treaty price are not possible. But even if an offer is
+allowed, it is not necessarily useful, for example demanding a price of choice.
+Please consider that offers the opponent does not understand are wasted, because
+he will never accept them.
+
+<p>Offers are represented by data records of the type <i>TOffer</i>, containing these fields:
+<br><i>nDeliver</i> - number of prices delivered if offer is accepted
+<br><i>nCost</i> - number of prices required to pay to accept this offer
+<br><i>Price</i> - codes of the prices delivered in [0..nDeliver-1],
+codes of the prices to pay in [nDeliver..nDeliver+nCost-1]
+<br>An offer can not contain more than 12 prices in total.
+
+<p>A special kind of offers are null-offers, containing no prices. Such an offer
+means the player has no more offers to make for this negotiation. If null-offers
+of both players immediately follow one another, the negotiation ends in agreement
+(in contrast to one player breaking it).
+
+<p>DoNegotiation has no parameters, you can
+read the negotiation opponent and his last action from the fields
+<i>Opponent</i> and <i>OppoAction</i> of the AI. In case his action was an
+offer, the field <i>OppoOffer</i> is valid additionally. Your DoNegotiation
+implementation must define your next negotiation action in the field <i>MyAction</i>.
+If it's an offer, you should fill the field <i>MyOffer</i>, too. After
+DoNegotiation ended, the game will call the other nation and then, maybe, call
+DoNegotiation again, with the field OppoAction now filled
+with the other nation's response. See the Sample AI for an example of usage.
+
+<p>The negotiation actions are:
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Action</td><td class="header">Usage</td><td class="header">Valid as MyAction if OppoAction is...</td></tr>
+<tr><td>scDipStart</td><td>-</td><td>Never! This is the OppoAction, when the negotiation starts and the opponent didn't have the chance to speak yet.</td></tr>
+<tr><td>scDipOffer</td><td>Make offer. Always fill the <i>MyOffer</i> field when you set this action.</td><td>scDipStart, scDipOffer, scDipAccept, scDipNotice</td></tr>
+<tr><td>scDipAccept</td><td>Accept opponent's offer.</td><td>scDipOffer</td></tr>
+<tr><td>scDipNotice</td><td>Notice latest opponent decision.</td><td>scDipCancelTreaty, scDipBreak</td></tr>
+<tr><td>scDipCancelTreaty</td><td>Cancel current treaty with opponent.</td><td>any</td></tr>
+<tr><td>scDipBreak</td><td>Break negotiation (unagreed).</td><td>any except scDipBreak</td></tr>
+</table>
+
+
+<a name="save"></a>
+<p><br><h2>Saving Data</h2>
+
+<p>Like most other games, C-evo offers the player to break a game, save it and
+resume it later from the saved file. If your AI has information that it
+collects in order to use it in later turns, this information would normally be
+lost after breaking and reloading the game. In particular, all information
+that you store
+in local memory, e.g. in fields of the AI object, is <i>undefined</i> in the
+beginning of a turn, because the game could have been loaded from a file
+right before. You should check your AI object occasionally whether you're
+trying to transport information from turn to turn with it. If so, this will
+probably fail as soon as a game is saved and resumed. (BTW, the same rule counts
+for base classes like TCustomAI and TToolAI. Just in case you intend to modify
+them.)
+
+<p>There are only a few cases in which data exchange between subsequent
+overridables using local memory in the AI is safe:
+<ul>
+<li>between <i>OnBefore...</i> and <i>OnAfter...</i> 
+<li>between subsequent <i>DoNegotiation</i> calls during negotiation with a single opponent
+<li>between in-turn overridables during a single turn
+</ul>
+
+<p>The C-evo AI interface offers two ways to make storing long-term information
+possible: <i>Status</i> fields and the <i>ReadWrite</i>-block.
+
+<br><br><h3>Status Fields</h3>
+
+<p>Status fields are easy to use. Units, cities and models of your nation have
+a field <i>Status</i>, enemy cities have it too. It's not used by the game and
+exists only for the needs of AI programming. You can simply write
+information to these fields and rely on it any number of turns later. When
+resuming a saved game,
+the game infrastructure will automatically restore the values that were
+actual in the year in which the game is loaded.
+But it's only 32 bit, so consider carefully what to do with them...
+
+<p>The status of newly appearing objects is always initialized with 0. This
+happens also when a city is captured, means when an enemy city becomes an
+own city or vice versa. The status content is lost then, it's not copied to the
+new city object in the other list. (Of course, if this is a problem for your
+AI, you can implement <i>OnBeforeEnemyCapture / OnAfterEnemyCapture</i>
+so that it's solved.)
+
+<br><br><h3>The ReadWrite-Block</h3>
+
+<p>In order to collect information that is not related to units, cities or
+models, e.g. general information about foreign nations, you should use the
+ReadWrite block. This is a freely definable collection of information that
+has to be maintained by the AI and is being restored just like the Status fields
+whenever a saved game is resumed. Define a record type for the structure of
+this block, and,
+in the initialization section of AI.pas, assign the size of this structure
+(in bytes) to <i>RWDataSize</i>. The game will allocate the memory for this
+data structure and pass the pointer to it in the <i>Data</i> field of the
+ReadOnly-block.
+
+<p>However, the ReadWrite-block is pretty small: The maximum size is 4096 Bytes.
+So you should only save there what you can't calculate from other information.
+(The limitation has to do with the size of saved C-evo books. Since the changes
+must be saved in each turn, even 4k of information can cause huge book files.)
+
+<p>There are two overridables related to the ReadWrite-block.
+
+<p><i>SetDataDefaults</i>
+<br>Initialize the ReadWrite-block here. This initialization must not depend
+on anything but the map size and the values from the ReadOnly-block.
+Particularly, you should not generate random values here, because this
+overridable is also executed
+when resuming a saved game - random values would not be generated in the same
+way as before.
+
+<p><i>SetDataRandom</i>
+<br>Well, if you <i>have</i> random values to set in the beginning of a game
+(e.g. basic orientation of behavior), do this here. This overridable is called
+after SetDataDefaults, when a new game is started. When loading games, it is
+<i>not</i> executed - the values generated here before are being restored instead.
+
+<p>The kit does not yet support updates of the ReadWrite-block. If you change
+the structure of the data, loading games that were initially played with an older
+version of your AI will cause problems.
+
+
+<p><br><h2>Cheating</h2>
+
+<p>I don't have the time for any effort to make the AI interface
+swindler proof. The game's internal memory is wide open for AI DLLs to read and
+even to write, leaving several ways to cheat. Some of
+them will lead to corrupted books, e.g. simple writing to RO data. Other
+tricks work fine, technically. For example, a nation can calculate the
+addresses of the other nation's RO blocks and read information from there, such
+as current unit positions. If you'd like to make use of these <i>monster
+security leaks</i>, I cannot
+prevent you from that, but please don't call the result a C-evo AI.
+
+
+<a name="inst"></a>
+<p><br><h2>Installing Your AI</h2>
+
+<p>There are some steps necessary in order to make the game recognize and use
+your AI. First, you should choose a name for your AI - let's take <i>MyAI</i>
+as example. Modify the file names, project
+settings or compiler command line options so that the AI DLL has the name
+<i>MyAI.dll</i> instead of <i>AIProject.dll</i>.
+
+<p>Then you need an AI description
+file, this is a small text file. The kit contains a template, the file
+<i>AIProject.ai.txt</i>. Rename it to <i>MyAI.ai.txt</i>, move it to the
+folder where the cevo.exe is located and edit it.
+An AI description file can contain the following statements, each on the
+beginning of a separate line (take care for the capitals!):
+<ul>
+<li>#NAME s - If the name of your AI is different from the file name.
+<li>#PATH s - Path of the DLL, relative to the main C-evo directory. If this line
+does not exist, the path "MyAI.dll" is expected. So you can develop the AI
+DLL in any folder. However, in case you publish
+the AI, change the PATH entry so that it expects the DLL in the main C-evo
+folder, because anything else would make it too difficult for players to
+install your AI.
+<li>#GAMEVERSION i.i.i - lowest C-evo version number that this AI works with,
+should be 1.0.0 when the AI was built with this kit. This line is a MUST.
+<li>#CREDITS s - A line telling your name or whatever you like.
+This information will be displayed on the credits screen whenever the AI is in use.
+</ul>
+
+<p>It's also possible (and appreciated) to create a picture for an AI, to represent
+it on the start screen. This picture must have a size
+of 64x64 pixels and be present as <i>MyAI.bmp</i> in the main C-evo folder.
+
+
+<p><br><h2>Publishing Your AI</h2>
+
+<p>If you'd like to make the AI public, simply upload it to the
+<a href="http://c-evo.org/files">files section</a> of the project homepage.
+But please, only do this if you invested a considerable amount of work.
+Do <i>not</i> publish the Sample AI after you changed three lines of code in
+it...
+
+
+<p><br><h2>The Sample AI</h2>
+
+<p>The kit contains a sample AI demonstrating some unit movement, city management
+and simple diplomacy. This code is made for demonstration, so in contrast to the
+kit files, it's no infrastructure for development, means it does not have a settled
+interface. Be aware of that! Of course, you can use the Sample AI as starting
+point for AI development, or you can copy parts of it to your AI. But when
+future versions of C-evo come with an improved version of the Sample
+AI, your AI does not automatically benefit from this. You only
+have the option then to merge the changes manually. 
+
+<p><b>Files of the Sample AI</b>
+<p><ul><li><i>AI.pas</i> - This is the actual top-level AI code.
+It is not mainly made to make up a
+strong AI but to demonstrate the kit system and the usage of the lower level units.
+<li><i>ToolAI.pas</i> - Contains a few advanced tools for AI programming. Their usage
+is documented in the unit interface code, you don't need to understand how they
+are implemented. If you like, this gives you a ready-to-use solution for some common problems. 
+<li><i>Names.pas</i> - String constants for improvements, advances etc. (for easier debugging).
+<li><i>Pile.pas</i> - A unit with a universal priority queue implementation that
+is used by the Sample AI.
+</ul>
+
+<p>The Sample AI also shows a possibility to structure AI code built with this kit:
+By making the TAI class not base directly on TCustomAI but introducing
+intermediate class layer(s).
+
+
+<p><br><h2>FAQ</h2>
+
+<p class="question">Q1. The rules of the game are not exactly specified.
+I need more information than what is written in the manual.
+<p>Answer: Sometimes an AI programmer needs very exact information about
+calculations or about the behavior of the game in special situations. This exact
+information often is
+not contained in the in-game manual, because this manual is for <i>players</i>.
+Players usually don't need and don't want that precision overkill. If you need more
+information, please ask me or go to the <a href="http://c-evo.org/aiforum/">AI forum</a>.
+(Or maybe try to analyze the sources of the game...)
+
+<br><br><p class="question">Q2. How can my AI...
+<ul>
+<li>...select a unit?
+<li>...order the unit command <i>stay here</i> or <i>recover</i>?
+<li>...recognize free citizens?
+<li>...mark models to be obsolete?
+<li>...access the macro management (city types, research focus, terrain enhancement)?
+</ul>
+<p>Answer: All of these things are not part of the actual game. The user interface
+implements these mechanisms in order to make the game better playable by human
+players. If you think something similar could be helpful in your AI, you must
+implement it. The means described in this manual are enough for that.
+
+<br><br><p class="question">Q3. How can I debug my AI?
+<p>Answer:
+<ul>
+<li>In <i>Delphi</i>, check the box "Include remote debug symbols" on the
+page "Linker" of the project options and rebuild the project. Then, set the
+cevo.exe as host application in the run parameters. Now you can run,
+set breakpoints in your AI, inspect expressions, view call stacks etc. from
+within the Delphi IDE.
+(But, for me, this only seems to work if I execute the DLL in the folder
+where the source files are located.)
+<li>In <i>FreePascal</i>, I cannot help you. Seems to me that there is no way to debug
+a Windows DLL with the available FreePascal and GNU utilities. (If you know one,
+please let me know!) I'm afraid, you'll have to use <a href="#debug">debug
+messages</a> or implement a kind of logfile for debugging.
+</ul>
+
+<p><br>
+
+</body>
+</html>
+
