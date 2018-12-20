@@ -5,6 +5,10 @@ all : \
 	tmp/CevoWin32.exe \
 	tmp/cevo.dll \
 	\
+	tmp/AIProject.dll \
+	tmp/AIProject.ai.txt \
+	tmp/AIProject.bmp \
+	\
 	tmp/fonts.txt \
 	tmp/language.txt \
 	tmp/language2.txt \
@@ -216,6 +220,30 @@ Project/cevo.res : Project/cevo.rc Project/cevoxp2.ico
 Project/RES1.RES : Project/Res1.rc Project/drag.cur Project/flathand.cur
 	@printf '(RES1.RES resource compiler placeholder)\n'
 	@touch Project/RES1.RES
+
+
+# ----- Delphi AI sample
+
+tmp/AIProject.dll : Delphi_AI_Kit/AIProject.dpr \
+		Delphi_AI_Kit/AI.pas \
+		Delphi_AI_Kit/CustomAI.pas \
+		Delphi_AI_Kit/Names.pas \
+		Delphi_AI_Kit/Pile.pas \
+		Delphi_AI_Kit/Protocol.pas \
+		Delphi_AI_Kit/Switches.pas \
+		Delphi_AI_Kit/ToolAI.pas 
+	-mkdir -p tmp/units/AIProject
+	cd Delphi_AI_Kit
+	dcc32 AIProject.dpr
+	cd ..
+
+tmp/AIProject.ai.txt : Delphi_AI_Kit/AIProject.ai.txt
+	-mkdir -p tmp
+	cp Delphi_AI_Kit/AIProject.ai.txt tmp/AIProject.ai.txt
+
+tmp/AIProject.bmp : Delphi_AI_Kit/AIProject.bmp
+	-mkdir -p tmp
+	cp Delphi_AI_Kit/AIProject.bmp tmp/AIProject.bmp
 
 
 # ----- Resource files
