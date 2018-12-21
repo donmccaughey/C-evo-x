@@ -48,11 +48,11 @@ InitialCredibility=95;
 aiThreaded=$01;
 
 //difficulty settings
-MaxDiff=3; {maximum difficulty level}
-StorageSize: array[1..MaxDiff] of integer=(30,40,50);
-TechFormula_M: array[1..MaxDiff] of single =(2.0,2.3,2.6);
-TechFormula_D: array[1..MaxDiff] of single =(102.0,80.0,64.0);
-BuildCostMod: array[1..MaxDiff] of integer =(9,12,15);  // in 1/12
+MaxDiff=4; {maximum difficulty level}
+StorageSize: array[1..MaxDiff] of integer=(30,40,50,60);
+TechFormula_M: array[1..MaxDiff] of single =(2.0,2.3,2.6,4.0);
+TechFormula_D: array[1..MaxDiff] of single =(102.0,80.0,64.0,64.0);
+BuildCostMod: array[1..MaxDiff] of integer =(9,12,15,18);  // in 1/12
 
 // test flags
 nTestFlags=7; // max. 11
@@ -77,10 +77,10 @@ cClientEx=$8000;
 // Info Request Commands
 sctInfo=$0000;
 sMessage=$0000; sSetDebugMap=$0010; sGetDebugMap=$0020;
-sChangeSuperView=$0030;
+{sChangeSuperView=$0030;} sRefreshDebugMap=$0040;
 sGetChart=$0100; // + type shl 4
 sGetTechCost=$0180;
-sGetAICredits=$01D0;sGetVersion=$01E0;sGetGameChanged=$01F0;
+sGetAIInfo=$01C0;sGetAICredits=$01D0;sGetVersion=$01E0;sGetGameChanged=$01F0;
 sGetTileInfo=$0200;sGetCityTileInfo=$0210;sGetHypoCityTileInfo=$0220;
 sGetJobProgress=$0230;
 sGetModels=$0270;
@@ -153,7 +153,7 @@ sctUnused=$3800;
 
 {client commands}
 cInitModule=$0000;cReleaseModule=$0100;cBroadcast=$0200;
-cHelpOnly=$0700;cStartHelp=$0710;
+cHelpOnly=$0700;cStartHelp=$0710; cStartCredits=$0720;
 
 cNewGame=$0800;cLoadGame=$0810;cMovie=$0820;
 cNewGameEx=$0840;cLoadGameEx=$0850;
@@ -176,7 +176,7 @@ cShowTurnChange=$3700;
 cShowCancelTreaty=$3800; cShowEndContact=$3810;
 cShowCancelTreatyByAlliance=$3820; cShowSupportAllianceAgainst=$3830;
 cShowPeaceViolation=$3880;
-cShowGame=$3F00; cShowSuperView=$3F80;
+cShowGame=$3F00; {cShowSuperView=$3F80;} cRefreshDebugMap=$3F90;
 
 // diplomacy commands equal to server, see below
 
@@ -192,13 +192,6 @@ scDipAccept=$4B20;
 scDipCancelTreaty=$4B30;
 scDipOffer=$4B4E;
 scDipBreak=$4BF0;
-
-// advisor commands
-aInitModule=$0000;
-aReleaseModule=$0100;
-aNewGame=$0800;
-aBreakGame=$0900;
-aGiveStrategyAdvice=$4000; aGiveCityAdvice=$4100;
 
 {server return codes: flags}
 rExecuted=             $40000000;
@@ -316,7 +309,7 @@ tsNA=-2;tsSeen=-1;tsResearched=0;tsGrLibrary=1;tsCheat=15;
 tsApplicable=tsResearched;
 
 // nation treaties
-trNoContact=-1; trNone=0; trCeaseFire=1; trPeace=2; trFriendlyContact=3;
+trNoContact=-1; trNone=0; trPeace=2; trFriendlyContact=3;
 trAlliance=4;
 
 // attitudes
@@ -400,11 +393,6 @@ nGov=8;
 gAnarchy=0;gDespotism=1;gMonarchy=2;gRepublic=3;gFundamentalism=4;gCommunism=5;
 gDemocracy=6;gFuture=7;
 
-// colony ship
-nShipPart=3;
-spComp=0; spPow=1; spHab=2;
-ShipNeed: array[0..nShipPart-1] of integer=(6,4,2);
-
 // ship change reasons
 scrProduction=0; scrDestruction=1; scrTrade=2; scrCapture=3;
 
@@ -462,6 +450,9 @@ adStealth=75;adSteamEngine=76;adSteel=77;adSyntheticFood=78;adTactics=79;
 adTheology=80;adTheoryOfGravity=81;adTrade=82;adTransstellarColonization=83;adUniversity=84;
 adAdvancedRocketry=85;adWarriorCode=86;adAlphabet=87;adPolytheism=88;adRefining=89;
 futComputingTechnology=90;futNanoTechnology=91;futMaterialTechnology=92;futArtificialIntelligence=93;
+
+FutureTech=[futComputingTechnology,futNanoTechnology,futMaterialTechnology,
+  futArtificialIntelligence];
 
 adMilitary=$800; // Military Research
 
@@ -669,6 +660,12 @@ ImpReplacement: array[0..nImpReplacement-1] of
 (NewImp:imPalace;OldImp:imCourt),
 (NewImp:imMilAcademy;OldImp:imBarracks));
 
+// colony ship
+nShipPart=3;
+spComp=0; spPow=1; spHab=2;
+ShipNeed: array[0..nShipPart-1] of integer=(6,4,2);
+ShipImpIndex: array[0..nShipPart-1] of integer=(imShipComp,imShipPow,imShipHab);
+
 GovPreq:array[1..nGov-1] of integer= {government prerequisites}
 (preNone,adMonarchy,adTheRepublic,adTheology,adCommunism,adDemocracy,adInternet);
 
@@ -823,6 +820,7 @@ INFIN=999999;
 fRare=fDeadLands;fRare1=fCobalt;fRare2=fUranium;
 mkCaravan=mkFreight;mkDiplomat=mkCommando;
 gLybertarianism=gFuture;
+trCeaseFire=1;
 adIntelligenArms=adSmartWeapons;adIntelligentArms=adSmartWeapons;
 adRadioCommunication=adRadio;adLybertarianism=adInternet;
 futResearchTechnology=futComputingTechnology;
@@ -837,7 +835,6 @@ mcHospital=mcSupplyShip;
 type
 TServerCall=function(Command,Player,Subject:integer;var Data): integer; stdcall;
 TClientCall=procedure(Command,Player:integer;var Data); stdcall;
-TGiveAdviceCall=procedure(Text: PChar; Nation, CityID, Loc: integer); stdcall;
 
 TUn=packed record
   Loc, {location}
@@ -1050,6 +1047,7 @@ TTileList= array[0..INFIN] of Cardinal;
 TTileObservedLastList= array[0..INFIN] of SmallInt;
 TOwnerList= array[0..INFIN] of ShortInt;
 TByteList= array[0..INFIN] of Byte;
+TIntList=array[0..INFIN] of integer;
 TCityList= array[0..INFIN] of TCity;
 TUnList= array[0..INFIN] of TUn;
 TModelList= array[0..INFIN] of TModel;
@@ -1102,16 +1100,13 @@ TPlayerContext=record
   BorderHelper:^TByteList;
   LastCancelTreaty: array[0..nPl-1] of integer; // turn of last treaty cancel
   OracleIncome: integer;
-  Filler: array[0..883] of byte;
+  DefaultDebugMap:^TIntList;
+  Filler: array[0..879] of byte;
   end;
 
 TInitModuleData=record
   Server: TServerCall;
   DataVersion, DataSize, Flags: integer;
-  end;
-TInitAdvisorData=record
-  Server: TServerCall;
-  GiveAdvice: TGiveAdviceCall;
   end;
 TNewGameData=record
   lx,ly,LandMass,MaxTurn: integer;
@@ -1119,6 +1114,8 @@ TNewGameData=record
     {difficulty levels of the players, if it's 0 this player is the supervisor,
     -1 for unused slots}
   RO: array[0..nPl-1] of ^TPlayerContext;
+  AssemblyPath: array[0..255] of char;
+  SuperVisorRO: array[0..nPl-1] of ^TPlayerContext;
   end;
 TNewGameExData=record
   lx,ly,LandMass,MaxTurn,RND: integer;
@@ -1214,6 +1211,7 @@ i: integer;
 begin
 mi.Owner:=p;
 mi.mix:=mix;
+mi.ID:=m.ID;
 mi.Domain:=m.Domain;
 if m.Kind=mkEnemyDeveloped then mi.Kind:=mkSelfDeveloped // important for IsSameModel()
 else mi.Kind:=m.Kind;

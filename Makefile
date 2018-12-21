@@ -156,7 +156,6 @@ tmp/cevo.dll : Project/cevo.dpr Project/cevo.dof \
 		Project/Messg.pas \
 		Project/NoTerm.dfm \
 		Project/NoTerm.pas \
-		Project/Protocol.pas \
 		Project/ScreenTools.pas \
 		Project/Sound.dfm \
 		Project/Sound.pas \
@@ -204,7 +203,9 @@ tmp/cevo.dll : Project/cevo.dpr Project/cevo.dof \
 		Project/LocalPlayer/UnitStat.dfm \
 		Project/LocalPlayer/UnitStat.pas \
 		Project/LocalPlayer/Wonders.dfm \
-		Project/LocalPlayer/Wonders.pas
+		Project/LocalPlayer/Wonders.pas \
+		\
+		Protocol/Protocol.pas
 	-mkdir -p tmp/units
 	cd Project
 	dcc32 cevo.dpr
@@ -229,9 +230,10 @@ tmp/AIProject.dll : Delphi_AI_Kit/AIProject.dpr \
 		Delphi_AI_Kit/CustomAI.pas \
 		Delphi_AI_Kit/Names.pas \
 		Delphi_AI_Kit/Pile.pas \
-		Delphi_AI_Kit/Protocol.pas \
 		Delphi_AI_Kit/Switches.pas \
-		Delphi_AI_Kit/ToolAI.pas 
+		Delphi_AI_Kit/ToolAI.pas \
+		\
+		Protocol/Protocol.pas
 	-mkdir -p tmp/units/AIProject
 	cd Delphi_AI_Kit
 	dcc32 AIProject.dpr
