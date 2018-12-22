@@ -1,6 +1,8 @@
 *.cfg
 *.~dp
 *.~pa
+*.suo
 .DS_Store
+Configurator/obj
 tmp
 
