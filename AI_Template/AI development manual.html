@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>C-evo AI development</title>
+<style type="text/css">
+<!--
+body {margin:6em;}
+h1 {font-size:24pt;font-family:Arial,Helvetica;color:#C00000;}
+h1.a {font-size:16pt;font-family:Arial,Helvetica;color:#C00000;font-weight:normal;}
+h2 {font-size:13pt;font-family:Arial,Helvetica;font-weight:bold;color:#000000;margin-top:3em;}
+h4 {font-size:11pt;font-family:Arial,Helvetica;color:#000000;font-weight:normal;text-decoration:underline;}
+p {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+li {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+td {font-size:11pt;font-family:Arial,Helvetica;color:#000000;vertical-align:top;}
+td.header {font-size:11pt;font-family:Arial,Helvetica;color:#000000;background-color:#CCCCCC;vertical-align:top;}
+//-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#000080" alink="#FF0000">
+
+<h1 style="margin-bottom:0em;">C-evo AI development</h1>
+<h1 class="a" style="margin-top:0em;">based on the C# template</h1>
+
+<p>
+Document Version: 1.1.4
+</p>
+
+<h2>Introduction</h2>
+
+<p>
+The game allows to program its AI. This doesn't happen in the way that the existing AI is changed or some parameters are set for it but that it's completely replaced. The AI is a plugin, contained in a separate file. There can be multiple such plugins installed at the same time, then the user interface allows to switch between them easily. The Standard AI packed with the game is a normal plugin and could even be removed from the installed AI pool. 
+</p>
+
+<p>
+In addition to a simple AI replacement, the "Free Player Setup" enables the following scenarios:
+</p>
+
+<ul>
+<li>
+Play games against different AIs at the same time. There can be up to 8 different AIs playing in one game, controlling up to 14 nations.
+</li>
+<li>
+Watch an AI play alone (without a person taking part as a player). This is very helpful in the beginning of AI development.
+</li>
+<li>
+Watch multiple nations controlled by a single AI compete against each other.
+</li>
+<li>
+Watch an AI compete against other AIs like the Standard AI. 
+</li>
+<li>
+Run AI tournaments.
+</li>
+</ul>
+
+<p>
+One principle of this game is AI to be an equal, liberated player. When you're going to implement your own AI, your situation doesn't entirely change compared to playing the game. Your AI has the same information, the same options and the same freedom of choice as a player. It has to play the game in the same way: to move every single unit, to build every single city improvement, to specify every single statement in negotiations. Nothing happens without the AI code doing it.
+</p>
+
+<p>
+Note that programming AI on this level is difficult. As a human player, you're using a lot of intuition, which a computer doesn't have. For example, the AI has to <i>calculate</i> things like what a continent is, how "close" it is to another continent, and how to coordinate a transport ship and a bunch of distributed ground units to bring them all from one continent to another as fast as possible.
+</p>
+
+<p>
+Finally, be aware that the game is complex. It takes some experience as a player to understand the keys to success. Programming AI for this game starts with playing it.
+</p>
+
+
+<h2>State of Development</h2>
+<p>
+This is an early version of the template and has not been tested intensively. If you find a bug, please report it to me using <a href="http://steffengerlach.de/contact/">this web form</a>. Thanks!
+</p>
+
+
+<h2>Basic Concepts and Restrictions</h2>
+
+<h4>Multiple Nation Logic:</h4>
+<p>
+Your AI will be able to control multiple nations without you having to care for that. Every nation has its own, isolated set of objects, so every object has "its" nation. Interaction with another nation always happens the same way, there is no additional way if the other nation is also one of yours. There is no line of code where you have to consider the fact that your AI might control more than one nation. However, do not declare static fields! They'd be shared between nations.
+</p>
+
+<h4>Inside and Outside the Turn:</h4>
+<p>
+Although the game is turn-based, your AI might be called outside its nation's turn, for example to give you notice of enemy movement, or when your nation is contacted for negotiation. Naturally, your options are very limited in these situations. Most operations are disallowed outside the own turn, so a lot of code that works fine during your turn will only give you error codes then. It's recommendable to make a clear distinction between code that can always be called and code that requires the own turn. The classes of the library have all methods only working in-turn marked with the suffix "__Turn".
+</p>
+
+<h4>Saving Games:</h4>
+<p>
+One thing which has considerable consequences for your code is the saving and loading of games. You'll find three sections dealing with that subject in this manual. Without anticipating too much: Your AI is not supposed to save any data by itself. Saving data is complicated because a book can be opened in every turn, not just at the end. So this is done by the game, which also includes ways to save a small volume of AI data. They will be described. By now, be aware of one important consequence from that: <i>Never</i> rely on data that you think you have set in the turns before - these turns might be five months back. The easiest way to prevent this mistake is to let all objects that survive the end of a turn be pure code objects with no data, i.e. having just methods but no fields.
+</p>
+
+
+<h2>Differences to Playing</h2>
+
+<p>
+Apart from the technical aspect, there are only a few differences for the AI developer, compared to playing:
+</p>
+
+<h4>Terminology:</h4>
+<ul>
+<li>
+Unit designs are called "models" in the code.
+</li>
+</ul>
+
+<h4>City Tile Management:</h4>
+<p>
+For AI built with this template, the decision which tiles to exploit by a city is only possible by setting priorities. There is no full control mode as for the player.
+</p>
+
+<h4>Negotiation Time:</h4>
+<p>
+Contacting other nations is only possible before and after the actual turn, so you can <i>not</i> trigger a negotiation in the middle of your turn. 
+</p>
+
+<h4>Names and Years:</h4>
+<p>
+As an AI programmer, you have to say goodbye to Names. For example, you can't define or even find out the name of a city. The same counts for the names of nations and unit designs. Items are indentified by object references, and sometimes by numbers, never by strings. Also, the turns are simply counted, beginning on turn 0, instead of being converted to years as in the user interface. For example, turn 200 corresponds to 1750 AD. Years do not exist in the AI code. (You can make the game display numbers instead of names using the menu.)
+</p>
+
+<h4>Movement Points:</h4>
+<p>
+Movement points are scaled by 100, e.g. settlers have a speed of 150. All speed and movement point values are integers.
+</p>
+
+<h4>Movement of Allies:</h4>
+<p>
+The AI doesn't see simple unit moves of allied nations, only when a city is captured or when it's an attack.
+</p>
+
+
+<h2>Overview</h2>
+
+<p>
+The template uses the C# language. To work on it, you need Microsoft Visual Studio, preferably in version 2008 or later (because then you can directly load the solution). Any edition is fine, including the Express Edition that you can download for free from Microsoft's website.
+</p>
+
+<p>
+To let you work with the template, C-evo must be installed to a folder that you have write permission to. If you installed to "Program Files", and you don't have administrator privileges, this might not be the case, so you should install the game a second time to a different location for AI development.
+</p>
+
+<p>
+The solution AI.sln is located in the subfolder 'Project'. It contains two projects, 'AI' and 'CevoDotNet'. 'AI' is the actual template for your AI. 'CevoDotNet' is the C-evo .NET loader (identic to the one included as binary). Don't touch this project! It's contained for no other reason than a ridiculous limitation of the Visual C# Express Edition that allows debugging a DLL only if the executable is also part of the solution. If you own a more advanced edition of Visual Studio, you may remove the CevoDotNet project from the solution, if you like.
+</p>
+
+<p>
+Note that, to make the AI work, you also need an AI description file - see the end of this manual. As a first simple solution you may copy the file <i>AI.ai.txt</i> one folder up, and you'll be able to run and debug from the IDE.
+</p>
+
+<p>
+The template is a collection of files that you can edit and add new files to, and which builds into a single .NET assembly. The project comes in a state that allows to build it and to use the assembly as an AI in the game, so you don't have to waste time on getting things work. (Of course, the nation controlled by this AI would be cannon fodder, because it does nothing but wait.)
+</p>
+
+<p>
+The template contains two types of files. First, there are 6 .cs files located in the main project folder, which are all very short as they come. Some methods contain example code that you will probably replace, most have no code. These files are meant for your implementation (and at least the Empire.cs will probably not remain small in the course of your project). When you add more files to the project, they will surely belong to this group and should also go to the main project folder.
+</p>
+
+<p>
+Second, there are several files in the subfolder "Lib". These files look mostly cryptic and contain a lot of unsafe code, which is necessary to read the shared memory which is part of the game's AI plugin concept. Luckily, you don't have to know more about these classes than their interfaces. Changing the classes of the library is not necessary and not recommendable, because this would make updating to an improved version of the template difficult. You'd have to merge the changes then.
+</p>
+
+<p>
+The main class is Empire. This class is the entry point to your AI and holds all references. The class must implement all abstract methods of its base class. These are 11 methods, the most important of which is OnTurn, triggering and containing your complete turn.
+</p>
+
+
+<h2>The Classes</h2>
+
+<p>
+The class interfaces are documented inline using the C# own system. You're getting the details as tooltips from the developer studio, or you can look them up directly in the sources. The classes Empire, Unit, City and Location alone have 30 to 50 interface items each. This information is not duplicated here. So most of the technical documentation is provided that way, not by this document. (Apart from that, most properties and methods are pretty much self explaining.)
+</p>
+
+<p>
+Note that some of the properties and methods are accessible for you but not meant to be used by you. These items are necessary for other classes of the template and have an adequate comment in their inline documentation.
+</p>
+
+
+<h2>Creation and Removal of Items</h2>
+
+<p>
+The template comes with more than 70 classes and structures. When using it to implement an AI, you don't have to create instances of them all. Most are already well managed in order to provide an infrastructure that you can use but should not change yourself. In fact, there are very few among these classes and structures for which a <i>new</i> statement in your code would conform to the intended way of using the template. These are:
+</p>
+
+<ul>
+<li>
+Relative coordinates (RC).
+</li>
+<li>
+Function parameter structures that specify value, not identity. Currently, this is only <i>Economy</i>.
+</li>
+<li>
+All types of negotiation statements (classes implementing IStatement). This implies all types of trades (classes implementing ITrade).
+</li>
+<li>
+All types of sprawls (classes deriving from Sprawl).
+</li>
+</ul>
+
+<p>
+A special case might be map locations. Creating locations is only possible using location IDs, which are encapsulated by the library. Usually, you will use the other ways to address the map, as described in one of the sections below. They are much more convenient than calculating location IDs. You're getting your locations from properties, methods and operations then, not from creating yourself. However, sometimes it's good to have a plain integer identifier, for example to build an array. The location IDs fill the range from 0 thru Map.Size-1 continiously. The only way back from the ID to the location is <i>new</i>.
+</p>
+
+<p>
+For all other classes and structures, a new statement doesn't make sense, or at least is not the way the template is meant to be used. In particular, never create instances of the following classes: <i>Empire, Map, Unit, ForeignUnitList, Model, ForeignModel, City, ForeignCity, Blueprint, Negotiation, Persistent</i>. Also, don't remove them from their collection. These objects are managed by existing code.
+</p>
+
+<p>
+Be aware that units and cities might stop to exist. If you're still referring the connected object then, it will tell its property <i>Exists</i> as false.
+</p>
+
+
+<h2>Identity of Items</h2>
+
+<p>
+You can use == with all refernce types for identity check because there are never two different instances of them meaning the same thing. This includes Unit, Model, ForeignModel, City and ForeignCity. (However, comparing models using == is in that way limited that two independently developed but identic models are still told as being different.)
+</p>
+
+<p>
+Additionally, you can use == on nations, map locations and relative coordinates. Location, Nation and RC are value types but have appropriate comparison operators implemented.
+</p>
+
+<p>
+The other value types from the library can not be checked for identity. This is most remarkable for the ForeignUnit structure, which is used to provide information about foreign units. This technical restriction corresponds to the actual situation, because foreign units don't have an identity. A ForeignUnit structure from the turn before and one from the current turn, which have identic properties, might describe the same foreign unit or not, you never know. Also, if you see the unit getting destroyed, this will not be reflected by the ForeignUnit data object.
+</p>
+
+
+<h2>ToughSet</h2>
+
+<p>
+Units, cities and foreign cities are changing sets of objects. These items might not only accumulate (as this is the case for models) but also disappear. To manage them in lists could easily lead to problems, because indices in a list would invite the programmer to use them for identification purpose, which would not work in the long term. So these objects are not managed using lists but in a collection class called ToughSet. That one only provides an enumeration (to use with foreach) but no indices. A second advantage is that this collection can be iterated and thinned out at the same time. For example, when attacking with a transport ship which has some units loaded and <i>losing</i> the battle, this would remove several items from the collection. When this happens while being in an iteration through all units, most collection classes surely had a problem. ToughSet would handle this situation correctly, continue the iteration, not leave out units, not iterate units twice and not iterate units that have already been removed.
+</p>
+
+
+<h2>Addressing the Playground</h2>
+
+<p>
+The locations on the map are not addressed by unique, 2-dimensional coordinates (latitude/longitude-like) as you might expect. This would go with 2 difficulties: first a break along a vertical line where the "longitude" did a jump although the locations are adjacent, second the problem of the game's tilt tile grid, which could not easily be matched by integer coordinates.
+</p>
+
+<p>
+Instead, the following means are provided for map addressing:
+</p>
+
+<ul>
+<li>
+you can always check locations for identity, as noted above
+</li>
+<li>
+each location tells its Neighbors and Distance5Area
+</li>
+<li>
+sprawls, as described in the next section
+</li>
+<li>
+relative coordinates, which are tilt as the grid
+</li>
+</ul>
+
+<h4>Relative coordinates:</h4>
+
+<p>
+Relative coordinates always relate to a base tile, which can be chosen freely. Such a coordinate is a pair of
+two components, <i>a</i> and <i>b</i>, which both count the distance to the base tile. The a-component
+steps south-east and the b-component south-west:
+</p>
+
+<img src="_aidev3.gif" />
+
+<p>
+The base tile always has the coordinate (0,0).
+</p>
+
+<p>
+Relative coordinates have a <i>distance</i> property which is similar to that of polar coordinates. It combines a and b component to tell the distance regardless of the direction. The distance is counted by stepping single tiles with the least possible result, where a short step (along a or b axis) counts 2 and a long step (north-south or east-west) counts 3. E.g. the tiles in the radius of a city are those with a distance of 5 or less to the city tile.
+</p>
+
+<p>
+Map locations (represented by the struct Location) and relative coordinates (represented by the struct RC) allow a vector arithmetic:
+</p>
+
+<ul>
+<li>
+Location - Location = RC
+</li>
+<li>
+Location + RC = Location (might be invalid!)
+</li>
+<li>
+Location - RC = Location (might be invalid!)
+</li>
+<li>
+RC + RC = RC
+</li>
+<li>
+RC - RC = RC
+</li>
+</ul>
+
+<p>
+Examples:
+</p>
+<ul>
+<li>
+(location1 - location2).Distance &lt;= 10 -- whether two location are within a distance of 10
+</li>
+<li>
+location + new RC(1,-1) -- the east neighbor location 
+</li>
+</ul>
+
+
+<h2>Working With Sprawls</h2>
+
+<p>
+A sprawl is a set of map locations which can be iterated in the order of increasing distance to its origin location, using the <i>foreach</i> statement. 
+</p>
+
+<p>
+A sprawl might contain the whole map or just a selection of locations, that depends on the way of distance calculation. For example, a sprawl calculating in steps over land will only contain the continent it started on. A sprawl also allows to query the path from the sprawl origin location to every location that was iterated. Sprawls can be used for several purposes including pathfinding, terrain improvement, determining a surrounding area in an intelligent way, and calculating coherent continents and waters.
+</p>
+
+<p>
+The iteration of a sprawl always starts with the sprawl origin location itself. In most cases, you will stop the iteration with a break statement, because your goal was already achieved or recognized as not achievable.
+</p>
+
+<p>
+The template provides 4 sprawl classes, each having its own way of distance calculation: 
+</p>
+
+<ul>
+<li>
+Sprawl: the sheer distance on the map regardless of terrain
+</li>
+<li>
+RestrictedSprawl: the distance by only stepping over land or only moving in water
+</li>
+<li>
+TravelSprawl: the time it would take a certain unit located at the sprawl origin location to reach the other location
+</li>
+<li>
+ExploreSprawl: the time it would take an unspecific standard unit located at the sprawl origin location to reach the other location
+</li>
+</ul>
+
+<p>
+The different sprawl classes do not explicitely target on specific purposes. You may see a continent as a RestrictedSprawl or as an ExploreSprawl, whatever matches your current requirements better.
+</p>
+
+<p>
+Technical notes:
+</p>
+
+<ul>
+<li>
+The calculation of the sprawl is not done on its creation but on demand while iterating it. If a sprawl covers the complete map but the iteration is stopped after 5 steps, only a few more than these 5 locations have been calculated.
+</li>
+<li>
+The sprawl's full memory is however allocated immediately. The amount is proportional to the size of the world map, on a 100% size map it's about 50k
+</li>
+<li>
+An iteration step in a sprawl is an O(log n) operation, where n is its size.
+</li>
+<li>
+Alternatively to using foreach, you can iterate a sprawl with its enumerator, which allows to iterate multiple sprawls at once.
+</li>
+<li>
+A sprawl does not support nested iterations.
+</li>
+</ul>
+
+
+<h2>PlayResults</h2>
+
+<p>
+Many methods return a value of the type <i>PlayResult</i>. From such a value, several information about the result of the action can be obtained. The most important of these is the <i>OK</i> property which tells if the action was executed. If OK is false, the <i>Error</i> property tells the reason. A property named <i>Effective</i> tells whether the action had any effect. Usually, Effective has the same value as OK, but not always. An action can be ok but have no effect, for example when ordering a city to produce something it already produced before. The other way round, an action can be <i>not</i> ok but have an effect, although these are rare cases which only happen in the field of unit movement. The "effect" then is a gain of information. For example, when a move is impossible due to a ZoC of a non-adjacent unit that was formerly unknown, which causes the revealing of that unit.
+</p>
+
+<p>
+Another property named <i>UnitRemoved</i> tells whether the unit for which the action was ordered has been removed as an effect of that. This can happen in several ways, for example when the action was an intentional removal of the unit, or when moving through hostile terrain, or when attacking. In case of an attack, the PlayResult always has either UnitRemoved or <i>EnemyDestroyed</i> set. Note that even both of them can be true at the same time, when fighting with or against fanatic units.
+</p>
+
+
+<h2>Diplomacy</h2>
+
+<p>
+Two of the abstract base class methods that the Empire class has to implement concern negotiation. The first is <i>OnChanceToNegotiate</i>, which lets you decide whether to start a negotiation or not. This method is called at three occasions, indicated by the <i>situation</i> parameter of the method:
+</p>
+
+<ul>
+<li>
+in the beginning of your turn (before OnTurn()) for each nation that you could contact, situation is <i>BeginOfTurn</i>
+</li>
+<li>
+in the end of your turn (after OnTurn()) for each nation that you could contact, situation is <i>EndOfTurn</i>
+</li>
+<li>
+in a foreign nation turn if that nation wishes to contact you, situation is <i>ForeignTurn</i>
+</li>
+</ul>
+
+<p>
+If the <i>wantNegotiation</i> parameter is set to true by OnChanceToNegotiate and the other nation agrees, the negotiation starts and the second related method <i>OnNegotiate</i> is called repeatedly until the negotiation has ended. Each call stands for one of your statements. Use <i>SetOurNextStatement</i> from the <i>negotiation</i> parameter to set the next statement of your nation. You have to create an instance of one of the classes implementing the <i>IStatement</i> interface for this, most often this will be <i>SuggestTrade</i>. After the negotiation, OnChanceToNegotiate will be called again for all nations that were not asked for negotiation yet, so you can choose the order of nations to negotiate with.
+</p>
+
+<p>
+Except when you initiated the negotiation and set up the first statement, the preceding statement of the other nation is told by <i>negotiation.History[0] .OpponentResponse</i>. This is the statement you have to answer to, which limits the selection of possible statements for you:
+</p>
+
+<table border cellspacing=0 cellpadding=3>
+<tr><td class="header">Opponent statement type</td><td class="header">Valid response statement types</td></tr>
+<tr><td>(none yet)</td><td>SuggestTrade, SuggestEnd, CancelTreaty, Break</td></tr>
+<tr><td>SuggestTrade, SuggestEnd</td><td>AcceptTrade, SuggestTrade, SuggestEnd, CancelTreaty, Break</td></tr>
+<tr><td>Break</td><td>Notice, CancelTreaty</td></tr>
+<tr><td>CancelTreaty</td><td>Notice, CancelTreaty, Break</td></tr>
+<tr><td>Notice, AcceptTrade</td><td>SuggestTrade, SuggestEnd, CancelTreaty, Break</td></tr>
+</table>
+
+<p>
+The SuggestTrade statement allows to combine up to two offers with up to two wants, selectable from a variety of trade items. Be aware that most of the nations you negotiate with will be AI controlled as well. So it doesn't make much sense to construct super-complex suggestions, because the other nation will probably not understand them and thus not agree. At the same time, understanding and evaluating the suggestions of the others is one of the most difficult jobs for you in the field of diplomacy.
+</p>
+
+
+<h2>Memory</h2>
+
+<p>
+Like most other games, this one can be stopped, saved and continued later. All data that was not saved in the first session will be unavailable in the second, which of course applies as well to AI data. The philosophy is to have the complete saved data of a game in one file, including AI data. So an AI module should not write own files to the hard disk but use the offered data saving mechanism to transfer its data to the common save file.
+</p>
+
+<p>
+Before this mechanism is explained, it should be noted that saving data can be avoided in some cases, which is generally preferable because of the limited data saving capacity.
+</p>
+
+<p>
+First, the game itself offers some history that is always valid no matter if the game is fresh or loaded. This starts by all the information you know to be restored as a player when loading an old game:
+</p>
+
+<ul>
+<li>
+The map is remembered as seen last. This includes location properties like terrain type, improvements, nation territory and the turn all this information originates from.
+</li>
+<li>
+Foreign cities with their properties are remembered as seen last.
+</li>
+<li>
+Dossiers and military reports achieved by negotiation, friendly contact or spying keep available.
+</li>
+<li>
+For each nation, the turn of the last negotiation.
+</li>
+<li>
+Some statistical data for every model.
+</li>
+</ul>
+
+<p>
+For AI, there is even more historic data available :
+</p>
+
+<ul>
+<li>
+The complete list of all battles taken part in or watched as third party.
+</li>
+</ul>
+
+<p>
+Second, information can often be calculated from other facts. There is no need to save information that originates from a calculation, because the calculation can be redone when necessary. The AI gets notice when a game has been reloaded, so the calculation has not to be done every turn again but just on demand.
+</p>
+
+<p>
+Of course, there remains some information that <i>needs</i> to be saved. Typical items are:
+</p>
+
+<ul>
+<li>
+Historic information that is required but not available from the game.
+</li>
+<li>
+Information about how other nations acted in negotiation. For example, to avoid making suggestions again that were already rejected before the game was saved.
+</li>
+<li>
+Basic information about your plans, so that the behavior remains consistent after saving and loading the game. For example, you don't want to go for invading a continent when you originally intended to invade a different one and were already half way there.
+</li>
+</ul>
+
+<p>
+The saving of data does not happen by special function calls but by an incremental backup of some data items that is automatically done every turn. These items are:
+</p>
+
+<ul>
+<li>
+Unit.Status - a 32 bit value per unit
+</li>
+<li>
+Model.Status - a 32 bit value per model
+</li>
+<li>
+City.Status - a 32 bit value per city
+</li>
+<li>
+ForeignCity.Status - a 32 bit value per foreign city
+</li>
+<li>
+Empire.Persistent - 4k of memory for free use
+</li>
+</ul>
+
+<p>
+The status properties are the easier way. You can simply write and rely on them any turn later as if there was no saving and loading of games. It is recommendable to implement higher level access to these raw values in the related classes, which alllows sharing between multiple values and expressive names. Before you set a status value, it is always 0. However, everytime the meaning or the binary format of a status is <i>changed</i> with a new version of the AI, the AI becomes incompatible to its own former games. 
+</p>
+
+<p>
+The Empire.Persistent object is equally easy to use once you have implemented it, but the implementation is a bit difficult. This will be subject of the next section.
+</p>
+
+<p>
+Note that games can only be saved and restored in the turn of the human player or supervisor, it never happens during an AI turn. So you never have to continue a half-done turn.
+</p>
+
+<p>
+All in all, there will be 3 different types of data in your code, which you should clearly distinguish:
+</p>
+
+<ul>
+<li>
+Temporary data that is not transferred from a turn to the next. This type of data is not affected by saving/loading.
+</li>
+<li>
+Persistent data stored in status properties and Empire.Persistent. This <i>is</i> actually affected by saving/loading, but you don't have to care for that.
+</li>
+<li>
+Data that is kept for following turns to improve the speed of the AI, but which can be recalculated from known facts, persistent data and random numbers on demand.
+</li>
+</ul>
+
+
+<h2>Empire.Persistent</h2>
+
+<p>
+This class is meant as a high-level interface for a 4k memory area that is provided by the game, and which is subject of automatic backup and restore. Programming this class has to happen on a somewhat lower level than with the other classes. 
+</p>
+
+<p>
+The most important fact is that only the memory area itself is being backed up, not objects that are referenced from it. That results in an important distinction. On one side, there are data items which are allowed within this memory. These are:
+</p>
+
+<ul>
+<li>
+all value types, including enums
+</li>
+<li>
+structs only built of allowed items
+</li>
+<li>
+embedded arrays of allowed items (using the fixed keyword)
+</li>
+</ul>
+
+<p>
+On the other side, there's a lot of data types that are not allowed in the backup/restore memory because restoring them to an identic value in a different process made no sense. These are:
+</p>
+
+<ul>
+<li>
+reference types
+</li>
+<li>
+pointers
+</li>
+<li>
+normal arrays assigned with new
+</li>
+<li>
+structs containing disallowed items
+</li>
+</ul>
+
+<p>
+So this is the only area where you have to distinguish different types of structs by looking at their implementation. Unfortunately, most structs that you migth want to use for persistent memory are disallowed because they contain references. This includes Nation, ForeignUnit, and Location. You have to fall back to IDs and single values here. The same of course counts for reference types like City. Also, this is the only part of your code that has to be unsafe. It's recommendable to encapsulate both the unsafe programming and the IDs inside the Persistent class and let its interface be on the same level as the other class interfaces.
+</p>
+
+<p>
+The easiest way to implement Empire.Persistent is a fixed memory structure using a struct, as demonstrated in the Persistent class as it comes. You will probably replace this implementation, but it shows how to structure the backup/restore memory and how to translate between it and the game. This way of implemetation also allows an easy check whether you stay within the 4k limit, which is just checking the size of the struct.
+</p>
+
+<p>
+If the structure of the backup/restore memory changes, the AI will become incompatible to earlier saved games. If you wish to avoid that, you have to implement conversion algos, and one piece of information in the memory then should be a version number that lets you tell when and how to convert the structure.
+</p>
+
+
+ <h2>Startup</h2>
+ 
+ <p>
+ You should have an idea of the sequence of events in the beginning of a game. 
+ </p>
+ 
+ <p>
+ When a <i>new</i> game is started, the sequence is as follows:
+</p>
+ 
+ <ol>
+ <li>
+ world, nations, capitals and initial units are created by the game core
+ </li>
+ <li>
+ constructors Empire() and Persistent() are called
+ </li>
+ <li>
+ begin of Status and Empire.Persistent change tracking
+ </li>
+ <li>
+ some other nations might do their first turn
+ </li>
+ <li>
+ Empire.NewGame() is called
+ </li>
+ <li>
+ first On-Method is called (usually OnTurn)
+ </li>
+ </ol>
+
+ <p>
+In contrast, when a <i>saved</i> game is loaded, the sequence looks like this:
+</p>
+
+<ol>
+<li>
+ world, nations, capitals and initial units are created by the game core (exactly as when played originally)
+ </li>
+<li>
+ constructors Empire() and Persistent() are called
+ </li>
+ <li>
+ The game is core-internally being replayed up to the turn where it should be continued. This happens based on the commands recorded during the original playing, AI is not involved here. This process also includes incremental update of Status values and Empire.Persistent. When the loading ist done, they have the same content as they originally had in the turn where the game continues now.
+ </li>
+<li>
+some other nations might do their first turn after loading
+</li>
+<li>
+ Empire.Resume() is called
+ </li>
+ <li>
+ first On-Method is called (e.g. OnForeignMove or OnChanceToNegotiate)
+ </li>
+ </ol>
+
+ <p>
+So the appropriate behavior of the AI is the following:
+</p>
+
+<ul>
+<li>
+In the constructors Empire() and Persistent(), the AI data can be initialized with default values. These values must be the same when the game is loaded as they were when it was started newly, because they are the basis for the incremental restore. Particularly, do not use a random number generator here to set Status or Empire.Persistent values! The initial data values should depend on nothing but given information (difficulty level, world map properties, number of nations etc.). Note that the map around the capital is not revealed yet at this point.
+</li>
+<li>
+Empire.NewGame(): If you want to do a general randomization of the AI's behavior, do that here. Changes to Empire.Persistent are being tracked now.
+</li>
+<li>
+Empire.Resume(): Here a saved game has been loaded. The Status values and Empire.Persistent have the same content as before, but all other data in your AI has to be recreated.
+</li>
+</ul>
+
+
+<h2>Cevo.Pedia</h2>
+
+<p>
+The static class Cevo provides a lot of information about the rules of the game. You can look up terrain types, terrain improvements, advances, city improvents, and government forms by simply calling Cevo.Pedia(...). ("Look up" might not be a good term here because it suggests the procedure to be somewhat timeconsuming, which is not the case.) There are also some constants available from the Cevo class, for example the maximum city size with and without aqueduct, or the required number of colony ship parts.
+</p>
+
+
+<h2>Technical Notes</h2>
+
+<h4>Platform:</h4>
+<p>
+The game is built with PlatformTarget x86, so it always runs as a 32-bit process even if run on a 64-bit OS. (This is necessary for pointer compatibility with the native code program core.)
+</p>
+
+<h4>Careful with Threads:</h4>
+<p>
+The complete application is single-threaded, and the AI interface is not thread safe. Think twice before starting a new thread. Multiple threads might improve the performance of a complex calculation, but if you choose to do that, contain that complexity in your own code. From a thread different from the one that called your AI, never call a method or a property that you didn't implement yourself.
+</p>
+
+
+<h2>Description File and Picture</h2>
+
+<p>
+In order to make the game recognize and use your AI, there must be an AI description file for it present in the C-evo main folder (where the cevo.dll is located). This is a small text file. The AI template folder contains a template for such a file, the file <i>AI.ai.txt</i>. It's recommended to name the file the same as your AI, for example if the name of your AI assembly is <i>MyAI.dll</i>, then you should name the description file <i>MyAI.ai.txt</i>. The file can contain the following statements, each on the beginning of a separate line (take care for the capitals!):
+</p>
+
+<ul>
+<li>
+#NAME s - If the name of your AI is different from the file name.
+</li>
+<li>
+#.NET - Indicates a .NET AI module. Don't remove this line.
+</li>
+<li>
+#PATH s - Path of the DLL, relative to the main C-evo directory. If this line does not exist, the path "MyAI.dll" is expected. So you can develop the AI DLL in any folder. However, in case you publish the AI, change the PATH entry so that it expects the DLL in the main C-evo folder, because anything else would make it too difficult for players to
+install your AI.
+</li>
+<li>
+#GAMEVERSION i.i.i - lowest C-evo version number that this AI works with, should be 1.1.0 when the AI was built with this template. This line is a MUST.
+</li>
+<li>
+#LARGEMAPS - This line tells that the AI can handle maps up to a size of 65520 locations in any shape, which is no problem with the template library. Remove the line if you add code that restricts the location capacity. Without #LARGEMAPS the map is limited to SizeX=100 and SizeY=48 (which makes 9600 locations in maximum).
+</li>
+<li>
+#CREDITS s - A line telling your name or whatever you like. This information will be displayed on the credits screen whenever the AI is in use.
+</li>
+</ul>
+
+<p>
+"MyAI" here always stands for the name of your AI. Replace it by the actual name.
+</p>
+
+<p>
+It's also possible (and appreciated) to create a picture for an AI, to represent it on the start screen. This picture must have a size of 64x64 pixels and be present as <i>MyAI.bmp</i> in the main C-evo folder.
+</p>
+
+<h2>Publishing Your AI</h2>
+
+<p>
+If you'd like to make the AI public, simply upload it to the <a href="http://c-evo.org/files">files section</a> of the project homepage. 
+</p>
+
+<p>
+Before distributing the AI, you should rebuild the project to make sure you publish a release and not a debug version.
+</p>
+</body>
+</html>

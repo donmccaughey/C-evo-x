@@ -1,0 +1,6 @@
+#NAME AI
+#.NET
+#GAMEVERSION 1.2.0
+#PATH AI.dll
+#LARGEMAPS
+#CREDITS AI made by me

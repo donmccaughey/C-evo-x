@@ -25,6 +25,8 @@ project root.
 
 ## Project Structure
 
+The `AI_Template\` directory contains two C# projects: `CevoDotNet.csproj` and `AI.csproj`, in the `AI_Template\CevoDotNet\` and `AI_Template\Project\` directories respectively.
+
 The `Configurator\` directory contains the standalone configuration utility
 written in C#.
 
