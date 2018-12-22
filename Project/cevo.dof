@@ -43,7 +43,7 @@ OutputDir=..\tmp
 UnitOutputDir=..\tmp\units\cevo
 PackageDLLOutputDir=
 PackageDCPOutputDir=
-SearchPath=
+SearchPath=..\tmp\units\cevo
 Packages=Vcl40;Vclx40;VclSmp40
 Conditionals=
 DebugSourceDirs=
@@ -85,6 +85,9 @@ Item0=SCR
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlSearchPath]
+Count=1
+Item0=..\tmp\units\cevo
 [HistoryLists\hlUnitOutputDirectory]
 Count=5
 Item0=..\tmp\units\cevo

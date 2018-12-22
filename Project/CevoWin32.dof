@@ -43,7 +43,7 @@ OutputDir=..\tmp
 UnitOutputDir=..\tmp\units\CevoWin32
 PackageDLLOutputDir=
 PackageDCPOutputDir=
-SearchPath=
+SearchPath=..\tmp\units\CevoWin32
 Packages=Vcl40;Vclx40;VclSmp40;Vcldb40;vcldbx40;Qrpt40
 Conditionals=
 DebugSourceDirs=
@@ -79,6 +79,9 @@ Comments=
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlSearchPath]
+Count=1
+Item0=..\tmp\units\CevoWin32
 [HistoryLists\hlUnitOutputDirectory]
 Count=3
 Item0=..\tmp\units\CevoWin32

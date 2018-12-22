@@ -118,19 +118,31 @@ clean :
 
 # ----- Game executable
 
-tmp/CevoWin32.exe : Project/CevoWin32.dpr Project/CevoWin32.dof
+tmp/CevoWin32.exe : \
+		Project/CevoWin32.dpr \
+		Project/CevoWin32.dof \
+		tmp/units/CevoWin32/cevo.res
 	-mkdir -p tmp/units/CevoWin32
 	cd Project
 	dcc32 CevoWin32.dpr
 	cd ..
 
-#
+
+tmp/units/CevoWin32/cevo.res : \
+		Project/cevo.rc \
+		Project/cevoxp2.ico
+	mkdir -p tmp/units/CevoWin32
+	cd tmp/units/CevoWin32
+	brcc32 -focevo.res ../../../Project/cevo.rc
+	cd ../../..
+
+
 # ----- Game library
 
-tmp/cevo.dll : Project/cevo.dpr Project/cevo.dof \
-		\
-		Project/cevo.res \
-		Project/RES1.RES \
+tmp/cevo.dll : \
+		Project/cevo.dpr \
+		Project/cevo.dof \
+		tmp/units/cevo/Res1.res \
 		\
 		Project/Area.pas \
 		Project/Back.dfm \
@@ -212,15 +224,14 @@ tmp/cevo.dll : Project/cevo.dpr Project/cevo.dof \
 	cd ..
 
 
-# ----- Windows resources
-
-Project/cevo.res : Project/cevo.rc Project/cevoxp2.ico
-	@printf '(cevo.res resource compiler placeholder)\n'
-	@touch Project/cevo.res
-
-Project/RES1.RES : Project/Res1.rc Project/drag.cur Project/flathand.cur
-	@printf '(RES1.RES resource compiler placeholder)\n'
-	@touch Project/RES1.RES
+tmp/units/cevo/Res1.res : \
+		Project/Res1.rc \
+		Project/drag.cur \
+		Project/flathand.cur
+	mkdir -p tmp/units/cevo
+	cd tmp/units/cevo
+	brcc32 -foRes1.res ../../../Project/Res1.rc
+	cd ../../..
 
 
 # ----- Delphi AI sample

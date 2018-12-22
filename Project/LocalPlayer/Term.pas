@@ -415,7 +415,6 @@ uses
 
 
 {$R *.DFM}
-{$R Res1.res}
 
 const
 lxmax_xxx=130;

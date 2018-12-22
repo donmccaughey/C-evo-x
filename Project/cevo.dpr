@@ -2,6 +2,8 @@
 
 library cevo;
 
+{$R Res1.res}
+
 uses
   Forms,
   StringTables in 'StringTables.pas',
@@ -44,8 +46,6 @@ uses
   Battle in 'LocalPlayer\Battle.pas' {BattleDlg},
   Rates in 'LocalPlayer\Rates.pas' {RatesDlg},
   TechTree in 'LocalPlayer\TechTree.pas' {TechTreeDlg};
-
-{$R *.RES}
 
 procedure Run(clientPtr: pointer); stdcall;
 begin
