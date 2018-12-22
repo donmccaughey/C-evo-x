@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CevoDotNet", "..\CevoDotNet\CevoDotNet.csproj", "{FE26EEF2-2B3D-49C9-B02B-C67116301E9D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "AI.csproj", "{20E4A7F0-A9A1-4A79-8215-EBC9C856BF50}"
