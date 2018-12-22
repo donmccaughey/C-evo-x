@@ -40,7 +40,7 @@ ImageBase=4194304
 ExeDescription=
 [Directories]
 OutputDir=..\tmp
-UnitOutputDir=..\tmp\units
+UnitOutputDir=..\tmp\units\Integrated
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
@@ -80,9 +80,10 @@ Comments=
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlUnitOutputDirectory]
-Count=2
-Item0=..\tmp\units
-Item1=tmp\units
+Count=3
+Item0=..\tmp\units\Integrated
+Item1=..\tmp\units
+Item2=tmp\units
 [HistoryLists\hlOutputDirectorry]
 Count=2
 Item0=..\tmp

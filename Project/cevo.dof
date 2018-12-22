@@ -40,7 +40,7 @@ ImageBase=4194304
 ExeDescription=
 [Directories]
 OutputDir=..\tmp
-UnitOutputDir=..\tmp\units
+UnitOutputDir=..\tmp\units\cevo
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
@@ -86,11 +86,12 @@ Item0=SCR
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlUnitOutputDirectory]
-Count=4
-Item0=..\tmp\units
-Item1=tmp\units
-Item2=d:\c-evo\dev\dcu
-Item3=d:\c-evo\dev\project
+Count=5
+Item0=..\tmp\units\cevo
+Item1=..\tmp\units
+Item2=tmp\units
+Item3=d:\c-evo\dev\dcu
+Item4=d:\c-evo\dev\project
 [HistoryLists\hlOutputDirectorry]
 Count=4
 Item0=..\tmp

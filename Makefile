@@ -119,7 +119,7 @@ clean :
 # ----- Game executable
 
 tmp/CevoWin32.exe : Project/CevoWin32.dpr Project/CevoWin32.dof
-	-mkdir -p tmp/units
+	-mkdir -p tmp/units/CevoWin32
 	cd Project
 	dcc32 CevoWin32.dpr
 	cd ..
@@ -206,7 +206,7 @@ tmp/cevo.dll : Project/cevo.dpr Project/cevo.dof \
 		Project/LocalPlayer/Wonders.pas \
 		\
 		Protocol/Protocol.pas
-	-mkdir -p tmp/units
+	-mkdir -p tmp/units/cevo
 	cd Project
 	dcc32 cevo.dpr
 	cd ..
