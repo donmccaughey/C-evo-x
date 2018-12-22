@@ -2,6 +2,7 @@
 *.~dp
 *.~pa
 *.suo
+*.swp
 .DS_Store
 Configurator/obj
 tmp
