@@ -10,6 +10,9 @@ all : \
 	tmp/AIProject.ai.txt \
 	tmp/AIProject.bmp \
 	\
+	tmp/AI.dll \
+	tmp/AI.ai.txt \
+	\
 	tmp/fonts.txt \
 	tmp/language.txt \
 	tmp/language2.txt \
@@ -132,7 +135,6 @@ tmp/CevoWin32.exe : \
 	dcc32 CevoWin32.dpr
 	cd ..
 
-
 tmp/units/CevoWin32/cevo.res : \
 		Project/cevo.rc \
 		Project/cevoxp2.ico
@@ -157,9 +159,7 @@ tmp/CevoDotNet.exe : \
 		AI_Template/CevoDotNet/Properties/Resources.resx \
 		AI_Template/CevoDotNet/Properties/Settings.Designer.cs \
 		AI_Template/CevoDotNet/Properties/Settings.settings
-	cd AI_Template/CevoDotNet
-	MSBuild.exe CevoDotNet.csproj
-	cd ../..
+	MSBuild.exe AI_Template/CevoDotNet/CevoDotNet.csproj
 
 
 # ----- Game library
@@ -248,7 +248,6 @@ tmp/cevo.dll : \
 	dcc32 cevo.dpr
 	cd ..
 
-
 tmp/units/cevo/Res1.res : \
 		Project/Res1.rc \
 		Project/drag.cur \
@@ -282,6 +281,39 @@ tmp/AIProject.ai.txt : Delphi_AI_Kit/AIProject.ai.txt
 tmp/AIProject.bmp : Delphi_AI_Kit/AIProject.bmp
 	-mkdir -p tmp
 	cp Delphi_AI_Kit/AIProject.bmp tmp/AIProject.bmp
+
+
+# ----- C# AI sample
+
+tmp/AI.dll : \
+		AI_Template/Project/AI.csproj \
+		\
+		AI_Template/Project/City.cs \
+		AI_Template/Project/Empire.cs \
+		AI_Template/Project/Model.cs \
+		AI_Template/Project/Persistent.cs \
+		AI_Template/Project/Plugin.cs \
+		AI_Template/Project/Unit.cs \
+		\
+		AI_Template/Project/Lib/AddressPriorityQueue.cs \
+		AI_Template/Project/Lib/CevoPedia.cs \
+		AI_Template/Project/Lib/CityBase.cs \
+		AI_Template/Project/Lib/DiplomacyBase.cs \
+		AI_Template/Project/Lib/Map.cs \
+		AI_Template/Project/Lib/ModelBase.cs \
+		AI_Template/Project/Lib/Nation.cs \
+		AI_Template/Project/Lib/PlayResult.cs \
+		AI_Template/Project/Lib/Protocol.cs \
+		AI_Template/Project/Lib/Sprawl.cs \
+		AI_Template/Project/Lib/ToughSet.cs \
+		AI_Template/Project/Lib/UnitBase.cs \
+		\
+		AI_Template/Project/Properties/AssemblyInfo.cs
+	MSBuild.exe AI_Template/Project/AI.csproj
+
+tmp/AI.ai.txt : AI_Template/AI.ai.txt
+	mkdir -p tmp
+	cp AI_Template/AI.ai.txt tmp/AI.ai.txt
 
 
 # ----- Resource files
@@ -702,7 +734,5 @@ tmp/Configurator.exe : \
 		Configurator\Properties\Resources.resx \
 		Configurator\Properties\Settings.Designer.cs \
 		Configurator\Properties\Settings.settings
-	cd Configurator
-	MSBuild.exe Configurator.sln
-	cd ..
+	MSBuild.exe Configurator/Configurator.sln
 
