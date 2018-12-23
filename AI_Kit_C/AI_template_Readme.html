@@ -1,0 +1,49 @@
+<h2>C++ AI Template for Civ Evo 14.0</h2>
+Update by Charles Nadolski, myfirstname.mylastname@gmail.com, 2002/11/23, 
+2003/6/7, 2003/7/8, 2003/10/29, 2003/11/1, 2003/11/4, 2003/11/18, 2004/7/12, 
+2005/1/26, 2005/3/17, 2005/11/30<br>
+Plase email me with any questions.<br>
+<p>
+This is everything you need to start a blank AI within C-evo, provided you have a C++ compiler that is compatible with Microsoft Visual Studio (or GCC/MinGW). It will create a DLL for you, and provide the interface for it to function within C-evo. If you have any questions about weird code that you will probably run into, feel free to email me.
+</p>
+<h3>Project contents:</h3>
+<p>
+<b>protocol.h:</b> This is a very important file. It defines many constants and classes you will be using for your AI. Make sure to read the documentation included in c-evo and this file to obtain shortcuts in making a good AI. DO NOT CHANGE THIS FILE though, unless there is a typo. I’ve found a couple, but they were very minor.</p>
+<p>
+<b>aimain.h, aimain.cpp:</b> These files are where you will be making the most code changes. Follow the comments and you should be well upon your way.</p>
+<p>
+<b>aiclasses.cpp, aiclasses.h:</b> These files are needed in defining the AI class that you will be using, and shouldn’t be tampered too much with, unless Steffen Gerlach makes changes to protocol.h.</p>
+<p>
+<b>aihelpers.h:</b> This is a VERY USEFUL file. It contains a few functions that will make your life easier, like figuring out if a city can build a hydro plant, if a tile can be irrigated, etc.</p>
+<p>
+For the other files, consult the readme.txt and it will explain you how to use them. They are for starting a project in MS visual studio. If you’re having trouble using the server functions, like GetMoveAdvice, feel free to email me about it. Some of the server functions are quite useful, like GetMoveAdvice (built-in AI pathfinding, so you don’t have to write your own), but can be frustrating to use at first.</p>
+
+<h3>Version History:</h3>
+
+<b>Changed v14 on 11/30/2005:</b>
+<blockquote>Major bug fixed for protocol.h, added another helper function to aihelpers.h. Special thanks to Uli and Frank Mierse.</blockquote>
+
+<b>Changes v14 on 3/15/2005:</b>
+<blockquote>Major bug fixed with saving to data block. Solution files added for MS Visual Studio 2003</blockquote>
+
+<b>Changes v14:</b>
+<blockquote>Complete Re-write of protocol.h, nominal update to aiclasses. See each files for specific updates. PUBLIC RELEASE OF HAL SOURCE CODE. No attempt has been made to completely update the rules, though it compiles without errors.</blockquote>
+
+<b>Changes v13:</b>
+<blockquote>
+	<b>Updates on 2004/7/12:</b>AITemplate finally revamped to v13 rules and protocol. Some updates to Distance code and aihelper functions.<br>
+	<b>Updates on 2003/11/18:</b>Old aihelper functions rewritten to use tile location validation.<br>
+	<b>Updates on 2003/11/4:</b>Minor update to AI template (tile validation, etc.).<br>
+	<b>Updates on 2003/11/1:</b>Minor update to AI template (GetSeenTech, etc.).<br>
+</blockquote>
+
+<b>Changes v12:</b>
+<blockquote>Checking for valid locations in functions of aihelpers. Improvement in GetSeenTech. Blank project included as well for visual c++ 6.0. Please rename MyAI files to the name of your AI. Also, rename MyAI.def and edit it so that MyAI is the name of your AI. and put these in their own folder with the name of your AI (preferably under the MyProjects folder of MS visual studio). A batch file (MinGWmake.bat) is included so that people using MinGW 2.0 (or GCC 3.2) could compile a DLL. This idea was submitted to me by Julien Pierrehumbert [julp@REMOVETHISmyrealbox.com]. Dipl.-Ing. Ulrich Olderdissen [ulrich.olderdissen\@REMOVETHISgmx.de] also suggested that I add code to make the random number seed based upon the initial game state and not the CPU clock. This allows better repeatability when using random numbers.<br />\n";
+<br>
+This is a total revamping of the original 8.0 version of this package. Many of the AIclasses were redundancies of classes that are currently in protocol.h. These were removed, but their subfunctions still remain. A lot of bad style has been changed: Certain global variables have been removed or renamed. Certain functions now require additional arguments: CCity functions and CUn functions cannot be accessed by pointer. Instead, pass the TCity or TUn as the first argument. Also, the current AI player index (formerly AIme, me, or Player) must be passed as the last argument. Advantages: Some of the code is now easier to read. Instead of multiple referecing and pointing, functions are called more directly and take more arguments. Also, some of the calls are a bit more logical. Less pointing, referencing, and "this" used. Also, in theory the code is more robust, practical, and faster.</blockquote>
+
+<b>Comments from previous 8.0 version:</b>
+<blockquote>Latest: updated alignment pragmas for Microsoft C++. There are very many changes since 0.7 version. TCustomAI has changed slightly with new methods for diplomacy. Some functions in AIClasses have become methods of TCustomAI. Cleaned up #ifdefs, macros. C is not supported. (To make compatible with C, see notes in protocol.h). Apart from a few misplaced #ifdefs and // comments the AI Developer (Cevo subdirectory) C template protocol.h is ok (except it misses a few things out). cprotocol.h (a cleaned-up version of it but still missing a few things) is provided. There is a makefile for Borland C++ 5.5. Thomas Kay lodsw@stormloader.com</blockquote>
+
+<b>**C AI Sample for V 0.7.0**</b>
+<blockquote>Package Description: MYAI.DEF - Export definition file AIMAIN[.CPP & .H] - AI Sample, replace with something more useful AICLASSES[.CPP & .H] - AI Classlib, for comfortable use of functions AIHELPERS.H - Some useful AI functions by me PROTOCOL.H - Protocol definition, replace it with each cEvo version with a new one **Corrected Version*** -No crashs at contacting -Improved AIHELPERS.H -And many more *** Good luck with AI Development! Regards, Matvej Soloviev ("blackhole89")</blockquote>

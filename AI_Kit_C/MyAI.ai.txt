@@ -1,0 +1,6 @@
+#NAME MyAI, version 0
+#GAMEVERSION 0.14.0
+#PATH MyAI.dll
+#MULTIPLE
+#CREDITS AITemplate 14
+

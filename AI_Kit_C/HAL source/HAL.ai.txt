@@ -1,0 +1,5 @@
+#NAME HAL
+#GAMEVERSION 0.14.0
+#PATH HAL.dll
+#MULTIPLE
+#CREDITS Hal (C) by Charles Nadolski
