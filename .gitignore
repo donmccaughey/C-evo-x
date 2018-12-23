@@ -1,6 +1,8 @@
 *.cfg
 *.~dp
 *.~pa
+*.opensdf
+*.sdf
 *.suo
 *.swp
 *.user
