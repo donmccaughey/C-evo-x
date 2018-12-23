@@ -2,8 +2,6 @@
 
  - Find source code for StdAI.dll.
 
- - Remove *.csproj.user files.
-
  - Audit case of filenames, unit names and other file inclusions.
 
  - Audit unit names; unit names should match file names.

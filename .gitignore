@@ -3,6 +3,7 @@
 *.~pa
 *.suo
 *.swp
+*.user
 .DS_Store
 obj
 tmp
