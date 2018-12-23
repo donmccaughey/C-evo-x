@@ -109,11 +109,14 @@ all : \
 	tmp/Tribes/Russians.tribe.txt \
 	tmp/Tribes/Spanish.tribe.txt \
 	tmp/Tribes/StdUnits.txt \
-	tmp/Tribes/Vikings.tribe.txt
+	tmp/Tribes/Vikings.tribe.txt \
+	\
+	tmp/Configurator.exe
 
 
 clean :
 	-rm -rf tmp
+	-rm -rf Configurator/obj
 
 
 # ----- Game executable
@@ -644,4 +647,40 @@ tmp/Tribes/StdUnits.txt : Resources/Tribes/StdUnits.txt
 tmp/Tribes/Vikings.tribe.txt : Resources/Tribes/Vikings.tribe.txt 
 	-mkdir -p tmp/Tribes
 	cp Resources/Tribes/Vikings.tribe.txt tmp/Tribes/Vikings.tribe.txt
+
+
+# ----- Configurator
+
+tmp/Configurator.exe : \
+		Configurator\AddOn.cs \
+		Configurator\AddOnSelector.cs \
+		Configurator\AddOnSelector.Designer.cs \
+		Configurator\AddOnSelector.resx \
+		Configurator\cevoxp2.ico \
+		Configurator\Configurator.csproj \
+		Configurator\Configurator.sln \
+		Configurator\DisplaySettings.cs \
+		Configurator\Installer.cs \
+		Configurator\MainForm.cs \
+		Configurator\MainForm.Designer.cs \
+		Configurator\MainForm.resx \
+		Configurator\PoweredByZipStorer2.png \
+		Configurator\Process.cs \
+		Configurator\Program.cs \
+		Configurator\ProgressDialog.cs \
+		Configurator\ProgressDialog.Designer.cs \
+		Configurator\ProgressDialog.resx \
+		Configurator\TextViewer.cs \
+		Configurator\TextViewer.Designer.cs \
+		Configurator\TextViewer.resx \
+		Configurator\ZipStorerLight.cs \
+		\
+		Configurator\Properties\AssemblyInfo.cs \
+		Configurator\Properties\Resources.Designer.cs \
+		Configurator\Properties\Resources.resx \
+		Configurator\Properties\Settings.Designer.cs \
+		Configurator\Properties\Settings.settings
+	cd Configurator
+	MSBuild.exe Configurator.sln
+	cd ..
 
