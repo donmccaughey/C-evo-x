@@ -3,6 +3,7 @@
 
 all : \
 	tmp/CevoWin32.exe \
+	tmp/CevoDotNet.exe \
 	tmp/cevo.dll \
 	\
 	tmp/AIProject.dll \
@@ -117,6 +118,7 @@ all : \
 clean :
 	-rm -rf tmp
 	-rm -rf Configurator/obj
+	-rm -rf AI_Template/CevoDotNet/obj
 
 
 # ----- Game executable
@@ -138,6 +140,26 @@ tmp/units/CevoWin32/cevo.res : \
 	cd tmp/units/CevoWin32
 	brcc32 -focevo.res ../../../Project/cevo.rc
 	cd ../../..
+
+
+# ----- Game executable for .NET
+
+tmp/CevoDotNet.exe : \
+		AI_Template/CevoDotNet/CevoDotNet.csproj \
+		\
+		AI_Template/CevoDotNet/AIPlugin.cs \
+		AI_Template/CevoDotNet/cevoxp2.ico \
+		AI_Template/CevoDotNet/Program.cs \
+		AI_Template/CevoDotNet/Protocol.cs \
+		\
+		AI_Template/CevoDotNet/Properties/AssemblyInfo.cs \
+		AI_Template/CevoDotNet/Properties/Resources.Designer.cs \
+		AI_Template/CevoDotNet/Properties/Resources.resx \
+		AI_Template/CevoDotNet/Properties/Settings.Designer.cs \
+		AI_Template/CevoDotNet/Properties/Settings.settings
+	cd AI_Template/CevoDotNet
+	MSBuild.exe CevoDotNet.csproj
+	cd ../..
 
 
 # ----- Game library
