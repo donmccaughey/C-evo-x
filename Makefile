@@ -122,6 +122,7 @@ clean :
 	-rm -rf tmp
 	-rm -rf Configurator/obj
 	-rm -rf AI_Template/CevoDotNet/obj
+	-rm -rf AI_Template/Project/obj
 
 
 # ----- Game executable
