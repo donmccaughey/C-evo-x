@@ -13,6 +13,9 @@ all : \
 	tmp/AI.dll \
 	tmp/AI.ai.txt \
 	\
+	tmp/MyAI.dll \
+	tmp/MyAI.ai.txt\
+	\
 	tmp/fonts.txt \
 	tmp/language.txt \
 	tmp/language2.txt \
@@ -261,7 +264,9 @@ tmp/units/cevo/Res1.res : \
 
 # ----- Delphi AI sample
 
-tmp/AIProject.dll : Delphi_AI_Kit/AIProject.dpr \
+tmp/AIProject.dll : \
+		Delphi_AI_Kit/AIProject.dpr \
+		\
 		Delphi_AI_Kit/AI.pas \
 		Delphi_AI_Kit/CustomAI.pas \
 		Delphi_AI_Kit/Names.pas \
@@ -315,6 +320,26 @@ tmp/AI.dll : \
 tmp/AI.ai.txt : AI_Template/AI.ai.txt
 	mkdir -p tmp
 	cp AI_Template/AI.ai.txt tmp/AI.ai.txt
+
+
+# ----- C++ AI Sample
+
+tmp/MyAI.dll : \
+		AI_Kit_C/MyAI.sln \
+		AI_Kit_C/MyAI.vcxproj \
+		\
+		AI_Kit_C/aiclasses.cpp \
+		AI_Kit_C/aiclasses.h \
+		AI_Kit_C/aihelpers.h \
+		AI_Kit_C/AIMAIN.CPP \
+		AI_Kit_C/AIMAIN.H \
+		AI_Kit_C/MyAI.def \
+		AI_Kit_C/PROTOCOL.H
+	MSBuild.exe AI_Kit_C/MyAI.vcxproj
+
+tmp/MyAI.ai.txt : AI_Kit_C/MyAI.ai.txt
+	mkdir -p tmp
+	cp AI_Kit_C/MyAI.ai.txt tmp/MyAI.ai.txt
 
 
 # ----- Resource files
