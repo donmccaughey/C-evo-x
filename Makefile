@@ -16,6 +16,10 @@ all : \
 	tmp/MyAI.dll \
 	tmp/MyAI.ai.txt\
 	\
+	tmp/HAL.dll \
+	tmp/HAL.ai.txt \
+	tmp/HAL.BMP \
+	\
 	tmp/fonts.txt \
 	tmp/language.txt \
 	tmp/language2.txt \
@@ -340,6 +344,32 @@ tmp/MyAI.dll : \
 tmp/MyAI.ai.txt : AI_Kit_C/MyAI.ai.txt
 	mkdir -p tmp
 	cp AI_Kit_C/MyAI.ai.txt tmp/MyAI.ai.txt
+
+
+# ----- C++ HAL AI
+
+tmp/HAL.dll : \
+		AI_Kit_C/HAL_source/HAL.sln \
+		AI_Kit_C/HAL_source/HAL.vcxproj \
+		\
+		AI_Kit_C/HAL_source/aiclasses.cpp \
+		AI_Kit_C/HAL_source/aiclasses.h \
+		AI_Kit_C/HAL_source/aihelpers.h \
+		AI_Kit_C/HAL_source/AIMAIN.CPP \
+		AI_Kit_C/HAL_source/AIMAIN.H \
+		AI_Kit_C/HAL_source/HAL.DEF \
+		AI_Kit_C/HAL_source/HALlist.cpp \
+		AI_Kit_C/HAL_source/HALlist.h \
+		AI_Kit_C/HAL_source/PROTOCOL.H
+	MSBuild.exe AI_Kit_C/HAL_source/HAL.vcxproj
+
+tmp/HAL.ai.txt : AI_Kit_C/HAL_source/HAL.ai.txt
+	mkdir -p tmp
+	cp AI_Kit_C/HAL_source/HAL.ai.txt tmp/HAL.ai.txt
+
+tmp/HAL.BMP : AI_Kit_C/HAL_source/HAL.BMP
+	mkdir -p tmp
+	cp AI_Kit_C/HAL_source/HAL.BMP tmp/HAL.BMP
 
 
 # ----- Resource files
