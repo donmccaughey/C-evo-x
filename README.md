@@ -50,9 +50,13 @@ components and place build output into a `tmp\` directory in the root of the
 project.  The `Makefile` expects to run in a Bash shell.  The version of `make`
 that is installed with Delphi can be used to execute the `Makefile`.
 
-The `Makefile` contains two notable targets: `all` and `clean`.  The `all`
+The `Makefile` contains a number of targets.  Type
+
+	make help
+
+to see the full list.  Two notable targets: `all` and `clean`.  The `all`
 target is the default and will build the game and all the AIs.  The `clean`
-target will remove all the build output.
+target will remove all build output.
 
 Follow these steps to make sure your system is set up and ready to build:
 
@@ -68,11 +72,7 @@ Follow these steps to make sure your system is set up and ready to build:
 To build, open a Bash shell, navigate to the project root and run the
 `Makefile`:
 
-	make
-
-or
-
-	make all
+	make	# or: make all
 
 To remove all build output, run:
 

@@ -4,25 +4,73 @@
 # ----- Targets
 
 all : \
-	tmp/CevoWin32.exe \
-	tmp/CevoDotNet.exe \
-	tmp/cevo.dll \
-	tmp/Integrated.exe \
+	game \
 	\
+	delphi_ai \
+	csharp_ai \
+	cpp_ai \
+	hal_ai \
+	\
+	tmp/Integrated.exe \
+	tmp/Configurator.exe
+
+
+help :
+	@printf "\n"
+	@printf "Makefile for C-evo-x\n"
+	@printf "\n"
+	@printf "Targets:\n"
+	@printf "   all            Build all components (default)\n"
+	@printf "   clean          Remove all build output\n"
+	@printf "\n"
+	@printf "   game           Build Delphi game DLL and Win32 loader and\n"
+	@printf "                  copy external resource files into place\n"
+	@printf "\n"
+	@printf "   delphi_ai      Build the Delphi sample AI\n"
+	@printf "   csharp_ai      Build the C# sample AI and .NET loader\n"
+	@printf "   cpp_ai         Build the C++ sample AI\n"
+	@printf "   hal_ai         Build the HAL AI\n"
+	@printf "\n"
+	@printf "   resources      Copy external resource files into place\n"
+
+
+clean :
+	-rm -rf tmp
+	-rm -rf Configurator/obj
+	-rm -rf AI_Template/CevoDotNet/obj
+	-rm -rf AI_Template/Project/obj
+
+
+game : \
+	tmp/CevoWin32.exe \
+	tmp/cevo.dll \
+	resources
+
+
+delphi_ai : \
 	tmp/AIProject.dll \
 	tmp/AIProject.ai.txt \
-	tmp/AIProject.bmp \
-	\
+	tmp/AIProject.bmp
+
+
+csharp_ai : \
+	tmp/CevoDotNet.exe \
 	tmp/AI.dll \
-	tmp/AI.ai.txt \
-	\
+	tmp/AI.ai.txt
+
+
+cpp_ai : \
 	tmp/MyAI.dll \
-	tmp/MyAI.ai.txt\
-	\
+	tmp/MyAI.ai.txt
+
+
+hal_ai : \
 	tmp/HAL.dll \
 	tmp/HAL.ai.txt \
-	tmp/HAL.BMP \
-	\
+	tmp/HAL.BMP
+
+
+resources : \
 	tmp/fonts.txt \
 	tmp/language.txt \
 	tmp/language2.txt \
@@ -123,16 +171,7 @@ all : \
 	tmp/Tribes/Russians.tribe.txt \
 	tmp/Tribes/Spanish.tribe.txt \
 	tmp/Tribes/StdUnits.txt \
-	tmp/Tribes/Vikings.tribe.txt \
-	\
-	tmp/Configurator.exe
-
-
-clean :
-	-rm -rf tmp
-	-rm -rf Configurator/obj
-	-rm -rf AI_Template/CevoDotNet/obj
-	-rm -rf AI_Template/Project/obj
+	tmp/Tribes/Vikings.tribe.txt
 
 
 # ----- Variables
