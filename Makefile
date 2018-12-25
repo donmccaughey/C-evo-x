@@ -32,6 +32,7 @@ help :
 	@printf "   hal_ai         Build the HAL AI\n"
 	@printf "\n"
 	@printf "   resources      Copy external resource files into place\n"
+	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
 
 clean :
@@ -44,7 +45,8 @@ clean :
 game : \
 	tmp/CevoWin32.exe \
 	tmp/cevo.dll \
-	resources
+	resources \
+	std_ai
 
 
 delphi_ai : \
@@ -172,6 +174,12 @@ resources : \
 	tmp/Tribes/Spanish.tribe.txt \
 	tmp/Tribes/StdUnits.txt \
 	tmp/Tribes/Vikings.tribe.txt
+
+
+std_ai : \
+	tmp/StdAI.ai.txt \
+	tmp/StdAI.bmp \
+	tmp/StdAI.dll
 
 
 # ----- Variables
@@ -834,6 +842,21 @@ tmp/Tribes/StdUnits.txt : Resources/Tribes/StdUnits.txt
 tmp/Tribes/Vikings.tribe.txt : Resources/Tribes/Vikings.tribe.txt 
 	-mkdir -p tmp/Tribes
 	cp Resources/Tribes/Vikings.tribe.txt tmp/Tribes/Vikings.tribe.txt
+
+
+# ----- Standard AI files
+
+tmp/StdAI.ai.txt : Resources/StdAI.ai.txt
+	-mkdir -p tmp
+	cp Resources/StdAI.ai.txt tmp/StdAI.ai.txt
+
+tmp/StdAI.bmp : Resources/StdAI.bmp
+	-mkdir -p tmp
+	cp Resources/StdAI.bmp tmp/StdAI.bmp
+
+tmp/StdAI.dll : Resources/StdAI.dll
+	-mkdir -p tmp
+	cp Resources/StdAI.dll tmp/StdAI.dll
 
 
 # ----- Configurator
