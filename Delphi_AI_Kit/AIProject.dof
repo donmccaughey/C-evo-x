@@ -50,7 +50,7 @@ DebugSourceDirs=
 UsePackages=0
 [Parameters]
 RunParams=
-HostApplication=
+HostApplication=..\tmp\CevoWin32.exe
 [Version Info]
 IncludeVerInfo=0
 AutoIncBuild=0
@@ -86,3 +86,6 @@ Item1=..\tmp\AIProject
 [HistoryLists\hlOutputDirectorry]
 Count=1
 Item0=..\tmp
+[HistoryLists\hlHostApplication]
+Count=1
+Item0=..\tmp\CevoWin32.exe
