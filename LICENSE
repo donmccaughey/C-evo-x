@@ -1,2 +1,126 @@
 C-evo and C-evo-x are in the public domain.
 
+The contents of this repository are assembled from the following sources and
+contributors:
+
+Steffen Gerlach [SG] (http://www.steffengerlach.de)
+
+ - The C# AI template and external resource files from the C-evo 1.2.0 setup
+   program (http://c-evo.org/files/download.php) located in the `AI_Template\`
+   and `Resource\` directories, (except as noted below).
+
+ - The C-evo 1.2.0 game source code
+   (http://c-evo.org/files/download.php?cevosrc.cevosrc.zip) located the in
+   `Configurator\`, `Project\` and `Protocol\` directories.
+
+ - The Delphi AI Development Kit
+   (http://c-evo.org/files/download.php?cevodelphiaikit.cevodelphiaikit.zip)
+   located in the `Delphi_AI_Kit\` directory.
+
+Charles Nadolski (http://www.charlesnadolski.com)
+
+ - The C++ AI template
+   (http://c-evo.org/files/download.php?cevoaikitc.cevoaikitc.zip) located in
+   the `AI_Kit_C\` directory.
+
+Alex Mor [ALEX]
+
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\Nation2.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+ - Part of `Resources\Graphics\Terrain66x32.bmp`.
+ - Part of `Resources\Graphics\Terrain96x48.bmp`.
+
+Andrew Miller [AM]
+
+ - Part of `Resources\Graphics\Cities66x32.bmp`.
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+arewhyaen91
+
+ - `Resources\Sounds\victory.mp3`
+
+Bernd Brosing [BB]
+
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\Nation2.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+BlackCow
+
+ - `Resources\Sounds\8MM_AT_C-BlackCow-8186_hifi.mp3`.
+
+Captain Nemo [nemo]
+
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+Carl Fritz [CF]
+
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+David/Batarg [B]
+
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+Erwan [e]
+
+ - Part of `Resources\Graphics\Cities66x32.bmp`.
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\Nation2.bmp`.
+ - Part of `Resources\Graphics\StdCities.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+Jes˙s Balsinde [JBR]
+
+ - Part of `Resources\Graphics\Nation1.bmp`.
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+ - Part of `Resources\Graphics\Terrain66x32.bmp`.
+ - Part of `Resources\Graphics\Terrain96x48.bmp`.
+
+John Petroski [JP]
+
+ - Part of `Resources\Graphics\Nation2.bmp`.
+
+Levente [RL]
+
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+Michael Jeszenka [MJ]
+
+ - Part of `Resources\Graphics\Nation2.bmp`.
+
+Michael H. Nielsen [MHN]
+
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+
+oblius
+
+ - `Resources\Sounds\Boulder_-oblius-7747_hifi.mp3`.
+
+Sith Master
+
+ - `Resources\Sounds\sizzle-Sith_Mas-7716_hifi.mp3`.
+
+Stefan de Jonge [SdJ]
+
+ - Part of `Resources\Graphics\Terrain66x32.bmp`.
+ - Part of `Resources\Graphics\Terrain96x48.bmp`.
+
+Tim Smith [TS]
+
+ - Part of `Resources\Graphics\StdUnits.bmp`.
+ - Part of `Resources\Graphics\Terrain66x32.bmp`.
+ - Part of `Resources\Graphics\Terrain96x48.bmp`.
+
+William H. Keith
+
+ - "Future scenery" in `Resources\Graphics\Icons.bmp`.
+
+Don McCaughey (http://donm.cc)
+
+ - This repository and the `Makefile` build system.
+

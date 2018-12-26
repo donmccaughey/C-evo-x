@@ -37,10 +37,13 @@ The C-evo-x code is assembled from a number of different sources.
  - `Protocol\`: Delphi code for the AI protocol shared with the Delphi AI Development Kit; part of the [C-evo 1.2.0 source][33].
  - `Resources\`: external graphic, sound and text configuration files used by the game; installed with [C-evo 1.2.0][32].
 
+See the [`LICENSE`][35] file for the list of contributors.
+
 [31]: http://c-evo.org/files/download.php?cevoaikitc.cevoaikitc.zip
 [32]: http://c-evo.org/files/download.php
 [33]: http://c-evo.org/files/download.php?cevosrc.cevosrc.zip
 [34]: http://c-evo.org/files/download.php?cevodelphiaikit.cevodelphiaikit.zip
+[35]: https://github.com/donmccaughey/c_evo_x/blob/master/LICENSE
 
 
 ## Building
