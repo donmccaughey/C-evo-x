@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+	<Product
+		Name='C-evo-x 1.2.1'
+		Manufacturer='Don McCaughey'
+		Id='E0F2FD43-1B26-46FA-B0DA-93FF2CFFB7C1' 
+		UpgradeCode='D1E02258-0353-478A-9B73-4EF7F006B675'
+		Language='1033'
+		Codepage='1252'
+		Version='1.2.1'>
+		<Package
+			Id='*'
+			Keywords='Installer'
+			Description='C-evo-x 1.2.1 Installer'
+			Manufacturer='Don McCaughey'
+			InstallerVersion='100'
+			Languages='1033'
+			Compressed='yes'
+			SummaryCodepage='1252'
+			/>
+		<Media
+			Id='1'
+			Cabinet='Installer.cab'
+			EmbedCab='yes'
+			DiskPrompt='Disk 1'
+			/>
+		<Property
+			Id='DiskPrompt'
+			Value='C-evo-x 1.2.1 Installer'
+			/>
+		<Directory Id='TARGETDIR' Name='SourceDir'>
+			<Directory Id='ProgramFilesFolder' Name='PFiles'>
+				<Directory Id='INSTALLDIR' Name='C-evo-x'>
+					<Component
+						Id='GameLoader'
+						Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
+						<File
+							Id='CevoWin32.exe'
+							Name='CevoWin32.exe'
+							DiskId='1'
+							Source='CevoWin32.exe'
+							KeyPath='yes' />
+					</Component>
+					<Component
+						Id='GameLibrary'
+						Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
+						<File
+							Id='cevo.dll'
+							Name='cevo.dll'
+							DiskId='1'
+							Source='cevo.dll'
+							KeyPath='yes' />
+					</Component>
+				</Directory>
+			</Directory>
+		</Directory>
+		<Feature Id='Complete' Level='1'>
+			<ComponentRef Id='GameLoader' />
+			<ComponentRef Id='GameLibrary' />
+		</Feature>
+	</Product>
+</Wix>
+

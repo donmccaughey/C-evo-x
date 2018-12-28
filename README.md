@@ -19,10 +19,12 @@ The following software is required to build C-evo-x.
  - A Bash shell such as [Git BASH][21].
  - Borland [Delphi 4.0][22] or later.
  - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][23] or later.
+ - [WiX Toolset 3.11.1] or later for building the installer.
 
 [21]: https://gitforwindows.org
 [22]: https://winworldpc.com/product/delphi/4x
 [23]: https://visualstudio.microsoft.com/vs/older-downloads/
+[24]: http://wixtoolset.org
 
 
 ## Components
@@ -33,6 +35,7 @@ The C-evo-x code is assembled from a number of different sources.
  - `AI_Template\`: contains the C# AI template and source for the `CevoDotNet.exe` game loader; installed with [C-evo 1.2.0][32].
  - `Configurator\`: source for the C# `Configurator.exe` program; part of the [C-evo 1.2.0 source][33].
  - `Delphi_AI_Kit\`: source for the [Delphi AI Development Kit][34].
+ - `Installer\`: source for the MSI installer.
  - `Project\`: Delphi code for the game; part of the [C-evo 1.2.0 source][33].
  - `Protocol\`: Delphi code for the AI protocol shared with the Delphi AI Development Kit; part of the [C-evo 1.2.0 source][33].
  - `Resources\`: external graphic, sound and text configuration files used by the game; installed with [C-evo 1.2.0][32].
@@ -58,8 +61,8 @@ The `Makefile` contains a number of targets.  Type
 	make help
 
 to see the full list.  Two notable targets: `all` and `clean`.  The `all`
-target is the default and will build the game and all the AIs.  The `clean`
-target will remove all build output.
+target is the default and will build the game, all the AIs and the installer.
+The `clean` target will remove all build output.
 
 Follow these steps to make sure your system is set up and ready to build:
 
@@ -71,6 +74,10 @@ Follow these steps to make sure your system is set up and ready to build:
 1. Check that `MSBuild.exe` is available on the `PATH` of your Bash shell.
    This file is part of .NET and is installed in a directory like
    `C:\Windows\Microsoft.NET\Framework\v4.0.30319\`.
+1. Check that the WiX commands `candle.exe` and `light.exe` are available on
+   the `PATH` of your Bash shell.  These files are part of the WiX Tookset and
+   are installed in a directory like `C:\Program Files (x86)\WiX Toolset
+   v3.11\bin`
 
 To build, open a Bash shell, navigate to the project root and run the
 `Makefile`:

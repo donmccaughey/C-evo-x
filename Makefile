@@ -12,7 +12,9 @@ all : \
 	hal_ai \
 	\
 	tmp/Integrated.exe \
-	tmp/Configurator.exe
+	tmp/Configurator.exe \
+	\
+	installer
 
 
 help :
@@ -30,6 +32,8 @@ help :
 	@printf "   csharp_ai      Build the C# sample AI and .NET loader\n"
 	@printf "   cpp_ai         Build the C++ sample AI\n"
 	@printf "   hal_ai         Build the HAL AI\n"
+	@printf "\n"
+	@printf "   installer      Build the installer\n"
 	@printf "\n"
 	@printf "   resources      Copy external resource files into place\n"
 	@printf "   std_ai         Copy the compiled standard AI into place\n"
@@ -891,4 +895,19 @@ tmp/Configurator.exe : \
 		Configurator\Properties\Settings.Designer.cs \
 		Configurator\Properties\Settings.settings
 	MSBuild.exe Configurator/Configurator.sln
+
+
+# ----- Installer
+
+installer: tmp/C-evo-x.msi
+
+tmp/C-evo-x.msi : tmp/Installer.wixobj
+	light.exe -out tmp/C-evo-x.msi tmp/Installer.wixobj
+
+tmp/Installer.wixobj : \
+		Installer/Wix.xml \
+		\
+		tmp/CevoWin32.exe \
+		tmp/cevo.dll
+	candle.exe -out tmp/Installer.wixobj Installer/Wix.xml
 
