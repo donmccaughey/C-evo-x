@@ -58,6 +58,8 @@
             <ComponentRef Id='GameLoader' />
             <ComponentRef Id='GameLibrary' />
         </Feature>
+        <UIRef Id='WixUI_Minimal' />
+        <UIRef Id='WixUI_ErrorProgressText' />
     </Product>
 </Wix>
 

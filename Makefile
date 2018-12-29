@@ -902,7 +902,10 @@ tmp/Configurator.exe : \
 installer: tmp/C-evo-x.msi
 
 tmp/C-evo-x.msi : tmp/Installer.wixobj
-	light.exe -out tmp/C-evo-x.msi tmp/Installer.wixobj
+	light.exe \
+		-ext WixUIExtension \
+		-out tmp/C-evo-x.msi \
+		tmp/Installer.wixobj
 
 tmp/Installer.wixobj : \
 		Installer/Wix.xml \
