@@ -901,17 +901,23 @@ tmp/Configurator.exe : \
 
 installer: tmp/C-evo-x.msi
 
-tmp/C-evo-x.msi : tmp/Installer.wixobj
+tmp/C-evo-x.msi : \
+		tmp/Installer.wixobj \
+		tmp/UI.wixobj
 	light.exe \
 		-ext WixUIExtension \
 		-cultures:en-us \
 		-out tmp/C-evo-x.msi \
-		tmp/Installer.wixobj
+		tmp/Installer.wixobj \
+		tmp/UI.wixobj
 
 tmp/Installer.wixobj : \
-		Installer/Wix.xml \
+		Installer/Installer.wxs \
 		\
 		tmp/CevoWin32.exe \
 		tmp/cevo.dll
-	candle.exe -out tmp/Installer.wixobj Installer/Wix.xml
+	candle.exe -out tmp/Installer.wixobj Installer/Installer.wxs
+
+tmp/UI.wixobj : Installer/UI.wxs
+	candle.exe -out tmp/UI.wixobj Installer/UI.wxs
 
