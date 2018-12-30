@@ -902,9 +902,9 @@ tmp/Configurator.exe : \
 installer: tmp/C-evo-x.msi
 
 tmp/C-evo-x.msi : \
-		tmp/Installer/Installer.wixobj \
-		tmp/Installer/Root.wixobj \
-		tmp/Installer/Saved.wixobj \
+		tmp/Installer/Main.wixobj \
+		tmp/Installer/InstallDir.wixobj \
+		tmp/Installer/AppData_Saved.wixobj \
 		tmp/Installer/UI.wixobj
 	light.exe \
 		-ext WixUIExtension \
@@ -912,26 +912,26 @@ tmp/C-evo-x.msi : \
 		-out tmp/C-evo-x.msi \
 		tmp/Installer/*.wixobj 
 
-tmp/Installer/Installer.wixobj : Installer/Installer.wxs
+tmp/Installer/Main.wixobj : Installer/Main.wxs
 	mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Installer.wixobj Installer/Installer.wxs
+	candle.exe -out tmp/Installer/Main.wixobj Installer/Main.wxs
 
-tmp/Installer/Root.wixobj : \
-		Installer/Root.wxs \
+tmp/Installer/InstallDir.wixobj : \
+		Installer/InstallDir.wxs \
 		\
 		tmp/CevoWin32.exe \
 		tmp/cevo.dll \
 		\
 		tmp/fonts.txt
 	mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Root.wixobj Installer/Root.wxs
+	candle.exe -out tmp/Installer/InstallDir.wixobj Installer/InstallDir.wxs
 
-tmp/Installer/Saved.wixobj : \
-		Installer/Saved.wxs \
+tmp/Installer/AppData_Saved.wixobj : \
+		Installer/AppData_Saved.wxs \
 		\
 		tmp/AppData/Saved/(Example).cevo
 	mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Saved.wixobj Installer/Saved.wxs
+	candle.exe -out tmp/Installer/AppData_Saved.wixobj Installer/AppData_Saved.wxs
 
 tmp/Installer/UI.wixobj : Installer/UI.wxs
 	mkdir -p tmp/Installer
