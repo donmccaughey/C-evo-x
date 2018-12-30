@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+    <Fragment>
+        <DirectoryRef Id='INSTALLDIR' FileSource='tmp'>
+            <Component Id='Comp_CevoWin32.exe'
+                     Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
+                <File Name='CevoWin32.exe' KeyPath='yes' Checksum='yes' />
+            </Component>
+            <Component Id='Comp_cevo.dll'
+                     Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
+                <File Name='cevo.dll' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_fonts.txt'
+                     Guid='EBE83E1A-A0A4-4AF2-8817-2CD458A728AB'>
+                <File Name='fonts.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_language.txt'
+                     Guid='6125FC20-AF99-4023-9502-BCBF4149FDD8'>
+                <File Name='language.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_language2.txt'
+                     Guid='4CF44228-4B7A-44ED-9AB4-CC859C6B1A04'>
+                <File Name='language2.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_StdAI.ai.txt'
+                     Guid='DDA8FBD0-1F1F-4DE9-98F6-9F413E41CA7A'>
+                <File Name='StdAI.ai.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_StdAI.bmp'
+                     Guid='ACC3D5EE-0B18-44C0-B1F3-BB1CFD5BEEA7'>
+                <File Name='StdAI.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_StdAI.dll'
+                     Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
+                <File Name='StdAI.dll' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+</Wix>
+

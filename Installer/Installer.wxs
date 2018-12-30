@@ -8,8 +8,7 @@
         Language='1033'
         Codepage='1252'
         Version='1.2.1'>
-        <Package
-            Id='*'
+        <Package Id='*'
             Keywords='Installer'
             Description='C-evo-x 1.2.1 Installer'
             Manufacturer='Don McCaughey'
@@ -18,45 +17,38 @@
             Compressed='yes'
             SummaryCodepage='1252'
             />
-        <Media
-            Id='1'
+        <Media Id='1'
             Cabinet='Installer.cab'
             EmbedCab='yes'
             DiskPrompt='Disk 1'
             />
-        <Property
-            Id='DiskPrompt'
+        <Property Id='DiskPrompt'
             Value='C-evo-x 1.2.1 Installer'
             />
-        <Directory Id='TARGETDIR' Name='SourceDir'>
-            <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='TARGETDIR' Name='SourceDir' DiskId='1'>
+            <Directory Id='ProgramFilesFolder' Name='Program Files'>
                 <Directory Id='INSTALLDIR' Name='C-evo-x'>
-                    <Component
-                        Id='GameLoader'
-                        Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
-                        <File
-                            Id='CevoWin32.exe'
-                            Name='CevoWin32.exe'
-                            DiskId='1'
-                            Source='CevoWin32.exe'
-                            KeyPath='yes' />
-                    </Component>
-                    <Component
-                        Id='GameLibrary'
-                        Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
-                        <File
-                            Id='cevo.dll'
-                            Name='cevo.dll'
-                            DiskId='1'
-                            Source='cevo.dll'
-                            KeyPath='yes' />
-                    </Component>
+                    <Directory Id='Dir_AppData' Name='AppData'>
+                        <Directory Id='Dir_AppData_Saved' Name='Saved' />
+                    </Directory>
+                    <Directory Id='Dir_Help' Name='Help' />
+                    <Directory Id='Dir_Graphics' Name='Graphics' />
+                    <Directory Id='Dir_Sounds' Name='Sounds' />
+                    <Directory Id='Dir_Tribes' Name='Tribes' />
                 </Directory>
             </Directory>
         </Directory>
-        <Feature Id='Complete' Level='1'>
-            <ComponentRef Id='GameLoader' />
-            <ComponentRef Id='GameLibrary' />
+        <Feature Id='Feature_Complete' Level='1'>
+            <ComponentRef Id='Comp_CevoWin32.exe' />
+            <ComponentRef Id='Comp_cevo.dll' />
+            <ComponentRef Id='Comp_fonts.txt' />
+            <ComponentRef Id='Comp_language.txt' />
+            <ComponentRef Id='Comp_language2.txt' />
+            <ComponentRef Id='Comp_StdAI.ai.txt' />
+            <ComponentRef Id='Comp_StdAI.bmp' />
+            <ComponentRef Id='Comp_StdAI.dll' />
+            
+            <ComponentRef Id='Comp_AppData_Saved__Example_.cevo' />
         </Feature>
         <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
         <UIRef Id='UI' />
