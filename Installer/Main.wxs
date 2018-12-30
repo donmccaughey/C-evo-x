@@ -49,6 +49,42 @@
             <ComponentRef Id='Comp_StdAI.dll' />
             
             <ComponentRef Id='Comp_AppData_Saved__Example_.cevo' />
+
+            <ComponentRef Id='Comp_Graphics_Background.bmp' />
+            <ComponentRef Id='Comp_Graphics_BigCityMap.bmp' />
+            <ComponentRef Id='Comp_Graphics_Cities66x32.bmp' />
+            <ComponentRef Id='Comp_Graphics_Cities66x32.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_Cities96x48.bmp' />
+            <ComponentRef Id='Comp_Graphics_Cities96x48.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_City.bmp' />
+            <ComponentRef Id='Comp_Graphics_Colors.bmp' />
+            <ComponentRef Id='Comp_Graphics_Icons.bmp' />
+            <ComponentRef Id='Comp_Graphics_Icons.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_MiliRes.bmp' />
+            <ComponentRef Id='Comp_Graphics_Nation.bmp' />
+            <ComponentRef Id='Comp_Graphics_Nation1.bmp' />
+            <ComponentRef Id='Comp_Graphics_Nation1.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_Nation2.bmp' />
+            <ComponentRef Id='Comp_Graphics_Nation2.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_Paper.jpg' />
+            <ComponentRef Id='Comp_Graphics_SmallCityMap.bmp' />
+            <ComponentRef Id='Comp_Graphics_StdCities.bmp' />
+            <ComponentRef Id='Comp_Graphics_StdCities.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_StdUnits.bmp' />
+            <ComponentRef Id='Comp_Graphics_StdUnits.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_System.bmp' />
+            <ComponentRef Id='Comp_Graphics_System2.bmp' />
+            <ComponentRef Id='Comp_Graphics_Templates.bmp' />
+            <ComponentRef Id='Comp_Graphics_Terrain66x32.bmp' />
+            <ComponentRef Id='Comp_Graphics_Terrain66x32.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_Terrain96x48.bmp' />
+            <ComponentRef Id='Comp_Graphics_Terrain96x48.credits.txt' />
+            <ComponentRef Id='Comp_Graphics_Texture0.jpg' />
+            <ComponentRef Id='Comp_Graphics_Texture1.jpg' />
+            <ComponentRef Id='Comp_Graphics_Texture2.jpg' />
+            <ComponentRef Id='Comp_Graphics_Texture3.jpg' />
+            <ComponentRef Id='Comp_Graphics_Texture4.jpg' />
+            <ComponentRef Id='Comp_Graphics_Unit.bmp' />
         </Feature>
         <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
         <UIRef Id='UI' />

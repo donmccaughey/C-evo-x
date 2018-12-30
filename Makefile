@@ -36,6 +36,7 @@ help :
 	@printf "   installer      Build the installer\n"
 	@printf "\n"
 	@printf "   resources      Copy external resource files into place\n"
+	@printf "   graphics       Copy the graphics files into place\n"
 	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
 
@@ -83,41 +84,7 @@ resources : \
 	\
 	tmp/AppData/Saved/(Example).cevo \
 	\
-	tmp/Graphics/Background.bmp \
-	tmp/Graphics/BigCityMap.bmp \
-	tmp/Graphics/Cities66x32.bmp \
-	tmp/Graphics/Cities66x32.credits.txt \
-	tmp/Graphics/Cities96x48.bmp \
-	tmp/Graphics/Cities96x48.credits.txt \
-	tmp/Graphics/City.bmp \
-	tmp/Graphics/Colors.bmp \
-	tmp/Graphics/Icons.bmp \
-	tmp/Graphics/Icons.credits.txt \
-	tmp/Graphics/MiliRes.bmp \
-	tmp/Graphics/Nation.bmp \
-	tmp/Graphics/Nation1.bmp \
-	tmp/Graphics/Nation1.credits.txt \
-	tmp/Graphics/Nation2.bmp \
-	tmp/Graphics/Nation2.credits.txt \
-	tmp/Graphics/Paper.jpg \
-	tmp/Graphics/SmallCityMap.bmp \
-	tmp/Graphics/StdCities.bmp \
-	tmp/Graphics/StdCities.credits.txt \
-	tmp/Graphics/StdUnits.bmp \
-	tmp/Graphics/StdUnits.credits.txt \
-	tmp/Graphics/System.bmp \
-	tmp/Graphics/System2.bmp \
-	tmp/Graphics/Templates.bmp \
-	tmp/Graphics/Terrain66x32.bmp \
-	tmp/Graphics/Terrain66x32.credits.txt \
-	tmp/Graphics/Terrain96x48.bmp \
-	tmp/Graphics/Terrain96x48.credits.txt \
-	tmp/Graphics/Texture0.jpg \
-	tmp/Graphics/Texture1.jpg \
-	tmp/Graphics/Texture2.jpg \
-	tmp/Graphics/Texture3.jpg \
-	tmp/Graphics/Texture4.jpg \
-	tmp/Graphics/Unit.bmp \
+	graphics \
 	\
 	tmp/Help/AdvTree.bmp \
 	tmp/Help/AITShot.bmp \
@@ -179,6 +146,42 @@ resources : \
 	tmp/Tribes/StdUnits.txt \
 	tmp/Tribes/Vikings.tribe.txt
 
+graphics : \
+	tmp/Graphics/Background.bmp \
+	tmp/Graphics/BigCityMap.bmp \
+	tmp/Graphics/Cities66x32.bmp \
+	tmp/Graphics/Cities66x32.credits.txt \
+	tmp/Graphics/Cities96x48.bmp \
+	tmp/Graphics/Cities96x48.credits.txt \
+	tmp/Graphics/City.bmp \
+	tmp/Graphics/Colors.bmp \
+	tmp/Graphics/Icons.bmp \
+	tmp/Graphics/Icons.credits.txt \
+	tmp/Graphics/MiliRes.bmp \
+	tmp/Graphics/Nation.bmp \
+	tmp/Graphics/Nation1.bmp \
+	tmp/Graphics/Nation1.credits.txt \
+	tmp/Graphics/Nation2.bmp \
+	tmp/Graphics/Nation2.credits.txt \
+	tmp/Graphics/Paper.jpg \
+	tmp/Graphics/SmallCityMap.bmp \
+	tmp/Graphics/StdCities.bmp \
+	tmp/Graphics/StdCities.credits.txt \
+	tmp/Graphics/StdUnits.bmp \
+	tmp/Graphics/StdUnits.credits.txt \
+	tmp/Graphics/System.bmp \
+	tmp/Graphics/System2.bmp \
+	tmp/Graphics/Templates.bmp \
+	tmp/Graphics/Terrain66x32.bmp \
+	tmp/Graphics/Terrain66x32.credits.txt \
+	tmp/Graphics/Terrain96x48.bmp \
+	tmp/Graphics/Terrain96x48.credits.txt \
+	tmp/Graphics/Texture0.jpg \
+	tmp/Graphics/Texture1.jpg \
+	tmp/Graphics/Texture2.jpg \
+	tmp/Graphics/Texture3.jpg \
+	tmp/Graphics/Texture4.jpg \
+	tmp/Graphics/Unit.bmp
 
 std_ai : \
 	tmp/StdAI.ai.txt \
@@ -905,6 +908,7 @@ tmp/C-evo-x.msi : \
 		tmp/Installer/Main.wixobj \
 		tmp/Installer/InstallDir.wixobj \
 		tmp/Installer/AppData_Saved.wixobj \
+		tmp/Installer/Graphics.wixobj \
 		tmp/Installer/UI.wixobj
 	light.exe \
 		-ext WixUIExtension \
@@ -922,16 +926,25 @@ tmp/Installer/InstallDir.wixobj : \
 		tmp/CevoWin32.exe \
 		tmp/cevo.dll \
 		\
-		tmp/fonts.txt
+		tmp/fonts.txt \
+		tmp/language.txt \
+		tmp/language2.txt \
+		\
+		tmp/StdAI.ai.txt \
+		tmp/StdAI.bmp \
+		tmp/StdAI.dll
 	mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/InstallDir.wixobj Installer/InstallDir.wxs
 
 tmp/Installer/AppData_Saved.wixobj : \
 		Installer/AppData_Saved.wxs \
-		\
 		tmp/AppData/Saved/(Example).cevo
 	mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/AppData_Saved.wixobj Installer/AppData_Saved.wxs
+
+tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs graphics
+	mkdir -p tmp/Installer
+	candle.exe -out tmp/Installer/Graphics.wixobj Installer/Graphics.wxs
 
 tmp/Installer/UI.wixobj : Installer/UI.wxs
 	mkdir -p tmp/Installer
