@@ -904,6 +904,7 @@ installer: tmp/C-evo-x.msi
 tmp/C-evo-x.msi : tmp/Installer.wixobj
 	light.exe \
 		-ext WixUIExtension \
+		-cultures:en-us \
 		-out tmp/C-evo-x.msi \
 		tmp/Installer.wixobj
 
