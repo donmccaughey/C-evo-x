@@ -37,6 +37,7 @@ help :
 	@printf "\n"
 	@printf "   resources      Copy external resource files into place\n"
 	@printf "   graphics       Copy the graphics files into place\n"
+	@printf "   help_files     Copy the help files into place\n"
 	@printf "   sounds         Copy the sound files into place\n"
 	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
@@ -87,13 +88,7 @@ resources : \
 	\
 	graphics \
 	\
-	tmp/Help/AdvTree.bmp \
-	tmp/Help/AITShot.bmp \
-	tmp/Help/CityShot.bmp \
-	tmp/Help/Corruption.bmp \
-	tmp/Help/DraftShot.bmp \
-	tmp/Help/help.txt \
-	tmp/Help/MoveShot.bmp \
+	help_files \
 	\
 	sounds \
 	\
@@ -151,6 +146,15 @@ graphics : \
 	tmp/Graphics/Texture3.jpg \
 	tmp/Graphics/Texture4.jpg \
 	tmp/Graphics/Unit.bmp
+
+help_files : \
+	tmp/Help/AdvTree.bmp \
+	tmp/Help/AITShot.bmp \
+	tmp/Help/CityShot.bmp \
+	tmp/Help/Corruption.bmp \
+	tmp/Help/DraftShot.bmp \
+	tmp/Help/help.txt \
+	tmp/Help/MoveShot.bmp
 
 sounds : \
 	tmp/Sounds/8MM_AT_C-BlackCow-8186_hifi.mp3 \
@@ -913,6 +917,7 @@ tmp/C-evo-x.msi : \
 		tmp/Installer/InstallDir.wixobj \
 		tmp/Installer/AppData_Saved.wixobj \
 		tmp/Installer/Graphics.wixobj \
+		tmp/Installer/Help.wixobj \
 		tmp/Installer/Sounds.wixobj \
 		tmp/Installer/UI.wixobj
 	light.exe \
@@ -950,6 +955,10 @@ tmp/Installer/AppData_Saved.wixobj : \
 tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs graphics
 	mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/Graphics.wixobj Installer/Graphics.wxs
+
+tmp/Installer/Help.wixobj : Installer/Help.wxs help_files
+	mkdir -p tmp/Installer
+	candle.exe -out tmp/Installer/Help.wixobj Installer/Help.wxs
 
 tmp/Installer/Sounds.wixobj : Installer/Sounds.wxs sounds
 	mkdir -p tmp/Installer

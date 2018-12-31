@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+    <Fragment>
+        <DirectoryRef Id='Dir_Help' FileSource='tmp\Help'>
+            <Component Id='Comp_Help_AdvTree.bmp'
+                     Guid='BAFF442C-5E46-402B-82DF-AEF90B5361C6'>
+                <File Name='AdvTree.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_AITShot.bmp'
+                     Guid='EF28BF48-E4E3-4952-A51E-20B4F08B5BAD'>
+                <File Name='AITShot.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_CityShot.bmp'
+                     Guid='483C1C41-3AD5-4026-8A1B-39C65742C07B'>
+                <File Name='CityShot.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_Corruption.bmp'
+                     Guid='5BAEFD9B-F152-446E-8598-4CE8CEDBD8C0'>
+                <File Name='Corruption.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_DraftShot.bmp'
+                     Guid='A750A826-E616-4235-BE87-ABC895F95083'>
+                <File Name='DraftShot.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_help.txt'
+                     Guid='F3DC76FA-A0D4-469E-9602-BC8A61C2B30A'>
+                <File Name='help.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_MoveShot.bmp'
+                     Guid='F41DE116-6221-4E5E-9B1F-1E3FAA87A709'>
+                <File Name='MoveShot.bmp' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+</Wix>
+

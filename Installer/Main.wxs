@@ -88,6 +88,15 @@
             <ComponentRef Id='Comp_Graphics_Texture4.jpg' />
             <ComponentRef Id='Comp_Graphics_Unit.bmp' />
 
+            <!-- Help -->
+            <ComponentRef Id='Comp_Help_AdvTree.bmp' />
+            <ComponentRef Id='Comp_Help_AITShot.bmp' />
+            <ComponentRef Id='Comp_Help_CityShot.bmp' />
+            <ComponentRef Id='Comp_Help_Corruption.bmp' />
+            <ComponentRef Id='Comp_Help_DraftShot.bmp' />
+            <ComponentRef Id='Comp_Help_help.txt' />
+            <ComponentRef Id='Comp_Help_MoveShot.bmp' />
+
             <!-- Sounds -->
             <ComponentRef Id='Comp_Sounds_8MM_AT_C_BlackCow_8186_hifi.mp3' />
             <ComponentRef Id='Comp_Sounds_Boulder__oblius_7747_hifi.mp3' />
