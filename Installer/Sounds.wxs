@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+    <Fragment>
+        <DirectoryRef Id='Dir_Sounds' FileSource='tmp\Sounds'>
+            <Component Id='Comp_Sounds_8MM_AT_C_BlackCow_8186_hifi.mp3'
+                     Guid='D659AA51-E080-492C-A5D4-EC73EC3252FC'>
+                <File Name='8MM_AT_C-BlackCow-8186_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Boulder__oblius_7747_hifi.mp3'
+                     Guid='238E0636-7E30-4DA7-91EE-84C3C50109C9'>
+                <File Name='Boulder_-oblius-7747_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Cash_reg_public_d_296_hifi.mp3'
+                     Guid='BA5BDD28-7CCA-47AA-AE35-7652D7EE7186'>
+                <File Name='Cash_reg-public_d-296_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Hammer_o_Public_D_243_hifi.mp3'
+                     Guid='F0C0605C-AEA7-4D8F-8DB3-D9AA6A2FBDF7'>
+                <File Name='Hammer_o-Public_D-243_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_angry.mp3'
+                     Guid='60C675A2-0E73-4591-A4C5-FF194DFBEE3A'>
+                <File Name='sg_angry.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_autogun.mp3'
+                     Guid='A474224F-404F-4C92-ACB7-E75061941349'>
+                <File Name='sg_autogun.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_battery.mp3'
+                     Guid='0A096D4D-07BF-4111-9C9E-711E4E8EE0A8'>
+                <File Name='sg_battery.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_cavalry.mp3'
+                     Guid='158AB144-5116-4AA7-AD59-4D6D3D0B5435'>
+                <File Name='sg_cavalry.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_cheers.mp3'
+                     Guid='9C9BF420-F9CB-4F81-B93D-17A0120E23A5'>
+                <File Name='sg_cheers.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_drum.mp3'
+                     Guid='2AEEE8F8-E0E9-4C92-8381-98F0955D7F12'>
+                <File Name='sg_drum.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_drum2.mp3'
+                     Guid='D297BCF4-2DF0-4580-9EBF-2D156EF4A2D5'>
+                <File Name='sg_drum2.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_fanfare.mp3'
+                     Guid='00046021-2D15-4008-88EE-F1F6F6FA725B'>
+                <File Name='sg_fanfare.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_gain.mp3'
+                     Guid='3D9606AE-03E4-48F2-91F1-8332183414C3'>
+                <File Name='sg_gain.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_harp.mp3'
+                     Guid='1C1AE444-D6B2-4DD7-BB5F-21280A53C18F'>
+                <File Name='sg_harp.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_horsemen.mp3'
+                     Guid='24924F1C-8098-4123-8132-DDEBBBF042FB'>
+                <File Name='sg_horsemen.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_invent.mp3'
+                     Guid='8CCFA002-576C-4082-A99A-61A8F2F7E341'>
+                <File Name='sg_invent.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_jet.mp3'
+                     Guid='DF24ED56-9552-4AF6-B555-4E8C338411EB'>
+                <File Name='sg_jet.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_marching.mp3'
+                     Guid='D6225927-BE44-4E6A-904A-24A46F13B1F3'>
+                <File Name='sg_marching.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_mechanical.mp3'
+                     Guid='2CF97C8B-D7CA-49A2-AF48-60B13840AA5B'>
+                <File Name='sg_mechanical.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_militia.mp3'
+                     Guid='018431C0-CF5A-4DEC-A07B-B0BC9F8B1AAC'>
+                <File Name='sg_militia.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_moan.mp3'
+                     Guid='4515FB77-6964-4DE4-AB34-6CE98C65D8F9'>
+                <File Name='sg_moan.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_musketeers.mp3'
+                     Guid='8BE55470-8EC9-4480-AD5B-A79C345D85B4'>
+                <File Name='sg_musketeers.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_nono.mp3'
+                     Guid='B8F343E0-11DC-4CB4-AF91-8A015E8953CD'>
+                <File Name='sg_nono.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_plane.mp3'
+                     Guid='C87C098E-E7EF-4949-9E5C-0E6761DDF289'>
+                <File Name='sg_plane.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_sad.mp3'
+                     Guid='6AC589B6-F2B7-4B2C-8FFD-FF58FFCD04A3'>
+                <File Name='sg_sad.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_space.mp3'
+                     Guid='B30E600D-9EDA-471E-824C-50B679E4089F'>
+                <File Name='sg_space.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_steal.mp3'
+                     Guid='08E246E7-8C78-4743-A907-CCCF98306BBB'>
+                <File Name='sg_steal.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_warning.mp3'
+                     Guid='E69ED3E8-224E-41BF-A74D-7128A7E131EC'>
+                <File Name='sg_warning.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sizzle_Sith_Mas_7716_hifi.mp3'
+                     Guid='9A490B7C-8090-4926-98BD-F7212470B895'>
+                <File Name='sizzle-Sith_Mas-7716_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Small_Sw_Public_D_262_hifi.mp3'
+                     Guid='164A99B8-FB75-4B22-B78E-03D0924B74F9'>
+                <File Name='Small_Sw-Public_D-262_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sound.credits.txt'
+                     Guid='49A844CF-4151-4D0B-BB8D-EBB0CAAFF5BB'>
+                <File Name='sound.credits.txt' />
+            </Component>
+            <Component Id='Comp_Sounds_sound.txt'
+                     Guid='F796054A-EE89-4097-80EB-3675A33DADFB'>
+                <File Name='sound.txt' />
+            </Component>
+            <Component Id='Comp_Sounds_victory.mp3'
+                     Guid='CB0079C4-E892-4465-9310-014587848DBE'>
+                <File Name='victory.mp3' />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+</Wix>
+

@@ -37,6 +37,7 @@ help :
 	@printf "\n"
 	@printf "   resources      Copy external resource files into place\n"
 	@printf "   graphics       Copy the graphics files into place\n"
+	@printf "   sounds         Copy the sound files into place\n"
 	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
 
@@ -94,39 +95,7 @@ resources : \
 	tmp/Help/help.txt \
 	tmp/Help/MoveShot.bmp \
 	\
-	tmp/Sounds/8MM_AT_C-BlackCow-8186_hifi.mp3 \
-	tmp/Sounds/Boulder_-oblius-7747_hifi.mp3 \
-	tmp/Sounds/Cash_reg-public_d-296_hifi.mp3 \
-	tmp/Sounds/Hammer_o-Public_D-243_hifi.mp3 \
-	tmp/Sounds/sg_angry.mp3 \
-	tmp/Sounds/sg_autogun.mp3 \
-	tmp/Sounds/sg_battery.mp3 \
-	tmp/Sounds/sg_cavalry.mp3 \
-	tmp/Sounds/sg_cheers.mp3 \
-	tmp/Sounds/sg_drum.mp3 \
-	tmp/Sounds/sg_drum2.mp3 \
-	tmp/Sounds/sg_fanfare.mp3 \
-	tmp/Sounds/sg_gain.mp3 \
-	tmp/Sounds/sg_harp.mp3 \
-	tmp/Sounds/sg_horsemen.mp3 \
-	tmp/Sounds/sg_invent.mp3 \
-	tmp/Sounds/sg_jet.mp3 \
-	tmp/Sounds/sg_marching.mp3 \
-	tmp/Sounds/sg_mechanical.mp3 \
-	tmp/Sounds/sg_militia.mp3 \
-	tmp/Sounds/sg_moan.mp3 \
-	tmp/Sounds/sg_musketeers.mp3 \
-	tmp/Sounds/sg_nono.mp3 \
-	tmp/Sounds/sg_plane.mp3 \
-	tmp/Sounds/sg_sad.mp3 \
-	tmp/Sounds/sg_space.mp3 \
-	tmp/Sounds/sg_steal.mp3 \
-	tmp/Sounds/sg_warning.mp3 \
-	tmp/Sounds/sizzle-Sith_Mas-7716_hifi.mp3 \
-	tmp/Sounds/Small_Sw-Public_D-262_hifi.mp3 \
-	tmp/Sounds/sound.credits.txt \
-	tmp/Sounds/sound.txt \
-	tmp/Sounds/victory.mp3 \
+	sounds \
 	\
 	tmp/Tribes/Americans.tribe.txt \
 	tmp/Tribes/Babyl.tribe.txt \
@@ -182,6 +151,41 @@ graphics : \
 	tmp/Graphics/Texture3.jpg \
 	tmp/Graphics/Texture4.jpg \
 	tmp/Graphics/Unit.bmp
+
+sounds : \
+	tmp/Sounds/8MM_AT_C-BlackCow-8186_hifi.mp3 \
+	tmp/Sounds/Boulder_-oblius-7747_hifi.mp3 \
+	tmp/Sounds/Cash_reg-public_d-296_hifi.mp3 \
+	tmp/Sounds/Hammer_o-Public_D-243_hifi.mp3 \
+	tmp/Sounds/sg_angry.mp3 \
+	tmp/Sounds/sg_autogun.mp3 \
+	tmp/Sounds/sg_battery.mp3 \
+	tmp/Sounds/sg_cavalry.mp3 \
+	tmp/Sounds/sg_cheers.mp3 \
+	tmp/Sounds/sg_drum.mp3 \
+	tmp/Sounds/sg_drum2.mp3 \
+	tmp/Sounds/sg_fanfare.mp3 \
+	tmp/Sounds/sg_gain.mp3 \
+	tmp/Sounds/sg_harp.mp3 \
+	tmp/Sounds/sg_horsemen.mp3 \
+	tmp/Sounds/sg_invent.mp3 \
+	tmp/Sounds/sg_jet.mp3 \
+	tmp/Sounds/sg_marching.mp3 \
+	tmp/Sounds/sg_mechanical.mp3 \
+	tmp/Sounds/sg_militia.mp3 \
+	tmp/Sounds/sg_moan.mp3 \
+	tmp/Sounds/sg_musketeers.mp3 \
+	tmp/Sounds/sg_nono.mp3 \
+	tmp/Sounds/sg_plane.mp3 \
+	tmp/Sounds/sg_sad.mp3 \
+	tmp/Sounds/sg_space.mp3 \
+	tmp/Sounds/sg_steal.mp3 \
+	tmp/Sounds/sg_warning.mp3 \
+	tmp/Sounds/sizzle-Sith_Mas-7716_hifi.mp3 \
+	tmp/Sounds/Small_Sw-Public_D-262_hifi.mp3 \
+	tmp/Sounds/sound.credits.txt \
+	tmp/Sounds/sound.txt \
+	tmp/Sounds/victory.mp3
 
 std_ai : \
 	tmp/StdAI.ai.txt \
@@ -909,6 +913,7 @@ tmp/C-evo-x.msi : \
 		tmp/Installer/InstallDir.wixobj \
 		tmp/Installer/AppData_Saved.wixobj \
 		tmp/Installer/Graphics.wixobj \
+		tmp/Installer/Sounds.wixobj \
 		tmp/Installer/UI.wixobj
 	light.exe \
 		-ext WixUIExtension \
@@ -945,6 +950,10 @@ tmp/Installer/AppData_Saved.wixobj : \
 tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs graphics
 	mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/Graphics.wixobj Installer/Graphics.wxs
+
+tmp/Installer/Sounds.wixobj : Installer/Sounds.wxs sounds
+	mkdir -p tmp/Installer
+	candle.exe -out tmp/Installer/Sounds.wixobj Installer/Sounds.wxs
 
 tmp/Installer/UI.wixobj : Installer/UI.wxs
 	mkdir -p tmp/Installer

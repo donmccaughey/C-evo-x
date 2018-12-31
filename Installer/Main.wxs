@@ -47,9 +47,11 @@
             <ComponentRef Id='Comp_StdAI.ai.txt' />
             <ComponentRef Id='Comp_StdAI.bmp' />
             <ComponentRef Id='Comp_StdAI.dll' />
-            
+
+            <!-- Saved game -->
             <ComponentRef Id='Comp_AppData_Saved__Example_.cevo' />
 
+            <!-- Graphics -->
             <ComponentRef Id='Comp_Graphics_Background.bmp' />
             <ComponentRef Id='Comp_Graphics_BigCityMap.bmp' />
             <ComponentRef Id='Comp_Graphics_Cities66x32.bmp' />
@@ -85,6 +87,41 @@
             <ComponentRef Id='Comp_Graphics_Texture3.jpg' />
             <ComponentRef Id='Comp_Graphics_Texture4.jpg' />
             <ComponentRef Id='Comp_Graphics_Unit.bmp' />
+
+            <!-- Sounds -->
+            <ComponentRef Id='Comp_Sounds_8MM_AT_C_BlackCow_8186_hifi.mp3' />
+            <ComponentRef Id='Comp_Sounds_Boulder__oblius_7747_hifi.mp3' />
+            <ComponentRef Id='Comp_Sounds_Cash_reg_public_d_296_hifi.mp3' />
+            <ComponentRef Id='Comp_Sounds_Hammer_o_Public_D_243_hifi.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_angry.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_autogun.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_battery.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_cavalry.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_cheers.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_drum.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_drum2.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_fanfare.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_gain.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_harp.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_horsemen.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_invent.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_jet.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_marching.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_mechanical.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_militia.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_moan.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_musketeers.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_nono.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_plane.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_sad.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_space.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_steal.mp3' />
+            <ComponentRef Id='Comp_Sounds_sg_warning.mp3' />
+            <ComponentRef Id='Comp_Sounds_sizzle_Sith_Mas_7716_hifi.mp3' />
+            <ComponentRef Id='Comp_Sounds_Small_Sw_Public_D_262_hifi.mp3' />
+            <ComponentRef Id='Comp_Sounds_sound.credits.txt' />
+            <ComponentRef Id='Comp_Sounds_sound.txt' />
+            <ComponentRef Id='Comp_Sounds_victory.mp3' />
         </Feature>
         <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
         <UIRef Id='UI' />
