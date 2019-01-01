@@ -16,29 +16,32 @@ C-evo and C-evo-x are in the public domain.
 
 The following software is required to build C-evo-x.
 
- - A Bash shell such as [Git BASH][21].
- - Borland [Delphi 4.0][22] or later.
- - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][23] or later.
- - [WiX Toolset 3.11.1] or later for building the installer.
+ - Borland [Delphi 4.0][21] or later.
+ - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][22] or later.
+ - [WiX Toolset 3.11.1][23] or later for building the installer.
 
-[21]: https://gitforwindows.org
-[22]: https://winworldpc.com/product/delphi/4x
-[23]: https://visualstudio.microsoft.com/vs/older-downloads/
-[24]: http://wixtoolset.org
+[21]: https://winworldpc.com/product/delphi/4x
+[22]: https://visualstudio.microsoft.com/vs/older-downloads/
+[23]: http://wixtoolset.org
 
 
 ## Components
 
 The C-evo-x code is assembled from a number of different sources.
 
- - `AI_Kit_C\`: contains Charles Nadolski's [Version 14 C++ Blank AI Template][31].
- - `AI_Template\`: contains the C# AI template and source for the `CevoDotNet.exe` game loader; installed with [C-evo 1.2.0][32].
- - `Configurator\`: source for the C# `Configurator.exe` program; part of the [C-evo 1.2.0 source][33].
+ - `AI_Kit_C\`: contains Charles Nadolski's [Version 14 C++ Blank AI
+   Template][31].
+ - `AI_Template\`: contains the C# AI template and source for the
+   `CevoDotNet.exe` game loader; installed with [C-evo 1.2.0][32].
+ - `Configurator\`: source for the C# `Configurator.exe` program; part of the
+   [C-evo 1.2.0 source][33].
  - `Delphi_AI_Kit\`: source for the [Delphi AI Development Kit][34].
  - `Installer\`: source for the MSI installer.
  - `Project\`: Delphi code for the game; part of the [C-evo 1.2.0 source][33].
- - `Protocol\`: Delphi code for the AI protocol shared with the Delphi AI Development Kit; part of the [C-evo 1.2.0 source][33].
- - `Resources\`: external graphic, sound and text configuration files used by the game; installed with [C-evo 1.2.0][32].
+ - `Protocol\`: Delphi code for the AI protocol shared with the Delphi AI
+   Development Kit; part of the [C-evo 1.2.0 source][33].
+ - `Resources\`: external graphic, sound and text configuration files used by
+   the game; installed with [C-evo 1.2.0][32].
 
 See the [`LICENSE`][35] file for the list of contributors.
 
@@ -53,8 +56,8 @@ See the [`LICENSE`][35] file for the list of contributors.
 
 The `Makefile` located in the project root directory will build all the
 components and place build output into a `tmp\` directory in the root of the
-project.  The `Makefile` expects to run in a Bash shell.  The version of `make`
-that is installed with Delphi can be used to execute the `Makefile`.
+project.  The version of `make` that is installed with Delphi should be used to
+execute the `Makefile`.
 
 The `Makefile` contains a number of targets.  Type
 
@@ -68,19 +71,19 @@ Follow these steps to make sure your system is set up and ready to build:
 
 1. Ensure you have all the prerequisites installed.
 1. Check that the Delphi compiler `dcc32.exe`, the Borland resource compiler
-   `brcc32.exe` and Borland `make.exe` are available on the `PATH` of your Bash
-   shell.  These files are installed in a directory like `C:\Program Files
-   (x86)\Borland\Delphi4\Bin`.
-1. Check that `MSBuild.exe` is available on the `PATH` of your Bash shell.
+   `brcc32.exe` and Borland `make.exe` are available on the `PATH` of your
+   command prompt.  These files are installed in a directory like `C:\Program
+   Files (x86)\Borland\Delphi4\Bin`.
+1. Check that `MSBuild.exe` is available on the `PATH` of your command prompt.
    This file is part of .NET and is installed in a directory like
    `C:\Windows\Microsoft.NET\Framework\v4.0.30319\`.
 1. Check that the WiX commands `candle.exe` and `light.exe` are available on
-   the `PATH` of your Bash shell.  These files are part of the WiX Tookset and
-   are installed in a directory like `C:\Program Files (x86)\WiX Toolset
+   the `PATH` of your command prompt.  These files are part of the WiX Tookset
+   and are installed in a directory like `C:\Program Files (x86)\WiX Toolset
    v3.11\bin`
 
-To build, open a Bash shell, navigate to the project root and run the
-`Makefile`:
+To build, open a Windows command prompt, navigate to the project root and run
+the `Makefile`:
 
 	make	# or: make all
 
