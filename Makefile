@@ -928,6 +928,7 @@ tmp/C-evo-x.msi : \
 		tmp/Installer/Tribes.wixobj \
 		tmp/Installer/UI.wixobj
 	light.exe \
+		-nologo \
 		-ext WixUIExtension \
 		-cultures:en-us \
 		-out tmp/C-evo-x.msi \
@@ -935,7 +936,10 @@ tmp/C-evo-x.msi : \
 
 tmp/Installer/Main.wixobj : Installer/Main.wxs
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Main.wixobj Installer/Main.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/Main.wixobj \
+		Installer/Main.wxs
 
 tmp/Installer/InstallDir.wixobj : \
 		Installer/InstallDir.wxs \
@@ -951,31 +955,52 @@ tmp/Installer/InstallDir.wixobj : \
 		tmp/StdAI.bmp \
 		tmp/StdAI.dll
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/InstallDir.wixobj Installer/InstallDir.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/InstallDir.wixobj \
+		Installer/InstallDir.wxs
 
 tmp/Installer/AppData_Saved.wixobj : \
 		Installer/AppData_Saved.wxs \
 		tmp/AppData/Saved/(Example).cevo
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/AppData_Saved.wixobj Installer/AppData_Saved.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/AppData_Saved.wixobj \
+		Installer/AppData_Saved.wxs
 
 tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs graphics
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Graphics.wixobj Installer/Graphics.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/Graphics.wixobj \
+		Installer/Graphics.wxs
 
 tmp/Installer/Help.wixobj : Installer/Help.wxs help_files
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Help.wixobj Installer/Help.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/Help.wixobj \
+		Installer/Help.wxs
 
 tmp/Installer/Sounds.wixobj : Installer/Sounds.wxs sounds
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Sounds.wixobj Installer/Sounds.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/Sounds.wixobj \
+		Installer/Sounds.wxs
 
 tmp/Installer/Tribes.wixobj : Installer/Tribes.wxs tribes
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/Tribes.wixobj Installer/Tribes.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/Tribes.wixobj \
+		Installer/Tribes.wxs
 
 tmp/Installer/UI.wixobj : Installer/UI.wxs
 	-mkdir -p tmp/Installer
-	candle.exe -out tmp/Installer/UI.wixobj Installer/UI.wxs
+	candle.exe \
+		-nologo \
+		-out tmp/Installer/UI.wixobj \
+		Installer/UI.wxs
 
