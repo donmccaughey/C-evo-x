@@ -733,6 +733,7 @@ var
 x,y,ch,r: integer;
 DstLine: ^TLine;
 begin
+r:=0;
 for y:=-GlowRange+1 to height-1+GlowRange-1 do
   begin
   DstLine:=dst.ScanLine[y0+y];
