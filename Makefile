@@ -280,6 +280,7 @@ game : \
 tmp/CevoWin32.exe : \
 		Project/CevoWin32.dpr \
 		Project/CevoWin32.dof \
+		Project/CevoWin32.cfg \
 		tmp/units/CevoWin32/cevo.res
 	-mkdir -p tmp/units/CevoWin32
 	cd Project
@@ -316,6 +317,7 @@ tmp/CevoDotNet.exe : \
 tmp/cevo.dll : \
 		Project/cevo.dpr \
 		Project/cevo.dof \
+		Project/cevo.cfg \
 		tmp/units/cevo/Res1.res \
 		$(game_source)
 	-mkdir -p tmp/units/cevo
@@ -335,6 +337,7 @@ tmp/units/cevo/Res1.res : $(game_res)
 tmp/Integrated.exe : \
 		Project/Integrated.dpr \
 		Project/Integrated.dof \
+		Project/Integrated.cfg \
 		tmp/units/Integrated/cevo.res \
 		tmp/units/Integrated/Res1.res \
 		$(game_source)
@@ -360,6 +363,8 @@ tmp/units/Integrated/Res1.res : $(game_res)
 
 tmp/AIProject.dll : \
 		Delphi_AI_Kit/AIProject.dpr \
+		Delphi_AI_Kit/AIProject.dof \
+		Delphi_AI_Kit/AIProject.cfg \
 		\
 		Delphi_AI_Kit/AI.pas \
 		Delphi_AI_Kit/CustomAI.pas \
