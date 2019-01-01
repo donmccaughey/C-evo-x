@@ -380,7 +380,77 @@
                         </Component>
                     </Directory>
 
-                    <Directory Id='Dir_Tribes' Name='Tribes' />
+                    <Directory Id='Dir_Tribes' Name='Tribes'>
+                        <Component Id='Comp_Tribes_Americans.tribe.txt'
+                                 Guid='C48A72FD-392A-493B-A329-1B03A2F0DE9F'>
+                            <File Name='Americans.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Babyl.tribe.txt'
+                                 Guid='CB4A4FD3-85AB-4167-8748-B048BE5C2E0A'>
+                            <File Name='Babyl.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_British.tribe.txt'
+                                 Guid='31F96815-5488-445D-9BC4-B757A7598735'>
+                            <File Name='British.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Chinese.tribe.txt'
+                                 Guid='8BB2BF35-1022-4955-8704-93DA8BAC9283'>
+                            <File Name='Chinese.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Egyptians.tribe.txt'
+                                 Guid='9443D7AC-BF44-4B40-99B4-F39EF021BDEF'>
+                            <File Name='Egyptians.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_French.tribe.txt'
+                                 Guid='F5BFBD6B-10D9-4918-85DF-0DFB05A9AE18'>
+                            <File Name='French.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Germans.tribe.txt'
+                                 Guid='C45C5716-C001-4A57-BD65-574D9FD7EDB9'>
+                            <File Name='Germans.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Greeks.tribe.txt'
+                                 Guid='18E29ACD-69D2-425A-914B-39BBBA74227B'>
+                            <File Name='Greeks.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Japanese.tribe.txt'
+                                 Guid='97CF75DB-D24F-451D-8227-C2A7B8805877'>
+                            <File Name='Japanese.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Mongols.tribe.txt'
+                                 Guid='714115D2-6207-4C13-AD77-45161EE80063'>
+                            <File Name='Mongols.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Persians.tribe.txt'
+                                 Guid='5D5D7964-F075-4D87-AA3E-3C90F8D9AF34'>
+                            <File Name='Persians.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Phoenicians.tribe.txt'
+                                 Guid='4608480A-7F2E-4EDD-9C0A-739330DF5893'>
+                            <File Name='Phoenicians.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Romans.tribe.txt'
+                                 Guid='176C9687-F325-4C01-ADB6-6863984ECBC8'>
+                            <File Name='Romans.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Russians.tribe.txt'
+                                 Guid='1EA5041E-56B2-479B-ADCB-4D09E22DDD3A'>
+                            <File Name='Russians.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Spanish.tribe.txt'
+                                 Guid='B635EDF3-34FC-4FF4-B4E5-184A5CCD708E'>
+                            <File Name='Spanish.tribe.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_StdUnits.txt'
+                                 Guid='09B36A9D-4519-46DB-A541-A93746F87878'>
+                            <File Name='StdUnits.txt' KeyPath='yes' />
+                        </Component>
+                        <Component Id='Comp_Tribes_Vikings.tribe.txt'
+                                 Guid='2824E011-599F-420F-9318-63C68DF69F07'>
+                            <File Name='Vikings.tribe.txt' KeyPath='yes' />
+                        </Component>
+                    </Directory>
+
                 </Directory>
             </Directory>
         </Directory>

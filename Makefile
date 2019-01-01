@@ -906,19 +906,17 @@ tmp\Configurator.exe : \
 
 tmp\C-evo-x.msi : \
 		tmp\Installer\Main.wixobj \
-		tmp\Installer\Tribes.wixobj \
 		tmp\Installer\UI.wixobj
 	light.exe \
 		-nologo \
 		-ext WixUIExtension \
 		-cultures:en-us \
 		-out tmp\C-evo-x.msi \
-		tmp\Installer\*.wixobj 
+		tmp\Installer\Main.wixobj \
+		tmp\Installer\UI.wixobj
 
 tmp\Installer\Main.wixobj : \
 		Installer\Main.wxs \
-		\
-		tmp\AppData\Saved\(Example).cevo \
 		\
 		$(game_out) \
 		\
@@ -928,21 +926,17 @@ tmp\Installer\Main.wixobj : \
 		\
 		$(stdai_out) \
 		\
+		tmp\AppData\Saved\(Example).cevo \
+		\
 		$(graphics_out) \
 		$(help_out) \
-		$(sounds_out)
+		$(sounds_out) \
+		$(tribes_out)
 	-mkdir tmp\Installer
 	candle.exe \
 		-nologo \
 		-out tmp\Installer\Main.wixobj \
 		Installer\Main.wxs
-
-tmp\Installer\Tribes.wixobj : Installer\Tribes.wxs $(tribes_out)
-	-mkdir tmp\Installer
-	candle.exe \
-		-nologo \
-		-out tmp\Installer\Tribes.wixobj \
-		Installer\Tribes.wxs
 
 tmp\Installer\UI.wixobj : Installer\UI.wxs
 	-mkdir tmp\Installer
