@@ -906,7 +906,6 @@ tmp\Configurator.exe : \
 
 tmp\C-evo-x.msi : \
 		tmp\Installer\Main.wixobj \
-		tmp\Installer\Sounds.wixobj \
 		tmp\Installer\Tribes.wixobj \
 		tmp\Installer\UI.wixobj
 	light.exe \
@@ -930,19 +929,13 @@ tmp\Installer\Main.wixobj : \
 		$(stdai_out) \
 		\
 		$(graphics_out) \
-		$(help_out)
+		$(help_out) \
+		$(sounds_out)
 	-mkdir tmp\Installer
 	candle.exe \
 		-nologo \
 		-out tmp\Installer\Main.wixobj \
 		Installer\Main.wxs
-
-tmp\Installer\Sounds.wixobj : Installer\Sounds.wxs $(sounds_out)
-	-mkdir tmp\Installer
-	candle.exe \
-		-nologo \
-		-out tmp\Installer\Sounds.wixobj \
-		Installer\Sounds.wxs
 
 tmp\Installer\Tribes.wixobj : Installer\Tribes.wxs $(tribes_out)
 	-mkdir tmp\Installer
