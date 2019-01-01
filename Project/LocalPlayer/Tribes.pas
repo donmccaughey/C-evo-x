@@ -104,6 +104,7 @@ function ModelCode(const ModelInfo: TModelInfo): integer;
 begin
 with ModelInfo do
   begin
+  result:=100;
   case Kind of
     mkSelfDeveloped, mkEnemyDeveloped:
       case Domain of {age determination}
