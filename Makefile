@@ -906,7 +906,6 @@ tmp\Configurator.exe : \
 
 tmp\C-evo-x.msi : \
 		tmp\Installer\Main.wixobj \
-		tmp\Installer\InstallDir.wixobj \
 		tmp\Installer\Graphics.wixobj \
 		tmp\Installer\Help.wixobj \
 		tmp\Installer\Sounds.wixobj \
@@ -922,31 +921,20 @@ tmp\C-evo-x.msi : \
 tmp\Installer\Main.wixobj : \
 		Installer\Main.wxs \
 		\
-		tmp\AppData\Saved\(Example).cevo
-	-mkdir tmp\Installer
-	candle.exe \
-		-nologo \
-		-out tmp\Installer\Main.wixobj \
-		Installer\Main.wxs
-
-tmp\Installer\InstallDir.wixobj : \
-		Installer\InstallDir.wxs \
+		tmp\AppData\Saved\(Example).cevo \
 		\
-		tmp\CevoWin32.exe \
-		tmp\cevo.dll \
+		$(game_out) \
 		\
 		tmp\fonts.txt \
 		tmp\language.txt \
 		tmp\language2.txt \
 		\
-		tmp\StdAI.ai.txt \
-		tmp\StdAI.bmp \
-		tmp\StdAI.dll
+		$(stdai_out)
 	-mkdir tmp\Installer
 	candle.exe \
 		-nologo \
-		-out tmp\Installer\InstallDir.wixobj \
-		Installer\InstallDir.wxs
+		-out tmp\Installer\Main.wixobj \
+		Installer\Main.wxs
 
 tmp\Installer\Graphics.wixobj : Installer\Graphics.wxs $(graphics_out)
 	-mkdir tmp\Installer
