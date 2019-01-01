@@ -905,18 +905,18 @@ tmp\Configurator.exe : \
 # ----- Installer
 
 tmp\C-evo-x.msi : \
-		tmp\Installer\Main.wixobj \
+		tmp\Installer\Product.wixobj \
 		tmp\Installer\UI.wixobj
 	light.exe \
 		-nologo \
 		-ext WixUIExtension \
 		-cultures:en-us \
 		-out tmp\C-evo-x.msi \
-		tmp\Installer\Main.wixobj \
+		tmp\Installer\Product.wixobj \
 		tmp\Installer\UI.wixobj
 
-tmp\Installer\Main.wixobj : \
-		Installer\Main.wxs \
+tmp\Installer\Product.wixobj : \
+		Installer\Product.wxs \
 		\
 		$(game_out) \
 		\
@@ -935,8 +935,8 @@ tmp\Installer\Main.wixobj : \
 	-mkdir tmp\Installer
 	candle.exe \
 		-nologo \
-		-out tmp\Installer\Main.wixobj \
-		Installer\Main.wxs
+		-out tmp\Installer\Product.wixobj \
+		Installer\Product.wxs
 
 tmp\Installer\UI.wixobj : Installer\UI.wxs
 	-mkdir tmp\Installer
