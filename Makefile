@@ -36,10 +36,6 @@ help :
 	@printf "   installer      Build the installer\n"
 	@printf "\n"
 	@printf "   resources      Copy external resource files into place\n"
-	@printf "   graphics       Copy the graphics files into place\n"
-	@printf "   help_files     Copy the help files into place\n"
-	@printf "   sounds         Copy the sound files into place\n"
-	@printf "   tribes         Copy the tribe files into place\n"
 	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
 
@@ -87,120 +83,16 @@ resources : \
 	\
 	tmp/AppData/Saved/(Example).cevo \
 	\
-	graphics \
-	help_files \
-	sounds \
-	tribes
-
-
-graphics : \
-	tmp/Graphics/Background.bmp \
-	tmp/Graphics/BigCityMap.bmp \
-	tmp/Graphics/Cities66x32.bmp \
-	tmp/Graphics/Cities66x32.credits.txt \
-	tmp/Graphics/Cities96x48.bmp \
-	tmp/Graphics/Cities96x48.credits.txt \
-	tmp/Graphics/City.bmp \
-	tmp/Graphics/Colors.bmp \
-	tmp/Graphics/Icons.bmp \
-	tmp/Graphics/Icons.credits.txt \
-	tmp/Graphics/MiliRes.bmp \
-	tmp/Graphics/Nation.bmp \
-	tmp/Graphics/Nation1.bmp \
-	tmp/Graphics/Nation1.credits.txt \
-	tmp/Graphics/Nation2.bmp \
-	tmp/Graphics/Nation2.credits.txt \
-	tmp/Graphics/Paper.jpg \
-	tmp/Graphics/SmallCityMap.bmp \
-	tmp/Graphics/StdCities.bmp \
-	tmp/Graphics/StdCities.credits.txt \
-	tmp/Graphics/StdUnits.bmp \
-	tmp/Graphics/StdUnits.credits.txt \
-	tmp/Graphics/System.bmp \
-	tmp/Graphics/System2.bmp \
-	tmp/Graphics/Templates.bmp \
-	tmp/Graphics/Terrain66x32.bmp \
-	tmp/Graphics/Terrain66x32.credits.txt \
-	tmp/Graphics/Terrain96x48.bmp \
-	tmp/Graphics/Terrain96x48.credits.txt \
-	tmp/Graphics/Texture0.jpg \
-	tmp/Graphics/Texture1.jpg \
-	tmp/Graphics/Texture2.jpg \
-	tmp/Graphics/Texture3.jpg \
-	tmp/Graphics/Texture4.jpg \
-	tmp/Graphics/Unit.bmp
-
-
-help_files : \
-	tmp/Help/AdvTree.bmp \
-	tmp/Help/AITShot.bmp \
-	tmp/Help/CityShot.bmp \
-	tmp/Help/Corruption.bmp \
-	tmp/Help/DraftShot.bmp \
-	tmp/Help/help.txt \
-	tmp/Help/MoveShot.bmp
-
-
-sounds : \
-	tmp/Sounds/8MM_AT_C-BlackCow-8186_hifi.mp3 \
-	tmp/Sounds/Boulder_-oblius-7747_hifi.mp3 \
-	tmp/Sounds/Cash_reg-public_d-296_hifi.mp3 \
-	tmp/Sounds/Hammer_o-Public_D-243_hifi.mp3 \
-	tmp/Sounds/sg_angry.mp3 \
-	tmp/Sounds/sg_autogun.mp3 \
-	tmp/Sounds/sg_battery.mp3 \
-	tmp/Sounds/sg_cavalry.mp3 \
-	tmp/Sounds/sg_cheers.mp3 \
-	tmp/Sounds/sg_drum.mp3 \
-	tmp/Sounds/sg_drum2.mp3 \
-	tmp/Sounds/sg_fanfare.mp3 \
-	tmp/Sounds/sg_gain.mp3 \
-	tmp/Sounds/sg_harp.mp3 \
-	tmp/Sounds/sg_horsemen.mp3 \
-	tmp/Sounds/sg_invent.mp3 \
-	tmp/Sounds/sg_jet.mp3 \
-	tmp/Sounds/sg_marching.mp3 \
-	tmp/Sounds/sg_mechanical.mp3 \
-	tmp/Sounds/sg_militia.mp3 \
-	tmp/Sounds/sg_moan.mp3 \
-	tmp/Sounds/sg_musketeers.mp3 \
-	tmp/Sounds/sg_nono.mp3 \
-	tmp/Sounds/sg_plane.mp3 \
-	tmp/Sounds/sg_sad.mp3 \
-	tmp/Sounds/sg_space.mp3 \
-	tmp/Sounds/sg_steal.mp3 \
-	tmp/Sounds/sg_warning.mp3 \
-	tmp/Sounds/sizzle-Sith_Mas-7716_hifi.mp3 \
-	tmp/Sounds/Small_Sw-Public_D-262_hifi.mp3 \
-	tmp/Sounds/sound.credits.txt \
-	tmp/Sounds/sound.txt \
-	tmp/Sounds/victory.mp3
+	$(graphics_out) \
+	$(help_out) \
+	$(sounds_out) \
+	$(tribes_out)
 
 
 std_ai : \
 	tmp/StdAI.ai.txt \
 	tmp/StdAI.bmp \
 	tmp/StdAI.dll
-
-
-tribes : \
-	tmp/Tribes/Americans.tribe.txt \
-	tmp/Tribes/Babyl.tribe.txt \
-	tmp/Tribes/British.tribe.txt \
-	tmp/Tribes/Chinese.tribe.txt \
-	tmp/Tribes/Egyptians.tribe.txt \
-	tmp/Tribes/French.tribe.txt \
-	tmp/Tribes/Germans.tribe.txt \
-	tmp/Tribes/Greeks.tribe.txt \
-	tmp/Tribes/Japanese.tribe.txt \
-	tmp/Tribes/Mongols.tribe.txt \
-	tmp/Tribes/Persians.tribe.txt \
-	tmp/Tribes/Phoenicians.tribe.txt \
-	tmp/Tribes/Romans.tribe.txt \
-	tmp/Tribes/Russians.tribe.txt \
-	tmp/Tribes/Spanish.tribe.txt \
-	tmp/Tribes/StdUnits.txt \
-	tmp/Tribes/Vikings.tribe.txt
 
 
 # ----- Variables
@@ -289,6 +181,106 @@ game_source = \
 	Project/LocalPlayer/Wonders.pas \
 	\
 	Protocol/Protocol.pas
+
+graphics_out = \
+	tmp/Graphics/Background.bmp \
+	tmp/Graphics/BigCityMap.bmp \
+	tmp/Graphics/Cities66x32.bmp \
+	tmp/Graphics/Cities66x32.credits.txt \
+	tmp/Graphics/Cities96x48.bmp \
+	tmp/Graphics/Cities96x48.credits.txt \
+	tmp/Graphics/City.bmp \
+	tmp/Graphics/Colors.bmp \
+	tmp/Graphics/Icons.bmp \
+	tmp/Graphics/Icons.credits.txt \
+	tmp/Graphics/MiliRes.bmp \
+	tmp/Graphics/Nation.bmp \
+	tmp/Graphics/Nation1.bmp \
+	tmp/Graphics/Nation1.credits.txt \
+	tmp/Graphics/Nation2.bmp \
+	tmp/Graphics/Nation2.credits.txt \
+	tmp/Graphics/Paper.jpg \
+	tmp/Graphics/SmallCityMap.bmp \
+	tmp/Graphics/StdCities.bmp \
+	tmp/Graphics/StdCities.credits.txt \
+	tmp/Graphics/StdUnits.bmp \
+	tmp/Graphics/StdUnits.credits.txt \
+	tmp/Graphics/System.bmp \
+	tmp/Graphics/System2.bmp \
+	tmp/Graphics/Templates.bmp \
+	tmp/Graphics/Terrain66x32.bmp \
+	tmp/Graphics/Terrain66x32.credits.txt \
+	tmp/Graphics/Terrain96x48.bmp \
+	tmp/Graphics/Terrain96x48.credits.txt \
+	tmp/Graphics/Texture0.jpg \
+	tmp/Graphics/Texture1.jpg \
+	tmp/Graphics/Texture2.jpg \
+	tmp/Graphics/Texture3.jpg \
+	tmp/Graphics/Texture4.jpg \
+	tmp/Graphics/Unit.bmp
+
+help_out = \
+	tmp/Help/AdvTree.bmp \
+	tmp/Help/AITShot.bmp \
+	tmp/Help/CityShot.bmp \
+	tmp/Help/Corruption.bmp \
+	tmp/Help/DraftShot.bmp \
+	tmp/Help/help.txt \
+	tmp/Help/MoveShot.bmp
+
+sounds_out = \
+	tmp/Sounds/8MM_AT_C-BlackCow-8186_hifi.mp3 \
+	tmp/Sounds/Boulder_-oblius-7747_hifi.mp3 \
+	tmp/Sounds/Cash_reg-public_d-296_hifi.mp3 \
+	tmp/Sounds/Hammer_o-Public_D-243_hifi.mp3 \
+	tmp/Sounds/sg_angry.mp3 \
+	tmp/Sounds/sg_autogun.mp3 \
+	tmp/Sounds/sg_battery.mp3 \
+	tmp/Sounds/sg_cavalry.mp3 \
+	tmp/Sounds/sg_cheers.mp3 \
+	tmp/Sounds/sg_drum.mp3 \
+	tmp/Sounds/sg_drum2.mp3 \
+	tmp/Sounds/sg_fanfare.mp3 \
+	tmp/Sounds/sg_gain.mp3 \
+	tmp/Sounds/sg_harp.mp3 \
+	tmp/Sounds/sg_horsemen.mp3 \
+	tmp/Sounds/sg_invent.mp3 \
+	tmp/Sounds/sg_jet.mp3 \
+	tmp/Sounds/sg_marching.mp3 \
+	tmp/Sounds/sg_mechanical.mp3 \
+	tmp/Sounds/sg_militia.mp3 \
+	tmp/Sounds/sg_moan.mp3 \
+	tmp/Sounds/sg_musketeers.mp3 \
+	tmp/Sounds/sg_nono.mp3 \
+	tmp/Sounds/sg_plane.mp3 \
+	tmp/Sounds/sg_sad.mp3 \
+	tmp/Sounds/sg_space.mp3 \
+	tmp/Sounds/sg_steal.mp3 \
+	tmp/Sounds/sg_warning.mp3 \
+	tmp/Sounds/sizzle-Sith_Mas-7716_hifi.mp3 \
+	tmp/Sounds/Small_Sw-Public_D-262_hifi.mp3 \
+	tmp/Sounds/sound.credits.txt \
+	tmp/Sounds/sound.txt \
+	tmp/Sounds/victory.mp3
+
+tribes_out = \
+	tmp/Tribes/Americans.tribe.txt \
+	tmp/Tribes/Babyl.tribe.txt \
+	tmp/Tribes/British.tribe.txt \
+	tmp/Tribes/Chinese.tribe.txt \
+	tmp/Tribes/Egyptians.tribe.txt \
+	tmp/Tribes/French.tribe.txt \
+	tmp/Tribes/Germans.tribe.txt \
+	tmp/Tribes/Greeks.tribe.txt \
+	tmp/Tribes/Japanese.tribe.txt \
+	tmp/Tribes/Mongols.tribe.txt \
+	tmp/Tribes/Persians.tribe.txt \
+	tmp/Tribes/Phoenicians.tribe.txt \
+	tmp/Tribes/Romans.tribe.txt \
+	tmp/Tribes/Russians.tribe.txt \
+	tmp/Tribes/Spanish.tribe.txt \
+	tmp/Tribes/StdUnits.txt \
+	tmp/Tribes/Vikings.tribe.txt
 
 
 # ----- Game executable
@@ -969,28 +961,28 @@ tmp/Installer/AppData_Saved.wixobj : \
 		-out tmp/Installer/AppData_Saved.wixobj \
 		Installer/AppData_Saved.wxs
 
-tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs graphics
+tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs $(graphics_out)
 	-mkdir -p tmp/Installer
 	candle.exe \
 		-nologo \
 		-out tmp/Installer/Graphics.wixobj \
 		Installer/Graphics.wxs
 
-tmp/Installer/Help.wixobj : Installer/Help.wxs help_files
+tmp/Installer/Help.wixobj : Installer/Help.wxs $(help_out)
 	-mkdir -p tmp/Installer
 	candle.exe \
 		-nologo \
 		-out tmp/Installer/Help.wixobj \
 		Installer/Help.wxs
 
-tmp/Installer/Sounds.wixobj : Installer/Sounds.wxs sounds
+tmp/Installer/Sounds.wixobj : Installer/Sounds.wxs $(sounds_out)
 	-mkdir -p tmp/Installer
 	candle.exe \
 		-nologo \
 		-out tmp/Installer/Sounds.wixobj \
 		Installer/Sounds.wxs
 
-tmp/Installer/Tribes.wixobj : Installer/Tribes.wxs tribes
+tmp/Installer/Tribes.wixobj : Installer/Tribes.wxs $(tribes_out)
 	-mkdir -p tmp/Installer
 	candle.exe \
 		-nologo \
