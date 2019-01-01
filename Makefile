@@ -8,13 +8,17 @@ all : \
 	$(resources_out) \
 	$(stdai_out) \
 	\
-	delphi_ai \
-	csharp_ai \
-	cpp_ai \
-	hal_ai \
-	\
 	tmp/Integrated.exe \
+	\
+	$(delphi_ai_out) \
+	\
+	$(cpp_ai_out) \
+	$(hal_ai_out) \
+	\
+	tmp/CevoDotNet.exe \
+	$(csharp_ai_out) \
 	tmp/Configurator.exe \
+	\
 	tmp/C-evo-x.msi
 
 
@@ -28,11 +32,6 @@ help :
 	@printf "\n"
 	@printf "   game           Build Delphi game DLL and Win32 loader and\n"
 	@printf "                  copy external resource files into place\n"
-	@printf "\n"
-	@printf "   delphi_ai      Build the Delphi sample AI\n"
-	@printf "   csharp_ai      Build the C# sample AI and .NET loader\n"
-	@printf "   cpp_ai         Build the C++ sample AI\n"
-	@printf "   hal_ai         Build the HAL AI\n"
 
 
 clean :
@@ -48,30 +47,21 @@ game : \
 	$(stdai_out)
 
 
-delphi_ai : \
-	tmp/AIProject.dll \
-	tmp/AIProject.ai.txt \
-	tmp/AIProject.bmp
+# ----- Variables
 
-
-csharp_ai : \
-	tmp/CevoDotNet.exe \
-	tmp/AI.dll \
-	tmp/AI.ai.txt
-
-
-cpp_ai : \
+cpp_ai_out = \
 	tmp/MyAI.dll \
 	tmp/MyAI.ai.txt
 
 
-hal_ai : \
-	tmp/HAL.dll \
-	tmp/HAL.ai.txt \
-	tmp/HAL.BMP
+csharp_ai_out = \
+	tmp/AI.dll \
+	tmp/AI.ai.txt
 
-
-# ----- Variables
+delphi_ai_out = \
+	tmp/AIProject.dll \
+	tmp/AIProject.ai.txt \
+	tmp/AIProject.bmp
 
 game_icon = \
 	Project/cevo.rc \
@@ -198,6 +188,11 @@ graphics_out = \
 	tmp/Graphics/Texture3.jpg \
 	tmp/Graphics/Texture4.jpg \
 	tmp/Graphics/Unit.bmp
+
+hal_ai_out = \
+	tmp/HAL.dll \
+	tmp/HAL.ai.txt \
+	tmp/HAL.BMP
 
 help_out = \
 	tmp/Help/AdvTree.bmp \
