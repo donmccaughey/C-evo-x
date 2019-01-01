@@ -131,6 +131,25 @@
             <ComponentRef Id='Comp_Sounds_sound.credits.txt' />
             <ComponentRef Id='Comp_Sounds_sound.txt' />
             <ComponentRef Id='Comp_Sounds_victory.mp3' />
+
+            <!-- Tribes -->
+            <ComponentRef Id='Comp_Tribes_Americans.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Babyl.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_British.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Chinese.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Egyptians.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_French.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Germans.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Greeks.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Japanese.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Mongols.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Persians.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Phoenicians.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Romans.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Russians.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_Spanish.tribe.txt' />
+            <ComponentRef Id='Comp_Tribes_StdUnits.txt' />
+            <ComponentRef Id='Comp_Tribes_Vikings.tribe.txt' />
         </Feature>
         <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
         <UIRef Id='UI' />

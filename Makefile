@@ -39,6 +39,7 @@ help :
 	@printf "   graphics       Copy the graphics files into place\n"
 	@printf "   help_files     Copy the help files into place\n"
 	@printf "   sounds         Copy the sound files into place\n"
+	@printf "   tribes         Copy the tribe files into place\n"
 	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
 
@@ -87,28 +88,10 @@ resources : \
 	tmp/AppData/Saved/(Example).cevo \
 	\
 	graphics \
-	\
 	help_files \
-	\
 	sounds \
-	\
-	tmp/Tribes/Americans.tribe.txt \
-	tmp/Tribes/Babyl.tribe.txt \
-	tmp/Tribes/British.tribe.txt \
-	tmp/Tribes/Chinese.tribe.txt \
-	tmp/Tribes/Egyptians.tribe.txt \
-	tmp/Tribes/French.tribe.txt \
-	tmp/Tribes/Germans.tribe.txt \
-	tmp/Tribes/Greeks.tribe.txt \
-	tmp/Tribes/Japanese.tribe.txt \
-	tmp/Tribes/Mongols.tribe.txt \
-	tmp/Tribes/Persians.tribe.txt \
-	tmp/Tribes/Phoenicians.tribe.txt \
-	tmp/Tribes/Romans.tribe.txt \
-	tmp/Tribes/Russians.tribe.txt \
-	tmp/Tribes/Spanish.tribe.txt \
-	tmp/Tribes/StdUnits.txt \
-	tmp/Tribes/Vikings.tribe.txt
+	tribes
+
 
 graphics : \
 	tmp/Graphics/Background.bmp \
@@ -147,6 +130,7 @@ graphics : \
 	tmp/Graphics/Texture4.jpg \
 	tmp/Graphics/Unit.bmp
 
+
 help_files : \
 	tmp/Help/AdvTree.bmp \
 	tmp/Help/AITShot.bmp \
@@ -155,6 +139,7 @@ help_files : \
 	tmp/Help/DraftShot.bmp \
 	tmp/Help/help.txt \
 	tmp/Help/MoveShot.bmp
+
 
 sounds : \
 	tmp/Sounds/8MM_AT_C-BlackCow-8186_hifi.mp3 \
@@ -191,10 +176,31 @@ sounds : \
 	tmp/Sounds/sound.txt \
 	tmp/Sounds/victory.mp3
 
+
 std_ai : \
 	tmp/StdAI.ai.txt \
 	tmp/StdAI.bmp \
 	tmp/StdAI.dll
+
+
+tribes : \
+	tmp/Tribes/Americans.tribe.txt \
+	tmp/Tribes/Babyl.tribe.txt \
+	tmp/Tribes/British.tribe.txt \
+	tmp/Tribes/Chinese.tribe.txt \
+	tmp/Tribes/Egyptians.tribe.txt \
+	tmp/Tribes/French.tribe.txt \
+	tmp/Tribes/Germans.tribe.txt \
+	tmp/Tribes/Greeks.tribe.txt \
+	tmp/Tribes/Japanese.tribe.txt \
+	tmp/Tribes/Mongols.tribe.txt \
+	tmp/Tribes/Persians.tribe.txt \
+	tmp/Tribes/Phoenicians.tribe.txt \
+	tmp/Tribes/Romans.tribe.txt \
+	tmp/Tribes/Russians.tribe.txt \
+	tmp/Tribes/Spanish.tribe.txt \
+	tmp/Tribes/StdUnits.txt \
+	tmp/Tribes/Vikings.tribe.txt
 
 
 # ----- Variables
@@ -919,6 +925,7 @@ tmp/C-evo-x.msi : \
 		tmp/Installer/Graphics.wixobj \
 		tmp/Installer/Help.wixobj \
 		tmp/Installer/Sounds.wixobj \
+		tmp/Installer/Tribes.wixobj \
 		tmp/Installer/UI.wixobj
 	light.exe \
 		-ext WixUIExtension \
@@ -927,7 +934,7 @@ tmp/C-evo-x.msi : \
 		tmp/Installer/*.wixobj 
 
 tmp/Installer/Main.wixobj : Installer/Main.wxs
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/Main.wixobj Installer/Main.wxs
 
 tmp/Installer/InstallDir.wixobj : \
@@ -943,28 +950,32 @@ tmp/Installer/InstallDir.wixobj : \
 		tmp/StdAI.ai.txt \
 		tmp/StdAI.bmp \
 		tmp/StdAI.dll
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/InstallDir.wixobj Installer/InstallDir.wxs
 
 tmp/Installer/AppData_Saved.wixobj : \
 		Installer/AppData_Saved.wxs \
 		tmp/AppData/Saved/(Example).cevo
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/AppData_Saved.wixobj Installer/AppData_Saved.wxs
 
 tmp/Installer/Graphics.wixobj : Installer/Graphics.wxs graphics
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/Graphics.wixobj Installer/Graphics.wxs
 
 tmp/Installer/Help.wixobj : Installer/Help.wxs help_files
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/Help.wixobj Installer/Help.wxs
 
 tmp/Installer/Sounds.wixobj : Installer/Sounds.wxs sounds
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/Sounds.wixobj Installer/Sounds.wxs
 
+tmp/Installer/Tribes.wixobj : Installer/Tribes.wxs tribes
+	-mkdir -p tmp/Installer
+	candle.exe -out tmp/Installer/Tribes.wixobj Installer/Tribes.wxs
+
 tmp/Installer/UI.wixobj : Installer/UI.wxs
-	mkdir -p tmp/Installer
+	-mkdir -p tmp/Installer
 	candle.exe -out tmp/Installer/UI.wixobj Installer/UI.wxs
 
