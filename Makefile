@@ -907,7 +907,6 @@ tmp\Configurator.exe : \
 tmp\C-evo-x.msi : \
 		tmp\Installer\Main.wixobj \
 		tmp\Installer\InstallDir.wixobj \
-		tmp\Installer\AppData_Saved.wixobj \
 		tmp\Installer\Graphics.wixobj \
 		tmp\Installer\Help.wixobj \
 		tmp\Installer\Sounds.wixobj \
@@ -920,7 +919,10 @@ tmp\C-evo-x.msi : \
 		-out tmp\C-evo-x.msi \
 		tmp\Installer\*.wixobj 
 
-tmp\Installer\Main.wixobj : Installer\Main.wxs
+tmp\Installer\Main.wixobj : \
+		Installer\Main.wxs \
+		\
+		tmp\AppData\Saved\(Example).cevo
 	-mkdir tmp\Installer
 	candle.exe \
 		-nologo \
@@ -945,15 +947,6 @@ tmp\Installer\InstallDir.wixobj : \
 		-nologo \
 		-out tmp\Installer\InstallDir.wixobj \
 		Installer\InstallDir.wxs
-
-tmp\Installer\AppData_Saved.wixobj : \
-		Installer\AppData_Saved.wxs \
-		tmp\AppData\Saved\(Example).cevo
-	-mkdir tmp\Installer
-	candle.exe \
-		-nologo \
-		-out tmp\Installer\AppData_Saved.wixobj \
-		Installer\AppData_Saved.wxs
 
 tmp\Installer\Graphics.wixobj : Installer\Graphics.wxs $(graphics_out)
 	-mkdir tmp\Installer

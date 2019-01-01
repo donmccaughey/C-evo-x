@@ -27,9 +27,14 @@
             />
         <Directory Id='TARGETDIR' Name='SourceDir' DiskId='1'>
             <Directory Id='ProgramFilesFolder' Name='Program Files'>
-                <Directory Id='INSTALLDIR' Name='C-evo-x'>
+                <Directory Id='INSTALLDIR' Name='C-evo-x' FileSource='tmp'>
                     <Directory Id='Dir_AppData' Name='AppData'>
-                        <Directory Id='Dir_AppData_Saved' Name='Saved' />
+                        <Directory Id='Dir_AppData_Saved' Name='Saved'>
+                            <Component Id='Comp_AppData_Saved__Example_.cevo'
+                                     Guid='84244C1E-2C49-4F94-BB18-E789F0789608'>
+                                <File Name='(Example).cevo' KeyPath='yes' />
+                            </Component>
+                        </Directory>
                     </Directory>
                     <Directory Id='Dir_Help' Name='Help' />
                     <Directory Id='Dir_Graphics' Name='Graphics' />
