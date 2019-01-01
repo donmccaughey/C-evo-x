@@ -1,52 +1,6 @@
 # Makefile for C-evo-x
 
 
-# ----- Targets
-
-all : \
-	$(game_out) \
-	$(resources_out) \
-	$(stdai_out) \
-	\
-	tmp/Integrated.exe \
-	\
-	$(delphi_ai_out) \
-	\
-	$(cpp_ai_out) \
-	$(hal_ai_out) \
-	\
-	tmp/CevoDotNet.exe \
-	$(csharp_ai_out) \
-	tmp/Configurator.exe \
-	\
-	tmp/C-evo-x.msi
-
-
-help :
-	@printf "\n"
-	@printf "Makefile for C-evo-x\n"
-	@printf "\n"
-	@printf "Targets:\n"
-	@printf "   all            Build all components (default)\n"
-	@printf "   clean          Remove all build output\n"
-	@printf "\n"
-	@printf "   game           Build Delphi game DLL and Win32 loader and\n"
-	@printf "                  copy external resource files into place\n"
-
-
-clean :
-	-rm -rf tmp
-	-rm -rf Configurator/obj
-	-rm -rf AI_Template/CevoDotNet/obj
-	-rm -rf AI_Template/Project/obj
-
-
-game : \
-	$(game_out) \
-	$(resources_out) \
-	$(stdai_out)
-
-
 # ----- Variables
 
 cpp_ai_out = \
@@ -273,6 +227,52 @@ tribes_out = \
 	tmp/Tribes/Spanish.tribe.txt \
 	tmp/Tribes/StdUnits.txt \
 	tmp/Tribes/Vikings.tribe.txt
+
+
+# ----- Targets
+
+all : \
+	$(game_out) \
+	$(resources_out) \
+	$(stdai_out) \
+	\
+	tmp/Integrated.exe \
+	\
+	$(delphi_ai_out) \
+	\
+	$(cpp_ai_out) \
+	$(hal_ai_out) \
+	\
+	tmp/CevoDotNet.exe \
+	$(csharp_ai_out) \
+	tmp/Configurator.exe \
+	\
+	tmp/C-evo-x.msi
+
+
+help :
+	@printf "\n"
+	@printf "Makefile for C-evo-x\n"
+	@printf "\n"
+	@printf "Targets:\n"
+	@printf "   all            Build all components (default)\n"
+	@printf "   clean          Remove all build output\n"
+	@printf "\n"
+	@printf "   game           Build Delphi game DLL and Win32 loader and\n"
+	@printf "                  copy external resource files into place\n"
+
+
+clean :
+	-rm -rf tmp
+	-rm -rf Configurator/obj
+	-rm -rf AI_Template/CevoDotNet/obj
+	-rm -rf AI_Template/Project/obj
+
+
+game : \
+	$(game_out) \
+	$(resources_out) \
+	$(stdai_out)
 
 
 # ----- Game executable
