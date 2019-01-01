@@ -1201,6 +1201,23 @@ if Age<>MainTextureAge then with MainTexture do
 else result:=false
 end;
 
+procedure FreeGrExt;
+  var i: integer;
+begin
+  for i:=0 to nGrExt-1 do
+  begin
+    GrExt[i].Data.Free;
+    GrExt[i].Mask.Free;
+    FreeMem(GrExt[i]);
+  end;
+end;
+
+procedure FreeUniFont;
+  var section: TFontType;
+begin
+  for section:=Low(TFontType) to High(TFontType) do
+    UniFont[section].Free;
+end;
 
 var
 i,p,size: integer;
@@ -1324,13 +1341,8 @@ GenerateNames:=true;
 
 finalization
 RestoreResolution;
-for i:=0 to nGrExt-1 do
-  begin
-  GrExt[i].Data.Free; GrExt[i].Mask.Free;
-  FreeMem(GrExt[i]);
-  end;
-for section:=Low(TFontType) to High(TFontType) do
-  UniFont[section].Free;
+FreeGrExt();
+FreeUniFont();
 Phrases.Free;
 if Sounds<>nil then Sounds.Free;
 LogoBuffer.Free;
