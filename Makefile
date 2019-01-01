@@ -4,8 +4,7 @@
 # ----- Targets
 
 all : \
-	tmp/CevoWin32.exe \
-	tmp/cevo.dll \
+	$(game_out) \
 	$(resources_out) \
 	$(stdai_out) \
 	\
@@ -16,8 +15,7 @@ all : \
 	\
 	tmp/Integrated.exe \
 	tmp/Configurator.exe \
-	\
-	installer
+	tmp/C-evo-x.msi
 
 
 help :
@@ -35,8 +33,6 @@ help :
 	@printf "   csharp_ai      Build the C# sample AI and .NET loader\n"
 	@printf "   cpp_ai         Build the C++ sample AI\n"
 	@printf "   hal_ai         Build the HAL AI\n"
-	@printf "\n"
-	@printf "   installer      Build the installer\n"
 
 
 clean :
@@ -47,8 +43,7 @@ clean :
 
 
 game : \
-	tmp/CevoWin32.exe \
-	tmp/cevo.dll \
+	$(game_out) \
 	$(resources_out) \
 	$(stdai_out)
 
@@ -81,6 +76,10 @@ hal_ai : \
 game_icon = \
 	Project/cevo.rc \
 	Project/cevoxp2.ico
+
+game_out = \
+	tmp/CevoWin32.exe \
+	tmp/cevo.dll
 
 game_res = \
 	Project/Res1.rc \
@@ -905,8 +904,6 @@ tmp/Configurator.exe : \
 
 
 # ----- Installer
-
-installer: tmp/C-evo-x.msi
 
 tmp/C-evo-x.msi : \
 		tmp/Installer/Main.wixobj \
