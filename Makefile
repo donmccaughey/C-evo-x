@@ -4,7 +4,10 @@
 # ----- Targets
 
 all : \
-	game \
+	tmp/CevoWin32.exe \
+	tmp/cevo.dll \
+	$(resources_out) \
+	$(stdai_out) \
 	\
 	delphi_ai \
 	csharp_ai \
@@ -34,9 +37,6 @@ help :
 	@printf "   hal_ai         Build the HAL AI\n"
 	@printf "\n"
 	@printf "   installer      Build the installer\n"
-	@printf "\n"
-	@printf "   resources      Copy external resource files into place\n"
-	@printf "   std_ai         Copy the compiled standard AI into place\n"
 
 
 clean :
@@ -49,8 +49,8 @@ clean :
 game : \
 	tmp/CevoWin32.exe \
 	tmp/cevo.dll \
-	resources \
-	std_ai
+	$(resources_out) \
+	$(stdai_out)
 
 
 delphi_ai : \
@@ -74,25 +74,6 @@ hal_ai : \
 	tmp/HAL.dll \
 	tmp/HAL.ai.txt \
 	tmp/HAL.BMP
-
-
-resources : \
-	tmp/fonts.txt \
-	tmp/language.txt \
-	tmp/language2.txt \
-	\
-	tmp/AppData/Saved/(Example).cevo \
-	\
-	$(graphics_out) \
-	$(help_out) \
-	$(sounds_out) \
-	$(tribes_out)
-
-
-std_ai : \
-	tmp/StdAI.ai.txt \
-	tmp/StdAI.bmp \
-	tmp/StdAI.dll
 
 
 # ----- Variables
@@ -262,6 +243,23 @@ sounds_out = \
 	tmp/Sounds/sound.credits.txt \
 	tmp/Sounds/sound.txt \
 	tmp/Sounds/victory.mp3
+
+resources_out = \
+	tmp/fonts.txt \
+	tmp/language.txt \
+	tmp/language2.txt \
+	\
+	tmp/AppData/Saved/(Example).cevo \
+	\
+	$(graphics_out) \
+	$(help_out) \
+	$(sounds_out) \
+	$(tribes_out)
+
+stdai_out = \
+	tmp/StdAI.ai.txt \
+	tmp/StdAI.bmp \
+	tmp/StdAI.dll
 
 tribes_out = \
 	tmp/Tribes/Americans.tribe.txt \
