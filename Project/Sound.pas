@@ -130,8 +130,12 @@ if PlayingSound.FDeviceID=0 then PlayingSound:=nil
 else PlayingSound.Play(SoundPlayer.Handle);
 end;
 
-var
-i: integer;
+procedure FreeSoundList;
+  var i: integer;
+begin
+  for i:=0 to nSoundList-1 do
+    SoundList[i].Free;
+end;
 
 initialization
 nSoundList:=0;
@@ -145,8 +149,7 @@ if PlayingSound<>nil then
   PlayingSound.Stop;
   Sleep(222);
   end;
-for i:=0 to nSoundList-1 do
-  SoundList[i].Free;
+FreeSoundList();
 ReallocMem(SoundList,0);
 
 end.
