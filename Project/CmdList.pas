@@ -179,7 +179,8 @@ if Command and $FC00=sMoveUnit then
     sMoveUnit+$060: DirCode:=5;
     sMoveUnit+$100: DirCode:=6;
     sMoveUnit+$300: DirCode:=7;
-    end;
+  else DirCode:=0;
+  end;
   if Subject=FState.LastMovingUnit then code:=1+DirCode shl 1
   else code:=6+DirCode shl 3+Cardinal(Subject) shl 6;
   if FState.MoveCode=0 then FState.MoveCode:=code
