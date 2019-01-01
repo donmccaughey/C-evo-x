@@ -630,7 +630,6 @@ end;
 
 
 initialization
-assert(nImp<128);
 CalculateAdvValues;
 
 end.
