@@ -232,6 +232,8 @@ tribes_out = \
 # ----- Targets
 
 all : \
+	tmp\CevoComponents.bpl \
+	\
 	$(game_out) \
 	$(resources_out) \
 	$(stdai_out) \
@@ -269,9 +271,31 @@ clean :
 
 
 game : \
+	tmp\CevoComponents.bpl \
 	$(game_out) \
 	$(resources_out) \
 	$(stdai_out)
+
+
+# ----- Components library
+
+tmp\CevoComponents.bpl : \
+		Project\CevoComponents.dpk \
+		Project\CevoComponents.dof \
+		Project\CevoComponents.cfg \
+		tmp\CevoComponents.res
+	-mkdir tmp\units\CevoComponents
+	cd Project
+	dcc32 CevoComponents.dpk
+	cd ..
+
+tmp\CevoComponents.res : \
+		Project\CevoComponents.rc \
+		Project\CevoComponents.bmp
+	-mkdir tmp
+	cd tmp
+	brcc32 -foCevoComponents.res ..\Project\CevoComponents.rc
+	cd ..
 
 
 # ----- Game executable

@@ -1,0 +1,9 @@
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+TArea BITMAP CevoComponents.bmp
+TButtonA BITMAP CevoComponents.bmp
+TButtonB BITMAP CevoComponents.bmp
+TButtonC BITMAP CevoComponents.bmp
+TButtonN BITMAP CevoComponents.bmp
+TEOTButton BITMAP CevoComponents.bmp
+

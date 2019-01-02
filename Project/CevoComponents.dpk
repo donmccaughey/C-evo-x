@@ -1,0 +1,40 @@
+package CevoComponents;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'C-evo Components'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl40;
+
+contains
+  Area in 'Area.pas',
+  ButtonBase in 'ButtonBase.pas',
+  ButtonA in 'ButtonA.pas',
+  ButtonB in 'ButtonB.pas',
+  ButtonC in 'ButtonC.pas',
+  ButtonN in 'ButtonN.pas',
+  EOTButton in 'EOTButton.pas';
+
+end.
