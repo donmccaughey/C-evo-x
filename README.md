@@ -178,14 +178,14 @@ The `AI_Kit_C\HAL_source\HAL.sln` solution and `AI_Kit_C\HAL_source\HAL.vcxproj`
 
 ## Related
 
-- [C-evo at Launchpad][31], a fork of C-evo by [Jiří Hajda][32].
-- [cevo at GitLab][33], a fork of C-evo by [Vasilii Novikov][34] (last active in 2016).
-- [Updated C-evo AI Template][35], a fork of Steffen's C# AI Template by [dougmill][36].
+- [C-evo at Launchpad][91], a fork of C-evo by [Jiří Hajda][92].
+- [cevo at GitLab][93], a fork of C-evo by [Vasilii Novikov][94] (last active in 2016).
+/ [Updated C-evo AI Template][95], a fork of Steffen's C# AI Template by [dougmill][96].
 
-[31]: https://launchpad.net/c-evo
-[32]: https://launchpad.net/~chronoscz
-[33]: https://gitlab.com/vn971/cevo
-[34]: https://diasp.de/u/vn971
-[35]: https://github.com/dougmill/c-evo-ai-template
-[36]: https://github.com/dougmill
+[91]: https://launchpad.net/c-evo
+[92]: https://launchpad.net/~chronoscz
+[93]: https://gitlab.com/vn971/cevo
+[94]: https://diasp.de/u/vn971
+[95]: https://github.com/dougmill/c-evo-ai-template
+[96]: https://github.com/dougmill
 
