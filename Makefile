@@ -268,6 +268,8 @@ clean :
 	-rmdir /s /q Configurator\obj
 	-rmdir /s /q AI_Template\CevoDotNet\obj
 	-rmdir /s /q AI_Template\Project\obj
+	scripts\install_component.cmd \
+		delete tmp\CevoComponents.bpl
 
 
 game : \
@@ -288,6 +290,8 @@ tmp\CevoComponents.bpl : \
 	cd Project
 	dcc32 CevoComponents.dpk
 	cd ..
+	scripts\install_component.cmd \
+		add tmp\CevoComponents.bpl "C-evo Components"
 
 tmp\CevoComponents.res : \
 		Project\CevoComponents.rc \

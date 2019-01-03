@@ -52,12 +52,14 @@ See the [`LICENSE`][35] file for the list of contributors.
 [35]: https://github.com/donmccaughey/c_evo_x/blob/master/LICENSE
 
 
-## Building
+## Build System
 
 The `Makefile` located in the project root directory will build all the
 components and place build output into a `tmp\` directory in the root of the
 project.  The version of `make` that is installed with Delphi should be used to
 execute the `Makefile`.
+
+### Targets
 
 The `Makefile` contains a number of targets.  Type
 
@@ -66,6 +68,8 @@ The `Makefile` contains a number of targets.  Type
 to see the full list.  Two notable targets: `all` and `clean`.  The `all`
 target is the default and will build the game, all the AIs and the installer.
 The `clean` target will remove all build output.
+
+### Command Prompt Set Up
 
 Follow these steps to make sure your system is set up and ready to build:
 
@@ -82,30 +86,47 @@ Follow these steps to make sure your system is set up and ready to build:
    and are installed in a directory like `C:\Program Files (x86)\WiX Toolset
    v3.11\bin`
 
+### Building From the Command Prompt
+
 To build, open a Windows command prompt, navigate to the project root and run
 the `Makefile`:
 
-	make	# or: make all
+	make
 
 To remove all build output, run:
 
 	make clean
 
-**Note:** You _must_ run the `Makefile` build at least once to create the
-`tmp\` output directory structure, compile the `.res` files and copy the
-external resource files into place.  The Delphi projects depend on these steps
-and will fail without them.
+### Building From the Delphi IDE
 
-After running the `Makefile` build, you can open any of the individual IDE
-projects and build and run from within that IDE.
+You _must_ run the `Makefile` build at least once before opening any of the
+Delphi projects in the Delphi IDE.  If you do not, you may encounter errors or
+warnings like the following:
+
+* Compiler error: "Could not create output file
+  '\tmp\units\cevo\StringTables.dcu'"
+    > the `tmp\` output directory structure needs to be created
+
+* Compiler warning: "File not found: 'Res1.res'"
+    > the `.rc` files need to be compiled into `.res` files
+
+* Run error: "Could not find program, '..\tmp\CEvoWin32.exe'.
+    > the `CEvoWin32` game loader needs to be built
+
+* Run error: "[FILENOTFOUND]"
+    > the external resource files need to be copied into place
+
+* Alert "Error Reading Form": "Class TButtonA not found. Ignore the error and
+  continue?"
+    > the `CevoComponents` package needs to be built and installed in Delphi
 
 
 ## Project Structure
 
 ### The Delphi Projects
 
-There are four Delphi projects: three projects for building the game and one
-for building the Delphi sample AI.
+There are five Delphi projects: three projects for building the game, one for
+building the Delphi sample AI and one for building a Delphi components package.
 
 The core game can be built in two ways: as a single integrated executable or as
 a DLL and loader.
@@ -122,6 +143,12 @@ that loads the game DLL and non-.NET AIs, including Delphi and C++ AIs.
 
 The `Delphi_AI_Kit\AIProject.dpr` project builds the Delphi sample AI into a
 DLL named `AIProject.dll`.
+
+The `Project\CevoComponents.dpk` project builds the Delphi components package
+`CevoComponents.bpl`.  The `Makefile` build uses
+`scripts\install_component.cmd` to install the package into Delphi; you can
+also do this manually in Delphi by clicking _Component_ | _Install Packages..._
+| _Add..._.
 
 
 ### The C# Projects
