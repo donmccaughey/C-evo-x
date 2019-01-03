@@ -104,7 +104,7 @@ Delphi projects in the Delphi IDE.  If you do not, you may encounter errors or
 warnings like the following:
 
 * Compiler error: "Could not create output file
-  '\tmp\units\cevo\StringTables.dcu'"
+  '..\tmp\units\cevo\StringTables.dcu'"
     > the `tmp\` output directory structure needs to be created
 
 * Compiler warning: "File not found: 'Res1.res'"
@@ -180,9 +180,12 @@ The `AI_Kit_C\HAL_source\HAL.sln` solution and `AI_Kit_C\HAL_source\HAL.vcxproj`
 
 - [C-evo at Launchpad][31], a fork of C-evo by [Jiří Hajda][32].
 - [cevo at GitLab][33], a fork of C-evo by [Vasilii Novikov][34] (last active in 2016).
+- [Updated C-evo AI Template][35], a fork of Steffen's C# AI Template by [dougmill][36].
 
 [31]: https://launchpad.net/c-evo
 [32]: https://launchpad.net/~chronoscz
 [33]: https://gitlab.com/vn971/cevo
 [34]: https://diasp.de/u/vn971
+[35]: https://github.com/dougmill/c-evo-ai-template
+[36]: https://github.com/dougmill
 
