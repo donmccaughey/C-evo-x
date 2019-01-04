@@ -7,7 +7,6 @@ cpp_ai_out = \
 	tmp\MyAI.dll \
 	tmp\MyAI.ai.txt
 
-
 csharp_ai_out = \
 	tmp\AI.dll \
 	tmp\AI.ai.txt
@@ -308,13 +307,13 @@ tmp\CevoWin32.exe : \
 		Project\CevoWin32.dpr \
 		Project\CevoWin32.dof \
 		Project\CevoWin32.cfg \
-		tmp\units\CevoWin32/cevo.res
+		tmp\units\CevoWin32\cevo.res
 	-mkdir tmp\units\CevoWin32
 	cd Project
 	dcc32 CevoWin32.dpr
 	cd ..
 
-tmp\units\CevoWin32/cevo.res : $(game_icon)
+tmp\units\CevoWin32\cevo.res : $(game_icon)
 	-mkdir tmp\units\CevoWin32
 	cd tmp\units\CevoWin32
 	brcc32 -focevo.res ..\..\..\Project\cevo.rc
@@ -345,14 +344,14 @@ tmp\cevo.dll : \
 		Project\cevo.dpr \
 		Project\cevo.dof \
 		Project\cevo.cfg \
-		tmp\units\cevo/Res1.res \
+		tmp\units\cevo\Res1.res \
 		$(game_source)
 	-mkdir tmp\units\cevo
 	cd Project
 	dcc32 cevo.dpr
 	cd ..
 
-tmp\units\cevo/Res1.res : $(game_res)
+tmp\units\cevo\Res1.res : $(game_res)
 	-mkdir tmp\units\cevo
 	cd tmp\units\cevo
 	brcc32 -foRes1.res ..\..\..\Project\Res1.rc
@@ -927,7 +926,7 @@ tmp\Configurator.exe : \
 		Configurator\Properties\Resources.resx \
 		Configurator\Properties\Settings.Designer.cs \
 		Configurator\Properties\Settings.settings
-	MSBuild.exe Configurator/Configurator.sln
+	MSBuild.exe Configurator\Configurator.sln
 
 
 # ----- Installer
