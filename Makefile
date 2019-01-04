@@ -306,11 +306,24 @@ tmp\CevoComponents.res : \
 tmp\CevoWin32.exe : \
 		Project\CevoWin32.dpr \
 		Project\CevoWin32.dof \
-		Project\CevoWin32.cfg \
+		Project\CevoWin32.debug.cfg \
 		tmp\units\CevoWin32\cevo.res
 	-mkdir tmp\units\CevoWin32
 	cd Project
+	copy /y CevoWin32.debug.cfg CevoWin32.cfg
 	dcc32 CevoWin32.dpr
+	cd ..
+
+tmp\release\CevoWin32.exe : \
+		Project\CevoWin32.dpr \
+		Project\CevoWin32.dof \
+		Project\CevoWin32.release.cfg \
+		tmp\units\CevoWin32\cevo.res
+	-mkdir tmp\release\units\CevoWin32
+	cd Project
+	copy /y CevoWin32.release.cfg CevoWin32.cfg
+	dcc32 CevoWin32.dpr
+	copy /y CevoWin32.debug.cfg CevoWin32.cfg
 	cd ..
 
 tmp\units\CevoWin32\cevo.res : $(game_icon)
@@ -343,12 +356,26 @@ tmp\CevoDotNet.exe : \
 tmp\cevo.dll : \
 		Project\cevo.dpr \
 		Project\cevo.dof \
-		Project\cevo.cfg \
+		Project\cevo.debug.cfg \
 		tmp\units\cevo\Res1.res \
 		$(game_source)
 	-mkdir tmp\units\cevo
 	cd Project
+	copy /y cevo.debug.cfg cevo.cfg
 	dcc32 cevo.dpr
+	cd ..
+
+tmp\release\cevo.dll : \
+		Project\cevo.dpr \
+		Project\cevo.dof \
+		Project\cevo.release.cfg \
+		tmp\units\cevo\Res1.res \
+		$(game_source)
+	-mkdir tmp\release\units\cevo
+	cd Project
+	copy /y cevo.release.cfg cevo.cfg
+	dcc32 cevo.dpr
+	copy /y cevo.debug.cfg cevo.cfg
 	cd ..
 
 tmp\units\cevo\Res1.res : $(game_res)
@@ -945,7 +972,8 @@ tmp\C-evo-x.msi : \
 tmp\Installer\Product.wixobj : \
 		Installer\Product.wxs \
 		\
-		$(game_out) \
+		tmp\release\CevoWin32.exe \
+		tmp\release\cevo.dll \
 		\
 		tmp\fonts.txt \
 		tmp\language.txt \

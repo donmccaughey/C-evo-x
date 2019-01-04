@@ -9,4 +9,6 @@
 .DS_Store
 obj
 tmp
+Project/CevoWin32.cfg
+Project/cevo.cfg
 

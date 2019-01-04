@@ -31,11 +31,16 @@
 
                     <Component Id='Comp_CevoWin32.exe'
                              Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
-                        <File Name='CevoWin32.exe' KeyPath='yes' Checksum='yes' />
+                        <File Name='CevoWin32.exe'
+                            Source='tmp\release\CevoWin32.exe'
+                            KeyPath='yes'
+                            Checksum='yes' />
                     </Component>
                     <Component Id='Comp_cevo.dll'
                              Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
-                        <File Name='cevo.dll' KeyPath='yes' />
+                        <File Name='cevo.dll'
+                            Source='tmp\release\cevo.dll'
+                            KeyPath='yes' />
                     </Component>
                     <Component Id='Comp_fonts.txt'
                              Guid='EBE83E1A-A0A4-4AF2-8817-2CD458A728AB'>

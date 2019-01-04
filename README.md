@@ -110,8 +110,8 @@ warnings like the following:
 * Compiler warning: "File not found: 'Res1.res'"
     > the `.rc` files need to be compiled into `.res` files
 
-* Run error: "Could not find program, '..\tmp\CEvoWin32.exe'.
-    > the `CEvoWin32` game loader needs to be built
+* Run error: "Could not find program, '..\tmp\CevoWin32.exe'.
+    > the `CevoWin32` game loader needs to be built
 
 * Run error: "[FILENOTFOUND]"
     > the external resource files need to be copied into place
@@ -119,6 +119,23 @@ warnings like the following:
 * Alert "Error Reading Form": "Class TButtonA not found. Ignore the error and
   continue?"
     > the `CevoComponents` package needs to be built and installed in Delphi
+
+### Delphi Debug vs Release Builds
+
+Delphi 4 projects don't have a built-in way to distinguish between debug and
+release build settings and it's not possible to override all the necessary
+settings via the command line due to the command line length limit of the
+`dcc32.exe` compiler.
+
+Fortunately Delphi stores a list of compiler settings for each project in a
+matching `.cfg` file, so it's possible to swap between debug and release builds
+by modifying the `.cfg`.  The `Makefile` build does this in order to compile
+release versions of EXEs and DLLs for the installer.  Release output is placed
+in `tmp\release` (while debug and shared output goes in `tmp\`).  Compiler
+settings are stored in `.debug.cfg` and `.release.cfg` files for their
+respective projects.  The `Makefile` build will copy over the active
+configuration to `.cfg`, and will always leave the debug version behind for
+building from the IDE.
 
 
 ## Project Structure

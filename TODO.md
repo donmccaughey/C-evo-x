@@ -6,6 +6,8 @@
 
  - Audit unit names; unit names should match file names.
 
+ - Audit `Project\Switches.pas` and determine if any should be removed.
+
  - Remove `Integrated.dpr`.
 
  - Determine if resources in `Res1.rc` (drag.cur, flathand.cur) are used.
