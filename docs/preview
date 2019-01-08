@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\5'
+
+bundle exec jekyll serve
+

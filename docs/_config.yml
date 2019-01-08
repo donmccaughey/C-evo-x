@@ -1,1 +1,5 @@
+encoding: utf-8
+exclude: [ Gemfile, Gemfile.lock, preview.sh, README.md ]
 theme: jekyll-theme-minimal
+timezone: America/Los_Angeles
+
