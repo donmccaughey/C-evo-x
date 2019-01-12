@@ -27,7 +27,7 @@ But the C-evo source code is ... not very approachable.  As Steffen says on the
 C-evo _Files_ page: "Don't waste your time. I was young and had funny ideas of
 what makes a good code."  Fortunately I've spent many years of my career diving
 head first into lots of different codebases, good and bad, big and small.
-Working with "legacy" code is still challenging for me, but not daunting.
+Working with "legacy" code is still challenging, but not daunting.
 
 Even a poor codebase written by a young inexperienced programmer is worth
 investing in if it provides value to someone.  And C-evo still provides me with
