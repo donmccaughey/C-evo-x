@@ -20,17 +20,11 @@
                 </a>
             </h1>
 
+            <p>{{ site.github.project_tagline }}
+
             {% if site.logo %}
                 <img src="{{site.logo | relative_url}}" alt=Logo>
             {% endif %}
-
-            <p>{{ site.github.project_tagline }}
-
-            <p class=view>
-                <a href="{{ site.github.repository_url }}">
-                    View the Project on GitHub 
-                    <small>{{ site.github.repository_nwo }}</small>
-                </a>
 
             {% if site.show_downloads %}
                 <ul class=downloads>
@@ -48,6 +42,15 @@
                         </a>
                 </ul>
             {% endif %}
+
+            <nav>
+                <ol>
+                    <li><a href="{{ site.github.repository_url }}">Repository</a>
+                    <li><a href="{{ "/" | absolute_url }}">Docs</a>
+                    <li><a href="{{ "/dev_journal" | absolute_url }}">Dev Journal</a>
+                </ol>
+            </nav>
+
         </header>
         <section>
             {{ content }}

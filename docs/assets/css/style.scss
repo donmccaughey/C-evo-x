@@ -1,0 +1,58 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+a:hover, a:focus {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+a.previous {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+a.next {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+
+div.post_nav {
+    font-size: 10pt;
+    height: 1em;
+    margin-bottom: 0.5em;
+    position: relative;
+}
+
+h1 {
+    a:hover, a:focus {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+html, body {
+    font-size: 12pt;
+}
+
+nav {
+    ol {
+        border: 0;
+        margin: 0;
+        padding: 0;
+
+        li {
+            border-right: 0;
+            float: none;
+            font-size: 14pt;
+            height: auto;
+            list-style-type: none;
+            margin-bottom: 1em;
+            width: auto;
+        }
+    }
+}
+

@@ -3,7 +3,26 @@ layout: default
 ---
 
 <small>{{ page.date | date: "%-d %B %Y" }}</small>
+
 <h1>{{ page.title }}</h1>
 
+<div class=post_nav>
+    {% if page.previous %}
+        <a class=previous href="{{ page.previous | absolute_url }}">&lt;&lt; previous</a>
+    {% endif %}
+    {% if page.next %}
+        <a class=next href="{{ page.next | absolute_url }}">next &gt;&gt;</a>
+    {% endif %}
+</div>
+
 {{content}}
+
+<div class=post_nav>
+    {% if page.previous %}
+        <a class=previous href="{{ page.previous | absolute_url }}">&lt;&lt; previous</a>
+    {% endif %}
+    {% if page.next %}
+        <a class=next href="{{ page.next | absolute_url }}">next &gt;&gt;</a>
+    {% endif %}
+</div>
 
