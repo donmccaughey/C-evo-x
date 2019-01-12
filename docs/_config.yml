@@ -1,5 +1,7 @@
 encoding: utf-8
 exclude: [ Gemfile, Gemfile.lock, preview, README.md ]
+plugins:
+    - jekyll-feed
 theme: jekyll-theme-minimal
 timezone: America/Los_Angeles
 
