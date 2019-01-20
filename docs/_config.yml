@@ -1,5 +1,6 @@
 encoding: utf-8
 exclude: [ Gemfile, Gemfile.lock, preview, README.md ]
+permalink: /dev-journal/:year-:month-:day-:title
 plugins:
     - jekyll-feed
 theme: jekyll-theme-minimal
