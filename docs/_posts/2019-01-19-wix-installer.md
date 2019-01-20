@@ -59,7 +59,7 @@ linking.  That's easy enough, no problem there.  The WiX compiler is called
 `candle.exe` and the linker is called `light.exe`.  Ancillary tools include
 `lit.exe` and `heat.exe`.  Cute, but really not very helpful.
 
-![The installer Welcome dialog](/dev-journal/2019-01-19-wix-installer-welcome.png)
+![The installer Welcome dialog](2019-01-19-wix-installer-welcome.png)
 
 But in the end, it works.
 
