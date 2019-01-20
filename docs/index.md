@@ -17,10 +17,14 @@ game more modular and the code more approachable.
 
 ## Dev Journal
 
-{% for post in site.posts %}
+{% for post in site.posts limit:3 %}
 - {{ post.date | date_to_string }}: [{{ post.title }}]({{ post.url | absolute_url }})
 
     > {{ post.excerpt }}
 
 {% endfor %}
+
+<div class='post_nav'>
+    <a class='next' href='dev-journal/'>all posts &gt;&gt;</a>
+</div>
 
