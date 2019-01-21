@@ -5736,7 +5736,9 @@ if UnFocus>=0 then
           VK_NUMPAD7,VK_HOME: begin dx:=-1; dy:=-1 end;
           VK_NUMPAD8,VK_UP: begin dx:=0; dy:=-2 end;
           VK_NUMPAD9,VK_PRIOR: begin dx:=1; dy:=-1 end;
-          end;
+        else
+          dx:=0; dy:=0;
+        end;
         MoveUnit(dx,dy,muAutoNext)
         end;
       end
