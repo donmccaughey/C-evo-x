@@ -4725,6 +4725,7 @@ PlaneReturnData: TPlaneReturnData;
 QueryItem: string;
 begin
 result:=eInvalid;
+IsAttack:=False;
 UnFocus0:=UnFocus;
 FromLoc:=MyUn[UnFocus].Loc;
 ToLoc:=dLoc(FromLoc,dx,dy);
