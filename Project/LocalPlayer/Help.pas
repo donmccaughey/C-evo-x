@@ -851,6 +851,7 @@ CheckSeeAlso: boolean;
       if FollowFormat=pkNormal_Dot then ofs:=20+4+8
       else ofs:=8;
       p:=0;
+      l:=-1;
       repeat
         repeat inc(p) until (p>Length(s)) or (s[p]=' ') or (s[p]='\');
         if (BiColorTextWidth(Offscreen.Canvas,Copy(s,1,p-1))<=RightMargin-ofs) then
