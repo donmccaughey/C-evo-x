@@ -2686,6 +2686,7 @@ case Command of
           InitEnemyModel(emix);
 
         ToLoc:=dLoc(FromLoc,dx,dy);
+        ShowMoveDomain:=dGround;
         if idle then
           begin // own unit -- make discovered land visible
           assert(Owner=me); // no foreign moves during my turn!
