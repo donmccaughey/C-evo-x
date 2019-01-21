@@ -405,6 +405,7 @@ if Kind in [dkEnemyCityDefense,dkEnemyCity] then
       end;
   end;
 
+Destroyed:=0;
 if Kind=dkEnemyModel then
   begin
   PPicture:=@Tribe[mox.Owner].ModelPicture[mox.mix];
@@ -424,7 +425,6 @@ if Kind=dkEnemyModel then
     for uix:=0 to MyRO.nEnemyUn-1 do
       if (MyRO.EnemyUn[uix].Loc>=0) and IsToCount(MyRO.EnemyUn[uix].emix) then
         inc(Available);
-  Destroyed:=0;
   for emix:=0 to MyRO.nEnemyModel-1 do if IsToCount(emix) then
     inc(Destroyed,MyRO.EnemyModel[emix].Lost);
   end
