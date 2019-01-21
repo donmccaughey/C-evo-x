@@ -265,9 +265,9 @@ nLines,Line,Start,Stop,OrdinaryStop,Indent,y: integer;
 s: string;
 preview, Dot: boolean;
 begin
+nLines:=0;
 for preview:=true downto false do
   begin
-  nLines:=0;
   Start:=1;
   Line:=0;
   Indent:=0;
