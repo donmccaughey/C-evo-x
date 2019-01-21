@@ -2681,6 +2681,7 @@ case Command of
         Application.ProcessMessages;
       with TShowMove(Data) do
         begin
+        AnimationSpeed:=16;
         CurrentMoveInfo.DoShow:=false;
         if not idle and (Tribe[Owner].ModelPicture[mix].HGr=0) then
           InitEnemyModel(emix);
