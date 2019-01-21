@@ -4742,6 +4742,7 @@ if MyMap[ToLoc] and fHiddenUnit<>0 then
   exit;
   end;
 
+euix:=0;
 if MyMap[ToLoc] and (fUnit or fOwned)=fUnit then
   begin // attack -- search enemy unit
   if (MyModel[MyUn[UnFocus].mix].Attack=0)
@@ -4752,7 +4753,7 @@ if MyMap[ToLoc] and (fUnit or fOwned)=fUnit then
     exit;
     end;
   euix:=MyRO.nEnemyUn-1;
-  while (euix>=0) and (MyRO.EnemyUn[euix].Loc<>ToLoc) do dec(euix);
+  while (euix>=0) and (MyRO.EnemyUn[euix].Loc<>ToLoc) do dec(euix)
   end;
 
 DirCode:=dx and 7 shl 4+dy and 7 shl 7;
