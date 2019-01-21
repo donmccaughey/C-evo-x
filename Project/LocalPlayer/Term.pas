@@ -3905,6 +3905,8 @@ with Panel.Canvas do
             begin xSrc:=3; ySrc:=12; xSrcBase:=7; ySrcBase:=12 end;
           fPrefStartPos: begin xSrc:=0; ySrc:=1 end;
           fStartPos: begin xSrc:=0; ySrc:=2 end;
+          else
+            begin xSrc:=0; ySrc:=2 end;
           end;
         if xSrcBase>=0 then
           Sprite(Panel,HGrTerrain,xTroop+2+x,yTroop+9-yyt,xxt*2,yyt*3,
