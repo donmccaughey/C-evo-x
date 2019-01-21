@@ -217,6 +217,7 @@ if Kind=dkChart then with offscreen.Canvas do
         Pen.Color:=Tribe[p].Color;
         Stop:=MyRO.Turn-1;
         while (Stop>0) and (List[Stop]=0) do dec(Stop);
+        y0:=0;
         for T:=0 to Stop do
           begin
           r:=Round(T);
