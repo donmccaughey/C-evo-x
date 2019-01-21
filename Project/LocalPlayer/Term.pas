@@ -574,7 +574,9 @@ end;
 function RoughCredibility(Credibility: integer): integer;
 begin
 case Credibility of
-  0..69: result:=0; 70..89: result:=1; 90..99: result:=2; 100: result:=3 end;
+  0..69: result:=0; 70..89: result:=1; 90..99: result:=2; 100: result:=3
+  else result:= 0
+  end;
 end;
 
 procedure ChooseModelPicture(p,mix,code,Hash,Turn: integer;
