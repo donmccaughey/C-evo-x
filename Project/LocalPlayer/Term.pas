@@ -4299,6 +4299,7 @@ PaintDestination;
 for GotoOnly:=GoOnPhase downto false do
   begin
   NewFocus:=-1;
+  Dist:=0;
   for i:=1 to MyRO.nUn do
     begin
     uix:=(UnFocus+i) mod MyRO.nUn;
