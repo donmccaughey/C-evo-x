@@ -1398,6 +1398,7 @@ else
   ToggleBtn.Hint:=Phrases.Lookup('BTN_SELECT')
   end;
 
+ShowFocus:=false;
 if Kind=kAdvance then // show focus button?
   if MyData.FarTech<>adNone then
     ShowFocus:=true
