@@ -772,7 +772,7 @@ procedure TListDlg.PaintBox1MouseDown(Sender:TObject;Button:TMouseButton;
 var
 lix: integer;
 begin
-if sb.si.npos+Sel>=0 then lix:=code[Layer,sb.si.npos+Sel];
+if sb.si.npos+Sel>=0 then lix:=code[Layer,sb.si.npos+Sel] else lix:=0;
 if Kind in [kScience,kCities,kCityEvents,kModels,kEModels,kAllEModels] then
   include(Shift, ssShift); // don't close list window
 if (ssLeft in Shift) and not(ssShift in Shift) then
