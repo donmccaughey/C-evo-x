@@ -267,6 +267,7 @@ preview, Dot: boolean;
 begin
 for preview:=true downto false do
   begin
+  nLines:=0;
   Start:=1;
   Line:=0;
   Indent:=0;
