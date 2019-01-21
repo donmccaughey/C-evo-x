@@ -4296,6 +4296,7 @@ begin
 if ClientMode>=scContact then exit;
 DestinationMarkON:=false;
 PaintDestination;
+NewFocus:=-1;
 for GotoOnly:=GoOnPhase downto false do
   begin
   NewFocus:=-1;
