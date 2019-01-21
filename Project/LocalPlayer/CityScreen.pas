@@ -361,7 +361,8 @@ procedure TCityDlg.OffscreenPaint;
     inc(Total);
   if Add4Happy then
     inc(Total,4);
-  if Total>1 then d:=(xxt-11) div (Total-1);
+  if Total>1 then d:=(xxt-11) div (Total-1)
+  else d:=1;
   if d<1 then d:=1;
   if d>4 then d:=4;
   for i:=0 to Total-1 do
@@ -554,7 +555,9 @@ if IsCityAlive then
         PaintResources(xmArea-xxt+xxt*dx,ymArea-yyt+yyt*dy,Loc1,(dx=0) and (dy=0));
       end;
 
-if Report.Working>1 then d:=(xService-(xmArea-192)-8-32) div(Report.Working-1);
+
+if Report.Working>1 then d:=(xService-(xmArea-192)-8-32) div(Report.Working-1)
+else d:=28;
 if d>28 then d:=28;
 for i:=Report.Working-1 downto 0 do
   begin
