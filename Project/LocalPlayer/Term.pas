@@ -4726,6 +4726,7 @@ QueryItem: string;
 begin
 result:=eInvalid;
 IsAttack:=False;
+Mission:=smSabotageProd;
 UnFocus0:=UnFocus;
 FromLoc:=MyUn[UnFocus].Loc;
 ToLoc:=dLoc(FromLoc,dx,dy);
