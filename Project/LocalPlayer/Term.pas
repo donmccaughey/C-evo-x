@@ -1174,6 +1174,7 @@ procedure TMainScreen.Client(Command,NewPlayer:integer;var Data);
   Assert(UnusedTribeFiles.Count>0);
   result:=-1;
   BestColorDistance:=-1;
+  CountBest:=0;
   for j:=0 to UnusedTribeFiles.Count-1 do
     begin
     ColorDistance:=250; // consider differences more than this infinite
