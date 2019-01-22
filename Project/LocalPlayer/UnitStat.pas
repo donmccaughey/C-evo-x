@@ -397,6 +397,7 @@ if Kind in [dkEnemyCityDefense,dkEnemyCity] then
         1: j:=imCoastalFort;
         2: j:=imMissileBat;
         3: j:=imBunker
+        else j:=imWalls
         end;
       Frame(offscreen.Canvas,x-1,yImp-1,x+xSizeSmall,yImp+ySizeSmall,
         MainTexture.clBevelLight,MainTexture.clBevelShade);
