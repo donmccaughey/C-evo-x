@@ -406,6 +406,7 @@ if Kind in [dkEnemyCityDefense,dkEnemyCity] then
   end;
 
 Destroyed:=0;
+InProd:=0;
 if Kind=dkEnemyModel then
   begin
   PPicture:=@Tribe[mox.Owner].ModelPicture[mox.mix];
@@ -433,7 +434,6 @@ else
   Available:=0;
   for uix:=0 to MyRO.nUn-1 do
     if (MyUn[uix].Loc>=0) and (MyUn[uix].mix=mixShow) then inc(Available);
-  InProd:=0;
   for cix:=0 to MyRO.nCity-1 do
     if (MyCity[cix].Loc>=0) and (MyCity[cix].Project and (cpImp+cpIndex)=mixShow) then
       inc(InProd);
