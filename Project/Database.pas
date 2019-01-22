@@ -1766,6 +1766,7 @@ begin
 Defender:=Occupant[Loc];
 Cnt:=0;
 Det:=-1;
+Cost:=0;
 for uix1:=0 to RW[Defender].nUn-1 do
   begin
   PUn:=@RW[Defender].Un[uix1];
