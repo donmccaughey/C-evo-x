@@ -778,6 +778,7 @@ while Q.Get(Loc,T) do
             else MoveCost:=-1;
 
           else // ground unit
+            MoveCost:=-1;
             if (ToTile and fTerrain>=fGrass) then {domain ok}
               begin {valid move}
               if (FromTile and (fRR or fCity)<>0)
