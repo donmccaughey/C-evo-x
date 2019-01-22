@@ -556,6 +556,7 @@ TileInfo:TTileInfo;
 begin
 {$IFOPT O-}assert(1 shl p and InvalidTreatyMap=0);{$ENDIF}
 Best:=0;
+BestDist:=0;
 result:=-1;
 with RW[p].City[cix] do
   begin
