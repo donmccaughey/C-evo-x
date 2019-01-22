@@ -713,6 +713,11 @@ with RW[p].Model[RW[p].Un[uix].mix] do
       maxmov:=Speed;
       initmov:=0;
       end
+    else
+      begin
+        MoveInfo:=gmaGround_NoZoC;
+        maxmov:=Speed;
+      end
     end;
 
 FromLoc:=RW[p].Un[uix].Loc;
