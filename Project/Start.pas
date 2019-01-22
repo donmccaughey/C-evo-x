@@ -708,10 +708,10 @@ if DeleteBtn.Visible then
 if Page=pgLoad then
   BtnFrame(Canvas,ReplayBtn.BoundsRect,MainTexture);
 
+xMini:=x0Mini-MiniWidth;
+yMini:=y0Mini-MiniHeight div 2;
 if not (Page in [pgMain,pgNoLoad]) then
   begin
-  xMini:=x0Mini-MiniWidth;
-  yMini:=y0Mini-MiniHeight div 2;
   Frame(Canvas,xMini,yMini,xMini+3+MiniWidth*2,yMini+3+MiniHeight,MainTexture.clBevelLight,
     MainTexture.clBevelShade);
   Frame(Canvas,xMini+1,yMini+1,xMini+2+MiniWidth*2,yMini+2+MiniHeight,MainTexture.clBevelShade,
