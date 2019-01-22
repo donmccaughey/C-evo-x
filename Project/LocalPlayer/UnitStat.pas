@@ -600,6 +600,7 @@ case Kind of
   dkOwnModel,dkEnemyModel: yCaption:=yView+46;
   dkEnemyUnit,dkOwnUnit: yCaption:=yView+54;
   dkEnemyCityDefense,dkEnemyCity: yCaption:=79;
+  else yCaption:=yView+54
   end;
 RisedTextOut(offscreen.Canvas, (ClientWidth-BiColorTextWidth(offscreen.Canvas,caption)) div 2, yCaption, caption);
 end; {OffscreenPaint}
