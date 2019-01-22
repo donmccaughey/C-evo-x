@@ -347,6 +347,8 @@ mi: TModelInfo;
 begin
 inherited;
 
+yView:=0;
+yTotal:=0;
 case Kind of
   dkOwnModel:
     begin
