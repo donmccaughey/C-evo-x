@@ -376,6 +376,11 @@ with ModelInfo do
         Hash1:=(Attack*1605+Defense) shl 5+FeatureCode;
         Hash2:=((Bombs*7+ATrans_Fuel)*4+TTrans)*2089+Cost;
         end;
+      else
+        begin
+        Hash1:=(Attack*2273+Defense)*9+(Speed-150) div 50;
+        Hash2:=FeatureCode*1611+Cost;
+        end
       end;
     Hash2r:=0;
     for i:=0 to 7 do
