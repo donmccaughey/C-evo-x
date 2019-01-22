@@ -1217,6 +1217,7 @@ with RW[p].City[cix] do
       else
         begin
         iH:=0;
+        iT:=0;
         while iH<nHierarchy do
           begin
           iT:=0;
