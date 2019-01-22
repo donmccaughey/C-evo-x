@@ -1214,6 +1214,7 @@ until ok;
 
 FineDistSQR:=MapSize*LandMass*9 div (nAlive*100);
 p1:=1;
+BestDist:=0;
 for c:=1 to nsc do
   begin // for all start continents
   if sccount[c]=1 then StartLoc0[p1]:=CityLoc[c,Random(nCityLoc[c])]
