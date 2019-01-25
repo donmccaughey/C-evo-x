@@ -1304,7 +1304,7 @@ end;
 procedure BeforeTurn;
 var
 i,p1,uix,cix,V21,Loc1,Cost,Job0,nAlive,nAppliers,ad,
-  OldLoc,SiegedTiles,nUpdateLoc: integer;
+  OldLoc,SiegedTiles,nUpdateLoc,data: integer;
 UpdateLoc: array[0..numax-1] of integer;
 Radius: TVicinity21Loc;
 ShowShipChange: TShowShipChange;
@@ -1331,8 +1331,11 @@ if (GWonder[woGrLibrary].EffectiveOwner=pTurn) and (GWinner=0) then
       SeeTech(pTurn,ad);
       inc(nTech[pTurn]);
       if Mode>=moMovie then
-        CallPlayer(cShowGreatLibTech,pTurn,ad);
+        begin
+        data:=ad;
+        CallPlayer(cShowGreatLibTech,pTurn,data);
         // do not call CallPlayer(pTurn) while map is invalid
+        end;
       end;
     end;
   end;
