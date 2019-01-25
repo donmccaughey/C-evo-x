@@ -873,6 +873,7 @@ Zone:array[0..3,2..9] of single= {terrain distribution}
   if ly-1-y>y then begin z0:=6*y div ly;ZPlus:=6*y/ly -z0 end
   else begin z0:=6*(ly-1-y) div ly;ZPlus:=6*(ly-1-y)/ly -z0 end;
   p0:=1;
+  RndLow:=2;
   for i:=2 to 9 do
     begin
     p:=Zone[z0,i]*(1-ZPlus)+Zone[z0+1,i]*ZPlus;
