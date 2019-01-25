@@ -1116,6 +1116,8 @@ CountGood:(cgBest,cgFlat,cgLand);
         result:=(RealMap[Loc] and fTerrain in [fGrass,fPrairie,fTundra,fSwamp,fForest]);
       cgLand:
         result:= RealMap[Loc] and fTerrain>=fGrass;
+      else
+        result:=false
       end;
   end;
 
