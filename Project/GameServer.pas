@@ -1671,6 +1671,7 @@ with RW[pTurn] do
       begin
       Loc1:=Loc;
       Job0:=Job;
+      JobDone:=False;
       if Job<>jNone then JobDone:=Work(pTurn,uix);
         {settlers do terrain improvement jobs}
       if Health<=0 then RemoveUnit_UpdateMap(pTurn,uix);
