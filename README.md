@@ -16,13 +16,17 @@ C-evo and C-evo-x are in the public domain.
 
 The following software is required to build C-evo-x.
 
- - Borland [Delphi 4.0][21] or later.
- - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][22] or later.
- - [WiX Toolset 3.11.1][23] or later for building the installer.
+ - Borland [Delphi 4.0][21].
+ - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][22].
+ - [WiX Toolset 3.11.1][23].
+
+The build is tested on Windows 10 Pro (64-bit) version 1809.  [YMMV][24] on
+other versions.
 
 [21]: https://winworldpc.com/product/delphi/4x
 [22]: https://visualstudio.microsoft.com/vs/older-downloads/
 [23]: http://wixtoolset.org
+[24]: https://www.urbandictionary.com/define.php?term=ymmv
 
 
 ## Components
@@ -96,6 +100,16 @@ the `Makefile`:
 To remove all build output, run:
 
 	make clean
+
+### Installing and Running the Game
+
+To install C-evo-x, run the `C-evo-x.msi` installer and follow the
+instructions.  This will install C-evo-x on your system, including shortcuts
+for the Start menu.  Alternately, you can play the game directly from the build
+output directory `tmp\` by running `CevoDotNet.exe` (which supports AIs built
+in .NET languages), `CevoWin32.exe` (which does not support .NET AIs) or
+`Integrated.exe` (the "all-in-one" build of the game, which combines `cevo.dll`
+with `CevoWin32.exe`.
 
 ### Building From the Delphi IDE
 
@@ -191,6 +205,18 @@ is also referenced by the `AI_Template\Project\AI.sln` solution.
 The `AI_Kit_C\MyAI.sln` solution and `AI_Kit_C\MyAI.vcxproj` C++ project build the C++ sample AI into a DLL named `MyAI.dll`.
 
 The `AI_Kit_C\HAL_source\HAL.sln` solution and `AI_Kit_C\HAL_source\HAL.vcxproj` C++ project build the HAL AI into a DLL named `HAL.dll`.
+
+
+## More Documentation
+
+The C-evo site [Info page][81] and [FAQ][82] contain a lot of detail about the
+game and its design.  Check the C-evo-x [Docs][83] and [Dev Journal][84] for
+information specific to C-evo-x.
+
+[81]: http://www.c-evo.org/text.html
+[82]: http://www.c-evo.org/faq.html
+[83]: https://donmccaughey.github.io/C-evo-x/
+[84]: https://donmccaughey.github.io/C-evo-x/dev-journal/
 
 
 ## Related
