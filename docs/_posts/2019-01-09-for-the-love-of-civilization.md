@@ -9,7 +9,7 @@ The core game was developed in Delphi 4, which was released in 1998.  The
 ancillary `Configurator` program and C# AI template were developed in Visual C#
 Express 2008.
 
-Bit rot happens.  Windows 8 was released in late 2012, now replaced multiple
+Bit rot happens.  Windows 8 was released in late 2012, now replaced by multiple
 major releases of Windows 10.  Delphi has seen numerous updates; 10.2 was
 released in 2018.  Visual Studio has seen five major releases, with the 2019
 suite due soon.  Even with Microsoft's strong commitment to backwards

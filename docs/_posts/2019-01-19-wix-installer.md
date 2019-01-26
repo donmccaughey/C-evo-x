@@ -45,14 +45,15 @@ There's no way to fully [DRY][31] out your WiX code.
 
 [31]: https://en.wikipedia.org/wiki/Don't_repeat_yourself
 
-Within certain attributes, some values have special meaning.  For example, the
-`Id` attribute of `<Directory>` can be set to `ProgramFilesFolder` or
-`INSTALLDIR`, which represent the `C:\Program Files\` directory and the
-installation directory selected by the user, respectively.  Other attributes
-allow the installer to substitute values defined elsewhere, such as the `Key`
-attribute for the `<RegistryValue>` element, which can be something like
-`Key='Software\[Manufacturer]\[ProductName]'`.  If the WiX documentation
-enumerates all these special cases, I haven't found that part yet.
+Within certain attributes, some values are variables that have special meaning.
+For example, the `Id` attribute of `<Directory>` can be set to
+`ProgramFilesFolder` or `INSTALLDIR`, which represent the `C:\Program Files\`
+directory and the installation directory selected by the user, respectively.
+Other attributes allow the installer to substitute values defined elsewhere,
+such as the `Key` attribute for the `<RegistryValue>` element, which can be
+something like `Key='Software\[Manufacturer]\[ProductName]'`.  If the WiX
+documentation enumerates all these special cases, I haven't found that part
+yet.
 
 Finally, a WiX installer is built in two steps, analogous to compiling and
 linking.  That's easy enough, no problem there.  The WiX compiler is called

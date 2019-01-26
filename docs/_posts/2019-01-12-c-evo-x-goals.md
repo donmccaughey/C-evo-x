@@ -24,10 +24,12 @@ minimum.
 
 ## Medium Term
 
-C-evo is "legacy code" in the sense that there is no automated test suite.
-Figuring out how to add some tests to the project is high on the agenda in the
-mid term.  Making the C-evo source code testable will probably require some
+C-evo is ["legacy code"][21] in the sense that there is no automated test
+suite.  Figuring out how to add some tests to the project is high on the agenda
+in the mid term.  Making the C-evo source testable will probably require some
 changes to the code.
+
+[21]: https://en.wikipedia.org/wiki/Legacy_code
 
 Splitting up the game into separate, independently built modules is another
 important part of the medium term goals.  Modularity and testing tend to be
@@ -41,7 +43,7 @@ I've long wanted to make, such as a "Go To City" command.
 Delphi has a very small development community these days.  C# has never gained
 wide acceptance outside of the Microsoft world.  I'm not a regular user of
 either language and while they're both fine languages (thanks [Anders][31]!),
-my personal preference and interest lies elsewhere.
+my personal preferences and interests lies elsewhere.
 
 [31]: https://en.wikipedia.org/wiki/Anders_Hejlsberg
 
