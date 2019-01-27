@@ -3037,7 +3037,7 @@ case Command of
             if TOffer(Data).Price[i] and opMask=opTribute then
               OfferFullySupported:=false; // tribute no more part of the game
             if (TOffer(Data).Price[i] and opMask=opTreaty)
-              and (TOffer(Data).Price[i]-opTreaty<=RW[pDipActive].Treaty[p1]) then
+              and (integer(TOffer(Data).Price[i]-opTreaty)<=RW[pDipActive].Treaty[p1]) then
               OfferFullySupported:=false; // agreed treaty end no more part of the game
             if TOffer(Data).Price[i]=opTreaty+trCeaseFire then
               OfferFullySupported:=false; // ceasefire no more part of the game
