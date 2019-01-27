@@ -97,7 +97,7 @@ type
     procedure ChangePage(NewPage: integer);
     procedure ChangeTab(NewTab: integer);
     procedure UnlistBackupFile(FileName: string);
-    procedure SmartInvalidate(x0,y0,x1,y1: integer; invalidateTab0: boolean = false);
+    procedure InvalidateRect(x0,y0,x1,y1: integer; invalidateTab0: boolean = false);
   end;
 
 var
@@ -398,7 +398,7 @@ for i:=0 to nBrain-1 do
   BrainPicture[i].Free;
 end;
 
-procedure TStartDlg.SmartInvalidate(x0,y0,x1,y1: integer; InvalidateTab0: boolean);
+procedure TStartDlg.InvalidateRect(x0,y0,x1,y1: integer; InvalidateTab0: boolean);
 var
 i: integer;
 r0,r1: HRgn;
@@ -1029,7 +1029,7 @@ case Page of
     if not TurnValid then
       begin
       LoadTurn:=LastTurn;
-      SmartInvalidate(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
+      InvalidateRect(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
       end;
     TurnValid:=true;
     end;
@@ -1086,10 +1086,10 @@ case Page of
       CloseFile(MapFile);
       end;
     if Page=pgEditMap then
-      SmartInvalidate(x0Mini-112,y0Mini+61,x0Mini+112,y0Mini+91);
+      InvalidateRect(x0Mini-112,y0Mini+61,x0Mini+112,y0Mini+91);
     end
   end;
-SmartInvalidate(x0Mini-lxmax,y0Mini-lymax div 2,
+InvalidateRect(x0Mini-lxmax,y0Mini-lymax div 2,
   x0Mini-lxmax+2*lxmax+4,y0Mini-lymax div 2+lymax+4);
 end;
 
@@ -1101,7 +1101,7 @@ begin
 if bixPopup<0 then
   begin // change default AI
   bixDefault:=TMenuItem(Sender).Tag;
-  SmartInvalidate(xDefault,yDefault,xDefault+64,yDefault+64);
+  InvalidateRect(xDefault,yDefault,xDefault+64,yDefault+64);
   end
 else
   begin
@@ -1135,11 +1135,11 @@ else
         MultiBtn[i].Visible:=false;
         MultiBtn[i].Tag:=0;
         end;
-      SmartInvalidate(xBrain[i]-31,yBrain[i]-1,xBrain[i]+64,DiffUpBtn[i].Top+25);
+      InvalidateRect(xBrain[i]-31,yBrain[i]-1,xBrain[i]+64,DiffUpBtn[i].Top+25);
       end;
     Brain[bixTerm].Flags:=Brain[bixTerm].Flags and not fUsed;
     end;
-  SmartInvalidate(xBrain[bixPopup]-31,yBrain[bixPopup]-1,xBrain[bixPopup]+64,
+  InvalidateRect(xBrain[bixPopup]-31,yBrain[bixPopup]-1,xBrain[bixPopup]+64,
     DiffUpBtn[bixPopup].Top+25);
   end
 end;
@@ -1338,7 +1338,7 @@ for i:=0 to ControlCount-1 do
 if Page=pgLoad then
   ReplayBtn.Visible:= MiniMode<>mmMultiPlayer;
 List.Invalidate;
-SmartInvalidate(0,0,ClientWidth,ClientHeight,invalidateTab0);
+InvalidateRect(0,0,ClientWidth,ClientHeight,invalidateTab0);
 end;
 
 procedure TStartDlg.ChangeTab(NewTab: integer);
@@ -1419,7 +1419,7 @@ else if (page=pgLoad) and (LastTurn>0) and (y>=yTurnSlider) and (y<yTurnSlider+7
   and (x>=xTurnSlider) and (x<=xTurnSlider+wTurnSlider) then
     begin
     LoadTurn:=LastTurn*(x-xTurnSlider) div wTurnSlider;
-    SmartInvalidate(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
+    InvalidateRect(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
     Tracking:=true
     end
 end;
@@ -1431,20 +1431,20 @@ case Page of
     if MaxTurn<1400 then
       begin
       inc(MaxTurn,200);
-      SmartInvalidate(344,y0Mini+61,514,y0Mini+82);
+      InvalidateRect(344,y0Mini+61,514,y0Mini+82);
       end;
   pgLoad:
     if LoadTurn<LastTurn then
       begin
       inc(LoadTurn);
-      SmartInvalidate(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
+      InvalidateRect(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
       end;
   pgEditRandom:
     if StartLandMass<96 then
       begin
       inc(StartLandMass,5);
       PaintInfo;
-      SmartInvalidate(344,y0Mini+61,514,y0Mini+61+21);
+      InvalidateRect(344,y0Mini+61,514,y0Mini+61+21);
       end;
   end
 end;
@@ -1456,20 +1456,20 @@ case Page of
     if MaxTurn>400 then
       begin
       dec(MaxTurn,200);
-      SmartInvalidate(344,y0Mini+61,514,y0Mini+82);
+      InvalidateRect(344,y0Mini+61,514,y0Mini+82);
       end;
   pgLoad:
     if LoadTurn>0 then
       begin
       dec(LoadTurn);
-      SmartInvalidate(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
+      InvalidateRect(xTurnSlider-2,y0Mini+61,xTurnSlider+wTurnSlider+2,yTurnSlider+9);
       end;
   pgEditRandom:
     if StartLandMass>10 then
       begin
       dec(StartLandMass,5);
       PaintInfo;
-      SmartInvalidate(344,y0Mini+61,514,y0Mini+61+21);
+      InvalidateRect(344,y0Mini+61,514,y0Mini+61+21);
       end
   end
 end;
@@ -1480,7 +1480,7 @@ if WorldSize<nWorldSize-1 then
   begin
   inc(WorldSize);
   PaintInfo;
-  SmartInvalidate(344,y0Mini-77,510,y0Mini-77+21);
+  InvalidateRect(344,y0Mini-77,510,y0Mini-77+21);
   end
 end;
 
@@ -1490,7 +1490,7 @@ if WorldSize>0 then
   begin
   dec(WorldSize);
   PaintInfo;
-  SmartInvalidate(344,y0Mini-77,510,y0Mini-77+21);
+  InvalidateRect(344,y0Mini-77,510,y0Mini-77+21);
   end
 end;
 
@@ -1509,7 +1509,7 @@ if (Tab=1) and ((List.ItemIndex=0)<>(Page=pgEditRandom)) then
   else Page:=pgEditMap;
   for i:=0 to ControlCount-1 do
     Controls[i].Visible:= Controls[i].Tag and (256 shl Page)<>0;
-  SmartInvalidate(328,Up1Btn.Top-12,ClientWidth,Up2Btn.Top+35);
+  InvalidateRect(328,Up1Btn.Top-12,ClientWidth,Up2Btn.Top+35);
   end;
 if Page=pgLoad then TurnValid:=false;
 PaintInfo;
@@ -1622,7 +1622,7 @@ for i:=0 to nPlOffered-1 do
     begin
     if Sender=DiffUpBtn[i] then inc(Difficulty[i])
     else dec(Difficulty[i]);
-    SmartInvalidate(xBrain[i]-18,yBrain[i]+19,xBrain[i]-18+12,yBrain[i]+(19+14));
+    InvalidateRect(xBrain[i]-18,yBrain[i]+19,xBrain[i]-18+12,yBrain[i]+(19+14));
     end
 end;
 
@@ -1668,8 +1668,8 @@ begin
 if AutoDiff<5 then
   begin
   inc(AutoDiff);
-  SmartInvalidate(120,y0Mini+61,272,y0Mini+61+21);
-  SmartInvalidate(xDefault-2,yDefault-2,xDefault+64+2,yDefault+64+2);
+  InvalidateRect(120,y0Mini+61,272,y0Mini+61+21);
+  InvalidateRect(xDefault-2,yDefault-2,xDefault+64+2,yDefault+64+2);
   end
 end;
 
@@ -1678,8 +1678,8 @@ begin
 if AutoDiff>1 then
   begin
   dec(AutoDiff);
-  SmartInvalidate(120,y0Mini+61,272,y0Mini+61+21);
-  SmartInvalidate(xDefault-2,yDefault-2,xDefault+64+2,yDefault+64+2);
+  InvalidateRect(120,y0Mini+61,272,y0Mini+61+21);
+  InvalidateRect(xDefault-2,yDefault-2,xDefault+64+2,yDefault+64+2);
   end
 end;
 
@@ -1703,15 +1703,15 @@ if Tracking then
   LoadTurn:=LastTurn*x div wTurnSlider;
   if LoadTurn<OldLoadTurn then
     begin
-    SmartInvalidate(xTurnSlider+LoadTurn*wTurnSlider div LastTurn,yTurnSlider,
+    InvalidateRect(xTurnSlider+LoadTurn*wTurnSlider div LastTurn,yTurnSlider,
       xTurnSlider+OldLoadTurn*wTurnSlider div LastTurn+1,yTurnSlider+7);
-    SmartInvalidate(344,y0Mini+61,514,y0Mini+82);
+    InvalidateRect(344,y0Mini+61,514,y0Mini+82);
     end
   else if LoadTurn>OldLoadTurn then
     begin
-    SmartInvalidate(xTurnSlider+OldLoadTurn*wTurnSlider div LastTurn,yTurnSlider,
+    InvalidateRect(xTurnSlider+OldLoadTurn*wTurnSlider div LastTurn,yTurnSlider,
       xTurnSlider+LoadTurn*wTurnSlider div LastTurn+1,yTurnSlider+7);
-    SmartInvalidate(344,y0Mini+61,514,y0Mini+82);
+    InvalidateRect(344,y0Mini+61,514,y0Mini+82);
     end;
   end
 else if Page=pgMain then
@@ -1727,11 +1727,11 @@ else if Page=pgMain then
   if NewSelectedAction<>SelectedAction then
     begin
     if SelectedAction>=0 then
-      SmartInvalidate(ActionSideBorder,yAction+SelectedAction*ActionPitch-8,
+      InvalidateRect(ActionSideBorder,yAction+SelectedAction*ActionPitch-8,
         ClientWidth-ActionSideBorder,yAction+(SelectedAction+1)*ActionPitch-8);
     SelectedAction:=NewSelectedAction;
     if SelectedAction>=0 then
-      SmartInvalidate(ActionSideBorder,yAction+SelectedAction*ActionPitch-8,
+      InvalidateRect(ActionSideBorder,yAction+SelectedAction*ActionPitch-8,
         ClientWidth-ActionSideBorder,yAction+(SelectedAction+1)*ActionPitch-8);
     end
   end
@@ -1742,7 +1742,7 @@ begin
 if AutoEnemies<nPl-1 then
   begin
   inc(AutoEnemies);
-  SmartInvalidate(160,yMain+140,198,yMain+140+21);
+  InvalidateRect(160,yMain+140,198,yMain+140+21);
   end
 end;
 
@@ -1751,7 +1751,7 @@ begin
 if AutoEnemies>0 then
   begin
   dec(AutoEnemies);
-  SmartInvalidate(160,yMain+140,198,yMain+140+21);
+  InvalidateRect(160,yMain+140,198,yMain+140+21);
   end
 end;
 
