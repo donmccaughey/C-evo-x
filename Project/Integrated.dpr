@@ -6,7 +6,7 @@ uses
   Forms,
   StringTables in 'StringTables.pas',
   Directories in 'Directories.pas',
-  Protocol in '..\Protocol\Protocol.pas',
+  Protocol in 'Protocol.pas',
   CmdList in 'CmdList.pas',
   Database in 'Database.pas',
   GameServer in 'GameServer.pas',

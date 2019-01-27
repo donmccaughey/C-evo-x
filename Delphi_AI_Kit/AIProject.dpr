@@ -2,7 +2,7 @@
 library AIProject;
 
 uses
-Protocol in '..\Protocol\Protocol.pas',
+Protocol in 'Protocol.pas',
 CustomAI,
 AI;
 

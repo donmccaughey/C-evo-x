@@ -54,6 +54,7 @@ game_source = \
 	Project\Messg.pas \
 	Project\NoTerm.dfm \
 	Project\NoTerm.pas \
+	Project\Protocol.pas \
 	Project\ScreenTools.pas \
 	Project\Sound.dfm \
 	Project\Sound.pas \
@@ -101,9 +102,7 @@ game_source = \
 	Project\LocalPlayer\UnitStat.dfm \
 	Project\LocalPlayer\UnitStat.pas \
 	Project\LocalPlayer\Wonders.dfm \
-	Project\LocalPlayer\Wonders.pas \
-	\
-	Protocol\Protocol.pas
+	Project\LocalPlayer\Wonders.pas
 
 graphics_out = \
 	tmp\Graphics\Background.bmp \
@@ -423,10 +422,9 @@ tmp\AIProject.dll : \
 		Delphi_AI_Kit\CustomAI.pas \
 		Delphi_AI_Kit\Names.pas \
 		Delphi_AI_Kit\Pile.pas \
+		Delphi_AI_Kit\Protocol.pas \
 		Delphi_AI_Kit\Switches.pas \
-		Delphi_AI_Kit\ToolAI.pas \
-		\
-		Protocol\Protocol.pas
+		Delphi_AI_Kit\ToolAI.pas
 	-mkdir tmp\units\AIProject
 	cd Delphi_AI_Kit
 	dcc32 AIProject.dpr
