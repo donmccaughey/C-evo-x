@@ -98,6 +98,13 @@ To remove all build output, run:
 
 	make clean
 
+If the build fails with a message like:
+
+    Error: Could not create output file '..\tmp\CevoComponents.bpl'
+
+close the Delphi IDE and run the `make` command again.
+
+
 ### Installing and Running the Game
 
 To install C-evo-x, run the `C-evo-x.msi` installer and follow the
