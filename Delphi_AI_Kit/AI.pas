@@ -226,8 +226,11 @@ begin
 Pile.Create(MapSize);
 with MyUnit[uix] do
   repeat
+    BestCount:=0;
+    BestLoc:=0;
     BestScore:=-999999;
     BestTask:=utNone;
+    TestTask:=utNone;
     FillChar(AdjacentUnknown,SizeOf(AdjacentUnknown),$FF); // -1, indicates tiles not checked yet
     Pile.Empty;
     Pile.Put(Loc,0); // start search for something to do at current location
@@ -324,6 +327,8 @@ with MyUnit[uix] do
                     else StepSize:=0;
                   dAir:
                     StepSize:=1;
+                  else
+                    StepSize:=0;
                   end;
                 if StepSize>0 then
                   Pile.Put(NextLoc,TestDistance+StepSize)
