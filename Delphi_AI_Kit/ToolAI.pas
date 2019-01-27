@@ -311,6 +311,9 @@ SettlerOfJobLoc,DistToLoc: array[0..lxmax*lymax-1] of smallint;
 TileChecked: array[0..lxmax*lymax-1] of boolean;
 begin
 fillchar(SettlerOfJobLoc, MapSize*2, $FF); // -1
+BestCount:=0;
+BestLoc:=0;
+BestDistance:=0;
 
 // keep up jobs that are already started
 for uix:=0 to RO.nUn-1 do
