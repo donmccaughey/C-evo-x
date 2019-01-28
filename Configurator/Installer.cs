@@ -46,7 +46,7 @@ namespace Configurator
 				{
 					installedAddOns.AddXML(File.ReadAllText(appDataFolder + "\\addons.xml"));
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
 					MessageBox.Show("Error reading file 'addons.xml' from AppData folder!", "Error");
 				}
@@ -57,7 +57,7 @@ namespace Configurator
 				{
 					installedAddOns.AddXML(File.ReadAllText(programFolder + "\\addons.xml"));
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
 					MessageBox.Show("Error reading file 'addons.xml' from program folder!", "Error");
 				}
@@ -170,7 +170,7 @@ namespace Configurator
 						{
 							availableAddOns.AddXML(e.Result);
 						}
-						catch (Exception ex)
+						catch (Exception)
 						{
 							MessageBox.Show("Error reading file 'index.xml'!", "Error");
 						}
