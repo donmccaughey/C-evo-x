@@ -425,8 +425,8 @@ float FloatDistance (int FromLoc, int ToLoc)
 		-((FromLoc%G.lx)*2+(FromLoc/G.lx&1))+3*G.lx)%(2*G.lx)-G.lx;
 	int dy=ToLoc/G.lx - FromLoc/G.lx;
 
-	xx = dx * dx;
-	yy = dy * dy;
+	xx = float(dx * dx);
+	yy = float(dy * dy);
 	return (sqrt (xx + yy));
 }
 
