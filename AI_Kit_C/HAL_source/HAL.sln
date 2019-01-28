@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HAL", "HAL.vcxproj", "{BD0DE6C6-F439-0514-41BF-81F71FED0D43}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HAL", "HAL.vcxproj", "{6D0F3C68-EF1B-C988-8F56-EA94E4C20A88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,8 +8,8 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD0DE6C6-F439-0514-41BF-81F71FED0D43}.Debug|Win32.ActiveCfg = Debug|Win32
-		{BD0DE6C6-F439-0514-41BF-81F71FED0D43}.Release|Win32.ActiveCfg = Release|Win32
+		{6D0F3C68-EF1B-C988-8F56-EA94E4C20A88}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6D0F3C68-EF1B-C988-8F56-EA94E4C20A88}.Release|Win32.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

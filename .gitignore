@@ -8,6 +8,7 @@
 *.user
 .DS_Store
 _site
+ipch
 obj
 tmp
 Project/CevoWin32.cfg
