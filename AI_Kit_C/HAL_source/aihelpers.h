@@ -246,7 +246,6 @@ int UnknownSeaTiles(int TempLoc,int Player)
 		return -1;
 	
 	int TerrainType = TerrType(TempLoc, Player);
-	int TerrainFlag = TileFlags(TempLoc, Player);
 	//Limit to known water, and not enemy occupied tiles
 	if (
 		(TerrainType >= fGrass) ||
