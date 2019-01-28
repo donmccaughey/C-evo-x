@@ -20,8 +20,8 @@ The following software is required to build C-evo-x.
  - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][22].
  - [WiX Toolset 3.11.1][23].
 
-The build is tested on Windows 10 Pro (64-bit) version 1809.  [YMMV][24] on
-other versions.
+[YMMV][24] on other versions.  The build is tested on Windows 10 Pro (64-bit)
+version 1809.
 
 [21]: https://winworldpc.com/product/delphi/4x
 [22]: https://visualstudio.microsoft.com/vs/older-downloads/
@@ -40,10 +40,13 @@ The C-evo-x code is assembled from a number of different sources.
  - `Configurator\`: source for the C# `Configurator.exe` program; part of the
    [C-evo 1.2.0 source][33].
  - `Delphi_AI_Kit\`: source for the [Delphi AI Development Kit][34].
- - `Installer\`: source for the MSI installer.
+ - `Installer\`: source for the MSI installer, a replacement for the C-evo's
+   Inno Setup installer.
  - `Project\`: Delphi code for the game; part of the [C-evo 1.2.0 source][33].
  - `Resources\`: external graphic, sound and text configuration files used by
    the game; installed with [C-evo 1.2.0][32].
+ - `docs\`: source for the [C-evo-x Docs][35] site.
+ - `scripts\`: scripts used by the `Makefile` build.
 
 See the [`LICENSE`][34] file for the list of contributors.
 
@@ -51,6 +54,7 @@ See the [`LICENSE`][34] file for the list of contributors.
 [32]: http://c-evo.org/files/download.php
 [33]: http://c-evo.org/files/download.php?cevosrc.cevosrc.zip
 [34]: https://github.com/donmccaughey/c_evo_x/blob/master/LICENSE
+[35]: https://donmccaughey.github.io/C-evo-x/
 
 
 ## Build System

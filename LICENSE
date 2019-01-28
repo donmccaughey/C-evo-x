@@ -122,5 +122,6 @@ William H. Keith
 
 Don McCaughey (http://donm.cc)
 
- - This repository, the `Makefile` build system and the MSI installer.
+ - This repository, the `Makefile` build system, the MSI installer and numerous
+   small code improvements.
 
