@@ -77,7 +77,7 @@ void DoTurn(int Player)
 
 	//Find best models for Settler
 	//Tally models for Defender, Attacker, and Gadgetry
-	for(mix=0;mix<AI[Player]->MyRO.nModel;mix++)
+	for(mix=0,SettlerModel=0;mix<AI[Player]->MyRO.nModel;mix++)
 	{
 		if(mix==1) //will always be militia
 			AddModel(AttackerModels, mix, Player);
