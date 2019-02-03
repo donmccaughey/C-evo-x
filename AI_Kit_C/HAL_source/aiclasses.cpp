@@ -74,7 +74,6 @@ void MakeUnitInfo(char p, const TUn &u, TUnitInfo &ui)
 
 void MakeModelInfo(unsigned short  p, unsigned short mix, const TModel &m, TModelInfo &mi)
 {
-	int i;
 	mi.Owner = p;
 	mi.mix = mix;
 	mi.Domain = m.Domain;
@@ -98,11 +97,11 @@ void MakeModelInfo(unsigned short  p, unsigned short mix, const TModel &m, TMode
 	}
 	mi.Bombs = m.Cap[mcBombs]*m.MStrength*2;
 	mi.Cap = 0;
-	for (i = mcFirstNonCap; i < nFeature; i++)
+	for (int i = mcFirstNonCap; i < nFeature; i++)
 		if(m.Cap[i]>0)
 			mi.Cap = mi.Cap | (1<<(i-mcFirstNonCap));
 	mi.MaxUpgrade = 0;
-	for (i = 1; i < nUpgrade; i++)
+	for (unsigned char i = 1; i < nUpgrade; i++)
 		if (m.Upgrades && (1 << i)!=0)
 			mi.MaxUpgrade = i;
 	mi.Weight = m.Weight;
