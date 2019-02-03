@@ -151,6 +151,10 @@ public:
 
 	virtual ~TCustomAI() {;}	//virtual destructor (support polymorphism)
 
+private:
+	TCustomAI& operator=(const TCustomAI&);		//unimplemented because TCustomAI is not copyable
+
+public:
 //	These functions have been moved to AImain.ccp/AImain.h
 //	void Turn(bool Continued);
 //	void Negotiation(int Command, pServerData Data);
