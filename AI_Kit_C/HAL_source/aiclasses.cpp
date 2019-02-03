@@ -59,7 +59,7 @@ CUn::Common() returns a reference to the model not a pointer (more convenient to
 TServerCall *Server;
 TNewGameData G;
 
-void MakeUnitInfo(unsigned short p, const TUn &u, TUnitInfo &ui)
+void MakeUnitInfo(char p, const TUn &u, TUnitInfo &ui)
 {
 	ui.Owner = p;
 	ui.Loc = u.Loc;

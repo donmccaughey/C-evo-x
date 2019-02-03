@@ -91,7 +91,7 @@ int LocCmd(int Loc,int Command, void *Data, int me);
 #endif
 
 //Extra functions translated from protocol.pas as of version 14
-void MakeUnitInfo(int p, const TUn &u, TUnitInfo &ui);
+void MakeUnitInfo(char p, const TUn &u, TUnitInfo &ui);
 void MakeModelInfo(int p, int mix, const TModel &m, TModelInfo &mi);
 bool IsSameModel(const TModelInfo &mi1, const TModelInfo &mi2);
 int HypoSpecialTile(int x, int y, int TerrType);
