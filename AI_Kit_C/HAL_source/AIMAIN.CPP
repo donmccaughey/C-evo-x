@@ -1171,7 +1171,7 @@ void DoTurn(int Player)
 			bool Moving=false;
 			MaxCost=0;
 			Max=0;
-			for(tcurr=SettlerTiles.head(); tcurr!=NULL; tcurr=tcurr->next)
+			for(tcurr=MaxTile=SettlerTiles.head(); tcurr!=NULL; tcurr=tcurr->next)
 				if((tcurr->data.Loc != TempLoc) && (tcurr->data.SettlersHere<2))	{
 					//Weighted terraform cost is modified by the distance from the job
 					Dist = Distance(TempLoc,tcurr->data.Loc);
