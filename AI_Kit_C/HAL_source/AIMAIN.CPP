@@ -2598,6 +2598,8 @@ void SnipeEnemy(HALnode<UnitData>* ucurr, int me)
 //How many defenders needed within a city
 int DefendersNeeded(int cix, const TCityReport &ThisCity, int me)
 {
+	UNREFERENCED_PARAMETER(ThisCity);
+
 	long Status = AI[me]->MyCity[cix].Status;
 	int ExtraDef=0;
 	for(int i=0; i<32; i++)

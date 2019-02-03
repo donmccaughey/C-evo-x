@@ -5,6 +5,10 @@
 #include "aiclasses.h"
 #include "HALlist.h"
 
+
+#define UNREFERENCED_PARAMETER(x) x
+
+
 struct UnitData
 {
 	int Index;
