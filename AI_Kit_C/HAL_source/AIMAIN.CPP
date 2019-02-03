@@ -2581,7 +2581,7 @@ void SnipeEnemy(HALnode<UnitData>* ucurr, int me)
 	{
 		int BattleResult,Maxdir;
 		int Max=-200; //Value for an invalid battle result
-		for (int dir=0; dir<8; dir++)
+		for (int dir=Maxdir=0; dir<8; dir++)
 		{
 			BattleResult = PotentialBattle(AI[me]->MyUn[ucurr->data.Index],
 				Remote(AI[me]->MyUn[ucurr->data.Index].Loc,Dirx[dir],Diry[dir]), me);
