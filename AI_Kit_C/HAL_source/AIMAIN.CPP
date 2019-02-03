@@ -1207,7 +1207,7 @@ void DoTurn(int Player)
 				(Common(TempUnit,Player).Kind!=mkSlaves)
 			)	{
 				MaxCost=0;
-				for(scurr=SettlerCities.head(); scurr!=NULL; scurr=scurr->next)
+				for(scurr=MaxSite=SettlerCities.head(); scurr!=NULL; scurr=scurr->next)
 					if((scurr->data.Loc != TempLoc) && (scurr->data.SettlersHere<2))	{
 						//Weighted city site rank is modified by the distance from the job
 						Dist = Distance(TempLoc,scurr->data.Loc);
