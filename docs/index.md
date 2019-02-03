@@ -15,6 +15,9 @@ Windows by [Steffen Gerlach][12].  C-evo and C-evo-x are in the
 The goal of the C-evo-x project is to modernize and maintain C-evo, making the
 game more modular and the code more approachable.
 
+ - [Resource Files](./resource_files)
+
+
 ## Dev Journal
 
 {% for post in site.posts limit:3 %}
