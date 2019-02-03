@@ -1272,6 +1272,8 @@ void DoTurn(int Player)
 				for (k=1; k<20; k++)
 				{
 					Max=-200; //Value for an invalid battle result
+					MaxXdir=0;
+					MaxYdir=0;
 					for (i=-2*k; i<=2*k; i++)
 						for (j=-2*k; j<=2*k; j++)
 						{
@@ -1316,6 +1318,8 @@ void DoTurn(int Player)
 				for (k=1; k<20; k++)
 					{
 					Max=0;
+					MaxXdir=0;
+					MaxYdir=0;
 					for (i=-2*k; i<=2*k; i++)
 						for (j=-2*k; j<=2*k; j++)
 						{
@@ -1381,6 +1385,8 @@ void DoTurn(int Player)
 			for (k=1; k<20; k++)
 			{
 				Max=-200; //Value for an invalid battle result
+				MaxXdir=0;
+				MaxYdir=0;
 				for (i=-2*k; i<=2*k; i++)
 					for (j=-2*k; j<=2*k; j++)
 					{
@@ -1436,6 +1442,8 @@ void DoTurn(int Player)
 			for (k=1; k<20; k++)
 			{
 				Max=-200; //Value for an invalid battle result
+				MaxXdir=0;
+				MaxYdir=0;
 				for (i=-2*k; i<=2*k; i++)
 					for (j=-2*k; j<=2*k; j++)
 					{
@@ -1482,6 +1490,8 @@ void DoTurn(int Player)
 				for (k=1; k<20; k++)
 				{
 					Max=0;
+					MaxXdir=0;
+					MaxYdir=0;
 					for (i=-2*k; i<=2*k; i++)
 						for (j=-2*k; j<=2*k; j++)
 						{
