@@ -2102,7 +2102,7 @@ bool BuildBetterAttacker(int AttackModel,int me)
 	if(HasTech(Feature[mcLine].Preq,me))
 		AI[me]->SetDevModelCap(mcLine, 1);
 
-	while(true)
+	for(;;)
 	{	//increment offense/mobility if possible
 		flag=AI[me]->SetDevModelCap(mcOffense, value);
 		if(flag!=eOK) break;
@@ -2353,7 +2353,7 @@ bool BuildBetterGadgetry(int GadgetryModel,int me)
 	if(HasTech(Feature[mcLongRange].Preq,me))
 		AI[me]->SetDevModelCap(mcLongRange, 1);
 
-	while(true)
+	for(;;)
 	{	//increment offense if possible
 		flag=AI[me]->SetDevModelCap(mcOffense, value);
 		if(flag!=eOK) break;
