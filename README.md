@@ -229,16 +229,20 @@ information specific to C-evo-x.
 
 ## Related
 
-- [C-evo at Launchpad][91], a fork of C-evo by [Jiří Hajda][92].
-- [cevo at GitLab][93], a fork of C-evo by [Vasilii Novikov][94] (last active
-  in 2016).
+- [C-evo at Launchpad][91], a fork of C-evo by [Jiří Hajda][92]
+  (_[chronos][93]_).
+- [cevo at GitLab][94], a fork of C-evo by [Vasilii Novikov][95]
+  (_[vasaya][96]_), last active in 2016.
 - [Updated C-evo AI Template][95], a fork of Steffen's C# AI Template by
-  [dougmill][96].
+  [dougmill][96] (_[Douglas][97]_).
 
 [91]: https://launchpad.net/c-evo
 [92]: https://launchpad.net/~chronoscz
-[93]: https://gitlab.com/vn971/cevo
-[94]: https://diasp.de/u/vn971
-[95]: https://github.com/dougmill/c-evo-ai-template
-[96]: https://github.com/dougmill
+[93]: http://www.c-evo.org/bb/memberlist.php?mode=viewprofile&u=150
+[94]: https://gitlab.com/vn971/cevo
+[95]: https://diasp.de/u/vn971
+[96]: http://www.c-evo.org/bb/memberlist.php?mode=viewprofile&u=134
+[97]: https://github.com/dougmill/c-evo-ai-template
+[98]: https://github.com/dougmill
+[99]: http://www.c-evo.org/bb/memberlist.php?mode=viewprofile&u=148
 
