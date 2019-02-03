@@ -229,14 +229,14 @@ information specific to C-evo-x.
 
 ## Related
 
-- [C-evo at Launchpad][91], a fork of C-evo by [Jiří Hajda][92]
-  (_[chronos][93]_).
-- [cevo at GitLab][94], a fork of C-evo by [Vasilii Novikov][95]
+- A [Lazarus][90] [port of C-evo][91] by [Jiří Hajda][92] (_[chronos][93]_).
+- A [Lazarus][90] [port of C-evo][94] by [Vasilii Novikov][95]
   (_[vasaya][96]_), last active in 2016.
 - [Updated C-evo AI Template][95], a fork of Steffen's C# AI Template by
   [dougmill][96] (_[Douglas][97]_).
 
-[91]: https://launchpad.net/c-evo
+[90]: https://www.lazarus-ide.org
+[91]: https://app.zdechov.net/c-evo
 [92]: https://launchpad.net/~chronoscz
 [93]: http://www.c-evo.org/bb/memberlist.php?mode=viewprofile&u=150
 [94]: https://gitlab.com/vn971/cevo
