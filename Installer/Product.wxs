@@ -38,7 +38,7 @@
                             Checksum='yes' />
                         <Shortcut Id='StartMenu_CevoWin32.exe'
                             Directory='ProgramMenuDir'
-                            Name='C-evo-x 1.2.1'
+                            Name='C-evo-x'
                             WorkingDirectory='INSTALLDIR'
                             Icon='CevoWin32.exe'
                             IconIndex='0'
@@ -468,7 +468,7 @@
             </Directory>
 
             <Directory Id='ProgramMenuFolder' Name='ProgramMenuFolder'>
-                <Directory Id='ProgramMenuDir' Name='C-evo-x 1.2.1'>
+                <Directory Id='ProgramMenuDir' Name='C-evo-x'>
 
                     <Component Id='ProgramMenuDir'
                              Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
