@@ -1,0 +1,1195 @@
+<html>
+<head>
+<title>AI Development</title>
+
+<style type="text/css">
+<!--
+body {margin-left:auto;margin-right:auto;margin-top:1em;max-width:40em;}
+h1 {font-size:20pt;font-family:Arial,Helvetica;color:#C00000;}
+h2 {font-size:14pt;font-family:Arial,Helvetica;color:#C00000;}
+p {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+p.pre {font-size:10pt;font-family:Courier New,Courier;font-weight:bold;color:#808080}
+p.question {font-size:11pt;font-family:Arial,Helvetica;font-weight:bold;color:#000000;}
+li {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+td {font-size:11pt;font-family:Arial,Helvetica;color:#000000;}
+//-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#000080" alink="#FF0000">
+
+<h1>AI Development</h1>
+
+<p>C-evo Version: 1.2.0
+<br>Last modification: 26-April-13
+
+<p>This text explains how to create an
+artificial intelligence module for C-evo. This text is <b>not</b> a programming
+tutorial. Before trying to create an AI, you should
+know what an algorithm is and you should know how to use a compiler. Please do not
+come up with questions like &quot;I am starting with programming, and I picked your
+project for that. Now what am I to do with the sources?&quot;...
+
+<p>The easiest way to create a C-evo AI is by using the official development kit,
+which is automatically installed with the game itself into the subfolder
+&quot;AI Development Kit&quot;. This kit is using the
+language PASCAL (works with Delphi and with FreePascal). It's based on a
+documented base class that encapsulates
+low-level communication completely, making you program on a more abstract
+level without having to deal with too much technical detail. The kit also
+contains a working sample AI based on this system. It demonstrates
+unit movement, city management and diplomacy.
+
+<p>If you use this
+kit, you should use the documentation there instead of the one you are
+currently reading.
+<i>This</i> document is for those who, for any reason, do not use the official
+development kit. It gives assistance in building an AI DLL from the scratch
+or using the C++ AI template available from the
+<a href="http://c-evo.org/files">files section</a> of the project home page.
+
+<p><b>Contents</b>
+<p><a href="aidev.html#concept">The Module Concept</a>
+<br><a href="aidev.html#commands">General Use of Commands</a>
+<br><a href="aidev.html#termi">Terminology</a>
+<br><a href="aidev.html#save">Saving Data</a>
+<br><a href="aidev.html#start">Game Start Sequence</a>
+<br><a href="aidev.html#loc">Location Codes</a>
+<br><a href="aidev.html#dip">Diplomacy</a>
+<br><a href="aidev.html#accessory">Accessory</a>
+
+<p>Reference: Server Commands
+<ul>
+<li><a href="aidev.html#request">Information Request</a>
+<li><a href="aidev.html#deact">Client Deactivation</a>
+<li><a href="aidev.html#general">General Control</a>
+<li><a href="aidev.html#units">Unit Control</a>
+<li><a href="aidev.html#cities">City Management</a>
+</ul>
+
+<p>Reference: Client Commands
+<ul>
+<li><a href="aidev.html#cmodule">Module Related</a>
+<li><a href="aidev.html#client">General Control</a>
+<li><a href="aidev.html#cactturn">Activation (Turn Mode)</a>
+<li><a href="aidev.html#cactnego">Activation (Negotiation Mode)</a>
+<li><a href="aidev.html#cinfo">Information</a>
+</ul>
+
+<p><a href="aidev.html#faq">FAQ</a>
+<br><a href="aidev.html#changes">Latest Changes</a>
+
+
+<p><b>Project Homepage</b>
+<p>&gt;&gt;&gt; <a href="http://c-evo.org">c-evo.org</a>
+
+<p>If you notice any problems or have any questions or suggestions, please
+<a href="http://steffengerlach.de/contact/">contact me</a>.
+<br>There's also a <a href="http://c-evo.org/aiforum/">web forum</a> for
+C-evo AI developers.
+
+
+<a name="concept"></a>
+<p><br><h2>The Module Concept</h2>
+
+<p>A specialty of C-evo are the exchangeable competitor modules.
+These modules can be developed apart from the main program, even in a different
+programming language. Such a module takes control over one or more nations.
+This can for instance be done by artificial intelligence or
+handing over the control to the user. Even the player interface is nothing but
+a special competitor module and uses only the AI interface to communicate with
+the game core. That's why suspicions of AI having not the same information
+or possibilities that a human player has can never be true.
+<p>A module is contained by a Windows Dynamic Link Library ('DLL') File.
+A DLL contains program code (e.g. algorithms, dialog windows...) and
+has two important qualities: 1. It is not fixed to a special program. When the
+code is used by more than one program, containing it in a
+DLL will save hard disk space and memory. 2. The program determines
+at runtime which DLL files will be used. So it is possible to choose
+between different code modules - even those that did not exist when
+the program was written. Pre-condition: the DLLs must have the
+expected interface. That is why a major part of this text deals with the interface
+definition of the C-evo competitor DLLs. If you want to develop such
+a module, you must exactly comply with these specifications.
+
+<p>If you take a closer look at the interface
+specification, you will probably notice that some information you can think of never
+is a subject of communication. That is true. The interface is a <i>logical</i>
+one. It handles
+only numbers, no names and no picture information. These things are not part of
+the game core, they are internal to the player interface and do not
+concern AI programming.
+
+
+<a name="commands"></a>
+<p><br><h2>General Use of Commands</h2>
+
+<p>I will use a C near syntax throughout this text.
+You should not experience problems if you use different compiler.
+I tried to make the interface as easy and clear as possible. There is only one
+communication function on the side of the main program (server) and
+one on the side of the competitor module (client):
+
+<pre>
+<p class="pre">int server (int Command, int Player, int Subject, void* Data)
+
+void client (int Command, int Player, void* Data)
+</pre>
+<p>The Command parameter specifies the command to be executed by the
+server resp. client. All possible commands are listed below.
+The Player parameter determines the player concerned. The
+use of the Subject parameter and the structure of the memory block referenced
+by the Data parameter depend on the command. However, the size of the Data
+block in DWords is always specified by the lowest 4 bits of the command, except
+for the information request commands ( &lt; 0x1000). Often, the Subject or Data
+parameter is a unit, model or city index. Indices always start with 0.<p>As an AI
+programmer, you have to implement the client side, i.e. you must
+handle all possible commands of the client function. Your means to realize the
+desired game play are appropriate calls to the server function. Additionally, you can read information from a
+data block. This is your main
+source of information, take it for read-only! (That's why it's called 'RO'
+below.) Please see the protocol.pas resp. protocol.h file for the exact
+structure of the RO block and the data it refers to. Most members have
+descriptive comments there or are self explaining.
+<p>Just a remark about the
+unit and city lists refered to in the RO (members Un, City, EnemyUn, EnemyCity).
+Note that these lists have gaps, indicated by items having their Location <0.
+These items do not exist, commands will not work for them. Furthermore, the
+items in these lists might change their position within the list
+in between turns, when the server prepares your turn. The enemy units might even
+change their indices while the enemies are moving. However, indices never change
+while you are in active mode.
+
+<p><b>Note</b>: When I started this project, I intended to prevent cheat
+attempts by AI modules with technical means. Later I realized that makes up a lot
+of work and I better spend my time and energy on making the game better than on fighting against potential
+swindlers. So this is my appeal to you: Read
+everything you want from the RO block and what it refers to - all this
+information is for your eyes. But: Do not write it! It might work, but it is not
+honest. Also, writing the RO block is very likely to corrupt the game, so that
+it's impossible to reload it.
+<p>If you call the Server function with a command minus <b>sExecute</b>, it will not
+execute the command but will only return the correct code. This is supported for
+all commands except info request and client exclusive commands.
+Note that there is one exception where the code is not the same as if you would really
+execute the command. This happens when a unit move is not possible due to facts
+you don't know. In this case, when you call the
+server with sMoveUnit-sExecute, it will answer as if the move was possible. Means,
+the return codes eZOC_EnemySpotted, eHiddenUnit and eStealthUnit are not
+returned before you really try to execute the move.
+
+<p>During the game, the AI of a nation changes between three basic modes:
+turn mode, negotiation mode and inactive mode. Most server calls are only
+allowed during turn mode. Additionally to client deactivation from negotiation
+mode, only the following
+commands are available outside turn mode: sGetChart, sGetTechCost, sGetDefender,
+client exclusive commands.<p>Turn mode and negotiation mode
+are active modes. Only one nation can be in active mode at a time.
+The server activates a client by calling one of its activation commands. The
+deactivation of a client must be done by itself, means the
+handler of an activation command must call exactly one client deactivation command
+before returning. This deactivation command should be the last server
+command called by the handler.
+
+
+<a name="termi"></a>
+<p><br><h2>Terminology</h2>
+
+
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td><b>Code internal term</b></td><td><b>Meaning/player term</b></td></tr>
+<tr><td>Enemy</td><td>All other nations, even allied</td></tr>
+<tr><td>Model</td><td>Unit class</td></tr>
+<tr><td>Domain</td><td>Unit domain (Ground/Sea/Air)</td></tr>
+<tr><td>Ship</td><td>Transstellar colony ship</td></tr>
+<tr><td>Master</td><td>If unit A carries unit B, A is the master of B.</td></tr>
+<tr><td>Health</td><td>Unit property, = 100-Damage</td></tr>
+<tr><td>Job</td><td>Settler terrain improvement job</td></tr>
+</table>
+
+
+<a name="save"></a>
+<p><br><h2>Saving Data</h2>
+
+<p>You can hold any data your AI needs within the local memory of your DLL.
+The problem: after the player has quit the game and continues the day after,
+all this
+data will be lost. For most of the data, this might not be a problem, because
+you can calculate it from other information whenever necessary. But there are
+also some items that need to be saved, e.g. if you wish to remember more
+diplomatic information about your neighbours than just treaty and
+credibility.
+
+<p>For that purpose, the game provides you with means to save data within the
+save file of the game. These means respect the special fact that the player can
+reload a game at any turn. After loading, the data of your AI should
+be the data of this turn, not the data from the last turn contained in the
+save file.
+
+<p>There are three ways to save data:
+<ul>
+<li>The Status members of units, cities, models and enemy cities. You can
+directly write these fields, they are automatically being saved each turn.
+The status has no influence on the game, it is free for AI use. It is always
+initialized with 0.
+<li>The data that is referred to by the Data member the RO block. This block is
+free for AI use and being saved each turn as well. The Data and Status
+information are the only exceptions to the read-only concept of the RO data.
+The Data block is initially
+filled with 0, the maximum size is 4k for each nation.
+If you want to make use of this, you must set the desired DataVersion and
+DataSize parameters within the handler of <a href="aidev.html#cinit">cInitModule</a>. If you
+change the structure of the data with a new version of your AI, you must change
+the DataVersion returned from cInitModule at the same time to prevent corrupted
+data when a player loads an old game with the new AI version. In this case, all
+AI data reading and saving will be turned off for your module.
+<li>Client exclusive commands, see description under
+<a href="aidev.html#cex">cClientEx</a>. Unhandy but flexible.
+</ul>
+
+<p>For the sake of a reasonable save file size, you should let the game only
+save information that is necessary to save. Do not let it save data that only
+needs to live within your turn, because the game will never be interrupted
+within an AI turn. Also, do not save information that you could as well
+calculate from other information after reloading. All changes in the Data block
+and in the Status fields will be logged to the save file, so please store
+temporary information outside the Data block and filter it from the Status
+values after your turn.
+
+
+<a name="start"></a>
+<p><br><h2>Game Start Sequence</h2>
+
+<p><b>Starting a New Game</b>
+
+<p>This is what happens step by step when the player starts a new game.
+
+<ol>
+<li>(Server) RO and all linked memory for all players is created and
+initialized, no models or units yet, the map is still completely undiscovered.
+<li>(Client) <i>cNewGame</i> for the module is called by the server. The AI
+will store the arguments passed with the call and recognize which players it
+has to control. Also, it has to initialize the Data blocks of its players now.
+This should be a standard initialization. Do not write
+values to the Data block that depend on other information than that contained
+in the RO and the function parameters, e.g. random values, because this could
+make the restoration of the Data block fail.
+<li>(Server) Models and units are being created, the map remains undiscovered.
+<li>(Client) <i>cGetReady</i> is called by the server for all players. The
+client can call initial
+<i>cClientEx</i> commands now and receives them immediately. Data block and
+unit/model status changes done from now on will be restored correctly, means
+<i>now</i> you could write random values.
+<li>The server starts the game, the next command sent to the client is
+an in-game command, usually <i>cTurn</i>.
+</ol>
+
+
+<p><b>Loading a Saved Game</b>
+
+<p>When a saved game is loaded, it will be replayed completely from the start.
+This does not affect AI very much, because all commands the AI sent during
+the original game are stored in the file and are simply processed again now.
+Means, during a game is loaded, AI does not have to think again what commands
+to order, it is not even allowed to. AI does not receive client commands, with
+a few exceptions. The exact process of loading a game is the following:
+
+<ol>
+<li>Same as above.
+<li>Same as above, except that <i>cLoadGame</i> is called instead of <i>cNewGame</i>.
+<li>Same as above.
+<li>(Client) The client now receives all initial <i>cClientEx</i> commands it
+sent from the <i>cGetReady</i> handler when the game was started originally.
+<li>(Server) The Data block and the unit/model status members are restored to
+the values they had in the end of <i>cGetReady</i> when the game was started
+originally.
+<li>(Client) <i>cReplay</i> is called by the server for all players. If the
+client calls
+<i>cClientEx</i> commands now, they will be processed. But usually, this should
+not be necessary here, because the client already received them in Step 4.
+These commands would not be saved anyway.
+Do not write to the Data block or to some status members here, because this
+could corrupt the data.
+<li>The server now replays the game. The client receives all <i>cClientEx</i>
+commands it sent during the original game until the turn in which the game is
+being opened. The Data block and all status members are being restored to the
+state they had in this turn.
+<li>The server continues the game, the next command sent to the client is
+an in-game command like <i>cTurn</i>, <i>scContact</i> or <i>cShowXYZ</i>.
+</ol>
+
+
+<a name="loc"></a>
+<p><br><h2>Location Codes</h2>
+
+<p><b>Note:</b> lx and ly are used in the following text as the horizontal and
+vertical extent of the playground as you receive with the cNewGame command.
+
+<p>Each tile on the playground has a unique location code.
+The codes range from 0 to lx*ly-1 and are formed like this:
+
+<p><center><img src="aidev1.gif"></center>
+
+<p>Usually, you do not have to care for how the code is calculated. You can use
+location codes to
+identify a tile, e.g. units with the same location are placed on the same tile.
+All server commands that concern more than one tile use relative coordinates (dx,dy),
+which are much easier to handle. A relative coordinate determines the relative
+position to a
+starting tile. Relative coordinates are formed like this:
+
+<p><center><img src="aidev2.gif"></center>
+
+<p>Note that relative coordinates only are valid if (dx+dy)&1 == 0.
+To transform relative coordinates to a location code, use this
+procedure, which calculates a location relative to Loc:
+
+<pre>
+<p class="pre">int dLoc(int Loc, int dx, int dy)
+{
+int y0 = (Loc+lx*1234)/lx-1234;
+return (Loc+(dx+(y0&1)+lx*1234)/2)%lx+lx*(y0+dy);
+}</pre>
+
+<p>To transform location codes to relative coordinates, use this procedure which
+calculates the coordinates of Loc1 relative to Loc0:
+
+<pre>
+<p class="pre">void Distance (int Loc0, int Loc1, int& dx, int& dy)
+{
+dx = (((Loc1%lx)*2+(Loc1/lx&1))-((Loc0%lx)*2+(Loc0/lx&1))+3*lx)%(2*lx)-lx;
+dy = Loc1/lx-Loc0/lx;
+}</pre>
+<p>Using the dLoc and Distance procedures you can make do with simple relative coordinates
+without having to care for the playground extent, isometry or the cylindrical world -
+all this works automatically. The only thing you still have to consider are the
+poles. If dLoc returns a code not in the valid range, the relative position you
+have calculated is beyond a pole outside the playground. Do not try to use such
+an invalid code.
+
+<p>Sample application: To inspect all adjacent land tiles of the tile at
+location Loc0, use
+
+<pre>
+<p class="pre">for (dx=-2;dx&lt;=2;dx++)
+  for (dy=-2;dy&lt;=2;dy++)
+    if (abs(dx)+abs(dy)==2)                                //valid and adjacent coordinates
+      {
+      Loc1 = dLoc(Loc0,dx,dy);                             //location of adjacent tile
+      if (Loc1&gt;=0 && Loc1&lt;lx*ly                            //not beyond pole
+        && Game.RO[Player]-&gt;Map[Loc1]&fTerrain&gt;=fGrass)    //not a water tile
+        ...
+      }
+</pre>
+
+<a name="dip"></a>
+<p><br><h2>Diplomacy</h2>
+
+<p>Diplomacy is built around making and accepting offers. An offer contains
+prices which will be delivered when the offer gets accepted as well as prices
+which have to be paid in order to accept the offer. Each price is represented
+by a 32 bit code, depending on its kind:
+
+<p><table border cellspacing=0 cellpadding=3>
+<tr><td><b>Kind</b></td><td><b>Code</b></td></tr>
+<tr><td>State report</td><td>opCivilReport + p<<16, p = concerned player</td></tr>
+<tr><td>Military report</td><td>opMilReport + p<<16, p = concerned player</td></tr>
+<tr><td>World map</td><td>opMap</td></tr>
+<tr><td>Next closer treaty</td><td>opTreaty + tr+1, tr = current treaty</td></tr>
+<tr><td>End current treaty</td><td>opTreaty + tr-1, tr = current treaty</td></tr>
+<tr><td>Colony Ship Parts</td><td>opShipParts + t<<16 + n, t = part type, n = number</td></tr>
+<tr><td>Money</td><td>opMoney + v, v = value</td></tr>
+<tr><td>Technology</td><td>opTech + ad, ad = technology</td></tr>
+<tr><td>All technologies</td><td>opAllTech</td></tr>
+<tr><td>Unit design</td><td>opModel + mix, mix = model index</td></tr>
+<tr><td>All unit designs</td><td>opAllModel</td></tr>
+<tr><td>Price of choice</td><td>opChoose</td></tr>
+</table>
+
+<p>Offering to deliver things you do not have is not allowed. Also, offers containing
+more than one treaty price are not possible. But even if an offer is
+allowed, it is not necessarily useful, for example demanding a price of choice.
+Please consider that offers the opponent does not understand are wasted, because
+he will never accept them.
+
+<p>A special kind of offers are null-offers, containing no prices. Such an offer
+means the player has no more offers to make for this negotiation. If null-offers
+of both players immediately follow one another, the negotiation ends in agreement
+(in contrast to one player breaking it).
+
+
+<a name="accessory"></a>
+<p><br><h2>Accessory</h2>
+
+<p>Besides the DLL file, your module pack must contain two more files:
+
+<ul>
+<li><b>MyAI.ai.txt</b> - A script file with basic information about the module.
+This script can contain the following commands, each on the beginning of a separate
+  line (take care for the capitals!):
+<ul>
+<li>#NAME s - If the name of your module is different from the file name.
+<li>#PATH s - Path of the DLL, relative to the main C-evo directory. If this line
+  does not exist, the path "MyAI.dll" is expected.
+<li>#GAMEVERSION i.i.i - lowest C-evo version number that this AI works with,
+this will usually look like i.i.0. This line is MUST.
+<li>#CREDITS s - a line telling your name, mail or whatever you like.
+This information will be displayed on the credits screen, when your AI is in use.
+</ul>
+<li><b>MyAI.bmp</b> - A 64x64 picture that represents your module in the start screen.
+If this file does not exist, a generic picture will be used.
+</ul>
+
+<p>("MyAI" stands for the filename of your module - must always be the same!)
+
+<p>To make your AI available for the game, first compile the sources (you should
+get a file *.dll). Second, move the DLL together with the accessory specified
+above to the main C-evo folder.
+
+
+<a name="request"></a>
+<p><br><h2>Server Commands: Information Request</h2>
+
+<p><b>sGetChart</b>
+<br>Get nation chart. In case of enemy charts, only values for the turns
+0..TurnOfCivilReport-1 (resp. TurnOfMilReport for military charts) are returned,
+the rest of the array remains undefined.
+<br>Data structure: TChart
+<pre>
+<p class="pre">int[maxTurn];
+</pre>
+<p>in Command - command = sGetChart + type &lt;&lt;4, chart types are stExplore..stMil
+<br>in Subject - player
+<br>out Data [t] - value for turn t, meaning depends on chart type:
+<br>stPop - sum of all city sizes plus citizens in addable units
+<br>stTerritory - number of tiles of nation territory
+<br>stMil - sum of combat unit cost*health/100
+<br>stScience - number of technologies in 1/100
+<br>stExplore - number of discovered tiles
+<br>stWork - number of MP spent by settlers for tile improvement
+
+<p><b>sGetTechCost</b>
+<br>Request required research points for currently developed tech.
+<br>out int *Data - required research points
+
+<p><b>sGetTileInfo</b>
+<br>Request resource production of a tile. Considers government form, wonders
+and national projects, but no city improvements. Trade is reported with government
+limit only (means as if the city had a courthouse). Works for all known tiles.
+<br>Data structure: TTileInfo
+<pre>
+<p class="pre">struct {
+  int Food, Prod, Trade,
+  ExplCity;
+}</pre>
+<p>in Subject - tile location
+<br>out Data-&gt;Food, Data-&gt;Prod, Data-&gt;Trade - resources produced
+
+<p><b>sGetCityTileInfo</b>
+<br>Request exact resource production of a tile for the city which is currently
+exploiting it. All factors are taken into consideration. Works only for own cities.
+<br>Data structure: TTileInfo
+<pre>
+<p class="pre">struct {
+  int Food, Prod, Trade,
+  ExplCity;
+}</pre>
+<p>in Subject - tile location
+<br>out Data-&gt;Food, Data-&gt;Prod, Data-&gt;Trade - resources produced
+<br>out Data-&gt;ExplCity - index of exploiting city
+
+<p><b>sGetHypoCityTileInfo</b>
+<br>Request exact resource production of a tile for an (own) city of choice.
+All factors are taken into consideration.
+<br>Data structure: TTileInfo
+<pre>
+<p class="pre">struct {
+  int Food, Prod, Trade,
+  ExplCity;
+}</pre>
+<p>in Subject - tile location
+<br>in Data-&gt;ExplCity - index of city
+<br>out Data-&gt;Food, Data-&gt;Prod, Data-&gt;Trade - resources produced
+
+<p><b>sGetJobProgress</b>
+<br>Request progress of terrain improvement job.
+<br>Data structure: TJobProgressData
+<pre>
+<p class="pre">struct {
+  int Required,
+  Done,
+  NextTurnPlus;
+}[nJob]</pre>
+<p>in Subject - tile location
+<br>out Data[x].Required - total MP required to complete job x
+<br>out Data[x].Done - MP done until now for job x
+<br>out Data[x].NextTurnPlus - gain of MP for job x in the end of the turn by units
+currently working on it
+
+<p><b>sGetUnits</b>
+<br>View enemy unit stack after the tile has been spied out with a
+special commando or spy plane. This tile state is indicated by the fSpiedOut flag.
+The function writes the units of the stack to RO.EnemyUn, beginning at index
+RO.nEnemyUn. This information is only valid immediately after the command was
+called, the next server command call might lead to its corruption.
+<br>in Subject - tile location
+<br>out int *Data - number of units in stack
+
+<p><b>sGetDefender</b>
+<br>Request which own unit will defend a certain tile. (For enemy locations,
+this is not necessary because you only <i>know</i> the defender.)
+<br>in Subject - tile location
+<br>out int *Data - unit index
+
+<p><b>sGetBattleForecast</b>
+<br>This query allows to simulate an attack of a hypothetical attacker to an
+existing defender. It can be used to check an own attack in advance as well as
+to estimate a possible enemy attack. Restrictions: the attacked tile must be
+observed and the attacking model must be known to the requesting nation. The
+server return code is equal to an sMoveUnit that would order this attack.
+<br>Data structure: TBattleForecast
+<pre>
+<p class="pre">struct {
+  int pAtt, mixAtt,
+  HealthAtt, ExpAtt, FlagsAtt, Movement,
+  EndHealthDef, EndHealthAtt;
+}</pre>
+<p>in Subject - location of defender
+<br>in Data-&gt;pAtt - attacking player
+<br>in Data-&gt;mixAtt - model index of attacking unit
+<br>in Data-&gt;HealthAtt, Data-&gt;ExpAtt, Data-&gt;FlagsAtt,
+Data-&gt;Movement - health, experience, flags and movement of attacking unit
+<br>out Data-&gt;EndHealthDef, Data-&gt;EndHealthAtt - health of defending and
+attacking unit after the battle
+
+<p><b>sGetUnitReport</b>
+<br>Request additional information about an own unit.
+<br>Data structure: TUnitReport
+<pre>
+<p class="pre">struct {
+  int FoodSupport, ProdSupport,
+  ReportFlags;
+}</pre>
+<p>in Subject - unit index
+<br>out Data-&gt;FoodSupport - food support required
+<br>out Data-&gt;ProdSupport - material support required (free units per city are not considered)
+<br>out Data-&gt;ReportFlags - additional flags, see protocol.pas under "unit report flags"
+
+<p><b>sGetMoveAdvice</b>
+<br>Find the shortest way for a unit to a specified tile or to the next city. This function only considers
+the information the player knows of. Neither are unknown tiles or roads used on the way
+nor unknown blockings considered. That is why moves suggested by this function might
+even be invalid. The function returns only the part of the way the unit can do
+in the current turn. (If your nation owns the Shinkansen Express, the 25 steps
+returned might be less than possible within the turn. You can use subsequent
+calls of sGetMoveAdvice to query the rest of the way.)
+<br>Note: This function does not make compromise in favour of execution speed. If the
+shortest path is visible to your nation, this function
+calculates it perfectly, even considering
+the actual remainder of movement points in the end of each turn along the way.
+I recommend to use this function only for real movement, not for decision
+making whether or not to move a certain unit to a certain location, because
+for the latter job a non-accurate algorithm is sufficient, which is potentially
+much faster.
+
+<br>Data structure: TMoveAdviceData
+<pre>
+<p class="pre">struct {
+  int ToLoc,
+  nStep,
+  MoreTurns,
+  MaxHostile_MovementLeft,
+  dx[25], dy[25];
+}</pre>
+<p>in Subject - unit index
+<br>in Data-&gt;ToLoc - desired move destination, maNextCity for shortest way to next city
+<br>in Data-&gt;MoreTurns - Maximum number of additional turns to consider. E.g.
+if this number is 0, the function only looks for moves which can be completed in
+the current turn. The lower the MoreTurns parameter is, the faster the function returns
+if there is no way possible.
+<br>in Data-&gt;MaxHostile_MovementLeft - must be set to 100, otherwise function will not work
+<br>out Data-&gt;nStep - number of moves in this turn (= number of valid entries in dx/dy)
+<br>out Data-&gt;MoreTurns - number of additional turns required to get to the desired location
+<br>out Data-&gt;dx[i], Data-&gt;dy[i] - single moves ending at destination (more about relative
+coordinates under "Location Codes")
+<br>out Data-&gt;MaxHostile_MovementLeft - MPs remaining for the turn after reaching the location
+<br>return values: eOk if success, eNoWay if no way known
+
+<p><b>sGetPlaneReturn</b>
+<br>Check whether an aircraft could return to city/base/carrier from certain location.
+<br>Data structure: TPlaneReturnData
+<pre>
+<p class="pre">struct {
+  int Loc,
+  Fuel,
+  Movement;
+}</pre>
+<p>in Subject - unit index
+<br>in Data-&gt;Loc - hypothetical location of unit
+<br>in Data-&gt;Fuel - current fuel
+<br>in Data-&gt;Movement - hypothetical movement points left for the current turn
+<br>return values: eOk if aircraft could return, eNoWay if not
+
+<p><b>sGetCityReport</b>
+<br>Request old style (C-evo 1.0) report on city work. Must be own city.
+<br>Data structure: TCityReport
+<pre>
+<p class="pre">struct {
+  int HypoTiles, HypoTax, HypoLux,
+  Working, Happy,
+  FoodRep, ProdRep, Trade,
+  PollRep,
+  Corruption, Tax, Lux, Science,
+  Support, Eaten,
+  ProdCost, Storage,
+  Deployed;
+}</pre>
+<p>in Subject - city index
+<br>in Data-&gt;HypoTiles - tiles that should be considered as exploited
+(for the current adjustment, set this to -1 or to TCity.Tiles of the city)
+<br>in Data-&gt;HypoTax, Data-&gt;HypoLux - tax and luxury rate that should be
+assumed (for current rates, set this to -1 or to RO.TaxRate resp. RO.LuxRate)
+<br>out Data-&gt;Working - number of working citizens
+<br>out Data-&gt;Happy - number of happy citizens, can be higher than number of working
+citizens if more working citizens would be happy
+<br>out Data-&gt;FoodRep, ProdRep, Trade - total collected food, production and trade points after improvement effects
+<br>out Data-&gt;PollRep - pollution
+<br>out Data-&gt;Corruption, Data-&gt;Tax, Data-&gt;Lux, Data-&gt;Science - corruption, tax, luxury and science output of city
+<br>out Data-&gt;Support, Data-&gt;Eaten - production and food taken for citizens and unit support
+<br>out Data-&gt;Storage - size of food storage
+<br>out Data-&gt;Deployed - number of deployed units
+
+<p><b>sGetCityReportNew</b>
+<br>Request new style (C-evo 1.1) report on city work. Must be own city.
+<br>Data structure: TCityReportNew
+<pre>
+<p class="pre">struct {
+  int HypoTiles,HypoTaxRate,HypoLuxuryRate,
+  Morale,
+  FoodSupport,MaterialSupport,
+  ProjectCost,
+  Storage,
+  Deployed,
+  CollectedControl,CollectedFood,CollectedMaterial,CollectedTrade,
+  Working,
+  FoodSurplus,Production,AddPollution,
+  Corruption,Tax,Science,Luxury,
+  HappinessBalance;
+}</pre>
+<p>in Subject - city index
+<br>in Data-&gt;HypoTiles - tiles that should be considered as exploited
+(for the current adjustment, set this to -1 or to TCity.Tiles of the city)
+<br>in Data-&gt;HypoTaxRate, Data-&gt;HypoLuxuryRate - tax and luxury rate that should be
+assumed (for current rates, set this to -1 or to RO.TaxRate resp. RO.LuxRate)
+<br>out Data-&gt;Morale - morale
+<br>out Data-&gt;FoodSupport, Data-&gt;MaterialSupport - food and material taken for unit support
+<br>out Data-&gt;ProjectCost - material cost of current project
+<br>out Data-&gt;Storage - size of food storage
+<br>out Data-&gt;Deployed - number of units causing unrest (unrest=2*deployed)
+<br>out Data-&gt;CollectedControl, Data-&gt;CollectedFood, Data-&gt;CollectedMaterial, Data-&gt;CollectedTrade - raw control, food, material and trade as collected by the citizens
+<br>out Data-&gt;Working - number of exploited tiles including city tile
+<br>out Data-&gt;FoodSurplus, Data-&gt;Production, Data-&gt;AddPollution - food surplus, production gain and pollution after all effects
+<br>out Data-&gt;Corruption, Data-&gt;Tax, Data-&gt;Science, Data-&gt;Luxury - corruption, tax, science and wealth after all effects
+<br>out Data-&gt;HappinessBalance = (Morale+Wealth+Control) - (Size+Unrest), value < 0 means disorder
+
+<p><b>sGetCityAreaInfo</b>
+<br>Request state of all tiles in the city area.
+<br>Data structure: TCityAreaInfo
+<pre>
+<p class="pre">struct {
+  int Available[27];
+}</pre>
+<p>in Subject - city index
+<br>out Data-&gt;Available - state for area tile (dx,dy) in
+Available[(dy+3)&lt;&lt;2+(dx+3)&gt;&gt;1] (faAvailable..faInvalid), (dx,dy) relative to central tile (more about relative
+coordinates under "Location Codes")
+
+<p><b>sGetCity</b>
+<br>Get enemy city information after this city has been spied out with a
+special commando or spy plane. This tile state is indicated by the fSpiedOut flag.
+<br>Data structure: TGetCityData
+<pre>
+<p class="pre">struct {
+  int Owner;
+  TCity c;
+}</pre>
+<p>in Subject - city tile location
+<br>out Data-&gt;Owner - owner of city
+<br>out Data-&gt;c - the city data
+
+<p><b>sGetEnemyCityReport</b>
+<br>Get old style (C-evo 1.0) enemy city report after this city has been spied out with a
+special commando or spy plane. This tile state is indicated by the fSpiedOut flag.
+<br>Data structure: TCityReport, see under sGetCityReport
+<br>in Subject - city tile location
+<br>out Data - the city report
+
+<p><b>sGetEnemyCityReportNew</b>
+<br>Get new style (C-evo 1.1) enemy city report after this city has been spied out with a
+special commando or spy plane. This tile state is indicated by the fSpiedOut flag.
+<br>Data structure: TCityReportNew, see under sGetCityReportNew
+<br>in Subject - city tile location
+<br>out Data - the city report
+
+<p><b>sGetCityTileAdvice</b>
+<br>Find the perfect combination of tiles to exploit in the city area. Food
+supply and unit support are ensured, if possible. Extra food, material, tax and
+science are maximized. The optimization also works in connection with Luxury or
+Michelangelo's Chapel.
+<br>Data structure: TCityTileAdviceData
+<pre>
+<p class="pre">struct {
+  unsigned long ResourceWeights, Tiles;
+  TCityReport CityReport;
+}</pre>
+<p>in Subject - city index
+<br>in Data-&gt;ResourceWeights - specifies the evaluation formula (what to maximize),
+can be one of the values below "resource weights" in protocol.h
+<br>out Data-&gt;Tiles - tiles to set in order to achieve maximum resource output (valid input for sSetCityTiles)
+<br>out Data-&gt;CityReport - the city report if these tiles were set
+
+
+<a name="deact"></a>
+<p><br><h2>Server Commands: Client Deactivation</h2>
+
+<p><b>sTurn</b>
+<br>Finish the current turn.
+
+<p><b>scContact</b>
+<br>Request diplomatic contact with enemy. (Contact must be allowed by game
+rules!)
+<br>in Command - command = scContact + player &lt;&lt;4
+
+<p><b>scReject</b>
+<br>Refuse diplomatic contact with enemy.
+
+<p><b>scDipStart</b>
+<br>Accept diplomatic contact with enemy.
+
+<p><b>scDipNotice</b>
+<br>Notice latest decision of negotiation opponent.
+
+<p><b>scDipAccept</b>
+<br>Accept latest offer of negotiation opponent.
+
+<p><b>scDipCancelTreaty</b>
+<br>Cancel current treaty with negotiation opponent.
+
+<p><b>scDipOffer</b>
+<br>Make offer.
+<br>Data structure: TOffer
+<pre>
+<p class="pre">struct {
+  int nDeliver, nCost,
+  Price[12];
+}</pre>
+<p>in Data-&gt;nDeliver - number of prices delivered if offer is accepted
+<br>in Data-&gt;nCost - number of prices required to pay to accept this offer
+<br>in Data-&gt;Price[0..nDeliver-1] - codes of the prices delivered
+<br>in Data-&gt;Price[nDeliver..nDeliver+nCost-1] - codes of the prices to pay
+
+<p><b>scDipBreak</b>
+<br>Unagreed break of negotiation.
+
+<p><b>sReload</b>
+<br>Go back in time. Break the game and reload it at an earlier point. This is
+an option for AI development only, usable for a self-learning development
+approach. The command only works in supervisor mode.
+Be sure to remove all calls before shipping your AI.
+<br>in int *Data - Turn in which to reload the game
+
+
+<a name="general"></a>
+<p><br><h2>Server Commands: General Control</h2>
+
+<p><b>sSetGovernment</b>
+<br>Set government form. Only valid if period of anarchy has just ended this
+turn (phChangeGov flag set in RO.Happened).
+<br>in Subject - desired government form (gAnarchy..gDemocracy)
+
+<p><b>sSetRates</b>
+<br>Set tax, luxury and science rate.
+<br>in Subject - desired rates (0..100): (taxrate/10) + (luxrate/10)&lt;&lt;4
+
+<p><b>sRevolution</b>
+<br>Change to anarchy.
+
+<p><b>sSetResearch</b>
+<br>Set advance to research next. Only valid if the last research
+was finished in this turn (phTech flag set in RO.Happened).
+<br>in Subject - technology, adMilitary for military research
+
+<p><b>sStealTech</b>
+<br>After capturing a city, this command might be possible, indicated by the
+phStealTech flag set in RO.Happened. (With the current rules, this can only
+happen when you own the Temple of Zeus wonder.) Choose a technology to steal from
+the former city owner.
+<br>in Subject - technology
+
+<p><b>sCancelTreaty</b>
+<br>Cancel current state treaty with the player who was requested for contact
+but rejected. Only allowed in this situation.
+
+<p><b>sCreateDevModel</b>
+<br>Create unit model to start develop this turn.
+<br>in Subject - desired unit domain (dGround..dAir)
+
+<p><b>sSetDevModelCap</b>
+<br>Change capability of unit model to develop, must be created with
+sCreateDevModel this turn.
+<br>in Command - command = sSetModelCap + desired value for this capability &lt;&lt;4
+<br>in subject - feature to change (mcOffense..mcJet)
+
+<p><b>sMessage</b>
+<br>Display AI debug message. Note that debug messages are turned off by default.
+Open the debug message popup menu with a right mouse click into the AI debug
+message window, choose there which message levels to display.
+<br>Please keep messages shorter than 256 characters.
+<br>in Subject - message level
+<br>in char *Data - message text
+
+<p><b>sSetDebugMap</b>
+<br>Set a map of debug numbers, one for each tile. You can turn the
+number display on using the menu item "General|Options|Test|AI Debug Map".
+The values are directly read from the array passed to this function everytime
+the map display is updated, means you only have to call this function once.
+In the end, before you deallocate the debug map memory, call sSetDebugMap with
+Data = NULL!
+<br>in void *Data - pointer to array of integers
+
+<p><b>sRefreshDebugMap</b>
+<br>During own turn, trigger refresh of debug map display.
+(Not necessary in the end of the turn because refresh happens automatically then.)
+
+<a name="cex"></a>
+<p><b>cClientEx</b>
+<br>All commands &gt;= cClientEx are taken for client exclusive. The server does
+nothing but immediately call the client back with exactly the same command, player and
+data. The maximum command possible is 0xFFFF. The subject parameter is ignored.
+<p>Use this command to save data. When a game is loaded, you will receive all
+ClientEx commands you sent in the right order. (However, be aware that all
+data you submit that way are being stored in the saved game. Excessive use will make the
+save file big.)
+As described above, the size of the Data block in DWords should always
+be specified by the lowest 4 bits of the command. You have to take care for that
+when using a ClientEx command. This means that you cannot store more than
+60 bytes (15 DWords) with one ClientEx call.
+<p>This command is mainly intended for the user interface to save string-type
+information like file names, city names etc. I recommend not to use it for AI
+programming, because it's difficult to use and there are some problems to take
+care for (see below). Try to make do with the other ways of storing data, see under
+<a href="aidev.html#save">Saving Data</a>.
+<p><b>Attention:</b> Never call the Server from within a cClientEx handler! It
+might work during playing, but will cause problems when a saved game is being
+loaded. Also, note that parts of the RO data are not valid then. So I recommend
+not to access the RO block from a cClientEx handler at all. Last not least, you should
+not access the Data block, because cClientEx commands and data restoring are
+processesed in a different order when loading a saved game.
+
+
+<a name="units"></a>
+<p><br><h2>Server Commands: Unit Control</h2>
+
+<p><b>sRemoveUnit</b>
+<br>Remove unit. If the unit is located in a city, it is being utilized for the
+current city project.
+<br>in Subject - unit index
+
+<p><b>sSetUnitHome</b>
+<br>Set unit home to the city it is located in.
+<br>in Subject - unit index
+
+<p><b>sSetSpyMission</b>
+<br>Set mission type for subsequent covert operations.
+<br>in Command - command = sSetSpyMission + Mission &lt;&lt;4
+
+<p><b>sLoadUnit</b>
+<br>Load unit onto a transport ship or plane on the same tile.
+<br>in Subject - unit index
+
+<p><b>sUnloadUnit</b>
+<br>Unload a unit from a transport ship or plane.
+<br>in Subject - unit index
+
+<p><b>sSelectTransport</b>
+<br>Prefer this transport when loading units. Voids any former call to this function.
+<br>in Subject - unit index
+
+<p><b>sMoveUnit</b>
+<br>Move a unit resp. attack enemy unit.
+<br>in Command - command = sMoveUnit + (dx&7)&lt;&lt;4 +(dy&7)&lt;&lt;7, move to direction
+(dx,dy) (more about relative coordinates under "Location Codes")
+<p>Since only moves to adjacent tiles are allowed, no more than the following eight command values are valid:
+<br>sMoveUnit+0x020 - move/attack to east
+<br>sMoveUnit+0x060 - move/attack to west
+<br>sMoveUnit+0x090 - move/attack to south-east
+<br>sMoveUnit+0x0F0 - move/attack to south-west
+<br>sMoveUnit+0x100 - move/attack to south
+<br>sMoveUnit+0x300 - move/attack to north
+<br>sMoveUnit+0x390 - move/attack to north-east
+<br>sMoveUnit+0x3F0 - move/attack to north-west
+<p>in Subject - unit index
+
+<p><b>sAddToCity</b>
+<br>Add unit to city.
+<br>in Subject - unit index, unit must be settler or a conscripts unit
+
+<p><b>sStartJob</b>
+<br>Start terrain improvement.
+<br>in Command - command = sStartJob + Job &lt;&lt;4
+<br>in Subject - unit index, unit must be settler
+
+<a name="cities"></a>
+<p><br><h2>Server Commands: City Management</h2>
+
+<p><b>sSetCityProject</b>
+<br>Set city project.
+<br>in Subject - city index
+<br>in int *Data - desired project (model index or improvement index +cpImp)
+
+<p><b>sBuyCityProject, sSellCityProject</b>
+<br>Buy resp. sell city project.
+<br>in Subject - city index
+
+<p><b>sSellCityImprovement, sRebuildCityImprovement</b>
+<br>Sell resp. rebuild city improvement.
+<br>in Subject - city index
+<br>in int *Data - improvement
+
+<p><b>sSetCityTiles</b>
+<br>Set tiles to exploit by a city. This function does not work partially. If
+not all tiles can be set as required, the function does nothing and returns an
+error.
+<br>in Subject - city index
+<br>in int *Data - bitarray telling the tiles (same format as TCity.Tiles).
+Set bit with index (dy+3)<<2+(dx+3)>>1 for tiles to exploit.
+(dx,dy) relative to central tile (more about relative coordinates under "Location Codes").
+Note that the bit for the city tile itself (dx=dy=0) must always be set.
+
+<a name="cmodule"></a>
+<p><br><h2>Client Commands: Module Related</h2>
+<p>These commands apply to your whole AI module, do not use the passed Player parameter.
+
+<a name="cinit"></a>
+<p><b>cInitModule</b>
+<br>Initialize the Module.
+<br>Data structure: TInitModuleData
+<pre>
+<p class="pre">struct {
+  TServerCall Server;
+  int DataVersion, DataSize;
+}</pre>
+<p>in Data-&gt;Server - address of the server function
+<br>out Data-&gt;DataVersion - version of Data block, see
+<a href="aidev.html#save">Saving Data</a>
+<br>out Data-&gt;DataSize - required size of Data block in bytes, maximum is 4096
+
+<p><b>cReleaseModule</b>
+<br>Release the Module.
+
+<p><b>cNewGame, cLoadGame</b>
+<br>Start a new game resp. load a saved one. See under
+<a href="aidev.html#start">Game Start Sequence</a>.
+<br>Data structure: TNewGameData
+<pre>
+<p class="pre">struct {
+  int lx, ly,
+  LandMass,
+  MaxTurn,
+  Difficulty[15];
+  PLAYER_RO* RO[15];
+}</pre>
+<p>in Data-&gt;lx, Data-&gt;ly - playground horizontal and vertical size
+<br>in Data-&gt;LandMass - landmass (per cent of the complete map), 0 indicates a custom map
+<br>in Data-&gt;Difficulty - Difficulty levels on which the single players are
+playing. 0 for supervisor, -1 for unused player numbers.
+<br>in Data-&gt;RO - Addresses of the Read-Only data blocks of the players your module is
+going to control. Pointers for enemy players are set to NULL.
+
+<p><b>cBreakGame</b>
+<br>The current game is going to end.
+
+
+<a name="client"></a>
+<p><br><h2>Client Commands: General Control</h2>
+
+<p><b>cGetReady, cReplay</b>
+<br>See under <a href="aidev.html#start">Game Start Sequence</a>.
+
+
+<a name="cactturn"></a>
+<p><br><h2>Client Commands: Activation (Turn Mode)</h2>
+
+<p><b>cTurn</b>
+<br>Start this player's turn.
+<br>Possible deactivations: sTurn, scContact
+<p><b>Attention:</b> In the turn after a nation was made extinct, this client
+function is called a last time with the player's flag erased in RO.Alive. This
+allows you to do some finalization for this player. In this situation, you should
+call sTurn as the only server command, most others will not work. The client
+will never get called again for this player within this game.
+
+<p><b>cContinue</b>
+<br>Continue this player's turn after a negotiation.
+<br>Possible deactivations: sTurn, scContact
+
+<a name="cactnego"></a>
+<p><br><h2>Client Commands: Activation (Negotiation Mode)</h2>
+
+<p><b>scContact</b>
+<br>Enemy asks for starting negotiation.
+<br>in int Data - player
+<br>Possible deactivations: scDipStart, scReject
+
+<p><b>scDipStart</b>
+<br>Enemy has accepted contact, start negotiation now.
+<br>Possible deactivations: scDipOffer, scDipCancelTreaty, scDipBreak
+
+<p><b>scDipNotice</b>
+<br>Enemy has noticed latest decision, continue with negotiation now.
+<br>Possible deactivations: scDipOffer, scDipCancelTreaty, scDipBreak
+
+<p><b>scDipAccept</b>
+<br>Enemy has accepted latest offer, continue with negotiation now.
+<br>Possible deactivations: scDipOffer, scDipCancelTreaty, scDipBreak
+
+<p><b>scDipCancelTreaty</b>
+<br>Enemy has canceled state treaty.
+<br>Possible deactivations: scDipNotice, scDipCancelTreaty, scDipBreak
+
+<p><b>scDipOffer</b>
+<br>Enemy makes offer.
+<br>Data structure: OFFER
+<pre>
+<p class="pre">struct {
+  int nDeliver, nCost,
+  Price[12];
+}</pre>
+<p>in Data-&gt;nDeliver - number of prices delivered if offer is accepted
+<br>in Data-&gt;nCost - number of prices required to pay to accept this offer
+<br>in Data-&gt;Price[0..nDeliver-1] - codes of the prices delivered
+<br>in Data-&gt;Price[nDeliver..nDeliver+nCost-1] - codes of the prices to pay
+<br>Possible deactivations: scDipAccept (if made offer is allowed to be accepted),
+scDipOffer, scDipCancelTreaty, scDipBreak
+
+<p><b>scDipBreak</b>
+<br>Enemy breaks negotiation.
+<br>Possible deactivations: scDipNotice, scDipCancelTreaty
+
+
+<a name="cinfo"></a>
+<p><br><h2>Client Commands: Information</h2>
+<p>These commands tell about an enemy's activity during his turn. The player
+being told remains inactive.
+
+<p><b>cShowMoving, cShowCapturing, cShowAttacking</b>
+<br>Tells about enemy movement or attack.
+<br>cShowMoving: Enemy unit moves, no city capture. Moving unit is already removed
+from origin tile but not yet placed to destination tile. Command is always
+followed by cShowAfterMove.
+<br>cShowCapturing: Enemy unit captures a city (not necessarily one of yours).
+Moving unit is already removed
+from origin tile but not yet placed to destination tile, city still belongs to
+old owner. Command is always followed by cShowAfterMove.
+<br>cShowAttacking: Enemy unit is going to attack (not necessarily one of your
+units). Nothing happened yet. Command is always followed by cShowAfterAttack.
+<br>The unit specified by the data structure is the moving/attacking one.
+<br>Data structure: TShowMove
+<pre>
+<p class="pre">struct {
+  int Owner,
+  Health,
+  mix,
+  emix,
+  Flags,
+  FromLoc,
+  dx,
+  dy,
+  EndHealth,
+  EndHealthDef;
+}</pre>
+<p>in Data-&gt;Owner - owner of unit
+<br>in Data-&gt;Health - health of unit
+<br>in Data-&gt;mix - model index for owner
+<br>in Data-&gt;emix - model index in EnemyUn list
+<br>in Data-&gt;Flags - fMulti if more than one unit
+<br>in Data-&gt;FromLoc - move starting location
+<br>in Data-&gt;dx, Data-&gt;dy - move direction
+<br>in Data-&gt;EndHealth - health of unit after move/attack, 0 if lost
+<br>in Data-&gt;EndHealthDef - (cShowAttacking only) health of defender after combat, 0 if destroyed
+
+<p><b>cShowUnitChanged, cShowAfterMove, cShowAfterAttack, cShowCityChanged</b>
+<br>Tells about enemy unit or city change.
+<br>cShowUnitChanged: Defender of a tile has changed due to unknown reason.
+Not called in case of moves and attacks that are visible for you
+(cShowMoving/cShowAttacking).
+<br>cShowAfterMove: Always follows cShowMoving or cShowCapturing. Move action
+is completely finished now, cities are captured. Passed location is the
+destination tile of the move.
+<br>cShowAfterAttack: Always follows sShowAttacking. Attack action
+is completely finished now. Called twice: first with defender
+location, second with attacker location.
+<br>cShowCityChanged: City was founded, destroyed or captured. Nation borders
+have already been recalculated.
+<br>in int Data - location
+
+<p><b>cShowCancelTreaty</b>
+<br>Tells that an enemy is about to cancel the current state treaty after you
+refused contact. This command is not sent when a treaty is canceled during a
+negotiation (scDipCancelTreaty).
+<br>in int Data - player
+
+<p><b>cShowCancelTreatyByAlliance</b>
+<br>Tells that an enemy has canceled all treaties with you after you canceled
+peace with one of his allies.
+<br>in int Data - player
+
+<p><b>cShowEndContact</b>
+<br>Negotiations have ended, enemy is continuing his turn.
+
+<p>There are some additional client information commands, but these are not
+relevant for AI programming.
+
+<a name="faq"></a>
+<p><br><h2>FAQ</h2>
+
+<p class="question">Q1. The rules of the game are not exactly specified.
+I need more information than what is written in the manual.
+<p>Answer: Sometimes an AI programmer needs very exact information about
+calculations or about the behavior of the game in special situations. This exact
+information often is
+not contained in the in-game manual, because this manual is for <i>players</i>.
+Players usually don't need and don't want that precision overkill. If you need more
+information, please ask me or go to the <a href="http://c-evo.org/aiforum/">AI forum</a>.
+(Or maybe try to analyze the sources of the game...)
+
+<p class="question">Q2. How can my AI...
+<ul>
+<li>...select a unit?
+<li>...order the unit command <i>stay here</i>, <i>recover</i> or <i>goto</i>?
+<li>...recognize free citizens?
+<li>...mark models to be obsolete?
+<li>...access the macro management (city types, far research goal, terrain enhancement)?
+</ul>
+<p>Answer: All of these things are not part of the actual game. The user interface
+implements these mechanisms in order to make the game better playable by human
+players. If you think something similar could be helpful in your AI, you must
+implement it. The means described in this manual are enough for that.
+
+<p class="question">Q3. The protocol.pas contains constants for some server and
+client commands that are not explained in this document/not contained in the
+protocol.h. What commands are these?
+<p>These commands are not for AI use. It's special commands for the user
+interface, which uses the AI interface for communication with the server, too.
+
+
+<a name="changes"></a>
+<p><br><h2>Changes since 1.0.4</h2>
+<ul>
+<li>New commands: sRefreshDebugMap, sGetJobProgress, sGetUnitReport, sGetPlaneReturn,
+sGetCityReportNew, sGetEnemyCityReportNew
+</ul>
+
+<p><br>
+
+</body>
+</html>
