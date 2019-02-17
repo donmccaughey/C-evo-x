@@ -3,6 +3,42 @@
 
 # ----- Variables
 
+ai_template_out = \
+	tmp\AI_Template\_aidev3.gif \
+	tmp\AI_Template\AI-development-manual.html \
+	tmp\AI_Template\AI.ai.txt \
+	tmp\AI_Template\CevoDotNet\AIPlugin.cs \
+	tmp\AI_Template\CevoDotNet\CevoDotNet.csproj \
+	tmp\AI_Template\CevoDotNet\cevoxp2.ico \
+	tmp\AI_Template\CevoDotNet\Program.cs \
+	tmp\AI_Template\CevoDotNet\Protocol.cs \
+	tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Resources.resx \
+	tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Settings.settings \
+	tmp\AI_Template\Project\AI.csproj \
+	tmp\AI_Template\Project\AI.sln \
+	tmp\AI_Template\Project\City.cs \
+	tmp\AI_Template\Project\Empire.cs \
+	tmp\AI_Template\Project\Model.cs \
+	tmp\AI_Template\Project\Persistent.cs \
+	tmp\AI_Template\Project\Plugin.cs \
+	tmp\AI_Template\Project\Unit.cs \
+	tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs \
+	tmp\AI_Template\Project\Lib\CevoPedia.cs \
+	tmp\AI_Template\Project\Lib\CityBase.cs \
+	tmp\AI_Template\Project\Lib\DiplomacyBase.cs \
+	tmp\AI_Template\Project\Lib\Map.cs \
+	tmp\AI_Template\Project\Lib\ModelBase.cs \
+	tmp\AI_Template\Project\Lib\Nation.cs \
+	tmp\AI_Template\Project\Lib\PlayResult.cs \
+	tmp\AI_Template\Project\Lib\Protocol.cs \
+	tmp\AI_Template\Project\Lib\Sprawl.cs \
+	tmp\AI_Template\Project\Lib\ToughSet.cs \
+	tmp\AI_Template\Project\Lib\UnitBase.cs \
+	tmp\AI_Template\Project\Properties\AssemblyInfo.cs
+
 cpp_ai_out = \
 	tmp\MyAI.dll \
 	tmp\MyAI.ai.txt
@@ -246,6 +282,8 @@ all : \
 	tmp\CevoDotNet.exe \
 	$(csharp_ai_out) \
 	tmp\Configurator.exe \
+	\
+	$(ai_template_out) \
 	\
 	tmp\C-evo-x.msi
 
@@ -952,6 +990,145 @@ tmp\Configurator.exe : \
 		Configurator\Properties\Settings.Designer.cs \
 		Configurator\Properties\Settings.settings
 	MSBuild.exe Configurator\Configurator.sln
+
+
+# ----- AI Template files
+
+tmp\AI_Template\_aidev3.gif : AI_Template\_aidev3.gif
+	-mkdir tmp\AI_Template
+	copy AI_Template\_aidev3.gif tmp\AI_Template\_aidev3.gif
+
+tmp\AI_Template\AI-development-manual.html : AI_Template\AI-development-manual.html
+	-mkdir tmp\AI_Template
+	copy AI_Template\AI-development-manual.html tmp\AI_Template\AI-development-manual.html
+
+tmp\AI_Template\AI.ai.txt : AI_Template\AI.ai.txt
+	-mkdir tmp\AI_Template
+	copy AI_Template\AI.ai.txt tmp\AI_Template\AI.ai.txt
+
+tmp\AI_Template\CevoDotNet\AIPlugin.cs : AI_Template\CevoDotNet\AIPlugin.cs
+	-mkdir tmp\AI_Template\CevoDotNet
+	copy AI_Template\CevoDotNet\AIPlugin.cs tmp\AI_Template\CevoDotNet\AIPlugin.cs
+
+tmp\AI_Template\CevoDotNet\CevoDotNet.csproj : AI_Template\CevoDotNet\CevoDotNet.csproj
+	-mkdir tmp\AI_Template\CevoDotNet
+	copy AI_Template\CevoDotNet\CevoDotNet.csproj tmp\AI_Template\CevoDotNet\CevoDotNet.csproj
+
+tmp\AI_Template\CevoDotNet\cevoxp2.ico : AI_Template\CevoDotNet\cevoxp2.ico
+	-mkdir tmp\AI_Template\CevoDotNet
+	copy AI_Template\CevoDotNet\cevoxp2.ico tmp\AI_Template\CevoDotNet\cevoxp2.ico
+
+tmp\AI_Template\CevoDotNet\Program.cs : AI_Template\CevoDotNet\Program.cs
+	-mkdir tmp\AI_Template\CevoDotNet
+	copy AI_Template\CevoDotNet\Program.cs tmp\AI_Template\CevoDotNet\Program.cs
+
+tmp\AI_Template\CevoDotNet\Protocol.cs : AI_Template\CevoDotNet\Protocol.cs
+	-mkdir tmp\AI_Template\CevoDotNet
+	copy AI_Template\CevoDotNet\Protocol.cs tmp\AI_Template\CevoDotNet\Protocol.cs
+
+tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs : AI_Template\CevoDotNet\Properties\AssemblyInfo.cs
+	-mkdir tmp\AI_Template\CevoDotNet\Properties
+	copy AI_Template\CevoDotNet\Properties\AssemblyInfo.cs tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs
+
+tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs : AI_Template\CevoDotNet\Properties\Resources.Designer.cs
+	-mkdir tmp\AI_Template\CevoDotNet\Properties
+	copy AI_Template\CevoDotNet\Properties\Resources.Designer.cs tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs
+
+tmp\AI_Template\CevoDotNet\Properties\Resources.resx : AI_Template\CevoDotNet\Properties\Resources.resx
+	-mkdir tmp\AI_Template\CevoDotNet\Properties
+	copy AI_Template\CevoDotNet\Properties\Resources.resx tmp\AI_Template\CevoDotNet\Properties\Resources.resx
+
+tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs : AI_Template\CevoDotNet\Properties\Settings.Designer.cs
+	-mkdir tmp\AI_Template\CevoDotNet\Properties
+	copy AI_Template\CevoDotNet\Properties\Settings.Designer.cs tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs
+
+tmp\AI_Template\CevoDotNet\Properties\Settings.settings : AI_Template\CevoDotNet\Properties\Settings.settings
+	-mkdir tmp\AI_Template\CevoDotNet\Properties
+	copy AI_Template\CevoDotNet\Properties\Settings.settings tmp\AI_Template\CevoDotNet\Properties\Settings.settings
+
+tmp\AI_Template\Project\AI.csproj : AI_Template\Project\AI.csproj
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\AI.csproj tmp\AI_Template\Project\AI.csproj
+
+tmp\AI_Template\Project\AI.sln : AI_Template\Project\AI.sln
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\AI.sln tmp\AI_Template\Project\AI.sln
+
+tmp\AI_Template\Project\City.cs : AI_Template\Project\City.cs
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\City.cs tmp\AI_Template\Project\City.cs
+
+tmp\AI_Template\Project\Empire.cs : AI_Template\Project\Empire.cs
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\Empire.cs tmp\AI_Template\Project\Empire.cs
+
+tmp\AI_Template\Project\Model.cs : AI_Template\Project\Model.cs
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\Model.cs tmp\AI_Template\Project\Model.cs
+
+tmp\AI_Template\Project\Persistent.cs : AI_Template\Project\Persistent.cs
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\Persistent.cs tmp\AI_Template\Project\Persistent.cs
+
+tmp\AI_Template\Project\Plugin.cs : AI_Template\Project\Plugin.cs
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\Plugin.cs tmp\AI_Template\Project\Plugin.cs
+
+tmp\AI_Template\Project\Unit.cs : AI_Template\Project\Unit.cs
+	-mkdir tmp\AI_Template\Project
+	copy AI_Template\Project\Unit.cs tmp\AI_Template\Project\Unit.cs
+
+tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs : AI_Template\Project\Lib\AddressPriorityQueue.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\AddressPriorityQueue.cs tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs
+
+tmp\AI_Template\Project\Lib\CevoPedia.cs : AI_Template\Project\Lib\CevoPedia.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\CevoPedia.cs tmp\AI_Template\Project\Lib\CevoPedia.cs
+
+tmp\AI_Template\Project\Lib\CityBase.cs : AI_Template\Project\Lib\CityBase.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\CityBase.cs tmp\AI_Template\Project\Lib\CityBase.cs
+
+tmp\AI_Template\Project\Lib\DiplomacyBase.cs : AI_Template\Project\Lib\DiplomacyBase.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\DiplomacyBase.cs tmp\AI_Template\Project\Lib\DiplomacyBase.cs
+
+tmp\AI_Template\Project\Lib\Map.cs : AI_Template\Project\Lib\Map.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\Map.cs tmp\AI_Template\Project\Lib\Map.cs
+
+tmp\AI_Template\Project\Lib\ModelBase.cs : AI_Template\Project\Lib\ModelBase.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\ModelBase.cs tmp\AI_Template\Project\Lib\ModelBase.cs
+
+tmp\AI_Template\Project\Lib\Nation.cs : AI_Template\Project\Lib\Nation.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\Nation.cs tmp\AI_Template\Project\Lib\Nation.cs
+
+tmp\AI_Template\Project\Lib\PlayResult.cs : AI_Template\Project\Lib\PlayResult.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\PlayResult.cs tmp\AI_Template\Project\Lib\PlayResult.cs
+
+tmp\AI_Template\Project\Lib\Protocol.cs : AI_Template\Project\Lib\Protocol.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\Protocol.cs tmp\AI_Template\Project\Lib\Protocol.cs
+
+tmp\AI_Template\Project\Lib\Sprawl.cs : AI_Template\Project\Lib\Sprawl.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\Sprawl.cs tmp\AI_Template\Project\Lib\Sprawl.cs
+
+tmp\AI_Template\Project\Lib\ToughSet.cs : AI_Template\Project\Lib\ToughSet.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\ToughSet.cs tmp\AI_Template\Project\Lib\ToughSet.cs
+
+tmp\AI_Template\Project\Lib\UnitBase.cs : AI_Template\Project\Lib\UnitBase.cs
+	-mkdir tmp\AI_Template\Project\Lib
+	copy AI_Template\Project\Lib\UnitBase.cs tmp\AI_Template\Project\Lib\UnitBase.cs
+
+tmp\AI_Template\Project\Properties\AssemblyInfo.cs : AI_Template\Project\Properties\AssemblyInfo.cs
+	-mkdir tmp\AI_Template\Project\Properties
+	copy AI_Template\Project\Properties\AssemblyInfo.cs tmp\AI_Template\Project\Properties\AssemblyInfo.cs
 
 
 # ----- Installer
