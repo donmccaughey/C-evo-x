@@ -8,6 +8,7 @@
         Language='1033'
         Codepage='1252'
         Version='1.2.1'>
+
         <Package Id='*'
             Keywords='Installer'
             Description='C-evo-x 1.2.1 Installer'
@@ -17,475 +18,498 @@
             Compressed='yes'
             SummaryCodepage='1252'
             />
+
         <Media Id='1'
             Cabinet='Installer.cab'
             EmbedCab='yes'
             DiskPrompt='Disk 1'
             />
-        <Property Id='DiskPrompt'
-            Value='C-evo-x 1.2.1 Installer'
-            />
+        <Property Id='DiskPrompt' Value='C-evo-x 1.2.1 Installer' />
+
+        <Icon Id='CevoWin32.exe' SourceFile='tmp/release/CevoWin32.exe' />
+
+        <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
+        <UIRef Id='UI' />
+        <UIRef Id='WixUI_ErrorProgressText' />
+
+
+        <!-- Directories -->
         <Directory Id='TARGETDIR' Name='SourceDir' DiskId='1'>
 
             <Directory Id='ProgramFilesFolder' Name='Program Files'>
-                <Directory Id='INSTALLDIR' Name='C-evo-x' FileSource='tmp'>
-
-                    <Component Id='Comp_CevoWin32.exe'
-                             Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
-                        <File Name='CevoWin32.exe'
-                            Source='tmp\release\CevoWin32.exe'
-                            KeyPath='yes'
-                            Checksum='yes' />
-                        <Shortcut Id='StartMenu_CevoWin32.exe'
-                            Directory='ProgramMenuDir'
-                            Name='C-evo-x'
-                            WorkingDirectory='INSTALLDIR'
-                            Icon='CevoWin32.exe'
-                            IconIndex='0'
-                            Advertise='yes' />
-                    </Component>
-                    <Component Id='Comp_cevo.dll'
-                             Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
-                        <File Name='cevo.dll'
-                            Source='tmp\release\cevo.dll'
-                            KeyPath='yes' />
-                    </Component>
-                    <Component Id='Comp_fonts.txt'
-                             Guid='EBE83E1A-A0A4-4AF2-8817-2CD458A728AB'>
-                        <File Name='fonts.txt' KeyPath='yes' />
-                    </Component>
-                    <Component Id='Comp_language.txt'
-                             Guid='6125FC20-AF99-4023-9502-BCBF4149FDD8'>
-                        <File Name='language.txt' KeyPath='yes' />
-                    </Component>
-                    <Component Id='Comp_language2.txt'
-                             Guid='4CF44228-4B7A-44ED-9AB4-CC859C6B1A04'>
-                        <File Name='language2.txt' KeyPath='yes' />
-                    </Component>
-                    <Component Id='Comp_StdAI.ai.txt'
-                             Guid='DDA8FBD0-1F1F-4DE9-98F6-9F413E41CA7A'>
-                        <File Name='StdAI.ai.txt' KeyPath='yes' />
-                    </Component>
-                    <Component Id='Comp_StdAI.bmp'
-                             Guid='ACC3D5EE-0B18-44C0-B1F3-BB1CFD5BEEA7'>
-                        <File Name='StdAI.bmp' KeyPath='yes' />
-                    </Component>
-                    <Component Id='Comp_StdAI.dll'
-                             Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
-                        <File Name='StdAI.dll' KeyPath='yes' />
-                    </Component>
-
+                <Directory Id='INSTALLDIR' Name='C-evo-x'>
                     <Directory Id='Dir_AppData' Name='AppData'>
-                        <Directory Id='Dir_AppData_Saved' Name='Saved'>
-                            <Component Id='Comp_AppData_Saved__Example_.cevo'
-                                     Guid='84244C1E-2C49-4F94-BB18-E789F0789608'>
-                                <File Name='(Example).cevo' KeyPath='yes' />
-                            </Component>
-                        </Directory>
+                        <Directory Id='Dir_AppData_Saved' Name='Saved' />
                     </Directory>
-
-                    <Directory Id='Dir_Graphics' Name='Graphics'>
-                        <Component Id='Comp_Graphics_Background.bmp'
-                                 Guid='2AB51074-78D3-46BC-A990-A0AC2085FACB'>
-                            <File Name='Background.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_BigCityMap.bmp'
-                                 Guid='E5E03EE3-BA70-480E-8251-DE820E7E7B4B'>
-                            <File Name='BigCityMap.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Cities66x32.bmp'
-                                 Guid='9D21B8BC-EA2E-4D60-9BD5-D26EFFE4A3B6'>
-                            <File Name='Cities66x32.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Cities66x32.credits.txt'
-                                 Guid='DD810935-7F74-4E9E-85F3-A06CF585D3BC'>
-                            <File Name='Cities66x32.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Cities96x48.bmp'
-                                 Guid='6CE67857-0968-4BE4-832B-5FC2296FF8FB'>
-                            <File Name='Cities96x48.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Cities96x48.credits.txt'
-                                 Guid='44869E9D-157B-44B5-AF18-E3BF08836A3E'>
-                            <File Name='Cities96x48.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_City.bmp'
-                                 Guid='CA20CCCD-1C74-45E1-9974-5AA9E1CBF4C1'>
-                            <File Name='City.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Colors.bmp'
-                                 Guid='9D2B5CB6-AF92-470B-9965-0682A741CB90'>
-                            <File Name='Colors.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Icons.bmp'
-                                 Guid='FF03CDD9-533B-409D-8BE7-D83E871C8E67'>
-                            <File Name='Icons.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Icons.credits.txt'
-                                 Guid='244B0C13-9D1F-4F9F-9BD3-6230D432DEF5'>
-                            <File Name='Icons.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_MiliRes.bmp'
-                                 Guid='8961E049-4B41-4F05-A683-2908BBF99B2B'>
-                            <File Name='MiliRes.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Nation.bmp'
-                                 Guid='7863B142-F8FE-49C8-B7C6-D3BD0777F38D'>
-                            <File Name='Nation.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Nation1.bmp'
-                                 Guid='A352E6F4-0367-4BD7-A75F-4C41B6353931'>
-                            <File Name='Nation1.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Nation1.credits.txt'
-                                 Guid='8A1B4E33-1682-4475-B7B4-F351EEDC0104'>
-                            <File Name='Nation1.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Nation2.bmp'
-                                 Guid='A2D3734C-F7BB-4DB3-A4B6-7A5E2038D5B4'>
-                            <File Name='Nation2.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Nation2.credits.txt'
-                                 Guid='B8F0066D-6DEA-442B-9C79-3C0C9A980DF4'>
-                            <File Name='Nation2.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Paper.jpg'
-                                 Guid='37546948-08D8-42F3-BBBD-E363CE99AE55'>
-                            <File Name='Paper.jpg' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_SmallCityMap.bmp'
-                                 Guid='165AE9F3-B5B0-4F1E-B364-63A0AA236E77'>
-                            <File Name='SmallCityMap.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_StdCities.bmp'
-                                 Guid='4E8E8805-3C6F-4ADF-9597-A4D5C815CBE0'>
-                            <File Name='StdCities.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_StdCities.credits.txt'
-                                 Guid='E2EA322E-4071-482B-8B0F-5247E690831D'>
-                            <File Name='StdCities.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_StdUnits.bmp'
-                                 Guid='52ED5191-89F9-4AC8-8B1B-675DB2955AFF'>
-                            <File Name='StdUnits.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_StdUnits.credits.txt'
-                                 Guid='B0419B27-CA78-434D-A5D4-6C6AF960AB3B'>
-                            <File Name='StdUnits.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_System.bmp'
-                                 Guid='B2253BB7-89D8-4DDD-BA73-73CCC2613300'>
-                            <File Name='System.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_System2.bmp'
-                                 Guid='E36C6F36-DE2E-46D4-862D-F8AC562D0125'>
-                            <File Name='System2.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Templates.bmp'
-                                 Guid='92D340E6-0540-4610-9A8B-1B2D802774D3'>
-                            <File Name='Templates.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Terrain66x32.bmp'
-                                 Guid='87CC59DD-DF19-4663-B308-F2BD3C938BFC'>
-                            <File Name='Terrain66x32.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Terrain66x32.credits.txt'
-                                 Guid='6D201E2C-C388-4FEC-9DB6-44C8D093B0F1'>
-                            <File Name='Terrain66x32.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Terrain96x48.bmp'
-                                 Guid='18F01467-F2DE-4FDE-ADD6-467B74C0087C'>
-                            <File Name='Terrain96x48.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Terrain96x48.credits.txt'
-                                 Guid='A64AA289-3C68-4718-BC79-73C53602D507'>
-                            <File Name='Terrain96x48.credits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Texture0.jpg'
-                                 Guid='52DF30F1-436C-4A56-A507-03068F0FE64A'>
-                            <File Name='Texture0.jpg' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Texture1.jpg'
-                                 Guid='0772FA42-CD3F-4B9E-8259-C949A386D3CE'>
-                            <File Name='Texture1.jpg' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Texture2.jpg'
-                                 Guid='758F3818-CBF9-4D56-B877-1CC61BE08075'>
-                            <File Name='Texture2.jpg' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Texture3.jpg'
-                                 Guid='D34A8371-BCFE-443D-8692-85DA0B6F503F'>
-                            <File Name='Texture3.jpg' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Texture4.jpg'
-                                 Guid='29D2B389-9DE5-428F-9EEC-7FAA95A7978F'>
-                            <File Name='Texture4.jpg' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Graphics_Unit.bmp'
-                                 Guid='1775B4EA-C62D-4DE0-9E1B-D5DBC0C077EA'>
-                            <File Name='Unit.bmp' KeyPath='yes' />
-                        </Component>
-                    </Directory>
-
-                    <Directory Id='Dir_Help' Name='Help'>
-                        <Component Id='Comp_Help_AdvTree.bmp'
-                                 Guid='BAFF442C-5E46-402B-82DF-AEF90B5361C6'>
-                            <File Name='AdvTree.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Help_AITShot.bmp'
-                                 Guid='EF28BF48-E4E3-4952-A51E-20B4F08B5BAD'>
-                            <File Name='AITShot.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Help_CityShot.bmp'
-                                 Guid='483C1C41-3AD5-4026-8A1B-39C65742C07B'>
-                            <File Name='CityShot.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Help_Corruption.bmp'
-                                 Guid='5BAEFD9B-F152-446E-8598-4CE8CEDBD8C0'>
-                            <File Name='Corruption.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Help_DraftShot.bmp'
-                                 Guid='A750A826-E616-4235-BE87-ABC895F95083'>
-                            <File Name='DraftShot.bmp' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Help_help.txt'
-                                 Guid='F3DC76FA-A0D4-469E-9602-BC8A61C2B30A'>
-                            <File Name='help.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Help_MoveShot.bmp'
-                                 Guid='F41DE116-6221-4E5E-9B1F-1E3FAA87A709'>
-                            <File Name='MoveShot.bmp' KeyPath='yes' />
-                        </Component>
-                    </Directory>
-
-                    <Directory Id='Dir_Sounds' Name='Sounds'>
-                        <Component Id='Comp_Sounds_8MM_AT_C_BlackCow_8186_hifi.mp3'
-                                 Guid='D659AA51-E080-492C-A5D4-EC73EC3252FC'>
-                            <File Name='8MM_AT_C-BlackCow-8186_hifi.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_Boulder__oblius_7747_hifi.mp3'
-                                 Guid='238E0636-7E30-4DA7-91EE-84C3C50109C9'>
-                            <File Name='Boulder_-oblius-7747_hifi.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_Cash_reg_public_d_296_hifi.mp3'
-                                 Guid='BA5BDD28-7CCA-47AA-AE35-7652D7EE7186'>
-                            <File Name='Cash_reg-public_d-296_hifi.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_Hammer_o_Public_D_243_hifi.mp3'
-                                 Guid='F0C0605C-AEA7-4D8F-8DB3-D9AA6A2FBDF7'>
-                            <File Name='Hammer_o-Public_D-243_hifi.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_angry.mp3'
-                                 Guid='60C675A2-0E73-4591-A4C5-FF194DFBEE3A'>
-                            <File Name='sg_angry.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_autogun.mp3'
-                                 Guid='A474224F-404F-4C92-ACB7-E75061941349'>
-                            <File Name='sg_autogun.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_battery.mp3'
-                                 Guid='0A096D4D-07BF-4111-9C9E-711E4E8EE0A8'>
-                            <File Name='sg_battery.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_cavalry.mp3'
-                                 Guid='158AB144-5116-4AA7-AD59-4D6D3D0B5435'>
-                            <File Name='sg_cavalry.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_cheers.mp3'
-                                 Guid='9C9BF420-F9CB-4F81-B93D-17A0120E23A5'>
-                            <File Name='sg_cheers.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_drum.mp3'
-                                 Guid='2AEEE8F8-E0E9-4C92-8381-98F0955D7F12'>
-                            <File Name='sg_drum.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_drum2.mp3'
-                                 Guid='D297BCF4-2DF0-4580-9EBF-2D156EF4A2D5'>
-                            <File Name='sg_drum2.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_fanfare.mp3'
-                                 Guid='00046021-2D15-4008-88EE-F1F6F6FA725B'>
-                            <File Name='sg_fanfare.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_gain.mp3'
-                                 Guid='3D9606AE-03E4-48F2-91F1-8332183414C3'>
-                            <File Name='sg_gain.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_harp.mp3'
-                                 Guid='1C1AE444-D6B2-4DD7-BB5F-21280A53C18F'>
-                            <File Name='sg_harp.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_horsemen.mp3'
-                                 Guid='24924F1C-8098-4123-8132-DDEBBBF042FB'>
-                            <File Name='sg_horsemen.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_invent.mp3'
-                                 Guid='8CCFA002-576C-4082-A99A-61A8F2F7E341'>
-                            <File Name='sg_invent.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_jet.mp3'
-                                 Guid='DF24ED56-9552-4AF6-B555-4E8C338411EB'>
-                            <File Name='sg_jet.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_marching.mp3'
-                                 Guid='D6225927-BE44-4E6A-904A-24A46F13B1F3'>
-                            <File Name='sg_marching.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_mechanical.mp3'
-                                 Guid='2CF97C8B-D7CA-49A2-AF48-60B13840AA5B'>
-                            <File Name='sg_mechanical.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_militia.mp3'
-                                 Guid='018431C0-CF5A-4DEC-A07B-B0BC9F8B1AAC'>
-                            <File Name='sg_militia.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_moan.mp3'
-                                 Guid='4515FB77-6964-4DE4-AB34-6CE98C65D8F9'>
-                            <File Name='sg_moan.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_musketeers.mp3'
-                                 Guid='8BE55470-8EC9-4480-AD5B-A79C345D85B4'>
-                            <File Name='sg_musketeers.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_nono.mp3'
-                                 Guid='B8F343E0-11DC-4CB4-AF91-8A015E8953CD'>
-                            <File Name='sg_nono.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_plane.mp3'
-                                 Guid='C87C098E-E7EF-4949-9E5C-0E6761DDF289'>
-                            <File Name='sg_plane.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_sad.mp3'
-                                 Guid='6AC589B6-F2B7-4B2C-8FFD-FF58FFCD04A3'>
-                            <File Name='sg_sad.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_space.mp3'
-                                 Guid='B30E600D-9EDA-471E-824C-50B679E4089F'>
-                            <File Name='sg_space.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_steal.mp3'
-                                 Guid='08E246E7-8C78-4743-A907-CCCF98306BBB'>
-                            <File Name='sg_steal.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sg_warning.mp3'
-                                 Guid='E69ED3E8-224E-41BF-A74D-7128A7E131EC'>
-                            <File Name='sg_warning.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sizzle_Sith_Mas_7716_hifi.mp3'
-                                 Guid='9A490B7C-8090-4926-98BD-F7212470B895'>
-                            <File Name='sizzle-Sith_Mas-7716_hifi.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_Small_Sw_Public_D_262_hifi.mp3'
-                                 Guid='164A99B8-FB75-4B22-B78E-03D0924B74F9'>
-                            <File Name='Small_Sw-Public_D-262_hifi.mp3' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sound.credits.txt'
-                                 Guid='49A844CF-4151-4D0B-BB8D-EBB0CAAFF5BB'>
-                            <File Name='sound.credits.txt' />
-                        </Component>
-                        <Component Id='Comp_Sounds_sound.txt'
-                                 Guid='F796054A-EE89-4097-80EB-3675A33DADFB'>
-                            <File Name='sound.txt' />
-                        </Component>
-                        <Component Id='Comp_Sounds_victory.mp3'
-                                 Guid='CB0079C4-E892-4465-9310-014587848DBE'>
-                            <File Name='victory.mp3' />
-                        </Component>
-                    </Directory>
-
-                    <Directory Id='Dir_Tribes' Name='Tribes'>
-                        <Component Id='Comp_Tribes_Americans.tribe.txt'
-                                 Guid='C48A72FD-392A-493B-A329-1B03A2F0DE9F'>
-                            <File Name='Americans.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Babyl.tribe.txt'
-                                 Guid='CB4A4FD3-85AB-4167-8748-B048BE5C2E0A'>
-                            <File Name='Babyl.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_British.tribe.txt'
-                                 Guid='31F96815-5488-445D-9BC4-B757A7598735'>
-                            <File Name='British.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Chinese.tribe.txt'
-                                 Guid='8BB2BF35-1022-4955-8704-93DA8BAC9283'>
-                            <File Name='Chinese.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Egyptians.tribe.txt'
-                                 Guid='9443D7AC-BF44-4B40-99B4-F39EF021BDEF'>
-                            <File Name='Egyptians.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_French.tribe.txt'
-                                 Guid='F5BFBD6B-10D9-4918-85DF-0DFB05A9AE18'>
-                            <File Name='French.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Germans.tribe.txt'
-                                 Guid='C45C5716-C001-4A57-BD65-574D9FD7EDB9'>
-                            <File Name='Germans.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Greeks.tribe.txt'
-                                 Guid='18E29ACD-69D2-425A-914B-39BBBA74227B'>
-                            <File Name='Greeks.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Japanese.tribe.txt'
-                                 Guid='97CF75DB-D24F-451D-8227-C2A7B8805877'>
-                            <File Name='Japanese.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Mongols.tribe.txt'
-                                 Guid='714115D2-6207-4C13-AD77-45161EE80063'>
-                            <File Name='Mongols.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Persians.tribe.txt'
-                                 Guid='5D5D7964-F075-4D87-AA3E-3C90F8D9AF34'>
-                            <File Name='Persians.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Phoenicians.tribe.txt'
-                                 Guid='4608480A-7F2E-4EDD-9C0A-739330DF5893'>
-                            <File Name='Phoenicians.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Romans.tribe.txt'
-                                 Guid='176C9687-F325-4C01-ADB6-6863984ECBC8'>
-                            <File Name='Romans.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Russians.tribe.txt'
-                                 Guid='1EA5041E-56B2-479B-ADCB-4D09E22DDD3A'>
-                            <File Name='Russians.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Spanish.tribe.txt'
-                                 Guid='B635EDF3-34FC-4FF4-B4E5-184A5CCD708E'>
-                            <File Name='Spanish.tribe.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_StdUnits.txt'
-                                 Guid='09B36A9D-4519-46DB-A541-A93746F87878'>
-                            <File Name='StdUnits.txt' KeyPath='yes' />
-                        </Component>
-                        <Component Id='Comp_Tribes_Vikings.tribe.txt'
-                                 Guid='2824E011-599F-420F-9318-63C68DF69F07'>
-                            <File Name='Vikings.tribe.txt' KeyPath='yes' />
-                        </Component>
-                    </Directory>
-
+                    <Directory Id='Dir_Graphics' Name='Graphics' />
+                    <Directory Id='Dir_Help' Name='Help' />
+                    <Directory Id='Dir_Sounds' Name='Sounds' />
+                    <Directory Id='Dir_Tribes' Name='Tribes' />
                 </Directory>
             </Directory>
 
             <Directory Id='ProgramMenuFolder' Name='ProgramMenuFolder'>
-                <Directory Id='ProgramMenuDir' Name='C-evo-x'>
-
-                    <Component Id='ProgramMenuDir'
-                             Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
-                        <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
-                        <RegistryValue Root='HKCU'
-                            Key='Software\[Manufacturer]\[ProductName]'
-                            Type='string'
-                            Value=''
-                            KeyPath='yes' />
-                    </Component>
-
-                </Directory>
+                <Directory Id='ProgramMenuDir' Name='C-evo-x' />
             </Directory>
+
         </Directory>
 
-        <Icon Id='CevoWin32.exe' SourceFile='tmp/release/CevoWin32.exe' />
 
+        <!-- Components -->
+        <DirectoryRef Id='INSTALLDIR' FileSource='tmp'>
+            <Component Id='Comp_CevoWin32.exe'
+                     Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
+                <File Name='CevoWin32.exe'
+                    Source='tmp\release\CevoWin32.exe'
+                    KeyPath='yes'
+                    Checksum='yes' />
+                <Shortcut Id='StartMenu_CevoWin32.exe'
+                    Directory='ProgramMenuDir'
+                    Name='C-evo-x'
+                    WorkingDirectory='INSTALLDIR'
+                    Icon='CevoWin32.exe'
+                    IconIndex='0'
+                    Advertise='yes' />
+            </Component>
+            <Component Id='Comp_cevo.dll'
+                     Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
+                <File Name='cevo.dll'
+                    Source='tmp\release\cevo.dll'
+                    KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_fonts.txt'
+                     Guid='EBE83E1A-A0A4-4AF2-8817-2CD458A728AB'>
+                <File Name='fonts.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_language.txt'
+                     Guid='6125FC20-AF99-4023-9502-BCBF4149FDD8'>
+                <File Name='language.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_language2.txt'
+                     Guid='4CF44228-4B7A-44ED-9AB4-CC859C6B1A04'>
+                <File Name='language2.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_StdAI.ai.txt'
+                     Guid='DDA8FBD0-1F1F-4DE9-98F6-9F413E41CA7A'>
+                <File Name='StdAI.ai.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_StdAI.bmp'
+                     Guid='ACC3D5EE-0B18-44C0-B1F3-BB1CFD5BEEA7'>
+                <File Name='StdAI.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_StdAI.dll'
+                     Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
+                <File Name='StdAI.dll' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Saved Game -->
+        <DirectoryRef Id='Dir_AppData_Saved' FileSource='tmp\AppData\Saved'>
+            <Component Id='Comp_AppData_Saved__Example_.cevo'
+                     Guid='84244C1E-2C49-4F94-BB18-E789F0789608'>
+                <File Name='(Example).cevo' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Graphics -->
+        <DirectoryRef Id='Dir_Graphics' FileSource='tmp\Graphics'>
+            <Component Id='Comp_Graphics_Background.bmp'
+                     Guid='2AB51074-78D3-46BC-A990-A0AC2085FACB'>
+                <File Name='Background.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_BigCityMap.bmp'
+                     Guid='E5E03EE3-BA70-480E-8251-DE820E7E7B4B'>
+                <File Name='BigCityMap.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Cities66x32.bmp'
+                     Guid='9D21B8BC-EA2E-4D60-9BD5-D26EFFE4A3B6'>
+                <File Name='Cities66x32.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Cities66x32.credits.txt'
+                     Guid='DD810935-7F74-4E9E-85F3-A06CF585D3BC'>
+                <File Name='Cities66x32.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Cities96x48.bmp'
+                     Guid='6CE67857-0968-4BE4-832B-5FC2296FF8FB'>
+                <File Name='Cities96x48.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Cities96x48.credits.txt'
+                     Guid='44869E9D-157B-44B5-AF18-E3BF08836A3E'>
+                <File Name='Cities96x48.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_City.bmp'
+                     Guid='CA20CCCD-1C74-45E1-9974-5AA9E1CBF4C1'>
+                <File Name='City.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Colors.bmp'
+                     Guid='9D2B5CB6-AF92-470B-9965-0682A741CB90'>
+                <File Name='Colors.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Icons.bmp'
+                     Guid='FF03CDD9-533B-409D-8BE7-D83E871C8E67'>
+                <File Name='Icons.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Icons.credits.txt'
+                     Guid='244B0C13-9D1F-4F9F-9BD3-6230D432DEF5'>
+                <File Name='Icons.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_MiliRes.bmp'
+                     Guid='8961E049-4B41-4F05-A683-2908BBF99B2B'>
+                <File Name='MiliRes.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Nation.bmp'
+                     Guid='7863B142-F8FE-49C8-B7C6-D3BD0777F38D'>
+                <File Name='Nation.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Nation1.bmp'
+                     Guid='A352E6F4-0367-4BD7-A75F-4C41B6353931'>
+                <File Name='Nation1.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Nation1.credits.txt'
+                     Guid='8A1B4E33-1682-4475-B7B4-F351EEDC0104'>
+                <File Name='Nation1.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Nation2.bmp'
+                     Guid='A2D3734C-F7BB-4DB3-A4B6-7A5E2038D5B4'>
+                <File Name='Nation2.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Nation2.credits.txt'
+                     Guid='B8F0066D-6DEA-442B-9C79-3C0C9A980DF4'>
+                <File Name='Nation2.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Paper.jpg'
+                     Guid='37546948-08D8-42F3-BBBD-E363CE99AE55'>
+                <File Name='Paper.jpg' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_SmallCityMap.bmp'
+                     Guid='165AE9F3-B5B0-4F1E-B364-63A0AA236E77'>
+                <File Name='SmallCityMap.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_StdCities.bmp'
+                     Guid='4E8E8805-3C6F-4ADF-9597-A4D5C815CBE0'>
+                <File Name='StdCities.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_StdCities.credits.txt'
+                     Guid='E2EA322E-4071-482B-8B0F-5247E690831D'>
+                <File Name='StdCities.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_StdUnits.bmp'
+                     Guid='52ED5191-89F9-4AC8-8B1B-675DB2955AFF'>
+                <File Name='StdUnits.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_StdUnits.credits.txt'
+                     Guid='B0419B27-CA78-434D-A5D4-6C6AF960AB3B'>
+                <File Name='StdUnits.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_System.bmp'
+                     Guid='B2253BB7-89D8-4DDD-BA73-73CCC2613300'>
+                <File Name='System.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_System2.bmp'
+                     Guid='E36C6F36-DE2E-46D4-862D-F8AC562D0125'>
+                <File Name='System2.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Templates.bmp'
+                     Guid='92D340E6-0540-4610-9A8B-1B2D802774D3'>
+                <File Name='Templates.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Terrain66x32.bmp'
+                     Guid='87CC59DD-DF19-4663-B308-F2BD3C938BFC'>
+                <File Name='Terrain66x32.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Terrain66x32.credits.txt'
+                     Guid='6D201E2C-C388-4FEC-9DB6-44C8D093B0F1'>
+                <File Name='Terrain66x32.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Terrain96x48.bmp'
+                     Guid='18F01467-F2DE-4FDE-ADD6-467B74C0087C'>
+                <File Name='Terrain96x48.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Terrain96x48.credits.txt'
+                     Guid='A64AA289-3C68-4718-BC79-73C53602D507'>
+                <File Name='Terrain96x48.credits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Texture0.jpg'
+                     Guid='52DF30F1-436C-4A56-A507-03068F0FE64A'>
+                <File Name='Texture0.jpg' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Texture1.jpg'
+                     Guid='0772FA42-CD3F-4B9E-8259-C949A386D3CE'>
+                <File Name='Texture1.jpg' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Texture2.jpg'
+                     Guid='758F3818-CBF9-4D56-B877-1CC61BE08075'>
+                <File Name='Texture2.jpg' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Texture3.jpg'
+                     Guid='D34A8371-BCFE-443D-8692-85DA0B6F503F'>
+                <File Name='Texture3.jpg' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Texture4.jpg'
+                     Guid='29D2B389-9DE5-428F-9EEC-7FAA95A7978F'>
+                <File Name='Texture4.jpg' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Graphics_Unit.bmp'
+                     Guid='1775B4EA-C62D-4DE0-9E1B-D5DBC0C077EA'>
+                <File Name='Unit.bmp' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Help -->
+        <DirectoryRef Id='Dir_Help' FileSource='tmp\Help'>
+            <Component Id='Comp_Help_AdvTree.bmp'
+                     Guid='BAFF442C-5E46-402B-82DF-AEF90B5361C6'>
+                <File Name='AdvTree.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_AITShot.bmp'
+                     Guid='EF28BF48-E4E3-4952-A51E-20B4F08B5BAD'>
+                <File Name='AITShot.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_CityShot.bmp'
+                     Guid='483C1C41-3AD5-4026-8A1B-39C65742C07B'>
+                <File Name='CityShot.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_Corruption.bmp'
+                     Guid='5BAEFD9B-F152-446E-8598-4CE8CEDBD8C0'>
+                <File Name='Corruption.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_DraftShot.bmp'
+                     Guid='A750A826-E616-4235-BE87-ABC895F95083'>
+                <File Name='DraftShot.bmp' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_help.txt'
+                     Guid='F3DC76FA-A0D4-469E-9602-BC8A61C2B30A'>
+                <File Name='help.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Help_MoveShot.bmp'
+                     Guid='F41DE116-6221-4E5E-9B1F-1E3FAA87A709'>
+                <File Name='MoveShot.bmp' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Sounds -->
+        <DirectoryRef Id='Dir_Sounds' FileSource='tmp\Sounds'>
+            <Component Id='Comp_Sounds_8MM_AT_C_BlackCow_8186_hifi.mp3'
+                     Guid='D659AA51-E080-492C-A5D4-EC73EC3252FC'>
+                <File Name='8MM_AT_C-BlackCow-8186_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Boulder__oblius_7747_hifi.mp3'
+                     Guid='238E0636-7E30-4DA7-91EE-84C3C50109C9'>
+                <File Name='Boulder_-oblius-7747_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Cash_reg_public_d_296_hifi.mp3'
+                     Guid='BA5BDD28-7CCA-47AA-AE35-7652D7EE7186'>
+                <File Name='Cash_reg-public_d-296_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Hammer_o_Public_D_243_hifi.mp3'
+                     Guid='F0C0605C-AEA7-4D8F-8DB3-D9AA6A2FBDF7'>
+                <File Name='Hammer_o-Public_D-243_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_angry.mp3'
+                     Guid='60C675A2-0E73-4591-A4C5-FF194DFBEE3A'>
+                <File Name='sg_angry.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_autogun.mp3'
+                     Guid='A474224F-404F-4C92-ACB7-E75061941349'>
+                <File Name='sg_autogun.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_battery.mp3'
+                     Guid='0A096D4D-07BF-4111-9C9E-711E4E8EE0A8'>
+                <File Name='sg_battery.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_cavalry.mp3'
+                     Guid='158AB144-5116-4AA7-AD59-4D6D3D0B5435'>
+                <File Name='sg_cavalry.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_cheers.mp3'
+                     Guid='9C9BF420-F9CB-4F81-B93D-17A0120E23A5'>
+                <File Name='sg_cheers.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_drum.mp3'
+                     Guid='2AEEE8F8-E0E9-4C92-8381-98F0955D7F12'>
+                <File Name='sg_drum.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_drum2.mp3'
+                     Guid='D297BCF4-2DF0-4580-9EBF-2D156EF4A2D5'>
+                <File Name='sg_drum2.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_fanfare.mp3'
+                     Guid='00046021-2D15-4008-88EE-F1F6F6FA725B'>
+                <File Name='sg_fanfare.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_gain.mp3'
+                     Guid='3D9606AE-03E4-48F2-91F1-8332183414C3'>
+                <File Name='sg_gain.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_harp.mp3'
+                     Guid='1C1AE444-D6B2-4DD7-BB5F-21280A53C18F'>
+                <File Name='sg_harp.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_horsemen.mp3'
+                     Guid='24924F1C-8098-4123-8132-DDEBBBF042FB'>
+                <File Name='sg_horsemen.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_invent.mp3'
+                     Guid='8CCFA002-576C-4082-A99A-61A8F2F7E341'>
+                <File Name='sg_invent.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_jet.mp3'
+                     Guid='DF24ED56-9552-4AF6-B555-4E8C338411EB'>
+                <File Name='sg_jet.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_marching.mp3'
+                     Guid='D6225927-BE44-4E6A-904A-24A46F13B1F3'>
+                <File Name='sg_marching.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_mechanical.mp3'
+                     Guid='2CF97C8B-D7CA-49A2-AF48-60B13840AA5B'>
+                <File Name='sg_mechanical.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_militia.mp3'
+                     Guid='018431C0-CF5A-4DEC-A07B-B0BC9F8B1AAC'>
+                <File Name='sg_militia.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_moan.mp3'
+                     Guid='4515FB77-6964-4DE4-AB34-6CE98C65D8F9'>
+                <File Name='sg_moan.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_musketeers.mp3'
+                     Guid='8BE55470-8EC9-4480-AD5B-A79C345D85B4'>
+                <File Name='sg_musketeers.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_nono.mp3'
+                     Guid='B8F343E0-11DC-4CB4-AF91-8A015E8953CD'>
+                <File Name='sg_nono.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_plane.mp3'
+                     Guid='C87C098E-E7EF-4949-9E5C-0E6761DDF289'>
+                <File Name='sg_plane.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_sad.mp3'
+                     Guid='6AC589B6-F2B7-4B2C-8FFD-FF58FFCD04A3'>
+                <File Name='sg_sad.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_space.mp3'
+                     Guid='B30E600D-9EDA-471E-824C-50B679E4089F'>
+                <File Name='sg_space.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_steal.mp3'
+                     Guid='08E246E7-8C78-4743-A907-CCCF98306BBB'>
+                <File Name='sg_steal.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sg_warning.mp3'
+                     Guid='E69ED3E8-224E-41BF-A74D-7128A7E131EC'>
+                <File Name='sg_warning.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sizzle_Sith_Mas_7716_hifi.mp3'
+                     Guid='9A490B7C-8090-4926-98BD-F7212470B895'>
+                <File Name='sizzle-Sith_Mas-7716_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_Small_Sw_Public_D_262_hifi.mp3'
+                     Guid='164A99B8-FB75-4B22-B78E-03D0924B74F9'>
+                <File Name='Small_Sw-Public_D-262_hifi.mp3' />
+            </Component>
+            <Component Id='Comp_Sounds_sound.credits.txt'
+                     Guid='49A844CF-4151-4D0B-BB8D-EBB0CAAFF5BB'>
+                <File Name='sound.credits.txt' />
+            </Component>
+            <Component Id='Comp_Sounds_sound.txt'
+                     Guid='F796054A-EE89-4097-80EB-3675A33DADFB'>
+                <File Name='sound.txt' />
+            </Component>
+            <Component Id='Comp_Sounds_victory.mp3'
+                     Guid='CB0079C4-E892-4465-9310-014587848DBE'>
+                <File Name='victory.mp3' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Tribes -->
+        <DirectoryRef Id='Dir_Tribes' FileSource='tmp\Tribes'>
+            <Component Id='Comp_Tribes_Americans.tribe.txt'
+                     Guid='C48A72FD-392A-493B-A329-1B03A2F0DE9F'>
+                <File Name='Americans.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Babyl.tribe.txt'
+                     Guid='CB4A4FD3-85AB-4167-8748-B048BE5C2E0A'>
+                <File Name='Babyl.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_British.tribe.txt'
+                     Guid='31F96815-5488-445D-9BC4-B757A7598735'>
+                <File Name='British.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Chinese.tribe.txt'
+                     Guid='8BB2BF35-1022-4955-8704-93DA8BAC9283'>
+                <File Name='Chinese.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Egyptians.tribe.txt'
+                     Guid='9443D7AC-BF44-4B40-99B4-F39EF021BDEF'>
+                <File Name='Egyptians.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_French.tribe.txt'
+                     Guid='F5BFBD6B-10D9-4918-85DF-0DFB05A9AE18'>
+                <File Name='French.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Germans.tribe.txt'
+                     Guid='C45C5716-C001-4A57-BD65-574D9FD7EDB9'>
+                <File Name='Germans.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Greeks.tribe.txt'
+                     Guid='18E29ACD-69D2-425A-914B-39BBBA74227B'>
+                <File Name='Greeks.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Japanese.tribe.txt'
+                     Guid='97CF75DB-D24F-451D-8227-C2A7B8805877'>
+                <File Name='Japanese.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Mongols.tribe.txt'
+                     Guid='714115D2-6207-4C13-AD77-45161EE80063'>
+                <File Name='Mongols.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Persians.tribe.txt'
+                     Guid='5D5D7964-F075-4D87-AA3E-3C90F8D9AF34'>
+                <File Name='Persians.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Phoenicians.tribe.txt'
+                     Guid='4608480A-7F2E-4EDD-9C0A-739330DF5893'>
+                <File Name='Phoenicians.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Romans.tribe.txt'
+                     Guid='176C9687-F325-4C01-ADB6-6863984ECBC8'>
+                <File Name='Romans.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Russians.tribe.txt'
+                     Guid='1EA5041E-56B2-479B-ADCB-4D09E22DDD3A'>
+                <File Name='Russians.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Spanish.tribe.txt'
+                     Guid='B635EDF3-34FC-4FF4-B4E5-184A5CCD708E'>
+                <File Name='Spanish.tribe.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_StdUnits.txt'
+                     Guid='09B36A9D-4519-46DB-A541-A93746F87878'>
+                <File Name='StdUnits.txt' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_Tribes_Vikings.tribe.txt'
+                     Guid='2824E011-599F-420F-9318-63C68DF69F07'>
+                <File Name='Vikings.tribe.txt' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Start Menu -->
+        <DirectoryRef Id='ProgramMenuDir'>
+            <Component Id='ProgramMenuDir'
+                     Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
+                <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+                <RegistryValue Root='HKCU'
+                    Key='Software\[Manufacturer]\[ProductName]'
+                    Type='string'
+                    Value=''
+                    KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+
+        <!-- Features -->
         <Feature Id='Feature_Complete' Level='1'>
             <ComponentRef Id='Comp_CevoWin32.exe' />
             <ComponentRef Id='Comp_cevo.dll' />
@@ -599,14 +623,10 @@
             <ComponentRef Id='Comp_Tribes_StdUnits.txt' />
             <ComponentRef Id='Comp_Tribes_Vikings.tribe.txt' />
 
-            <!-- Shortcuts -->
+            <!-- Start Menu -->
             <ComponentRef Id='ProgramMenuDir' />
 
         </Feature>
-
-        <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
-        <UIRef Id='UI' />
-        <UIRef Id='WixUI_ErrorProgressText' />
     </Product>
 </Wix>
 
