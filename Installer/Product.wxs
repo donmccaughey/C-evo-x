@@ -38,6 +38,17 @@
 
             <Directory Id='ProgramFilesFolder' Name='Program Files'>
                 <Directory Id='INSTALLDIR' Name='C-evo-x'>
+                    <Directory Id='Dir_AI_Template' Name='AI_Template'>
+                        <Directory Id='Dir_CevoDotNet' Name='CevoDotNet'>
+                            <Directory Id='Dir_Properties_1' 
+                                Name='Properties' />
+                        </Directory>
+                        <Directory Id='Dir_Project' Name='Project'>
+                            <Directory Id='Dir_Lib' Name='Lib' />
+                            <Directory Id='Dir_Properties_2' 
+                                Name='Properties' />
+                        </Directory>
+                    </Directory>
                     <Directory Id='Dir_AppData' Name='AppData'>
                         <Directory Id='Dir_AppData_Saved' Name='Saved' />
                     </Directory>
@@ -108,6 +119,168 @@
             <Component Id='Comp_StdAI.dll'
                      Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
                 <File Name='StdAI.dll' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <!-- AI Template files -->
+        <DirectoryRef Id='Dir_AI_Template' FileSource='tmp\AI_Template'>
+            <Component Id='Comp_AI_Template__aidev3.gif'
+                     Guid='E7BA938D-E7E3-436B-9758-FD1B684D8365'>
+                <File Name='_aidev3.gif' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_AI_development_manual.html'
+                     Guid='27A75F92-7529-4CF3-95B4-E0C6866225F2'>
+                <File Name='AI-development-manual.html' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_AI.ai.txt'
+                     Guid='59B93390-F9E1-441E-916A-837ADB1DA016'>
+                <File Name='AI.ai.txt' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <DirectoryRef Id='Dir_CevoDotNet' 
+              FileSource='tmp\AI_Template\CevoDotNet'>
+            <Component Id='Comp_AI_Template_AIPlugin.cs'
+                     Guid='0393E2AB-4C99-4972-A681-D71215005E54'>
+                <File Name='AIPlugin.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_CevoDotNet.csproj'
+                     Guid='94B0B0BD-1368-4610-B928-9F18956551DB'>
+                <File Name='CevoDotNet.csproj' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_cevoxp2.ico'
+                     Guid='BD059679-F954-4A51-A489-4A3AFDE49A12'>
+                <File Name='cevoxp2.ico' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Program.cs'
+                     Guid='BBF51EB9-F846-4DCB-AB6C-7284946A29CE'>
+                <File Name='Program.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Protocol.cs_1'
+                     Guid='797B1C87-7501-49B1-88E2-E44368A065CD'>
+                <File Id='Protocol.cs_1' Name='Protocol.cs' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <DirectoryRef Id='Dir_Properties_1' 
+              FileSource='tmp\AI_Template\CevoDotNet\Properties'>
+            <Component Id='Comp_AI_Template_AssemblyInfo.cs_1'
+                     Guid='94EE3F98-BCA0-49BA-867B-403894F2226C'>
+                     <File Id='AssemblyInfo.cs_1' 
+                         Name='AssemblyInfo.cs' 
+                         KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Resources.Designer.cs'
+                     Guid='8E249DC1-CF46-4D31-9149-36BA0865FDB8'>
+                <File Name='Resources.Designer.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Resources.resx'
+                     Guid='3924570C-F2F7-42FA-A138-8925214668BB'>
+                <File Name='Resources.resx' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Settings.Designer.cs'
+                     Guid='7BA4C47A-0774-4F9D-B797-802D92222EA1'>
+                <File Name='Settings.Designer.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Settings.settings'
+                     Guid='F8B6A87F-E9FE-45D2-AE8D-2E5F6910F230'>
+                <File Name='Settings.settings' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <DirectoryRef Id='Dir_Project' FileSource='tmp\AI_Template\Project'>
+            <Component Id='Comp_AI_Template_AI.csproj'
+                     Guid='C8D67C41-9C3A-40ED-886A-877ED4D423DD'>
+                <File Name='AI.csproj' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_AI.sln'
+                     Guid='FE8136C6-3FB1-47B7-A271-2634624AA6E1'>
+                <File Name='AI.sln' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_City.cs'
+                     Guid='0B212095-9EB2-4CFD-A15F-F24BFBE50245'>
+                <File Name='City.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Empire.cs'
+                     Guid='25A12719-D1D4-448A-A1A2-F534A9900180'>
+                <File Name='Empire.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Model.cs'
+                     Guid='B960A146-E488-422A-BCF5-915F85002439'>
+                <File Name='Model.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Persistent.cs'
+                     Guid='6CB6A1D4-BE6E-4759-8B62-BDB3E2D618B3'>
+                <File Name='Persistent.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Plugin.cs'
+                     Guid='E669E661-62C6-4775-9E86-11F7D8127F82'>
+                <File Name='Plugin.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Unit.cs'
+                     Guid='52ADE286-D9C9-48D6-BE21-00A8AAC090B0'>
+                <File Name='Unit.cs' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <DirectoryRef Id='Dir_Lib' FileSource='tmp\AI_Template\Project\Lib'>
+            <Component Id='Comp_AI_Template_AddressPriorityQueue.cs'
+                     Guid='4A9EEC27-68C7-4B2E-BF99-479396E0CA60'>
+                <File Name='AddressPriorityQueue.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_CevoPedia.cs'
+                     Guid='ACF0A997-2A77-4833-933D-CCDB94B532D6'>
+                <File Name='CevoPedia.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_CityBase.cs'
+                     Guid='613C09D5-E146-4035-9D16-93209A9F65E7'>
+                <File Name='CityBase.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_DiplomacyBase.cs'
+                     Guid='8FE4AF8B-A6AA-4310-BE28-5FE75E90F5DC'>
+                <File Name='DiplomacyBase.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Map.cs'
+                     Guid='064C9CF5-5D71-44BB-B7BC-CCD988902BFF'>
+                <File Name='Map.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_ModelBase.cs'
+                     Guid='951DD48C-95CD-4EE3-B470-BEFB9E3667B8'>
+                <File Name='ModelBase.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Nation.cs'
+                     Guid='D621E19F-EAB3-408F-8FB0-579DE683E07A'>
+                <File Name='Nation.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_PlayResult.cs'
+                     Guid='75775C66-C8B2-4F1D-AC46-63A55624FE09'>
+                <File Name='PlayResult.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Protocol.cs_2'
+                     Guid='23A63CF7-6248-4411-80EA-F27CB5E99349'>
+                <File Id='Protocol.cs_2' Name='Protocol.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_Sprawl.cs'
+                     Guid='7F7F804D-1CAB-43A0-8B66-0A5614E73505'>
+                <File Name='Sprawl.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_ToughSet.cs'
+                     Guid='8B27105E-FD37-4F12-81EE-2E753BC273B8'>
+                <File Name='ToughSet.cs' KeyPath='yes' />
+            </Component>
+            <Component Id='Comp_AI_Template_UnitBase.cs'
+                     Guid='C2F09A86-B0AF-4E62-8FF2-773121BE27F1'>
+                <File Name='UnitBase.cs' KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
+        <DirectoryRef Id='Dir_Properties_2' 
+              FileSource='tmp\AI_Template\Project\Properties'>
+            <Component Id='Comp_AI_Template_AssemblyInfo.cs_2'
+                     Guid='3EC47CE4-0509-4616-A28E-CBBAA0ED4B14'>
+                 <File Id='AssemblyInfo.cs_2' 
+                     Name='AssemblyInfo.cs' 
+                     KeyPath='yes' />
             </Component>
         </DirectoryRef>
 
@@ -499,9 +672,9 @@
             </Component>
             <Component Id='Comp_Tribes_Vikings.tribe.txt'
                      Guid='2824E011-599F-420F-9318-63C68DF69F07'>
-                <File Name='Vikings.tribe.txt' KeyPath='yes' />
-            </Component>
-        </DirectoryRef>
+                     <File Name='Vikings.tribe.txt' KeyPath='yes' />
+             </Component>
+         </DirectoryRef>
 
         <!-- Start Menu -->
         <DirectoryRef Id='ProgramMenuDir'>
@@ -529,6 +702,42 @@
             <ComponentRef Id='Comp_StdAI.ai.txt' />
             <ComponentRef Id='Comp_StdAI.bmp' />
             <ComponentRef Id='Comp_StdAI.dll' />
+
+            <!-- AI Template -->
+            <ComponentRef Id='Comp_AI_Template__aidev3.gif' />
+            <ComponentRef Id='Comp_AI_Template_AI_development_manual.html' />
+            <ComponentRef Id='Comp_AI_Template_AI.ai.txt' />
+            <ComponentRef Id='Comp_AI_Template_AIPlugin.cs' />
+            <ComponentRef Id='Comp_AI_Template_CevoDotNet.csproj' />
+            <ComponentRef Id='Comp_AI_Template_cevoxp2.ico' />
+            <ComponentRef Id='Comp_AI_Template_Program.cs' />
+            <ComponentRef Id='Comp_AI_Template_Protocol.cs_1' />
+            <ComponentRef Id='Comp_AI_Template_AssemblyInfo.cs_1' />
+            <ComponentRef Id='Comp_AI_Template_Resources.Designer.cs' />
+            <ComponentRef Id='Comp_AI_Template_Resources.resx' />
+            <ComponentRef Id='Comp_AI_Template_Settings.Designer.cs' />
+            <ComponentRef Id='Comp_AI_Template_Settings.settings' />
+            <ComponentRef Id='Comp_AI_Template_AI.csproj' />
+            <ComponentRef Id='Comp_AI_Template_AI.sln' />
+            <ComponentRef Id='Comp_AI_Template_City.cs' />
+            <ComponentRef Id='Comp_AI_Template_Empire.cs' />
+            <ComponentRef Id='Comp_AI_Template_Model.cs' />
+            <ComponentRef Id='Comp_AI_Template_Persistent.cs' />
+            <ComponentRef Id='Comp_AI_Template_Plugin.cs' />
+            <ComponentRef Id='Comp_AI_Template_Unit.cs' />
+            <ComponentRef Id='Comp_AI_Template_AddressPriorityQueue.cs' />
+            <ComponentRef Id='Comp_AI_Template_CevoPedia.cs' />
+            <ComponentRef Id='Comp_AI_Template_CityBase.cs' />
+            <ComponentRef Id='Comp_AI_Template_DiplomacyBase.cs' />
+            <ComponentRef Id='Comp_AI_Template_Map.cs' />
+            <ComponentRef Id='Comp_AI_Template_ModelBase.cs' />
+            <ComponentRef Id='Comp_AI_Template_Nation.cs' />
+            <ComponentRef Id='Comp_AI_Template_PlayResult.cs' />
+            <ComponentRef Id='Comp_AI_Template_Protocol.cs_2' />
+            <ComponentRef Id='Comp_AI_Template_Sprawl.cs' />
+            <ComponentRef Id='Comp_AI_Template_ToughSet.cs' />
+            <ComponentRef Id='Comp_AI_Template_UnitBase.cs' />
+            <ComponentRef Id='Comp_AI_Template_AssemblyInfo.cs_2' />
 
             <!-- Saved game -->
             <ComponentRef Id='Comp_AppData_Saved__Example_.cevo' />
