@@ -6,8 +6,6 @@
  - Installer: add publisher name for program entry in Settings | Apps &
    features
  
- - Find source code for StdAI.dll.
-
  - Audit case of filenames, unit names and other file inclusions.
 
  - Audit unit names; unit names should match file names.

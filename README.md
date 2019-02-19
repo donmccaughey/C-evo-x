@@ -45,6 +45,8 @@ The C-evo-x code is assembled from a number of different sources.
  - `Project\`: Delphi code for the game; part of the [C-evo 1.2.0 source][33].
  - `Resources\`: external graphic, sound and text configuration files used by
    the game; installed with [C-evo 1.2.0][32].
+ - `StdAI\`: source for the standard AI, `StdAI.dll`, that ships with C-evo
+   1.2.0; obtained directly from Steffen.
  - `docs\`: source for the [C-evo-x Docs][35] site.
  - `scripts\`: scripts used by the `Makefile` build.
 
@@ -210,9 +212,12 @@ is also referenced by the `AI_Template\Project\AI.sln` solution.
 
 ### The C++ Projects
 
-The `AI_Kit_C\MyAI.sln` solution and `AI_Kit_C\MyAI.vcxproj` C++ project build the C++ sample AI into a DLL named `MyAI.dll`.
+The `AI_Kit_C\MyAI.sln` solution and `AI_Kit_C\MyAI.vcxproj` C++ project build
+the C++ sample AI into a DLL named `MyAI.dll`.
 
-The `AI_Kit_C\HAL_source\HAL.sln` solution and `AI_Kit_C\HAL_source\HAL.vcxproj` C++ project build the HAL AI into a DLL named `HAL.dll`.
+The `AI_Kit_C\HAL_source\HAL.sln` solution and
+`AI_Kit_C\HAL_source\HAL.vcxproj` C++ project build the HAL AI into a DLL named
+`HAL.dll`.
 
 
 ## More Documentation
