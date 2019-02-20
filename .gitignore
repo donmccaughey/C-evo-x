@@ -1,6 +1,7 @@
 *.~df
 *.~dp
 *.~pa
+*.dsk
 *.opensdf
 *.sdf
 *.suo
