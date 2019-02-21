@@ -234,13 +234,13 @@ information specific to C-evo-x.
 
 ## Related
 
-- A [Lazarus][90] [port of C-evo][91] by [Jiří Hajda][92] (_[chronos][93]_).
-- A [Lazarus][90] [port of C-evo][94] by [Vasilii Novikov][95]
+- A [Lazarus port of C-evo][91] by [Jiří Hajda][92] (_[chronos][93]_).
+- A [Lazarus port of C-evo][94] by [Vasilii Novikov][95]
   (_[vasaya][96]_), last active in 2016.
-- [Updated C-evo AI Template][95], a fork of Steffen's C# AI Template by
-  [dougmill][96] (_[Douglas][97]_).
+- [Updated C-evo AI Template][97], a fork of Steffen's C# AI Template by
+  [dougmill][98] (_[Douglas][99]_).
+- [FreeCiv][100], another open source version of _Civilization_.
 
-[90]: https://www.lazarus-ide.org
 [91]: https://app.zdechov.net/c-evo
 [92]: https://launchpad.net/~chronoscz
 [93]: http://www.c-evo.org/bb/memberlist.php?mode=viewprofile&u=150
@@ -250,4 +250,5 @@ information specific to C-evo-x.
 [97]: https://github.com/dougmill/c-evo-ai-template
 [98]: https://github.com/dougmill
 [99]: http://www.c-evo.org/bb/memberlist.php?mode=viewprofile&u=148
+[100]: http://www.freeciv.org
 
