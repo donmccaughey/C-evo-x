@@ -324,7 +324,7 @@ tmp\CevoComponents.bpl : \
 		tmp\CevoComponents.res
 	-mkdir tmp\units\CevoComponents
 	cd Project
-	dcc32 CevoComponents.dpk
+	dcc32 -B CevoComponents.dpk
 	cd ..
 	scripts\install_component.cmd \
 		add tmp\CevoComponents.bpl "C-evo Components"
@@ -348,7 +348,7 @@ tmp\CevoWin32.exe : \
 	-mkdir tmp\units\CevoWin32
 	cd Project
 	copy /y CevoWin32.debug.cfg CevoWin32.cfg
-	dcc32 CevoWin32.dpr
+	dcc32 -B CevoWin32.dpr
 	cd ..
 
 tmp\release\CevoWin32.exe : \
@@ -359,7 +359,7 @@ tmp\release\CevoWin32.exe : \
 	-mkdir tmp\release\units\CevoWin32
 	cd Project
 	copy /y CevoWin32.release.cfg CevoWin32.cfg
-	dcc32 CevoWin32.dpr
+	dcc32 -B CevoWin32.dpr
 	copy /y CevoWin32.debug.cfg CevoWin32.cfg
 	cd ..
 
@@ -399,7 +399,7 @@ tmp\cevo.dll : \
 	-mkdir tmp\units\cevo
 	cd Project
 	copy /y cevo.debug.cfg cevo.cfg
-	dcc32 cevo.dpr
+	dcc32 -B cevo.dpr
 	cd ..
 
 tmp\release\cevo.dll : \
@@ -411,7 +411,7 @@ tmp\release\cevo.dll : \
 	-mkdir tmp\release\units\cevo
 	cd Project
 	copy /y cevo.release.cfg cevo.cfg
-	dcc32 cevo.dpr
+	dcc32 -B cevo.dpr
 	copy /y cevo.debug.cfg cevo.cfg
 	cd ..
 
@@ -433,7 +433,7 @@ tmp\Integrated.exe : \
 		$(game_source)
 	-mkdir tmp\units\Integrated
 	cd Project
-	dcc32 Integrated.dpr
+	dcc32 -B Integrated.dpr
 	cd ..
 
 tmp\units\Integrated\cevo.res : $(game_icon)
@@ -465,7 +465,7 @@ tmp\AIProject.dll : \
 		Delphi_AI_Kit\ToolAI.pas
 	-mkdir tmp\units\AIProject
 	cd Delphi_AI_Kit
-	dcc32 AIProject.dpr
+	dcc32 -B AIProject.dpr
 	cd ..
 
 tmp\AIProject.ai.txt : Delphi_AI_Kit\AIProject.ai.txt
