@@ -448,6 +448,35 @@ tmp\units\Integrated\Res1.res : $(game_res)
 	brcc32 -foRes1.res ..\..\..\Project\Res1.rc
 	cd ..\..\..
 
+# ----- StdAI
+
+tmp\StdAI.dll : \
+		StdAI\StdAI.dpr \
+		StdAI\StdAI.dof \
+		StdAI\StdAI.cfg \
+		\
+		StdAI\AI.pas \
+		StdAI\Barbarina.pas \
+		StdAI\CustomAI.pas \
+		StdAI\CustomAI_Reload.pas \
+		StdAI\Names.pas \
+		StdAI\Pile.pas \
+		StdAI\Protocol.pas \
+		StdAI\Switches.pas \
+		StdAI\ToolAI.pas
+	-mkdir tmp\units\StdAI
+	cd StdAI
+	dcc32 -B StdAI.dpr
+	cd ..
+
+tmp\StdAI.ai.txt : StdAI\StdAI.ai.txt
+	-mkdir tmp
+	copy StdAI\StdAI.ai.txt tmp\StdAI.ai.txt
+
+tmp\StdAI.bmp : StdAI\StdAI.bmp
+	-mkdir tmp
+	copy StdAI\StdAI.bmp tmp\StdAI.bmp
+
 
 # ----- Delphi AI sample
 
@@ -941,21 +970,6 @@ tmp\Tribes\StdUnits.txt : Resources\Tribes\StdUnits.txt
 tmp\Tribes\Vikings.tribe.txt : Resources\Tribes\Vikings.tribe.txt 
 	-mkdir tmp\Tribes
 	copy Resources\Tribes\Vikings.tribe.txt tmp\Tribes\Vikings.tribe.txt
-
-
-# ----- Standard AI files
-
-tmp\StdAI.ai.txt : Resources\StdAI.ai.txt
-	-mkdir tmp
-	copy Resources\StdAI.ai.txt tmp\StdAI.ai.txt
-
-tmp\StdAI.bmp : Resources\StdAI.bmp
-	-mkdir tmp
-	copy Resources\StdAI.bmp tmp\StdAI.bmp
-
-tmp\StdAI.dll : Resources\StdAI.dll
-	-mkdir tmp
-	copy Resources\StdAI.dll tmp\StdAI.dll
 
 
 # ----- Configurator
