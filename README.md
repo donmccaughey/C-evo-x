@@ -159,7 +159,10 @@ in `tmp\release` (while debug and shared output goes in `tmp\`).  Compiler
 settings are stored in `.debug.cfg` and `.release.cfg` files for their
 respective projects.  The `Makefile` build will copy over the active
 configuration to `.cfg`, and will always leave the debug version behind for
-building from the IDE.
+building from the IDE.  The [Delphi Programming Wiki][51] describes the details
+behind this technique.
+
+[51]: http://delphi.wikia.com/wiki/Compile_from_Commandline
 
 
 ## Project Structure
