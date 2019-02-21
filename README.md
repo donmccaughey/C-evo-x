@@ -169,8 +169,9 @@ behind this technique.
 
 ### The Delphi Projects
 
-There are five Delphi projects: three projects for building the game, one for
-building the Delphi sample AI and one for building a Delphi components package.
+There are six Delphi projects: three projects for building the game, one for
+building the standard AI, one for building the Delphi sample AI and one for
+building a Delphi components package.
 
 The core game can be built in two ways: as a single integrated executable or as
 a DLL and loader.
@@ -184,6 +185,8 @@ The `Project\cevo.dpr` project compiles the game code into a DLL named
 
 The `Project\CevoWin32.dpr` project creates a simple `CevoWin32.exe` executable
 that loads the game DLL and non-.NET AIs, including Delphi and C++ AIs.
+
+The `StdAI\StdAI.dpr` project builds `StdAI.dll`, the standard AI opponent.
 
 The `Delphi_AI_Kit\AIProject.dpr` project builds the Delphi sample AI into a
 DLL named `AIProject.dll`.
