@@ -241,7 +241,19 @@ resources_out = \
 stdai_out = \
 	tmp\StdAI.ai.txt \
 	tmp\StdAI.bmp \
-	tmp\StdAI.dll
+	tmp\StdAI.dll \
+	tmp\release\StdAI.dll
+
+stdai_source = \
+		StdAI\AI.pas \
+		StdAI\Barbarina.pas \
+		StdAI\CustomAI.pas \
+		StdAI\CustomAI_Reload.pas \
+		StdAI\Names.pas \
+		StdAI\Pile.pas \
+		StdAI\Protocol.pas \
+		StdAI\Switches.pas \
+		StdAI\ToolAI.pas
 
 tribes_out = \
 	tmp\Tribes\Americans.tribe.txt \
@@ -453,20 +465,24 @@ tmp\units\Integrated\Res1.res : $(game_res)
 tmp\StdAI.dll : \
 		StdAI\StdAI.dpr \
 		StdAI\StdAI.dof \
-		StdAI\StdAI.cfg \
-		\
-		StdAI\AI.pas \
-		StdAI\Barbarina.pas \
-		StdAI\CustomAI.pas \
-		StdAI\CustomAI_Reload.pas \
-		StdAI\Names.pas \
-		StdAI\Pile.pas \
-		StdAI\Protocol.pas \
-		StdAI\Switches.pas \
-		StdAI\ToolAI.pas
+		StdAI\StdAI.debug.cfg \
+		$(stdai_source)
 	-mkdir tmp\units\StdAI
 	cd StdAI
+	copy /y StdAI.debug.cfg StdAI.cfg
 	dcc32 -B StdAI.dpr
+	cd ..
+
+tmp\release\StdAI.dll : \
+		StdAI\StdAI.dpr \
+		StdAI\StdAI.dof \
+		StdAI\StdAI.release.cfg \
+		$(stdai_source)
+	-mkdir tmp\release\units\StdAI
+	cd StdAI
+	copy /y StdAI.release.cfg StdAI.cfg
+	dcc32 -B StdAI.dpr
+	copy /y StdAI.debug.cfg StdAI.cfg
 	cd ..
 
 tmp\StdAI.ai.txt : StdAI\StdAI.ai.txt

@@ -118,7 +118,9 @@
             </Component>
             <Component Id='Comp_StdAI.dll'
                      Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
-                <File Name='StdAI.dll' KeyPath='yes' />
+                 <File Name='StdAI.dll' 
+                     Source='tmp\release\StdAI.dll'
+                     KeyPath='yes' />
             </Component>
         </DirectoryRef>
 
