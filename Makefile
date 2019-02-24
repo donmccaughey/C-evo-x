@@ -56,10 +56,6 @@ game_icon = \
 	Project\cevo.rc \
 	Project\cevoxp2.ico
 
-game_out = \
-	tmp\CevoWin32.exe \
-	tmp\cevo.dll
-
 game_res = \
 	Project\Res1.rc \
 	Project\drag.cur \
@@ -238,12 +234,6 @@ resources_out = \
 	$(sounds_out) \
 	$(tribes_out)
 
-stdai_out = \
-	tmp\StdAI.ai.txt \
-	tmp\StdAI.bmp \
-	tmp\StdAI.dll \
-	tmp\release\StdAI.dll
-
 stdai_source = \
 		StdAI\AI.pas \
 		StdAI\Barbarina.pas \
@@ -280,22 +270,15 @@ tribes_out = \
 all : \
 	tmp\CevoComponents.bpl \
 	\
-	$(game_out) \
-	$(resources_out) \
-	$(stdai_out) \
-	\
+	tmp\CevoWin32.exe \
+	tmp\cevo.dll \
 	tmp\Integrated.exe \
-	\
-	$(delphi_ai_out) \
+	tmp\StdAI.dll \
 	\
 	$(cpp_ai_out) \
-	$(hal_ai_out) \
-	\
-	tmp\CevoDotNet.exe \
 	$(csharp_ai_out) \
-	tmp\Configurator.exe \
-	\
-	$(ai_template_out) \
+	$(delphi_ai_out) \
+	$(hal_ai_out) \
 	\
 	tmp\C-evo-x.msi
 
@@ -309,6 +292,7 @@ help :
 	@echo all :: Build all components (default)
 	@echo clean :: Remove all build output
 	@echo game :: Build game DLL, Win32 loader and copy resource files
+	@echo installer :: Build the MSI installer
 
 
 clean :
@@ -316,15 +300,23 @@ clean :
 	-rmdir /s /q Configurator\obj
 	-rmdir /s /q AI_Template\CevoDotNet\obj
 	-rmdir /s /q AI_Template\Project\obj
-	scripts\install_component.cmd \
-		delete tmp\CevoComponents.bpl
+	scripts\install_component.cmd delete tmp\CevoComponents.bpl
 
 
 game : \
 	tmp\CevoComponents.bpl \
-	$(game_out) \
-	$(resources_out) \
-	$(stdai_out)
+	\
+	tmp\CevoWin32.exe \
+	tmp\cevo.dll \
+	\
+	tmp\StdAI.ai.txt \
+	tmp\StdAI.bmp \
+	tmp\StdAI.dll \
+	\
+	$(resources_out)
+
+
+installer : tmp\C-evo-x.msi
 
 
 # ----- Components library
@@ -1180,14 +1172,19 @@ tmp\Installer\Product.wixobj : \
 		tmp\release\CevoWin32.exe \
 		tmp\release\cevo.dll \
 		\
+		tmp\CevoDotNet.exe \
+		tmp\Configurator.exe \
+		\
 		tmp\fonts.txt \
 		tmp\language.txt \
 		tmp\language2.txt \
 		\
-		$(stdai_out) \
+		tmp\release\StdAI.dll \
+		tmp\StdAI.ai.txt \
+		tmp\StdAI.bmp \
 		\
+		$(ai_template_out) \
 		tmp\AppData\Saved\(Example).cevo \
-		\
 		$(graphics_out) \
 		$(help_out) \
 		$(sounds_out) \
