@@ -268,8 +268,6 @@ tribes_out = \
 # ----- Targets
 
 all : \
-	tmp\CevoComponents.bpl \
-	\
 	tmp\CevoWin32.exe \
 	tmp\cevo.dll \
 	tmp\Integrated.exe \
@@ -304,8 +302,6 @@ clean :
 
 
 game : \
-	tmp\CevoComponents.bpl \
-	\
 	tmp\CevoWin32.exe \
 	tmp\cevo.dll \
 	\
@@ -345,6 +341,7 @@ tmp\CevoComponents.res : \
 # ----- Game executable
 
 tmp\CevoWin32.exe : \
+		tmp\CevoComponents.bpl \
 		Project\CevoWin32.dpr \
 		Project\CevoWin32.dof \
 		Project\CevoWin32.debug.cfg \
@@ -356,6 +353,7 @@ tmp\CevoWin32.exe : \
 	cd ..
 
 tmp\release\CevoWin32.exe : \
+		tmp\CevoComponents.bpl \
 		Project\CevoWin32.dpr \
 		Project\CevoWin32.dof \
 		Project\CevoWin32.release.cfg \
@@ -395,6 +393,7 @@ tmp\CevoDotNet.exe : \
 # ----- Game library
 
 tmp\cevo.dll : \
+		tmp\CevoComponents.bpl \
 		Project\cevo.dpr \
 		Project\cevo.dof \
 		Project\cevo.debug.cfg \
@@ -407,6 +406,7 @@ tmp\cevo.dll : \
 	cd ..
 
 tmp\release\cevo.dll : \
+		tmp\CevoComponents.bpl \
 		Project\cevo.dpr \
 		Project\cevo.dof \
 		Project\cevo.release.cfg \
@@ -429,6 +429,7 @@ tmp\units\cevo\Res1.res : $(game_res)
 # ----- Integrated game executable
 
 tmp\Integrated.exe : \
+		tmp\CevoComponents.bpl \
 		Project\Integrated.dpr \
 		Project\Integrated.dof \
 		Project\Integrated.cfg \
