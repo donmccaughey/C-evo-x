@@ -1,10 +1,18 @@
 # TODO
 
+ - Installer: add view for "Select Additional Tasks", "Create a desktop icon"
+
+ - Installer: add "Launch C-evo-x" to "Completing" view
+
  - Installer: add icon for program entry in Control Panel | Uninstall a program
    and Settings | Apps & features
 
  - Installer: add publisher name for program entry in Settings | Apps &
    features
+
+ - Installer: relocate installer registry key "HKCU/Software/Don McCaughey/C-evo-x 1.2.1"
+
+ - New program icon with modern resolutions
  
  - Audit case of filenames, unit names and other file inclusions.
 
