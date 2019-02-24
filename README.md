@@ -162,7 +162,7 @@ configuration to `.cfg`, and will always leave the debug version behind for
 building from the IDE.  The [Delphi Programming Wiki][51] describes the details
 behind this technique.
 
-[51]: http://delphi.wikia.com/wiki/Compile_from_Commandline
+[51]: https://delphi.fandom.com/wiki/Easily_Switching_between_%22Debug%22_and_%22Release%22_Builds
 
 
 ## Project Structure
