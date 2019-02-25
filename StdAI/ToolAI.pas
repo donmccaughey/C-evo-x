@@ -368,6 +368,7 @@ while UnitsToAssign do
     BestCount:=0;
     BestJob:=jNone;
     BestLoc:=0;
+    BestDistance:=0;
     BestScore:=-999999;
     FillChar(TileChecked,MapSize*sizeof(boolean),false);
     Pile.Create(MapSize);
