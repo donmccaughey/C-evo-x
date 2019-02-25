@@ -358,6 +358,7 @@ begin
 with MyUnit[uix] do if Movement>0 then
   begin
   BestScore:=0;
+  euixBest:=0;
   fillchar(Reached, MapSize, false);
   MoveStyle:=GetMyMoveStyle(mix, Health);
   Pile.Create(MapSize);
