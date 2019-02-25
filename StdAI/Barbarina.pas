@@ -1212,6 +1212,8 @@ for cix:=0 to RO.nCity-1 do with MyCity[cix] do
 for cix:=0 to RO.nCity-1 do with MyCity[cix] do
   if (Loc>=0) and (Flags and chCaptured=0) and LowPriority(cix) then
     City_SetTiles(cix,1 shl CityOwnTile); // free all tiles of low-prio cities
+
+nTownGuard:=0;
 for DoLowPriority:=false to true do
   for cix:=0 to RO.nCity-1 do with MyCity[cix] do
     if (Loc>=0) and (Flags and chCaptured=0) and (LowPriority(cix)=DoLowPriority) then
