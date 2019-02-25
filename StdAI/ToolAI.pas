@@ -365,6 +365,7 @@ while UnitsToAssign do
   UnitsToAssign:=false;
   for uix:=0 to RO.nUn-1 do if JobLocOfSettler[uix]=ToAssign then
     begin
+    BestCount:=0;
     BestJob:=jNone;
     BestScore:=-999999;
     FillChar(TileChecked,MapSize*sizeof(boolean),false);
