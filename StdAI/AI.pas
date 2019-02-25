@@ -1881,6 +1881,7 @@ with MyUnit[uix] do
     Pile.Put(Loc, $800-Movement); // start search for something to do at current location
     while Pile.Get(TestLoc,TestTime) do
       begin
+      BestCount:=0;
       TestScore:=0;
       Tile:=Map[TestLoc];
       Reached[TestLoc]:=true;
@@ -1993,6 +1994,7 @@ with MyUnit[uix] do
     and not (Map[Loc] and fTerrain in [fOcean, fShore, fArctic, fDesert]);
   MoveStyle:=GetMyMoveStyle(mix, Health);
   repeat
+    BestCount:=0;
     PatrolScore:=-999999;
     PatrolLoc:=-1;
     FillChar(AdjacentUnknown,MapSize,$FF); // -1, indicates tiles not checked yet
