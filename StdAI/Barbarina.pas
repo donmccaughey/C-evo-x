@@ -765,6 +765,7 @@ procedure TBarbarina.AttackAndPatrol;
         IsPort:=true
       end;
     Best:=-1;
+    uixBest:=0;
     for uix:=0 to RO.nUn-1 do if MyUnit[uix].Loc=Loc then
       with MyUnit[uix] do
         if (MyModel[mix].Domain=dGround) and (MyModel[mix].Attack>0) then
