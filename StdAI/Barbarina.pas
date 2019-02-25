@@ -580,6 +580,7 @@ while not done do with MyUnit[uix] do
   else MaxScore:=$400-32+5;
   PatrolScore:=-999999;
   PatrolLoc:=-1;
+  BestCount:=0;
   FillChar(AdjacentUnknown,MapSize,$FF); // -1, indicates tiles not checked yet
   Pile.Create(MapSize);
   Pile.Put(Loc, $800-Movement);
