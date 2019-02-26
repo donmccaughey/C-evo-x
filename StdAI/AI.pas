@@ -1882,7 +1882,6 @@ with MyUnit[uix] do
     while Pile.Get(TestLoc,TestTime) do
       begin
       BestCount:=0;
-      TestScore:=0;
       Tile:=Map[TestLoc];
       Reached[TestLoc]:=true;
 
@@ -1911,7 +1910,8 @@ with MyUnit[uix] do
             TestScore:=Aggressive*2
               *(EnemyDamage*RO.EnemyModel[RO.EnemyUn[euix].emix].Cost)
               div (MyDamage*MyModel[mix].Cost);
-            if TestScore<=100 then TestScore:=0 // own losses exceed enemy losses, no good
+            if TestScore<=100 then
+              // own losses exceed enemy losses, no good
             else
               begin
               if TestScore>AttackScore then
