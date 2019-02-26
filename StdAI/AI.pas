@@ -2362,7 +2362,7 @@ for cix:=0 to RO.nCity-1 do with MyCity[cix] do
     if CheckProd then
       begin // check production
       IsPort:=false;
-      IsNavalBase:=false;
+  //    IsNavalBase:=false;
       NeedCruiser:=false;
       V8_to_Loc(Loc,Adjacent);
       for V8:=0 to 7 do
@@ -2374,7 +2374,7 @@ for cix:=0 to RO.nCity-1 do with MyCity[cix] do
           if (Formation[AdjacentLoc]>=0) and (Formation[AdjacentLoc]<maxCOD)
             and (OceanPresence[Formation[AdjacentLoc]] and WarNations<>0) then
             begin
-            IsNavalBase:=true;
+  //          IsNavalBase:=true;
             if (1 shl Formation[AdjacentLoc]) and OceanWithShip=0 then
               NeedCruiser:=true
             end
