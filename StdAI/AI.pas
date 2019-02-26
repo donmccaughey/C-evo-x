@@ -2859,6 +2859,7 @@ if BuildFreeOffer then
       MyOffer.Price[0]:=opTech+adGiveAway;
       MyOffer.Price[1]:=opTech+adWanted;
       MyAction:=scDipOffer;
+      Slot:=0;
       for i:=0 to nRequestedTechs-1 do
         if Data.RequestedTechs[i]<0 then
           begin Slot:=i; break end
