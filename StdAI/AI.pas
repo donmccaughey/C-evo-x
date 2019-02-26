@@ -2234,6 +2234,7 @@ MilProdCity: array[0..nCmax-1] of boolean;
     while (Threshold>0) and (Share<Total*MilProdShare div 100) do
       begin
       NewThreshold:=-1;
+      SharePlus:=0;
       for cix:=0 to RO.nCity-1 do with MyCity[cix] do
         if (Loc>=0) and (District[Loc]=d)
           and (Built[imBarracks]+Built[imMilAcademy]=0) and (Built[imObservatory]=0)
