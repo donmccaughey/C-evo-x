@@ -2674,6 +2674,7 @@ function TAI.WantNegotiation(Nation: integer; NegoTime: TNegoTime): boolean;
 var
 p1,count,adWanted,adGiveAway: integer;
 begin
+result:=false;
 if Data.BehaviorFlags and bBarbarina=bBarbarina then
   begin result:=Barbarina_WantNegotiation(Nation,NegoTime); exit end;
 
