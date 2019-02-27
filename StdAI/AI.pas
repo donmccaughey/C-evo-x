@@ -2196,6 +2196,7 @@ MilProdCity: array[0..nCmax-1] of boolean;
   count, mix: integer;
   begin
   count:=0;
+  result:=0;
   for mix:=0 to RO.nModel-1 do
     if (ModelCat[mix]=Cat)
       and (ModelQuality[mix]>=ModelBestQuality[Cat]-MaxBuildWorseThanBestModel) then
