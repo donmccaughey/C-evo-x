@@ -971,6 +971,8 @@ begin
 if (MyCity[cix].Project and (cpImp+cpIndex)<>mix) then
   // not already producing that
   result:=Server(sSetCityProject,me,cix,mix)
+else
+  result:=eInvalid;
 end;
 
 function TCustomAI.City_StartEmigration(cix,mix: integer;
@@ -992,6 +994,8 @@ NewProject:=iix+cpImp;
 if (MyCity[cix].Project and (cpImp+cpIndex)<>NewProject) then
   // not already producing that
   result:=Server(sSetCityProject,me,cix,NewProject)
+else
+  result:=eInvalid;
 end;
 
 function TCustomAI.City_Improvable(cix,iix: integer): boolean;
