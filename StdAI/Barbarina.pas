@@ -1105,6 +1105,8 @@ PrimeWonder=1 shl woColossus + 1 shl woGrLibrary + 1 shl woSun
       result:=iix;
       exit
       end
+    else
+      result:=0;
     end
   end;
 
