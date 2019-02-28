@@ -772,8 +772,8 @@ procedure TBarbarina.AttackAndPatrol;
           begin
           if (mix=2) and (RO.Government=gDespotism) then
             begin det:=1 shl 16; Moved[uix]:=true end // town guard
-          else if IsPort then det:=MyModel[mix].Defense shl 8+Flags and unFortified shl 7-health
-          else det:=MyModel[mix].Speed shl 8+Flags and unFortified shl 7-health;
+          else if IsPort then det:=integer(MyModel[mix].Defense shl 8+Flags) and integer(unFortified shl 7-health)
+          else det:=integer(MyModel[mix].Speed shl 8+Flags) and integer(unFortified shl 7-health);
           if det>Best then
             begin Best:=det; uixBest:=uix end
           end;
@@ -864,7 +864,7 @@ procedure TBarbarina.AttackAndPatrol;
     for uix1:=0 to RO.nUn-1 do with MyUnit[uix1] do
       if (Loc>=0) and (Master=uix)
         and (MyModel[mix].Domain=dGround) and (MyModel[mix].Attack>0)
-        and (Movement=MyModel[mix].Speed)
+        and (integer(Movement)=integer(MyModel[mix].Speed))
         and ((MyModel[mix].Speed>=250)=(Kind=ukFast)) then
         begin
         Unit_Step(uix1,ToLoc);
