@@ -345,7 +345,8 @@ tmp\CevoWin32.exe : \
 		Project\CevoWin32.dpr \
 		Project\CevoWin32.dof \
 		Project\CevoWin32.debug.cfg \
-		tmp\units\CevoWin32\cevo.res
+		tmp\units\CevoWin32\cevo.res \
+		tmp\units\CevoWin32\CevoWin32.res
 	-mkdir tmp\units\CevoWin32
 	cd Project
 	copy /y CevoWin32.debug.cfg CevoWin32.cfg
@@ -357,7 +358,8 @@ tmp\release\CevoWin32.exe : \
 		Project\CevoWin32.dpr \
 		Project\CevoWin32.dof \
 		Project\CevoWin32.release.cfg \
-		tmp\units\CevoWin32\cevo.res
+		tmp\units\CevoWin32\cevo.res \
+		tmp\units\CevoWin32\CevoWin32.res
 	-mkdir tmp\release\units\CevoWin32
 	cd Project
 	copy /y CevoWin32.release.cfg CevoWin32.cfg
@@ -369,6 +371,12 @@ tmp\units\CevoWin32\cevo.res : $(game_icon)
 	-mkdir tmp\units\CevoWin32
 	cd tmp\units\CevoWin32
 	brcc32 -focevo.res ..\..\..\Project\cevo.rc
+	cd ..\..\..
+
+tmp\units\CevoWin32\CevoWin32.res : Project\CevoWin32.rc
+	-mkdir tmp\units\CevoWin32
+	cd tmp\units\CevoWin32
+	brcc32 -foCevoWin32.res ..\..\..\Project\CevoWin32.rc
 	cd ..\..\..
 
 
@@ -398,6 +406,7 @@ tmp\cevo.dll : \
 		Project\cevo.dof \
 		Project\cevo.debug.cfg \
 		tmp\units\cevo\Res1.res \
+		tmp\units\cevo\CevoDLL.res \
 		$(game_source)
 	-mkdir tmp\units\cevo
 	cd Project
@@ -411,6 +420,7 @@ tmp\release\cevo.dll : \
 		Project\cevo.dof \
 		Project\cevo.release.cfg \
 		tmp\units\cevo\Res1.res \
+		tmp\units\cevo\CevoDLL.res \
 		$(game_source)
 	-mkdir tmp\release\units\cevo
 	cd Project
@@ -425,6 +435,12 @@ tmp\units\cevo\Res1.res : $(game_res)
 	brcc32 -foRes1.res ..\..\..\Project\Res1.rc
 	cd ..\..\..
 
+tmp\units\cevo\CevoDLL.res : Project\CevoDLL.rc
+	-mkdir tmp\units\cevo
+	cd tmp\units\cevo
+	brcc32 -foCevoDLL.res ..\..\..\Project\CevoDLL.rc
+	cd ..\..\..
+
 
 # ----- Integrated game executable
 
@@ -435,6 +451,7 @@ tmp\Integrated.exe : \
 		Project\Integrated.cfg \
 		tmp\units\Integrated\cevo.res \
 		tmp\units\Integrated\Res1.res \
+		tmp\units\Integrated\Integrated.res \
 		$(game_source)
 	-mkdir tmp\units\Integrated
 	cd Project
@@ -453,12 +470,20 @@ tmp\units\Integrated\Res1.res : $(game_res)
 	brcc32 -foRes1.res ..\..\..\Project\Res1.rc
 	cd ..\..\..
 
+tmp\units\Integrated\Integrated.res : Project\Integrated.rc
+	-mkdir tmp\units\Integrated
+	cd tmp\units\Integrated
+	brcc32 -foIntegrated.res ..\..\..\Project\Integrated.rc
+	cd ..\..\..
+
+
 # ----- StdAI
 
 tmp\StdAI.dll : \
 		StdAI\StdAI.dpr \
 		StdAI\StdAI.dof \
 		StdAI\StdAI.debug.cfg \
+		tmp\units\StdAI\StdAI.res \
 		$(stdai_source)
 	-mkdir tmp\units\StdAI
 	cd StdAI
@@ -470,6 +495,7 @@ tmp\release\StdAI.dll : \
 		StdAI\StdAI.dpr \
 		StdAI\StdAI.dof \
 		StdAI\StdAI.release.cfg \
+		tmp\units\StdAI\StdAI.res \
 		$(stdai_source)
 	-mkdir tmp\release\units\StdAI
 	cd StdAI
@@ -477,6 +503,12 @@ tmp\release\StdAI.dll : \
 	dcc32 -B StdAI.dpr
 	copy /y StdAI.debug.cfg StdAI.cfg
 	cd ..
+
+tmp\units\StdAI\StdAI.res : StdAI\StdAI.rc
+	-mkdir tmp\units\StdAI
+	cd tmp\units\StdAI
+	brcc32 -foStdAI.res ..\..\..\StdAI\StdAI.rc
+	cd ..\..\..
 
 tmp\StdAI.ai.txt : StdAI\StdAI.ai.txt
 	-mkdir tmp

@@ -46,6 +46,7 @@ uses
   TechTree in 'LocalPlayer\TechTree.pas' {TechTreeDlg};
 
 {$R cevo.RES}
+{$R Integrated.res}
 
 begin
   DotNetClient:=nil;

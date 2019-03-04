@@ -21,7 +21,7 @@ This is the current, unreleased version.
     - File description: "C-evo-x Win32 Loader"
     - File version: "1.2.1.0"
     - Product name: "C-evo-x"
-    - Product version: "1.2.1.0"
+    - Product version: "1.2.1"
     - Copyright: "In the public domain"
     - Language: "Language Neutral"
 
@@ -29,7 +29,7 @@ This is the current, unreleased version.
     - File description: "C-evo-x Game Engine"
     - File version: "1.2.1.0"
     - Product name: "C-evo-x"
-    - Product version: "1.2.1.0"
+    - Product version: "1.2.1"
     - Copyright: "In the public domain"
     - Language: "Language Neutral"
 
@@ -37,7 +37,7 @@ This is the current, unreleased version.
     - File description: "C-evo-x Standard AI"
     - File version: "1.2.1.0"
     - Product name: "C-evo-x"
-    - Product version: "1.2.1.0"
+    - Product version: "1.2.1"
     - Copyright: "In the public domain"
     - Language: "Language Neutral"
 
@@ -132,7 +132,10 @@ separated lists of four integers like `1,2,3,4`:
     Product version     PRODUCTVERSION
 
 Properties specified in the `"StringFileInfo"` _block_statement_ are all
-explicitly null-terminated strings like `"My string info\0"`:
+explicitly null-terminated strings like `"My string info\0"`.  The properties
+are nested in a language block named `"040904E4"`, where `0409` is the
+hexadecimal code for US English and `04E4` is the hexadecimal code for `1252`,
+the Windows multilingual character set.
 
     File description    VALUE "FileDescription"
     File version        VALUE "FileVersion"
@@ -142,9 +145,10 @@ explicitly null-terminated strings like `"My string info\0"`:
 
 The Language property is specified in the `"VarFileInfo"` _block_statement_
 using the "Translation" key, followed by numeric constants for language ID and
-character set ID respectively.
+character set ID respectively.  These are set for Language Neutral (`0`) and
+Windows multilingual character set (`1252`).
 
-    Language            VALUE "Translation"
+    Language            VALUE "Translation", 0, 1252
 
 ### C# `AssemblyInfo.cs`
 

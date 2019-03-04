@@ -3,6 +3,7 @@
 library cevo;
 
 {$R Res1.res}
+{$R CevoDLL.res}
 
 uses
   Forms,

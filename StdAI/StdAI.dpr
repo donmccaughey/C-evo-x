@@ -1,6 +1,8 @@
 {$INCLUDE switches.pas}
 library StdAI;
 
+{$R StdAI.res}
+
 uses
   {$IFDEF DEBUG}Names in 'Names.pas',{$ENDIF}
   Protocol in 'Protocol.pas',
