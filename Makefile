@@ -1,7 +1,7 @@
 # Makefile for C-evo-x
 
 
-# ----- Variables
+# ----- Independent variables
 
 src_game_icon = \
 	Project\cevo.rc \
@@ -87,6 +87,42 @@ src_game = \
 	Project\LocalPlayer\Wonders.dfm \
 	Project\LocalPlayer\Wonders.pas
 
+out_ai_template = \
+	tmp\AI_Template\_aidev3.gif \
+	tmp\AI_Template\AI-development-manual.html \
+	tmp\AI_Template\AI.ai.txt \
+	tmp\AI_Template\CevoDotNet\AIPlugin.cs \
+	tmp\AI_Template\CevoDotNet\CevoDotNet.csproj \
+	tmp\AI_Template\CevoDotNet\cevoxp2.ico \
+	tmp\AI_Template\CevoDotNet\Program.cs \
+	tmp\AI_Template\CevoDotNet\Protocol.cs \
+	tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Resources.resx \
+	tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Settings.settings \
+	tmp\AI_Template\Project\AI.csproj \
+	tmp\AI_Template\Project\AI.sln \
+	tmp\AI_Template\Project\City.cs \
+	tmp\AI_Template\Project\Empire.cs \
+	tmp\AI_Template\Project\Model.cs \
+	tmp\AI_Template\Project\Persistent.cs \
+	tmp\AI_Template\Project\Plugin.cs \
+	tmp\AI_Template\Project\Unit.cs \
+	tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs \
+	tmp\AI_Template\Project\Lib\CevoPedia.cs \
+	tmp\AI_Template\Project\Lib\CityBase.cs \
+	tmp\AI_Template\Project\Lib\DiplomacyBase.cs \
+	tmp\AI_Template\Project\Lib\Map.cs \
+	tmp\AI_Template\Project\Lib\ModelBase.cs \
+	tmp\AI_Template\Project\Lib\Nation.cs \
+	tmp\AI_Template\Project\Lib\PlayResult.cs \
+	tmp\AI_Template\Project\Lib\Protocol.cs \
+	tmp\AI_Template\Project\Lib\Sprawl.cs \
+	tmp\AI_Template\Project\Lib\ToughSet.cs \
+	tmp\AI_Template\Project\Lib\UnitBase.cs \
+	tmp\AI_Template\Project\Properties\AssemblyInfo.cs
+
 out_graphics = \
 	tmp\Graphics\Background.bmp \
 	tmp\Graphics\BigCityMap.bmp \
@@ -168,18 +204,6 @@ out_sounds = \
 	tmp\Sounds\sound.txt \
 	tmp\Sounds\victory.mp3
 
-out_resources = \
-	tmp\fonts.txt \
-	tmp\language.txt \
-	tmp\language2.txt \
-	\
-	tmp\AppData\Saved\(Example).cevo \
-	\
-	$(out_graphics) \
-	$(out_help) \
-	$(out_sounds) \
-	$(out_tribes)
-
 out_tribes = \
 	tmp\Tribes\Americans.tribe.txt \
 	tmp\Tribes\Babyl.tribe.txt \
@@ -198,6 +222,94 @@ out_tribes = \
 	tmp\Tribes\Spanish.tribe.txt \
 	tmp\Tribes\StdUnits.txt \
 	tmp\Tribes\Vikings.tribe.txt
+
+prereqs_cevowin32 = \
+	tmp\CevoComponents.bpl \
+	Project\CevoWin32.dpr \
+	Project\CevoWin32.dof \
+	tmp\units\CevoWin32\cevo.res \
+	tmp\units\CevoWin32\CevoWin32.res
+
+prereqs_stdai = \
+	StdAI\StdAI.dpr \
+	StdAI\StdAI.dof \
+	StdAI\AI.pas \
+	StdAI\Barbarina.pas \
+	StdAI\CustomAI.pas \
+	StdAI\CustomAI_Reload.pas \
+	StdAI\Names.pas \
+	StdAI\Pile.pas \
+	StdAI\Protocol.pas \
+	StdAI\Switches.pas \
+	StdAI\ToolAI.pas \
+	tmp\units\StdAI\StdAI.res
+
+src_cevodotnet = \
+	AI_Template\CevoDotNet\CevoDotNet.csproj \
+	\
+	AI_Template\CevoDotNet\AIPlugin.cs \
+	AI_Template\CevoDotNet\cevoxp2.ico \
+	AI_Template\CevoDotNet\Program.cs \
+	AI_Template\CevoDotNet\Protocol.cs \
+	\
+	AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
+	AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
+	AI_Template\CevoDotNet\Properties\Resources.resx \
+	AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
+	AI_Template\CevoDotNet\Properties\Settings.settings
+
+src_configurator = \
+	Configurator\AddOn.cs \
+	Configurator\AddOnSelector.cs \
+	Configurator\AddOnSelector.Designer.cs \
+	Configurator\AddOnSelector.resx \
+	Configurator\cevoxp2.ico \
+	Configurator\Configurator.csproj \
+	Configurator\Configurator.sln \
+	Configurator\DisplaySettings.cs \
+	Configurator\Installer.cs \
+	Configurator\MainForm.cs \
+	Configurator\MainForm.Designer.cs \
+	Configurator\MainForm.resx \
+	Configurator\PoweredByZipStorer2.png \
+	Configurator\Process.cs \
+	Configurator\Program.cs \
+	Configurator\ProgressDialog.cs \
+	Configurator\ProgressDialog.Designer.cs \
+	Configurator\ProgressDialog.resx \
+	Configurator\TextViewer.cs \
+	Configurator\TextViewer.Designer.cs \
+	Configurator\TextViewer.resx \
+	Configurator\ZipStorerLight.cs \
+	\
+	Configurator\Properties\AssemblyInfo.cs \
+	Configurator\Properties\Resources.Designer.cs \
+	Configurator\Properties\Resources.resx \
+	Configurator\Properties\Settings.Designer.cs \
+	Configurator\Properties\Settings.settings
+
+
+# ----- Dependent variables
+
+out_resources = \
+	tmp\fonts.txt \
+	tmp\language.txt \
+	tmp\language2.txt \
+	\
+	tmp\AppData\Saved\(Example).cevo \
+	\
+	$(out_graphics) \
+	$(out_help) \
+	$(out_sounds) \
+	$(out_tribes)
+
+prereqs_cevo = \
+	tmp\CevoComponents.bpl \
+	Project\cevo.dpr \
+	Project\cevo.dof \
+	tmp\units\cevo\Res1.res \
+	tmp\units\cevo\CevoDLL.res \
+	$(src_game)
 
 
 # ----- Targets
@@ -287,13 +399,6 @@ tmp\CevoComponents.res : \
 
 # ----- Game executable
 
-prereqs_cevowin32 = \
-	tmp\CevoComponents.bpl \
-	Project\CevoWin32.dpr \
-	Project\CevoWin32.dof \
-	tmp\units\CevoWin32\cevo.res \
-	tmp\units\CevoWin32\CevoWin32.res
-
 tmp\CevoWin32.exe : \
 		Project\CevoWin32.debug.cfg \
 		$(prereqs_cevowin32)
@@ -328,20 +433,6 @@ tmp\units\CevoWin32\CevoWin32.res : Project\CevoWin32.rc
 
 # ----- Game executable for .NET
 
-src_cevodotnet = \
-	AI_Template\CevoDotNet\CevoDotNet.csproj \
-	\
-	AI_Template\CevoDotNet\AIPlugin.cs \
-	AI_Template\CevoDotNet\cevoxp2.ico \
-	AI_Template\CevoDotNet\Program.cs \
-	AI_Template\CevoDotNet\Protocol.cs \
-	\
-	AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
-	AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
-	AI_Template\CevoDotNet\Properties\Resources.resx \
-	AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
-	AI_Template\CevoDotNet\Properties\Settings.settings
-
 tmp\CevoDotNet.exe : $(src_cevodotnet)
 	MSBuild.exe \
 		/property:Configuration=Debug \
@@ -354,14 +445,6 @@ tmp\release\CevoDotNet.exe : $(src_cevodotnet)
 
 
 # ----- Game library
-
-prereqs_cevo = \
-	tmp\CevoComponents.bpl \
-	Project\cevo.dpr \
-	Project\cevo.dof \
-	tmp\units\cevo\Res1.res \
-	tmp\units\cevo\CevoDLL.res \
-	$(src_game)
 
 tmp\cevo.dll : \
 		Project\cevo.debug.cfg \
@@ -431,20 +514,6 @@ tmp\units\Integrated\Integrated.res : Project\Integrated.rc
 
 
 # ----- StdAI
-
-prereqs_stdai = \
-	StdAI\StdAI.dpr \
-	StdAI\StdAI.dof \
-	StdAI\AI.pas \
-	StdAI\Barbarina.pas \
-	StdAI\CustomAI.pas \
-	StdAI\CustomAI_Reload.pas \
-	StdAI\Names.pas \
-	StdAI\Pile.pas \
-	StdAI\Protocol.pas \
-	StdAI\Switches.pas \
-	StdAI\ToolAI.pas \
-	tmp\units\StdAI\StdAI.res
 
 tmp\StdAI.dll : \
 		StdAI\StdAI.debug.cfg \
@@ -976,36 +1045,6 @@ tmp\Tribes\Vikings.tribe.txt : Resources\Tribes\Vikings.tribe.txt
 
 # ----- Configurator
 
-src_configurator = \
-	Configurator\AddOn.cs \
-	Configurator\AddOnSelector.cs \
-	Configurator\AddOnSelector.Designer.cs \
-	Configurator\AddOnSelector.resx \
-	Configurator\cevoxp2.ico \
-	Configurator\Configurator.csproj \
-	Configurator\Configurator.sln \
-	Configurator\DisplaySettings.cs \
-	Configurator\Installer.cs \
-	Configurator\MainForm.cs \
-	Configurator\MainForm.Designer.cs \
-	Configurator\MainForm.resx \
-	Configurator\PoweredByZipStorer2.png \
-	Configurator\Process.cs \
-	Configurator\Program.cs \
-	Configurator\ProgressDialog.cs \
-	Configurator\ProgressDialog.Designer.cs \
-	Configurator\ProgressDialog.resx \
-	Configurator\TextViewer.cs \
-	Configurator\TextViewer.Designer.cs \
-	Configurator\TextViewer.resx \
-	Configurator\ZipStorerLight.cs \
-	\
-	Configurator\Properties\AssemblyInfo.cs \
-	Configurator\Properties\Resources.Designer.cs \
-	Configurator\Properties\Resources.resx \
-	Configurator\Properties\Settings.Designer.cs \
-	Configurator\Properties\Settings.settings
-
 tmp\Configurator.exe : $(src_configurator)
 	MSBuild.exe \
 		/property:Configuration=Debug \
@@ -1018,42 +1057,6 @@ tmp\release\Configurator.exe : $(src_configurator)
 
 
 # ----- AI Template files
-
-out_ai_template = \
-	tmp\AI_Template\_aidev3.gif \
-	tmp\AI_Template\AI-development-manual.html \
-	tmp\AI_Template\AI.ai.txt \
-	tmp\AI_Template\CevoDotNet\AIPlugin.cs \
-	tmp\AI_Template\CevoDotNet\CevoDotNet.csproj \
-	tmp\AI_Template\CevoDotNet\cevoxp2.ico \
-	tmp\AI_Template\CevoDotNet\Program.cs \
-	tmp\AI_Template\CevoDotNet\Protocol.cs \
-	tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
-	tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
-	tmp\AI_Template\CevoDotNet\Properties\Resources.resx \
-	tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
-	tmp\AI_Template\CevoDotNet\Properties\Settings.settings \
-	tmp\AI_Template\Project\AI.csproj \
-	tmp\AI_Template\Project\AI.sln \
-	tmp\AI_Template\Project\City.cs \
-	tmp\AI_Template\Project\Empire.cs \
-	tmp\AI_Template\Project\Model.cs \
-	tmp\AI_Template\Project\Persistent.cs \
-	tmp\AI_Template\Project\Plugin.cs \
-	tmp\AI_Template\Project\Unit.cs \
-	tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs \
-	tmp\AI_Template\Project\Lib\CevoPedia.cs \
-	tmp\AI_Template\Project\Lib\CityBase.cs \
-	tmp\AI_Template\Project\Lib\DiplomacyBase.cs \
-	tmp\AI_Template\Project\Lib\Map.cs \
-	tmp\AI_Template\Project\Lib\ModelBase.cs \
-	tmp\AI_Template\Project\Lib\Nation.cs \
-	tmp\AI_Template\Project\Lib\PlayResult.cs \
-	tmp\AI_Template\Project\Lib\Protocol.cs \
-	tmp\AI_Template\Project\Lib\Sprawl.cs \
-	tmp\AI_Template\Project\Lib\ToughSet.cs \
-	tmp\AI_Template\Project\Lib\UnitBase.cs \
-	tmp\AI_Template\Project\Properties\AssemblyInfo.cs
 
 tmp\AI_Template\_aidev3.gif : AI_Template\_aidev3.gif
 	-mkdir tmp\AI_Template
