@@ -3,55 +3,6 @@
 
 # ----- Variables
 
-out_ai_template = \
-	tmp\AI_Template\_aidev3.gif \
-	tmp\AI_Template\AI-development-manual.html \
-	tmp\AI_Template\AI.ai.txt \
-	tmp\AI_Template\CevoDotNet\AIPlugin.cs \
-	tmp\AI_Template\CevoDotNet\CevoDotNet.csproj \
-	tmp\AI_Template\CevoDotNet\cevoxp2.ico \
-	tmp\AI_Template\CevoDotNet\Program.cs \
-	tmp\AI_Template\CevoDotNet\Protocol.cs \
-	tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
-	tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
-	tmp\AI_Template\CevoDotNet\Properties\Resources.resx \
-	tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
-	tmp\AI_Template\CevoDotNet\Properties\Settings.settings \
-	tmp\AI_Template\Project\AI.csproj \
-	tmp\AI_Template\Project\AI.sln \
-	tmp\AI_Template\Project\City.cs \
-	tmp\AI_Template\Project\Empire.cs \
-	tmp\AI_Template\Project\Model.cs \
-	tmp\AI_Template\Project\Persistent.cs \
-	tmp\AI_Template\Project\Plugin.cs \
-	tmp\AI_Template\Project\Unit.cs \
-	tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs \
-	tmp\AI_Template\Project\Lib\CevoPedia.cs \
-	tmp\AI_Template\Project\Lib\CityBase.cs \
-	tmp\AI_Template\Project\Lib\DiplomacyBase.cs \
-	tmp\AI_Template\Project\Lib\Map.cs \
-	tmp\AI_Template\Project\Lib\ModelBase.cs \
-	tmp\AI_Template\Project\Lib\Nation.cs \
-	tmp\AI_Template\Project\Lib\PlayResult.cs \
-	tmp\AI_Template\Project\Lib\Protocol.cs \
-	tmp\AI_Template\Project\Lib\Sprawl.cs \
-	tmp\AI_Template\Project\Lib\ToughSet.cs \
-	tmp\AI_Template\Project\Lib\UnitBase.cs \
-	tmp\AI_Template\Project\Properties\AssemblyInfo.cs
-
-out_cpp_ai = \
-	tmp\MyAI.dll \
-	tmp\MyAI.ai.txt
-
-out_csharp_ai = \
-	tmp\AI.dll \
-	tmp\AI.ai.txt
-
-out_delphi_ai = \
-	tmp\AIProject.dll \
-	tmp\AIProject.ai.txt \
-	tmp\AIProject.bmp
-
 src_game_icon = \
 	Project\cevo.rc \
 	Project\cevoxp2.ico
@@ -173,11 +124,6 @@ out_graphics = \
 	tmp\Graphics\Texture4.jpg \
 	tmp\Graphics\Unit.bmp
 
-out_hal_ai = \
-	tmp\HAL.dll \
-	tmp\HAL.ai.txt \
-	tmp\HAL.BMP
-
 out_help = \
 	tmp\Help\AdvTree.bmp \
 	tmp\Help\AITShot.bmp \
@@ -234,17 +180,6 @@ out_resources = \
 	$(out_sounds) \
 	$(out_tribes)
 
-src_stdai = \
-		StdAI\AI.pas \
-		StdAI\Barbarina.pas \
-		StdAI\CustomAI.pas \
-		StdAI\CustomAI_Reload.pas \
-		StdAI\Names.pas \
-		StdAI\Pile.pas \
-		StdAI\Protocol.pas \
-		StdAI\Switches.pas \
-		StdAI\ToolAI.pas
-
 out_tribes = \
 	tmp\Tribes\Americans.tribe.txt \
 	tmp\Tribes\Babyl.tribe.txt \
@@ -276,10 +211,19 @@ all : \
 	tmp\CevoDotNet.exe \
 	tmp\Configurator.exe \
 	\
-	$(out_cpp_ai) \
-	$(out_csharp_ai) \
-	$(out_delphi_ai) \
-	$(out_hal_ai) \
+	tmp\MyAI.dll \
+	tmp\MyAI.ai.txt \
+	\
+	tmp\AI.dll \
+	tmp\AI.ai.txt \
+	\
+	tmp\AIProject.dll \
+	tmp\AIProject.ai.txt \
+	tmp\AIProject.bmp \
+	\
+	tmp\HAL.dll \
+	tmp\HAL.ai.txt \
+	tmp\HAL.BMP \
 	\
 	tmp\C-evo-x.msi
 
@@ -491,8 +435,16 @@ tmp\units\Integrated\Integrated.res : Project\Integrated.rc
 prereqs_stdai = \
 	StdAI\StdAI.dpr \
 	StdAI\StdAI.dof \
-	tmp\units\StdAI\StdAI.res \
-	$(src_stdai)
+	StdAI\AI.pas \
+	StdAI\Barbarina.pas \
+	StdAI\CustomAI.pas \
+	StdAI\CustomAI_Reload.pas \
+	StdAI\Names.pas \
+	StdAI\Pile.pas \
+	StdAI\Protocol.pas \
+	StdAI\Switches.pas \
+	StdAI\ToolAI.pas \
+	tmp\units\StdAI\StdAI.res
 
 tmp\StdAI.dll : \
 		StdAI\StdAI.debug.cfg \
@@ -1066,6 +1018,42 @@ tmp\release\Configurator.exe : $(src_configurator)
 
 
 # ----- AI Template files
+
+out_ai_template = \
+	tmp\AI_Template\_aidev3.gif \
+	tmp\AI_Template\AI-development-manual.html \
+	tmp\AI_Template\AI.ai.txt \
+	tmp\AI_Template\CevoDotNet\AIPlugin.cs \
+	tmp\AI_Template\CevoDotNet\CevoDotNet.csproj \
+	tmp\AI_Template\CevoDotNet\cevoxp2.ico \
+	tmp\AI_Template\CevoDotNet\Program.cs \
+	tmp\AI_Template\CevoDotNet\Protocol.cs \
+	tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Resources.resx \
+	tmp\AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
+	tmp\AI_Template\CevoDotNet\Properties\Settings.settings \
+	tmp\AI_Template\Project\AI.csproj \
+	tmp\AI_Template\Project\AI.sln \
+	tmp\AI_Template\Project\City.cs \
+	tmp\AI_Template\Project\Empire.cs \
+	tmp\AI_Template\Project\Model.cs \
+	tmp\AI_Template\Project\Persistent.cs \
+	tmp\AI_Template\Project\Plugin.cs \
+	tmp\AI_Template\Project\Unit.cs \
+	tmp\AI_Template\Project\Lib\AddressPriorityQueue.cs \
+	tmp\AI_Template\Project\Lib\CevoPedia.cs \
+	tmp\AI_Template\Project\Lib\CityBase.cs \
+	tmp\AI_Template\Project\Lib\DiplomacyBase.cs \
+	tmp\AI_Template\Project\Lib\Map.cs \
+	tmp\AI_Template\Project\Lib\ModelBase.cs \
+	tmp\AI_Template\Project\Lib\Nation.cs \
+	tmp\AI_Template\Project\Lib\PlayResult.cs \
+	tmp\AI_Template\Project\Lib\Protocol.cs \
+	tmp\AI_Template\Project\Lib\Sprawl.cs \
+	tmp\AI_Template\Project\Lib\ToughSet.cs \
+	tmp\AI_Template\Project\Lib\UnitBase.cs \
+	tmp\AI_Template\Project\Properties\AssemblyInfo.cs
 
 tmp\AI_Template\_aidev3.gif : AI_Template\_aidev3.gif
 	-mkdir tmp\AI_Template
