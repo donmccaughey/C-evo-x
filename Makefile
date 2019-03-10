@@ -273,6 +273,9 @@ all : \
 	tmp\Integrated.exe \
 	tmp\StdAI.dll \
 	\
+	tmp\CevoDotNet.exe \
+	tmp\Configurator.exe \
+	\
 	$(cpp_ai_out) \
 	$(csharp_ai_out) \
 	$(delphi_ai_out) \
@@ -395,7 +398,26 @@ tmp\CevoDotNet.exe : \
 		AI_Template\CevoDotNet\Properties\Resources.resx \
 		AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
 		AI_Template\CevoDotNet\Properties\Settings.settings
-	MSBuild.exe AI_Template\CevoDotNet\CevoDotNet.csproj
+	MSBuild.exe \
+		/property:Configuration=Debug \
+		AI_Template\CevoDotNet\CevoDotNet.csproj
+
+tmp\release\CevoDotNet.exe : \
+		AI_Template\CevoDotNet\CevoDotNet.csproj \
+		\
+		AI_Template\CevoDotNet\AIPlugin.cs \
+		AI_Template\CevoDotNet\cevoxp2.ico \
+		AI_Template\CevoDotNet\Program.cs \
+		AI_Template\CevoDotNet\Protocol.cs \
+		\
+		AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
+		AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
+		AI_Template\CevoDotNet\Properties\Resources.resx \
+		AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
+		AI_Template\CevoDotNet\Properties\Settings.settings
+	MSBuild.exe \
+		/property:Configuration=Release \
+		AI_Template\CevoDotNet\CevoDotNet.csproj
 
 
 # ----- Game library
@@ -1044,7 +1066,42 @@ tmp\Configurator.exe : \
 		Configurator\Properties\Resources.resx \
 		Configurator\Properties\Settings.Designer.cs \
 		Configurator\Properties\Settings.settings
-	MSBuild.exe Configurator\Configurator.sln
+	MSBuild.exe \
+		/property:Configuration=Debug \
+		Configurator\Configurator.sln
+
+tmp\release\Configurator.exe : \
+		Configurator\AddOn.cs \
+		Configurator\AddOnSelector.cs \
+		Configurator\AddOnSelector.Designer.cs \
+		Configurator\AddOnSelector.resx \
+		Configurator\cevoxp2.ico \
+		Configurator\Configurator.csproj \
+		Configurator\Configurator.sln \
+		Configurator\DisplaySettings.cs \
+		Configurator\Installer.cs \
+		Configurator\MainForm.cs \
+		Configurator\MainForm.Designer.cs \
+		Configurator\MainForm.resx \
+		Configurator\PoweredByZipStorer2.png \
+		Configurator\Process.cs \
+		Configurator\Program.cs \
+		Configurator\ProgressDialog.cs \
+		Configurator\ProgressDialog.Designer.cs \
+		Configurator\ProgressDialog.resx \
+		Configurator\TextViewer.cs \
+		Configurator\TextViewer.Designer.cs \
+		Configurator\TextViewer.resx \
+		Configurator\ZipStorerLight.cs \
+		\
+		Configurator\Properties\AssemblyInfo.cs \
+		Configurator\Properties\Resources.Designer.cs \
+		Configurator\Properties\Resources.resx \
+		Configurator\Properties\Settings.Designer.cs \
+		Configurator\Properties\Settings.settings
+	MSBuild.exe \
+		/property:Configuration=Release \
+		Configurator\Configurator.sln
 
 
 # ----- AI Template files
@@ -1205,8 +1262,8 @@ tmp\Installer\Product.wixobj : \
 		tmp\release\CevoWin32.exe \
 		tmp\release\cevo.dll \
 		\
-		tmp\CevoDotNet.exe \
-		tmp\Configurator.exe \
+		tmp\release\CevoDotNet.exe \
+		tmp\release\Configurator.exe \
 		\
 		tmp\fonts.txt \
 		tmp\language.txt \

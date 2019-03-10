@@ -90,11 +90,15 @@
             </Component>
             <Component Id='Comp_CevoDotNet.exe'
                      Guid='E78FC4A2-55D4-419D-848B-9EE08D41C300'>
-                <File Name='CevoDotNet.exe' KeyPath='yes' />
+                 <File Name='CevoDotNet.exe' 
+                     Source='tmp\release\CevoDotNet.exe'
+                     KeyPath='yes' />
             </Component>
             <Component Id='Comp_Configurator.exe'
                      Guid='C0C18A09-69C3-4B48-B151-ADE8465A9078'>
-                <File Name='Configurator.exe' KeyPath='yes' />
+                 <File Name='Configurator.exe' 
+                     Source='tmp\release\Configurator.exe'
+                     KeyPath='yes' />
             </Component>
             <Component Id='Comp_fonts.txt'
                      Guid='EBE83E1A-A0A4-4AF2-8817-2CD458A728AB'>
