@@ -343,13 +343,16 @@ tmp\CevoComponents.res : \
 
 # ----- Game executable
 
+prereqs_cevowin32 = \
+	tmp\CevoComponents.bpl \
+	Project\CevoWin32.dpr \
+	Project\CevoWin32.dof \
+	tmp\units\CevoWin32\cevo.res \
+	tmp\units\CevoWin32\CevoWin32.res
+
 tmp\CevoWin32.exe : \
-		tmp\CevoComponents.bpl \
-		Project\CevoWin32.dpr \
-		Project\CevoWin32.dof \
 		Project\CevoWin32.debug.cfg \
-		tmp\units\CevoWin32\cevo.res \
-		tmp\units\CevoWin32\CevoWin32.res
+		$(prereqs_cevowin32)
 	-mkdir tmp\units\CevoWin32
 	cd Project
 	copy /y CevoWin32.debug.cfg CevoWin32.cfg
@@ -357,12 +360,8 @@ tmp\CevoWin32.exe : \
 	cd ..
 
 tmp\release\CevoWin32.exe : \
-		tmp\CevoComponents.bpl \
-		Project\CevoWin32.dpr \
-		Project\CevoWin32.dof \
 		Project\CevoWin32.release.cfg \
-		tmp\units\CevoWin32\cevo.res \
-		tmp\units\CevoWin32\CevoWin32.res
+		$(prereqs_cevowin32)
 	-mkdir tmp\release\units\CevoWin32
 	cd Project
 	copy /y CevoWin32.release.cfg CevoWin32.cfg
@@ -385,36 +384,26 @@ tmp\units\CevoWin32\CevoWin32.res : Project\CevoWin32.rc
 
 # ----- Game executable for .NET
 
-tmp\CevoDotNet.exe : \
-		AI_Template\CevoDotNet\CevoDotNet.csproj \
-		\
-		AI_Template\CevoDotNet\AIPlugin.cs \
-		AI_Template\CevoDotNet\cevoxp2.ico \
-		AI_Template\CevoDotNet\Program.cs \
-		AI_Template\CevoDotNet\Protocol.cs \
-		\
-		AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
-		AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
-		AI_Template\CevoDotNet\Properties\Resources.resx \
-		AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
-		AI_Template\CevoDotNet\Properties\Settings.settings
+src_cevodotnet = \
+	AI_Template\CevoDotNet\CevoDotNet.csproj \
+	\
+	AI_Template\CevoDotNet\AIPlugin.cs \
+	AI_Template\CevoDotNet\cevoxp2.ico \
+	AI_Template\CevoDotNet\Program.cs \
+	AI_Template\CevoDotNet\Protocol.cs \
+	\
+	AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
+	AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
+	AI_Template\CevoDotNet\Properties\Resources.resx \
+	AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
+	AI_Template\CevoDotNet\Properties\Settings.settings
+
+tmp\CevoDotNet.exe : $(src_cevodotnet)
 	MSBuild.exe \
 		/property:Configuration=Debug \
 		AI_Template\CevoDotNet\CevoDotNet.csproj
 
-tmp\release\CevoDotNet.exe : \
-		AI_Template\CevoDotNet\CevoDotNet.csproj \
-		\
-		AI_Template\CevoDotNet\AIPlugin.cs \
-		AI_Template\CevoDotNet\cevoxp2.ico \
-		AI_Template\CevoDotNet\Program.cs \
-		AI_Template\CevoDotNet\Protocol.cs \
-		\
-		AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
-		AI_Template\CevoDotNet\Properties\Resources.Designer.cs \
-		AI_Template\CevoDotNet\Properties\Resources.resx \
-		AI_Template\CevoDotNet\Properties\Settings.Designer.cs \
-		AI_Template\CevoDotNet\Properties\Settings.settings
+tmp\release\CevoDotNet.exe : $(src_cevodotnet)
 	MSBuild.exe \
 		/property:Configuration=Release \
 		AI_Template\CevoDotNet\CevoDotNet.csproj
@@ -422,14 +411,17 @@ tmp\release\CevoDotNet.exe : \
 
 # ----- Game library
 
+prereqs_cevo = \
+	tmp\CevoComponents.bpl \
+	Project\cevo.dpr \
+	Project\cevo.dof \
+	tmp\units\cevo\Res1.res \
+	tmp\units\cevo\CevoDLL.res \
+	$(src_game)
+
 tmp\cevo.dll : \
-		tmp\CevoComponents.bpl \
-		Project\cevo.dpr \
-		Project\cevo.dof \
 		Project\cevo.debug.cfg \
-		tmp\units\cevo\Res1.res \
-		tmp\units\cevo\CevoDLL.res \
-		$(src_game)
+		$(prereqs_cevo)
 	-mkdir tmp\units\cevo
 	cd Project
 	copy /y cevo.debug.cfg cevo.cfg
@@ -437,13 +429,8 @@ tmp\cevo.dll : \
 	cd ..
 
 tmp\release\cevo.dll : \
-		tmp\CevoComponents.bpl \
-		Project\cevo.dpr \
-		Project\cevo.dof \
 		Project\cevo.release.cfg \
-		tmp\units\cevo\Res1.res \
-		tmp\units\cevo\CevoDLL.res \
-		$(src_game)
+		$(prereqs_cevo)
 	-mkdir tmp\release\units\cevo
 	cd Project
 	copy /y cevo.release.cfg cevo.cfg
@@ -501,12 +488,15 @@ tmp\units\Integrated\Integrated.res : Project\Integrated.rc
 
 # ----- StdAI
 
+prereqs_stdai = \
+	StdAI\StdAI.dpr \
+	StdAI\StdAI.dof \
+	tmp\units\StdAI\StdAI.res \
+	$(src_stdai)
+
 tmp\StdAI.dll : \
-		StdAI\StdAI.dpr \
-		StdAI\StdAI.dof \
 		StdAI\StdAI.debug.cfg \
-		tmp\units\StdAI\StdAI.res \
-		$(src_stdai)
+		$(prereqs_stdai)
 	-mkdir tmp\units\StdAI
 	cd StdAI
 	copy /y StdAI.debug.cfg StdAI.cfg
@@ -514,11 +504,8 @@ tmp\StdAI.dll : \
 	cd ..
 
 tmp\release\StdAI.dll : \
-		StdAI\StdAI.dpr \
-		StdAI\StdAI.dof \
 		StdAI\StdAI.release.cfg \
-		tmp\units\StdAI\StdAI.res \
-		$(src_stdai)
+		$(prereqs_stdai)
 	-mkdir tmp\release\units\StdAI
 	cd StdAI
 	copy /y StdAI.release.cfg StdAI.cfg
@@ -1037,68 +1024,42 @@ tmp\Tribes\Vikings.tribe.txt : Resources\Tribes\Vikings.tribe.txt
 
 # ----- Configurator
 
-tmp\Configurator.exe : \
-		Configurator\AddOn.cs \
-		Configurator\AddOnSelector.cs \
-		Configurator\AddOnSelector.Designer.cs \
-		Configurator\AddOnSelector.resx \
-		Configurator\cevoxp2.ico \
-		Configurator\Configurator.csproj \
-		Configurator\Configurator.sln \
-		Configurator\DisplaySettings.cs \
-		Configurator\Installer.cs \
-		Configurator\MainForm.cs \
-		Configurator\MainForm.Designer.cs \
-		Configurator\MainForm.resx \
-		Configurator\PoweredByZipStorer2.png \
-		Configurator\Process.cs \
-		Configurator\Program.cs \
-		Configurator\ProgressDialog.cs \
-		Configurator\ProgressDialog.Designer.cs \
-		Configurator\ProgressDialog.resx \
-		Configurator\TextViewer.cs \
-		Configurator\TextViewer.Designer.cs \
-		Configurator\TextViewer.resx \
-		Configurator\ZipStorerLight.cs \
-		\
-		Configurator\Properties\AssemblyInfo.cs \
-		Configurator\Properties\Resources.Designer.cs \
-		Configurator\Properties\Resources.resx \
-		Configurator\Properties\Settings.Designer.cs \
-		Configurator\Properties\Settings.settings
+src_configurator = \
+	Configurator\AddOn.cs \
+	Configurator\AddOnSelector.cs \
+	Configurator\AddOnSelector.Designer.cs \
+	Configurator\AddOnSelector.resx \
+	Configurator\cevoxp2.ico \
+	Configurator\Configurator.csproj \
+	Configurator\Configurator.sln \
+	Configurator\DisplaySettings.cs \
+	Configurator\Installer.cs \
+	Configurator\MainForm.cs \
+	Configurator\MainForm.Designer.cs \
+	Configurator\MainForm.resx \
+	Configurator\PoweredByZipStorer2.png \
+	Configurator\Process.cs \
+	Configurator\Program.cs \
+	Configurator\ProgressDialog.cs \
+	Configurator\ProgressDialog.Designer.cs \
+	Configurator\ProgressDialog.resx \
+	Configurator\TextViewer.cs \
+	Configurator\TextViewer.Designer.cs \
+	Configurator\TextViewer.resx \
+	Configurator\ZipStorerLight.cs \
+	\
+	Configurator\Properties\AssemblyInfo.cs \
+	Configurator\Properties\Resources.Designer.cs \
+	Configurator\Properties\Resources.resx \
+	Configurator\Properties\Settings.Designer.cs \
+	Configurator\Properties\Settings.settings
+
+tmp\Configurator.exe : $(src_configurator)
 	MSBuild.exe \
 		/property:Configuration=Debug \
 		Configurator\Configurator.sln
 
-tmp\release\Configurator.exe : \
-		Configurator\AddOn.cs \
-		Configurator\AddOnSelector.cs \
-		Configurator\AddOnSelector.Designer.cs \
-		Configurator\AddOnSelector.resx \
-		Configurator\cevoxp2.ico \
-		Configurator\Configurator.csproj \
-		Configurator\Configurator.sln \
-		Configurator\DisplaySettings.cs \
-		Configurator\Installer.cs \
-		Configurator\MainForm.cs \
-		Configurator\MainForm.Designer.cs \
-		Configurator\MainForm.resx \
-		Configurator\PoweredByZipStorer2.png \
-		Configurator\Process.cs \
-		Configurator\Program.cs \
-		Configurator\ProgressDialog.cs \
-		Configurator\ProgressDialog.Designer.cs \
-		Configurator\ProgressDialog.resx \
-		Configurator\TextViewer.cs \
-		Configurator\TextViewer.Designer.cs \
-		Configurator\TextViewer.resx \
-		Configurator\ZipStorerLight.cs \
-		\
-		Configurator\Properties\AssemblyInfo.cs \
-		Configurator\Properties\Resources.Designer.cs \
-		Configurator\Properties\Resources.resx \
-		Configurator\Properties\Settings.Designer.cs \
-		Configurator\Properties\Settings.settings
+tmp\release\Configurator.exe : $(src_configurator)
 	MSBuild.exe \
 		/property:Configuration=Release \
 		Configurator\Configurator.sln
