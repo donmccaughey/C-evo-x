@@ -25,6 +25,16 @@
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
+        <CustomAction Id="LaunchApp"
+                FileKey="CevoWin32.exe"
+                ExeCommand=""
+                Impersonate="yes"
+                Return="asyncNoWait" />
+        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX"
+                Value="1" />
+        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+                Value="Launch C-evo-x" />
+
         <UI Id="UI">
             <TextStyle Id="WixUI_Font_Normal" 
                     FaceName="Tahoma" 
@@ -81,6 +91,14 @@
                     Value="Return" 
                     Order="999">
                 1
+            </Publish>
+            <Publish Dialog="ExitDialog"
+                    Control="Finish"
+                    Event="DoAction"
+                    Value="LaunchApp"
+                    Order="1">
+                WIXUI_EXITDIALOGOPTIONALCHECKBOX="1"
+                AND NOT Installed
             </Publish>
 
 
