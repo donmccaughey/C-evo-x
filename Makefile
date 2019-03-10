@@ -3,7 +3,7 @@
 
 # ----- Variables
 
-ai_template_out = \
+out_ai_template = \
 	tmp\AI_Template\_aidev3.gif \
 	tmp\AI_Template\AI-development-manual.html \
 	tmp\AI_Template\AI.ai.txt \
@@ -39,29 +39,29 @@ ai_template_out = \
 	tmp\AI_Template\Project\Lib\UnitBase.cs \
 	tmp\AI_Template\Project\Properties\AssemblyInfo.cs
 
-cpp_ai_out = \
+out_cpp_ai = \
 	tmp\MyAI.dll \
 	tmp\MyAI.ai.txt
 
-csharp_ai_out = \
+out_csharp_ai = \
 	tmp\AI.dll \
 	tmp\AI.ai.txt
 
-delphi_ai_out = \
+out_delphi_ai = \
 	tmp\AIProject.dll \
 	tmp\AIProject.ai.txt \
 	tmp\AIProject.bmp
 
-game_icon = \
+src_game_icon = \
 	Project\cevo.rc \
 	Project\cevoxp2.ico
 
-game_res = \
+src_game_res = \
 	Project\Res1.rc \
 	Project\drag.cur \
 	Project\flathand.cur
 
-game_source = \
+src_game = \
 	Project\Area.pas \
 	Project\Back.dfm \
 	Project\Back.pas \
@@ -136,7 +136,7 @@ game_source = \
 	Project\LocalPlayer\Wonders.dfm \
 	Project\LocalPlayer\Wonders.pas
 
-graphics_out = \
+out_graphics = \
 	tmp\Graphics\Background.bmp \
 	tmp\Graphics\BigCityMap.bmp \
 	tmp\Graphics\Cities66x32.bmp \
@@ -173,12 +173,12 @@ graphics_out = \
 	tmp\Graphics\Texture4.jpg \
 	tmp\Graphics\Unit.bmp
 
-hal_ai_out = \
+out_hal_ai = \
 	tmp\HAL.dll \
 	tmp\HAL.ai.txt \
 	tmp\HAL.BMP
 
-help_out = \
+out_help = \
 	tmp\Help\AdvTree.bmp \
 	tmp\Help\AITShot.bmp \
 	tmp\Help\CityShot.bmp \
@@ -187,7 +187,7 @@ help_out = \
 	tmp\Help\help.txt \
 	tmp\Help\MoveShot.bmp
 
-sounds_out = \
+out_sounds = \
 	tmp\Sounds\8MM_AT_C-BlackCow-8186_hifi.mp3 \
 	tmp\Sounds\Boulder_-oblius-7747_hifi.mp3 \
 	tmp\Sounds\Cash_reg-public_d-296_hifi.mp3 \
@@ -222,19 +222,19 @@ sounds_out = \
 	tmp\Sounds\sound.txt \
 	tmp\Sounds\victory.mp3
 
-resources_out = \
+out_resources = \
 	tmp\fonts.txt \
 	tmp\language.txt \
 	tmp\language2.txt \
 	\
 	tmp\AppData\Saved\(Example).cevo \
 	\
-	$(graphics_out) \
-	$(help_out) \
-	$(sounds_out) \
-	$(tribes_out)
+	$(out_graphics) \
+	$(out_help) \
+	$(out_sounds) \
+	$(out_tribes)
 
-stdai_source = \
+src_stdai = \
 		StdAI\AI.pas \
 		StdAI\Barbarina.pas \
 		StdAI\CustomAI.pas \
@@ -245,7 +245,7 @@ stdai_source = \
 		StdAI\Switches.pas \
 		StdAI\ToolAI.pas
 
-tribes_out = \
+out_tribes = \
 	tmp\Tribes\Americans.tribe.txt \
 	tmp\Tribes\Babyl.tribe.txt \
 	tmp\Tribes\British.tribe.txt \
@@ -276,10 +276,10 @@ all : \
 	tmp\CevoDotNet.exe \
 	tmp\Configurator.exe \
 	\
-	$(cpp_ai_out) \
-	$(csharp_ai_out) \
-	$(delphi_ai_out) \
-	$(hal_ai_out) \
+	$(out_cpp_ai) \
+	$(out_csharp_ai) \
+	$(out_delphi_ai) \
+	$(out_hal_ai) \
 	\
 	tmp\C-evo-x.msi
 
@@ -312,7 +312,7 @@ game : \
 	tmp\StdAI.bmp \
 	tmp\StdAI.dll \
 	\
-	$(resources_out)
+	$(out_resources)
 
 
 installer : tmp\C-evo-x.msi
@@ -370,7 +370,7 @@ tmp\release\CevoWin32.exe : \
 	copy /y CevoWin32.debug.cfg CevoWin32.cfg
 	cd ..
 
-tmp\units\CevoWin32\cevo.res : $(game_icon)
+tmp\units\CevoWin32\cevo.res : $(src_game_icon)
 	-mkdir tmp\units\CevoWin32
 	cd tmp\units\CevoWin32
 	brcc32 -focevo.res ..\..\..\Project\cevo.rc
@@ -429,7 +429,7 @@ tmp\cevo.dll : \
 		Project\cevo.debug.cfg \
 		tmp\units\cevo\Res1.res \
 		tmp\units\cevo\CevoDLL.res \
-		$(game_source)
+		$(src_game)
 	-mkdir tmp\units\cevo
 	cd Project
 	copy /y cevo.debug.cfg cevo.cfg
@@ -443,7 +443,7 @@ tmp\release\cevo.dll : \
 		Project\cevo.release.cfg \
 		tmp\units\cevo\Res1.res \
 		tmp\units\cevo\CevoDLL.res \
-		$(game_source)
+		$(src_game)
 	-mkdir tmp\release\units\cevo
 	cd Project
 	copy /y cevo.release.cfg cevo.cfg
@@ -451,7 +451,7 @@ tmp\release\cevo.dll : \
 	copy /y cevo.debug.cfg cevo.cfg
 	cd ..
 
-tmp\units\cevo\Res1.res : $(game_res)
+tmp\units\cevo\Res1.res : $(src_game_res)
 	-mkdir tmp\units\cevo
 	cd tmp\units\cevo
 	brcc32 -foRes1.res ..\..\..\Project\Res1.rc
@@ -474,19 +474,19 @@ tmp\Integrated.exe : \
 		tmp\units\Integrated\cevo.res \
 		tmp\units\Integrated\Res1.res \
 		tmp\units\Integrated\Integrated.res \
-		$(game_source)
+		$(src_game)
 	-mkdir tmp\units\Integrated
 	cd Project
 	dcc32 -B Integrated.dpr
 	cd ..
 
-tmp\units\Integrated\cevo.res : $(game_icon)
+tmp\units\Integrated\cevo.res : $(src_game_icon)
 	-mkdir tmp\units\Integrated
 	cd tmp\units\Integrated
 	brcc32 -focevo.res ..\..\..\Project\cevo.rc
 	cd ..\..\..
 
-tmp\units\Integrated\Res1.res : $(game_res)
+tmp\units\Integrated\Res1.res : $(src_game_res)
 	-mkdir tmp\units\Integrated
 	cd tmp\units\Integrated
 	brcc32 -foRes1.res ..\..\..\Project\Res1.rc
@@ -506,7 +506,7 @@ tmp\StdAI.dll : \
 		StdAI\StdAI.dof \
 		StdAI\StdAI.debug.cfg \
 		tmp\units\StdAI\StdAI.res \
-		$(stdai_source)
+		$(src_stdai)
 	-mkdir tmp\units\StdAI
 	cd StdAI
 	copy /y StdAI.debug.cfg StdAI.cfg
@@ -518,7 +518,7 @@ tmp\release\StdAI.dll : \
 		StdAI\StdAI.dof \
 		StdAI\StdAI.release.cfg \
 		tmp\units\StdAI\StdAI.res \
-		$(stdai_source)
+		$(src_stdai)
 	-mkdir tmp\release\units\StdAI
 	cd StdAI
 	copy /y StdAI.release.cfg StdAI.cfg
@@ -1273,12 +1273,12 @@ tmp\Installer\Product.wixobj : \
 		tmp\StdAI.ai.txt \
 		tmp\StdAI.bmp \
 		\
-		$(ai_template_out) \
+		$(out_ai_template) \
 		tmp\AppData\Saved\(Example).cevo \
-		$(graphics_out) \
-		$(help_out) \
-		$(sounds_out) \
-		$(tribes_out)
+		$(out_graphics) \
+		$(out_help) \
+		$(out_sounds) \
+		$(out_tribes)
 	-mkdir tmp\Installer
 	candle.exe \
 		-nologo \
