@@ -1,7 +1,5 @@
 # TODO
 
- - Add version info to executables and DLLs.
-
  - Installer: add view for "Select Additional Tasks", "Create a desktop icon"
 
  - Installer: add "Launch C-evo-x" to "Completing" view
