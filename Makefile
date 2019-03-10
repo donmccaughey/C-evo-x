@@ -3,90 +3,6 @@
 
 # ----- Independent variables
 
-src_game_icon = \
-	Project\cevo.rc \
-	Project\cevoxp2.ico
-
-src_game_res = \
-	Project\Res1.rc \
-	Project\drag.cur \
-	Project\flathand.cur
-
-src_game = \
-	Project\Area.pas \
-	Project\Back.dfm \
-	Project\Back.pas \
-	Project\ButtonA.pas \
-	Project\ButtonB.pas \
-	Project\ButtonBase.pas \
-	Project\ButtonC.pas \
-	Project\ButtonN.pas \
-	Project\CityProcessing.pas \
-	Project\CmdList.pas \
-	Project\Database.pas \
-	Project\Direct.dfm \
-	Project\Direct.pas \
-	Project\Directories.pas \
-	Project\EOTButton.pas \
-	Project\GameServer.pas \
-	Project\Inp.dfm \
-	Project\Inp.pas \
-	Project\Log.dfm \
-	Project\Log.pas \
-	Project\Messg.dfm \
-	Project\Messg.pas \
-	Project\NoTerm.dfm \
-	Project\NoTerm.pas \
-	Project\Protocol.pas \
-	Project\ScreenTools.pas \
-	Project\Sound.dfm \
-	Project\Sound.pas \
-	Project\Start.dfm \
-	Project\Start.pas \
-	Project\Switches.pas \
-	Project\StringTables.pas \
-	Project\UnitProcessing.pas \
-	\
-	Project\LocalPlayer\BaseWin.pas \
-	Project\LocalPlayer\Battle.dfm \
-	Project\LocalPlayer\Battle.pas \
-	Project\LocalPlayer\CityScreen.dfm \
-	Project\LocalPlayer\CityScreen.pas \
-	Project\LocalPlayer\CityType.dfm \
-	Project\LocalPlayer\CityType.pas \
-	Project\LocalPlayer\ClientTools.pas \
-	Project\LocalPlayer\Diagram.dfm \
-	Project\LocalPlayer\Diagram.pas \
-	Project\LocalPlayer\Diplomacy.pas \
-	Project\LocalPlayer\Draft.dfm \
-	Project\LocalPlayer\Draft.pas \
-	Project\LocalPlayer\Enhance.dfm \
-	Project\LocalPlayer\Enhance.pas \
-	Project\LocalPlayer\Help.dfm \
-	Project\LocalPlayer\Help.pas \
-	Project\LocalPlayer\IsoEngine.pas \
-	Project\LocalPlayer\LocalPlayer.pas \
-	Project\LocalPlayer\MessgEx.dfm \
-	Project\LocalPlayer\MessgEx.pas \
-	Project\LocalPlayer\NatStat.dfm \
-	Project\LocalPlayer\NatStat.pas \
-	Project\LocalPlayer\Nego.dfm \
-	Project\LocalPlayer\Nego.pas \
-	Project\LocalPlayer\PVSB.pas \
-	Project\LocalPlayer\Rates.dfm \
-	Project\LocalPlayer\Rates.pas \
-	Project\LocalPlayer\Select.dfm \
-	Project\LocalPlayer\Select.pas \
-	Project\LocalPlayer\TechTree.dfm \
-	Project\LocalPlayer\TechTree.pas \
-	Project\LocalPlayer\Term.dfm \
-	Project\LocalPlayer\Term.pas \
-	Project\LocalPlayer\Tribes.pas \
-	Project\LocalPlayer\UnitStat.dfm \
-	Project\LocalPlayer\UnitStat.pas \
-	Project\LocalPlayer\Wonders.dfm \
-	Project\LocalPlayer\Wonders.pas
-
 out_ai_template = \
 	tmp\AI_Template\_aidev3.gif \
 	tmp\AI_Template\AI-development-manual.html \
@@ -287,6 +203,90 @@ src_configurator = \
 	Configurator\Properties\Resources.resx \
 	Configurator\Properties\Settings.Designer.cs \
 	Configurator\Properties\Settings.settings
+
+src_game = \
+	Project\Area.pas \
+	Project\Back.dfm \
+	Project\Back.pas \
+	Project\ButtonA.pas \
+	Project\ButtonB.pas \
+	Project\ButtonBase.pas \
+	Project\ButtonC.pas \
+	Project\ButtonN.pas \
+	Project\CityProcessing.pas \
+	Project\CmdList.pas \
+	Project\Database.pas \
+	Project\Direct.dfm \
+	Project\Direct.pas \
+	Project\Directories.pas \
+	Project\EOTButton.pas \
+	Project\GameServer.pas \
+	Project\Inp.dfm \
+	Project\Inp.pas \
+	Project\Log.dfm \
+	Project\Log.pas \
+	Project\Messg.dfm \
+	Project\Messg.pas \
+	Project\NoTerm.dfm \
+	Project\NoTerm.pas \
+	Project\Protocol.pas \
+	Project\ScreenTools.pas \
+	Project\Sound.dfm \
+	Project\Sound.pas \
+	Project\Start.dfm \
+	Project\Start.pas \
+	Project\Switches.pas \
+	Project\StringTables.pas \
+	Project\UnitProcessing.pas \
+	\
+	Project\LocalPlayer\BaseWin.pas \
+	Project\LocalPlayer\Battle.dfm \
+	Project\LocalPlayer\Battle.pas \
+	Project\LocalPlayer\CityScreen.dfm \
+	Project\LocalPlayer\CityScreen.pas \
+	Project\LocalPlayer\CityType.dfm \
+	Project\LocalPlayer\CityType.pas \
+	Project\LocalPlayer\ClientTools.pas \
+	Project\LocalPlayer\Diagram.dfm \
+	Project\LocalPlayer\Diagram.pas \
+	Project\LocalPlayer\Diplomacy.pas \
+	Project\LocalPlayer\Draft.dfm \
+	Project\LocalPlayer\Draft.pas \
+	Project\LocalPlayer\Enhance.dfm \
+	Project\LocalPlayer\Enhance.pas \
+	Project\LocalPlayer\Help.dfm \
+	Project\LocalPlayer\Help.pas \
+	Project\LocalPlayer\IsoEngine.pas \
+	Project\LocalPlayer\LocalPlayer.pas \
+	Project\LocalPlayer\MessgEx.dfm \
+	Project\LocalPlayer\MessgEx.pas \
+	Project\LocalPlayer\NatStat.dfm \
+	Project\LocalPlayer\NatStat.pas \
+	Project\LocalPlayer\Nego.dfm \
+	Project\LocalPlayer\Nego.pas \
+	Project\LocalPlayer\PVSB.pas \
+	Project\LocalPlayer\Rates.dfm \
+	Project\LocalPlayer\Rates.pas \
+	Project\LocalPlayer\Select.dfm \
+	Project\LocalPlayer\Select.pas \
+	Project\LocalPlayer\TechTree.dfm \
+	Project\LocalPlayer\TechTree.pas \
+	Project\LocalPlayer\Term.dfm \
+	Project\LocalPlayer\Term.pas \
+	Project\LocalPlayer\Tribes.pas \
+	Project\LocalPlayer\UnitStat.dfm \
+	Project\LocalPlayer\UnitStat.pas \
+	Project\LocalPlayer\Wonders.dfm \
+	Project\LocalPlayer\Wonders.pas
+
+src_game_icon = \
+	Project\cevo.rc \
+	Project\cevoxp2.ico
+
+src_game_res = \
+	Project\Res1.rc \
+	Project\drag.cur \
+	Project\flathand.cur
 
 
 # ----- Dependent variables
