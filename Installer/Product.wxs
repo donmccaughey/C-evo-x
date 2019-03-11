@@ -37,7 +37,7 @@
         <!-- Directories -->
         <Directory Id='TARGETDIR' Name='SourceDir' DiskId='1'>
 
-            <Directory Id='ProgramFilesFolder' Name='Program Files'>
+            <Directory Id='ProgramFilesFolder'>
                 <Directory Id='INSTALLDIR' Name='C-evo-x'>
                     <Directory Id='Dir_AI_Template' Name='AI_Template'>
                         <Directory Id='Dir_CevoDotNet' Name='CevoDotNet'>
@@ -60,8 +60,8 @@
                 </Directory>
             </Directory>
 
-            <Directory Id='ProgramMenuFolder' Name='ProgramMenuFolder'>
-                <Directory Id='ProgramMenuDir' Name='C-evo-x' />
+            <Directory Id='ProgramMenuFolder'>
+                <Directory Id='Dir_C_evo_x' Name='C-evo-x' />
             </Directory>
 
         </Directory>
@@ -76,7 +76,7 @@
                     KeyPath='yes'
                     Checksum='yes' />
                 <Shortcut Id='StartMenu_CevoWin32.exe'
-                    Directory='ProgramMenuDir'
+                    Directory='Dir_C_evo_x'
                     Name='C-evo-x'
                     WorkingDirectory='INSTALLDIR'
                     Icon='CevoWin32.exe'
@@ -684,12 +684,12 @@
          </DirectoryRef>
 
         <!-- Start Menu -->
-        <DirectoryRef Id='ProgramMenuDir'>
-            <Component Id='ProgramMenuDir'
+        <DirectoryRef Id='Dir_C_evo_x'>
+            <Component Id='Dir_C_evo_x'
                      Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
-                <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+                <RemoveFolder Id='Dir_C_evo_x' On='uninstall' />
                 <RegistryValue Root='HKCU'
-                    Key='Software\C-evo-x'
+                    Key='Software\C-evo-x\Installed\Start Menu Group'
                     Type='string'
                     Value=''
                     KeyPath='yes' />
@@ -850,7 +850,7 @@
             <ComponentRef Id='Comp_Tribes_Vikings.tribe.txt' />
 
             <!-- Start Menu -->
-            <ComponentRef Id='ProgramMenuDir' />
+            <ComponentRef Id='Dir_C_evo_x' />
 
         </Feature>
     </Product>
