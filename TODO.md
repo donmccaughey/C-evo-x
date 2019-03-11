@@ -10,8 +10,6 @@
  - Installer: add publisher name for program entry in Settings | Apps &
    features
 
- - Installer: relocate installer registry key "HKCU/Software/Don McCaughey/C-evo-x 1.2.1"
-
  - New program icon with modern resolutions
  
  - Audit case of filenames, unit names and other file inclusions.

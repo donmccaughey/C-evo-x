@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+    <?define Version = "1.2.1" ?>
     <Product
-        Name='C-evo-x 1.2.1'
+        Name='C-evo-x $(var.Version)'
         Manufacturer='Don McCaughey'
         Id='E0F2FD43-1B26-46FA-B0DA-93FF2CFFB7C1' 
         UpgradeCode='D1E02258-0353-478A-9B73-4EF7F006B675'
         Language='1033'
         Codepage='1252'
-        Version='1.2.1'>
+        Version='$(var.Version)'>
 
         <Package Id='*'
             Keywords='Installer'
-            Description='C-evo-x 1.2.1 Installer'
+            Description='C-evo-x $(var.Version) Installer'
             Manufacturer='Don McCaughey'
             InstallerVersion='100'
             Languages='1033'
@@ -24,7 +25,7 @@
             EmbedCab='yes'
             DiskPrompt='Disk 1'
             />
-        <Property Id='DiskPrompt' Value='C-evo-x 1.2.1 Installer' />
+        <Property Id='DiskPrompt' Value='C-evo-x $(var.Version) Installer' />
 
         <Icon Id='CevoWin32.exe' SourceFile='tmp/release/CevoWin32.exe' />
 
@@ -688,7 +689,7 @@
                      Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
                 <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
                 <RegistryValue Root='HKCU'
-                    Key='Software\[Manufacturer]\[ProductName]'
+                    Key='Software\C-evo-x'
                     Type='string'
                     Value=''
                     KeyPath='yes' />
