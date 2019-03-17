@@ -25,7 +25,8 @@
             EmbedCab='yes'
             DiskPrompt='Disk 1'
             />
-        <Property Id='DiskPrompt' Value='C-evo-x $(var.Version) Installer' />
+        <Property Id='DiskPrompt' 
+                Value='C-evo-x $(var.Version) Installer' />
 
         <Icon Id='CevoWin32.exe' SourceFile='tmp/release/CevoWin32.exe' />
 
@@ -61,7 +62,7 @@
             </Directory>
 
             <Directory Id='ProgramMenuFolder'>
-                <Directory Id='Dir_C_evo_x' Name='C-evo-x' />
+                <Directory Id='Dir_StartMenuFolder' Name='C-evo-x' />
             </Directory>
 
             <Directory Id='DesktopFolder' />
@@ -78,7 +79,7 @@
                     KeyPath='yes'
                     Checksum='yes' />
                 <Shortcut Id='StartMenu_CevoWin32.exe'
-                    Directory='Dir_C_evo_x'
+                    Directory='Dir_StartMenuFolder'
                     Name='C-evo-x'
                     WorkingDirectory='INSTALLDIR'
                     Icon='CevoWin32.exe'
@@ -693,10 +694,10 @@
          </DirectoryRef>
 
         <!-- Start Menu -->
-        <DirectoryRef Id='Dir_C_evo_x'>
-            <Component Id='Dir_C_evo_x'
+        <DirectoryRef Id='Dir_StartMenuFolder'>
+            <Component Id='Comp_StartMenuFolder'
                      Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
-                <RemoveFolder Id='Dir_C_evo_x' On='uninstall' />
+                <RemoveFolder Id='Dir_StartMenuFolder' On='uninstall' />
                 <RegistryValue Root='HKCU'
                     Key='Software\C-evo-x\Installed\Start Menu Group'
                     Type='string'
@@ -859,7 +860,7 @@
             <ComponentRef Id='Comp_Tribes_Vikings.tribe.txt' />
 
             <!-- Start Menu -->
-            <ComponentRef Id='Dir_C_evo_x' />
+            <ComponentRef Id='Comp_StartMenuFolder' />
 
         </Feature>
     </Product>
