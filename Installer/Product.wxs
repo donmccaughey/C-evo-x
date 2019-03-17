@@ -1,30 +1,29 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
     <?define Version = "1.2.1" ?>
-    <Product
-        Name='C-evo-x $(var.Version)'
-        Manufacturer='Don McCaughey'
-        Id='E0F2FD43-1B26-46FA-B0DA-93FF2CFFB7C1' 
-        UpgradeCode='D1E02258-0353-478A-9B73-4EF7F006B675'
-        Language='1033'
-        Codepage='1252'
-        Version='$(var.Version)'>
+
+    <Product Name='C-evo-x $(var.Version)'
+            Manufacturer='Don McCaughey'
+            Id='E0F2FD43-1B26-46FA-B0DA-93FF2CFFB7C1' 
+            UpgradeCode='D1E02258-0353-478A-9B73-4EF7F006B675'
+            Language='1033'
+            Codepage='1252'
+            Version='$(var.Version)'>
 
         <Package Id='*'
-            Keywords='Installer'
-            Description='C-evo-x $(var.Version) Installer'
-            Manufacturer='Don McCaughey'
-            InstallerVersion='100'
-            Languages='1033'
-            Compressed='yes'
-            SummaryCodepage='1252'
-            />
+                Keywords='Installer'
+                Description='C-evo-x $(var.Version) Installer'
+                Manufacturer='Don McCaughey'
+                InstallerVersion='100'
+                Languages='1033'
+                Compressed='yes'
+                SummaryCodepage='1252' />
 
         <Media Id='1'
-            Cabinet='Installer.cab'
-            EmbedCab='yes'
-            DiskPrompt='Disk 1'
-            />
+                Cabinet='Installer.cab'
+                EmbedCab='yes'
+                DiskPrompt='Disk 1' />
         <Property Id='DiskPrompt' 
                 Value='C-evo-x $(var.Version) Installer' />
 
@@ -43,12 +42,12 @@
                     <Directory Id='Dir_AI_Template' Name='AI_Template'>
                         <Directory Id='Dir_CevoDotNet' Name='CevoDotNet'>
                             <Directory Id='Dir_Properties_1' 
-                                Name='Properties' />
+                                    Name='Properties' />
                         </Directory>
                         <Directory Id='Dir_Project' Name='Project'>
                             <Directory Id='Dir_Lib' Name='Lib' />
                             <Directory Id='Dir_Properties_2' 
-                                Name='Properties' />
+                                    Name='Properties' />
                         </Directory>
                     </Directory>
                     <Directory Id='Dir_AppData' Name='AppData'>
@@ -75,41 +74,41 @@
             <Component Id='Comp_CevoWin32.exe'
                     Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
                 <File Name='CevoWin32.exe'
-                    Source='tmp\release\CevoWin32.exe'
-                    KeyPath='yes'
-                    Checksum='yes' />
+                        Source='tmp\release\CevoWin32.exe'
+                        KeyPath='yes'
+                        Checksum='yes' />
                 <Shortcut Id='StartMenu_CevoWin32.exe'
-                    Directory='Dir_StartMenuFolder'
-                    Name='C-evo-x'
-                    WorkingDirectory='INSTALLDIR'
-                    Icon='CevoWin32.exe'
-                    IconIndex='0'
-                    Advertise='yes' />
+                        Directory='Dir_StartMenuFolder'
+                        Name='C-evo-x'
+                        WorkingDirectory='INSTALLDIR'
+                        Icon='CevoWin32.exe'
+                        IconIndex='0'
+                        Advertise='yes' />
                 <Shortcut Id='Desktop_CevoWin32.exe'
-                    Directory='DesktopFolder'
-                    Name='C-evo-x'
-                    WorkingDirectory='INSTALLDIR'
-                    Icon='CevoWin32.exe'
-                    IconIndex='0'
-                    Advertise='yes' />
+                        Directory='DesktopFolder'
+                        Name='C-evo-x'
+                        WorkingDirectory='INSTALLDIR'
+                        Icon='CevoWin32.exe'
+                        IconIndex='0'
+                        Advertise='yes' />
             </Component>
             <Component Id='Comp_cevo.dll'
                     Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
                 <File Name='cevo.dll'
-                    Source='tmp\release\cevo.dll'
-                    KeyPath='yes' />
+                        Source='tmp\release\cevo.dll'
+                        KeyPath='yes' />
             </Component>
             <Component Id='Comp_CevoDotNet.exe'
                     Guid='E78FC4A2-55D4-419D-848B-9EE08D41C300'>
                  <File Name='CevoDotNet.exe' 
-                     Source='tmp\release\CevoDotNet.exe'
-                     KeyPath='yes' />
+                         Source='tmp\release\CevoDotNet.exe'
+                         KeyPath='yes' />
             </Component>
             <Component Id='Comp_Configurator.exe'
                     Guid='C0C18A09-69C3-4B48-B151-ADE8465A9078'>
                  <File Name='Configurator.exe' 
-                     Source='tmp\release\Configurator.exe'
-                     KeyPath='yes' />
+                         Source='tmp\release\Configurator.exe'
+                         KeyPath='yes' />
             </Component>
             <Component Id='Comp_fonts.txt'
                     Guid='EBE83E1A-A0A4-4AF2-8817-2CD458A728AB'>
@@ -134,8 +133,8 @@
             <Component Id='Comp_StdAI.dll'
                     Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
                  <File Name='StdAI.dll' 
-                     Source='tmp\release\StdAI.dll'
-                     KeyPath='yes' />
+                         Source='tmp\release\StdAI.dll'
+                         KeyPath='yes' />
             </Component>
         </DirectoryRef>
 
@@ -156,7 +155,7 @@
         </DirectoryRef>
 
         <DirectoryRef Id='Dir_CevoDotNet' 
-              FileSource='tmp\AI_Template\CevoDotNet'>
+                FileSource='tmp\AI_Template\CevoDotNet'>
             <Component Id='Comp_AI_Template_AIPlugin.cs'
                     Guid='0393E2AB-4C99-4972-A681-D71215005E54'>
                 <File Name='AIPlugin.cs' KeyPath='yes' />
@@ -180,10 +179,10 @@
         </DirectoryRef>
 
         <DirectoryRef Id='Dir_Properties_1' 
-              FileSource='tmp\AI_Template\CevoDotNet\Properties'>
+                FileSource='tmp\AI_Template\CevoDotNet\Properties'>
             <Component Id='Comp_AI_Template_AssemblyInfo.cs_1'
                     Guid='94EE3F98-BCA0-49BA-867B-403894F2226C'>
-                     <File Id='AssemblyInfo.cs_1' 
+                 <File Id='AssemblyInfo.cs_1' 
                          Name='AssemblyInfo.cs' 
                          KeyPath='yes' />
             </Component>
@@ -292,12 +291,12 @@
         </DirectoryRef>
 
         <DirectoryRef Id='Dir_Properties_2' 
-              FileSource='tmp\AI_Template\Project\Properties'>
+                FileSource='tmp\AI_Template\Project\Properties'>
             <Component Id='Comp_AI_Template_AssemblyInfo.cs_2'
                     Guid='3EC47CE4-0509-4616-A28E-CBBAA0ED4B14'>
                  <File Id='AssemblyInfo.cs_2' 
-                     Name='AssemblyInfo.cs' 
-                     KeyPath='yes' />
+                         Name='AssemblyInfo.cs' 
+                         KeyPath='yes' />
             </Component>
         </DirectoryRef>
 
@@ -699,10 +698,10 @@
                     Guid='79DEAA7F-FE5C-4310-81AD-2A3C1CF76F90'>
                 <RemoveFolder Id='Dir_StartMenuFolder' On='uninstall' />
                 <RegistryValue Root='HKCU'
-                    Key='Software\C-evo-x\Installed\Start Menu Group'
-                    Type='string'
-                    Value=''
-                    KeyPath='yes' />
+                        Key='Software\C-evo-x\Installed\Start Menu Group'
+                        Type='string'
+                        Value=''
+                        KeyPath='yes' />
             </Component>
         </DirectoryRef>
 
