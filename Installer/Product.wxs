@@ -33,6 +33,8 @@
         <UIRef Id='UI' />
         <UIRef Id='WixUI_ErrorProgressText' />
 
+        <Property Id='INSTALL_DESKTOP_SHORTCUT' Value='0' />
+
 
         <!-- Directories -->
         <Directory Id='TARGETDIR' Name='SourceDir' DiskId='1'>
@@ -76,21 +78,15 @@
                 <File Name='CevoWin32.exe'
                         Source='tmp\release\CevoWin32.exe'
                         KeyPath='yes'
-                        Checksum='yes' />
-                <Shortcut Id='StartMenu_CevoWin32.exe'
-                        Directory='Dir_StartMenuFolder'
-                        Name='C-evo-x'
-                        WorkingDirectory='INSTALLDIR'
-                        Icon='CevoWin32.exe'
-                        IconIndex='0'
-                        Advertise='yes' />
-                <Shortcut Id='Desktop_CevoWin32.exe'
-                        Directory='DesktopFolder'
-                        Name='C-evo-x'
-                        WorkingDirectory='INSTALLDIR'
-                        Icon='CevoWin32.exe'
-                        IconIndex='0'
-                        Advertise='yes' />
+                        Checksum='yes'>
+                    <Shortcut Id='Shortcut_StartMenu_CevoWin32.exe'
+                            Directory='Dir_StartMenuFolder'
+                            Name='C-evo-x'
+                            WorkingDirectory='INSTALLDIR'
+                            Icon='CevoWin32.exe'
+                            IconIndex='0'
+                            Advertise='yes' />
+                </File>
             </Component>
             <Component Id='Comp_cevo.dll'
                     Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
@@ -705,6 +701,25 @@
             </Component>
         </DirectoryRef>
 
+        <!-- Desktop -->
+        <DirectoryRef Id='DesktopFolder'>
+            <Component Id='Comp_Desktop_Shortcut'
+                    Guid='374312E8-3BE0-43C8-A033-54BFDB6FC6F1'>
+                <Condition>INSTALL_DESKTOP_SHORTCUT="1"</Condition>
+                <Shortcut Id='Shortcut_Desktop_CevoWin32.exe'
+                        Name='C-evo-x'
+                        Target='[!CevoWin32.exe]'
+                        WorkingDirectory='INSTALLDIR'
+                        Icon='CevoWin32.exe'
+                        IconIndex='0' />
+                <RegistryValue Root='HKCU'
+                        Key='Software\C-evo-x\Installed\Desktop Shortcut'
+                        Type='string'
+                        Value=''
+                        KeyPath='yes' />
+            </Component>
+        </DirectoryRef>
+
 
         <!-- Features -->
         <Feature Id='Feature_Complete' Level='1'>
@@ -860,6 +875,9 @@
 
             <!-- Start Menu -->
             <ComponentRef Id='Comp_StartMenuFolder' />
+
+            <!-- Desktop -->
+            <ComponentRef Id='Comp_Desktop_Shortcut' />
 
         </Feature>
     </Product>
