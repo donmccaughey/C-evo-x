@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
+<!-- 
+    Copyright (c) .NET Foundation and contributors. All rights reserved. 
+    Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file 
+    in the project root for full license information.
+    
 
-<!--
     Installer\UI.wxs
 
     This is a customized version of wixui\WixUI_InstallDir.wxs.
 
     First-time install dialog sequence:
      - WixUI_WelcomeDlg
-     - WixUI_InstallDirDlg
+     - CustomInstallDirDlg
      - WixUI_VerifyReadyDlg
      - WixUI_DiskCostDlg
 
     Maintenance dialog sequence:
      - WixUI_MaintenanceWelcomeDlg
      - WixUI_MaintenanceTypeDlg
-     - WixUI_InstallDirDlg
+     - CustomInstallDirDlg
      - WixUI_VerifyReadyDlg
 
     Patch dialog sequence:
@@ -107,7 +110,7 @@
             <Publish Dialog="WelcomeDlg" 
                     Control="Next" 
                     Event="NewDialog" 
-                    Value="InstallDirDlg">
+                    Value="CustomInstallDirDlg">
                 NOT Installed
             </Publish>
             <Publish Dialog="WelcomeDlg" 
@@ -120,27 +123,27 @@
 
             <!-- Install directory dialog -->
 
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="Back" 
                     Event="NewDialog" 
                     Value="WelcomeDlg">
                 1
             </Publish>
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="Next" 
                     Event="SetTargetPath" 
                     Value="[WIXUI_INSTALLDIR]" 
                     Order="1">
                 1
             </Publish>
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="Next" 
                     Event="DoAction" 
                     Value="WixUIValidatePath" 
                     Order="2">
                 NOT WIXUI_DONTVALIDATEPATH
             </Publish>
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="Next" 
                     Event="SpawnDialog" 
                     Value="InvalidDirDlg" 
@@ -150,7 +153,7 @@
                     AND WIXUI_INSTALLDIR_VALID<>"1"
                 ]]>
             </Publish>
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="Next" 
                     Event="NewDialog" 
                     Value="VerifyReadyDlg" 
@@ -158,14 +161,14 @@
                 WIXUI_DONTVALIDATEPATH 
                 OR WIXUI_INSTALLDIR_VALID="1"
             </Publish>
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="ChangeFolder" 
                     Property="_BrowseProperty" 
                     Value="[WIXUI_INSTALLDIR]" 
                     Order="1">
                 1
             </Publish>
-            <Publish Dialog="InstallDirDlg" 
+            <Publish Dialog="CustomInstallDirDlg" 
                     Control="ChangeFolder" 
                     Event="SpawnDialog" 
                     Value="BrowseDlg" 
@@ -179,7 +182,7 @@
             <Publish Dialog="VerifyReadyDlg" 
                     Control="Back" 
                     Event="NewDialog" 
-                    Value="InstallDirDlg" 
+                    Value="CustomInstallDirDlg" 
                     Order="1">
                 NOT Installed
             </Publish>
@@ -231,6 +234,116 @@
             </Publish>
 
             <Property Id="ARPNOMODIFY" Value="1" />
+
+            <!--
+                This is a customized version of 
+                src\ext\UIExtension\wixlib\InstallDirDlg.wxs 
+                from the WiX 3.11.1 source.
+            -->
+            <Dialog Id="CustomInstallDirDlg" 
+                    Width="370" 
+                    Height="270" 
+                    Title="!(loc.InstallDirDlg_Title)">
+                <Control Id="Next" 
+                        Type="PushButton" 
+                        X="236" 
+                        Y="243" 
+                        Width="56" 
+                        Height="17" 
+                        Default="yes" 
+                        Text="!(loc.WixUINext)" />
+                <Control Id="Back" 
+                        Type="PushButton" 
+                        X="180" 
+                        Y="243" 
+                        Width="56" 
+                        Height="17" 
+                        Text="!(loc.WixUIBack)" />
+                <Control Id="Cancel" 
+                        Type="PushButton" 
+                        X="304" 
+                        Y="243" 
+                        Width="56" 
+                        Height="17" 
+                        Cancel="yes" 
+                        Text="!(loc.WixUICancel)">
+                    <Publish Event="SpawnDialog" Value="CancelDlg">
+                        1
+                    </Publish>
+                </Control>
+
+                <Control Id="Description" 
+                        Type="Text" 
+                        X="25" 
+                        Y="23" 
+                        Width="280" 
+                        Height="15" 
+                        Transparent="yes" 
+                        NoPrefix="yes" 
+                        Text="!(loc.InstallDirDlgDescription)" />
+                <Control Id="Title" 
+                        Type="Text" 
+                        X="15" 
+                        Y="6" 
+                        Width="200" 
+                        Height="15" 
+                        Transparent="yes" 
+                        NoPrefix="yes" 
+                        Text="!(loc.InstallDirDlgTitle)" />
+                <Control Id="BannerBitmap" 
+                        Type="Bitmap" 
+                        X="0" 
+                        Y="0" 
+                        Width="370" 
+                        Height="44" 
+                        TabSkip="no" 
+                        Text="!(loc.InstallDirDlgBannerBitmap)" />
+                <Control Id="BannerLine" 
+                        Type="Line" 
+                        X="0" 
+                        Y="44" 
+                        Width="370" 
+                        Height="0" />
+                <Control Id="BottomLine" 
+                        Type="Line" 
+                        X="0" 
+                        Y="234" 
+                        Width="370" 
+                        Height="0" />
+
+                <Control Id="FolderLabel" 
+                        Type="Text" 
+                        X="20" 
+                        Y="60" 
+                        Width="290" 
+                        Height="30" 
+                        NoPrefix="yes" 
+                        Text="!(loc.InstallDirDlgFolderLabel)" />
+                <Control Id="Folder" 
+                        Type="PathEdit" 
+                        X="20" 
+                        Y="100" 
+                        Width="320" 
+                        Height="18" 
+                        Property="WIXUI_INSTALLDIR" 
+                        Indirect="yes" />
+                <Control Id="ChangeFolder" 
+                        Type="PushButton" 
+                        X="20" 
+                        Y="120" 
+                        Width="56" 
+                        Height="17" 
+                        Text="!(loc.InstallDirDlgChange)" />
+                <Control Id="DesktopShortcutCheckbox"
+                        Type="CheckBox"
+                        X="20"
+                        Y="160"
+                        Width="290"
+                        Height="17"
+                        Property="INSTALL_DESKTOP_SHORTCUT"
+                        CheckBoxValue="1"
+                        Text="Create a shortcut on the desktop." />
+            </Dialog>
         </UI>
 
         <UIRef Id="WixUI_Common" />

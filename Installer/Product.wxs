@@ -33,7 +33,7 @@
         <UIRef Id='UI' />
         <UIRef Id='WixUI_ErrorProgressText' />
 
-        <Property Id='INSTALL_DESKTOP_SHORTCUT' Value='0' />
+        <Property Id='INSTALL_DESKTOP_SHORTCUT' Value='1' />
 
 
         <!-- Directories -->
