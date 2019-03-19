@@ -4,9 +4,6 @@
     Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file 
     in the project root for full license information.
     
-
-    Installer\UI.wxs
-
     This is a customized version of wixui\WixUI_InstallDir.wxs.
 
     First-time install dialog sequence:
@@ -33,10 +30,6 @@
                 ExeCommand=""
                 Impersonate="yes"
                 Return="asyncNoWait" />
-        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX"
-                Value="1" />
-        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
-                Value="Launch C-evo-x" />
 
         <UI Id="UI">
             <TextStyle Id="WixUI_Font_Normal" 
@@ -88,20 +81,19 @@
             
             <!-- Exit dialog -->
 
-            <Publish Dialog="ExitDialog" 
+            <Publish Dialog="CustomExitDialog" 
                     Control="Finish" 
                     Event="EndDialog" 
                     Value="Return" 
                     Order="999">
                 1
             </Publish>
-            <Publish Dialog="ExitDialog"
+            <Publish Dialog="CustomExitDialog"
                     Control="Finish"
                     Event="DoAction"
                     Value="LaunchApp"
                     Order="1">
-                WIXUI_EXITDIALOGOPTIONALCHECKBOX="1"
-                AND NOT Installed
+                LAUNCH_APP="1" AND NOT Installed
             </Publish>
 
 
@@ -344,6 +336,98 @@
                         CheckBoxValue="1"
                         Text="Create a shortcut on the desktop." />
             </Dialog>
+
+            <!--
+                This is a customized version of 
+                src\ext\UIExtension\wixlib\ExitDialog.wxs 
+                from the WiX 3.11.1 source.
+            -->
+            <Dialog Id="CustomExitDialog" 
+                    Width="370" 
+                    Height="270" 
+                    Title="!(loc.ExitDialog_Title)">
+                <Control Id="Finish" 
+                        Type="PushButton" 
+                        X="236" 
+                        Y="243" 
+                        Width="56" 
+                        Height="17" 
+                        Default="yes" 
+                        Cancel="yes" 
+                        Text="!(loc.WixUIFinish)" />
+                <Control Id="Cancel" 
+                        Type="PushButton" 
+                        X="304" 
+                        Y="243" 
+                        Width="56" 
+                        Height="17" 
+                        Disabled="yes" 
+                        Text="!(loc.WixUICancel)" />
+                <Control Id="Bitmap" 
+                        Type="Bitmap" 
+                        X="0" 
+                        Y="0" 
+                        Width="370" 
+                        Height="234" 
+                        TabSkip="no" 
+                        Text="!(loc.ExitDialogBitmap)" />
+                <Control Id="Back" 
+                        Type="PushButton" 
+                        X="180" 
+                        Y="243" 
+                        Width="56" 
+                        Height="17" 
+                        Disabled="yes" 
+                        Text="!(loc.WixUIBack)" />
+                <Control Id="BottomLine" 
+                        Type="Line" 
+                        X="0" 
+                        Y="234" 
+                        Width="370" 
+                        Height="0" />
+                <Control Id="Description" 
+                        Type="Text" 
+                        X="135" 
+                        Y="70" 
+                        Width="220" 
+                        Height="40" 
+                        Transparent="yes" 
+                        NoPrefix="yes" 
+                        Text="!(loc.ExitDialogDescription)" />
+                <Control Id="Title" 
+                        Type="Text" 
+                        X="135" 
+                        Y="20" 
+                        Width="220" 
+                        Height="60" 
+                        Transparent="yes" 
+                        NoPrefix="yes" 
+                        Text="!(loc.ExitDialogTitle)" />
+                <Control Id="LaunchCheckBox"
+                        Type="CheckBox"
+                        X="10"
+                        Y="243"
+                        Width="170"
+                        Height="17"
+                        Property="LAUNCH_APP"
+                        Hidden="yes"
+                        CheckBoxValue="1"
+                        Text="Launch C-evo-x">
+                    <Condition Action="show">NOT Installed</Condition>
+                </Control>
+            </Dialog>
+
+            <InstallUISequence>
+                <Show Dialog="CustomExitDialog" 
+                        OnExit="success" 
+                        Overridable="yes" />
+            </InstallUISequence>
+
+            <AdminUISequence>
+                <Show Dialog="CustomExitDialog" 
+                        OnExit="success" 
+                        Overridable="yes" />
+            </AdminUISequence>
         </UI>
 
         <UIRef Id="WixUI_Common" />
