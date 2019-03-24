@@ -1,9 +1,5 @@
 # TODO
 
- - Installer: add view for "Select Additional Tasks", "Create a desktop icon"
-
- - Installer: add "Launch C-evo-x" to "Completing" view
-
  - Installer: add icon for program entry in Control Panel | Uninstall a program
    and Settings | Apps & features
 
