@@ -30,6 +30,15 @@
         <Icon Id='CevoWin32.exe' SourceFile='tmp\release\CevoWin32.exe' />
         <Property Id='ARPPRODUCTICON' Value='CevoWin32.exe' />
 
+        <Property Id='ARPCOMMENTS' 
+                Value='A freeware empire building game.' />
+        <Property Id='ARPURLINFOABOUT' 
+                Value='https://github.com/donmccaughey/C-evo-x' />
+        <Property Id='ARPHELPLINK' 
+                Value='https://github.com/donmccaughey/C-evo-x/issues' />
+        <Property Id='ARPURLUPDATEINFO'
+                Value='https://github.com/donmccaughey/C-evo-x/releases' />
+
         <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
         <UIRef Id='UI' />
         <UIRef Id='WixUI_ErrorProgressText' />
