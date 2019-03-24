@@ -27,7 +27,8 @@
         <Property Id='DiskPrompt' 
                 Value='C-evo-x $(var.Version) Installer' />
 
-        <Icon Id='CevoWin32.exe' SourceFile='tmp/release/CevoWin32.exe' />
+        <Icon Id='CevoWin32.exe' SourceFile='tmp\release\CevoWin32.exe' />
+        <Property Id='ARPPRODUCTICON' Value='CevoWin32.exe' />
 
         <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
         <UIRef Id='UI' />

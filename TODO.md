@@ -1,8 +1,5 @@
 # TODO
 
- - Installer: add icon for program entry in Control Panel | Uninstall a program
-   and Settings | Apps & features
-
  - Installer: add publisher name for program entry in Settings | Apps &
    features
 
