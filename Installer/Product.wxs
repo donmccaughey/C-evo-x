@@ -32,8 +32,7 @@
 
         <Property Id='ARPCOMMENTS' 
                 Value='A freeware empire building game.' />
-        <Property Id='ARPURLINFOABOUT' 
-                Value='https://github.com/donmccaughey/C-evo-x' />
+        <Property Id='ARPURLINFOABOUT' Value='http://c-evo-x.org' />
         <Property Id='ARPHELPLINK' 
                 Value='https://github.com/donmccaughey/C-evo-x/issues' />
         <Property Id='ARPURLUPDATEINFO'
