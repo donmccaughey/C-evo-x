@@ -20,13 +20,18 @@ The following software is required to build C-evo-x.
  - Visual C# and Visual C++ from Microsoft [Visual Studio 2010 Express][22].
  - [WiX Toolset 3.11.1][23].
 
-[YMMV][24] on other versions.  The build is tested on Windows 10 Pro (64-bit)
+The following software is optional.
+
+ - [ImageMagick 7.0.8-37][24].
+
+[YMMV][25] on other versions.  The build is tested on Windows 10 Pro (64-bit)
 version 1809.
 
 [21]: https://winworldpc.com/product/delphi/4x
 [22]: https://visualstudio.microsoft.com/vs/older-downloads/
 [23]: http://wixtoolset.org
-[24]: https://www.urbandictionary.com/define.php?term=ymmv
+[24]: https://www.imagemagick.org/
+[25]: https://www.urbandictionary.com/define.php?term=ymmv
 
 
 ## Components
@@ -110,6 +115,12 @@ If the build fails with a message like:
 
 close the Delphi IDE and run the `make` command again.
 
+### Asset Build Steps
+
+Some of the game assets are generated from the original artwork.  Since these
+build steps require additional tools and the outputs don't change often, the
+generated assets are checked in to the repository, making these build steps
+optional.  The `assets` and `clean-assets` make targets control the asset build.
 
 ### Installing and Running the Game
 

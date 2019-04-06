@@ -10,6 +10,7 @@ out_ai_template = \
 	tmp\AI_Template\CevoDotNet\AIPlugin.cs \
 	tmp\AI_Template\CevoDotNet\CevoDotNet.csproj \
 	tmp\AI_Template\CevoDotNet\cevoxp2.ico \
+	tmp\AI_Template\CevoDotNet\c-evo-x.ico \
 	tmp\AI_Template\CevoDotNet\Program.cs \
 	tmp\AI_Template\CevoDotNet\Protocol.cs \
 	tmp\AI_Template\CevoDotNet\Properties\AssemblyInfo.cs \
@@ -165,6 +166,7 @@ src_cevodotnet = \
 	\
 	AI_Template\CevoDotNet\AIPlugin.cs \
 	AI_Template\CevoDotNet\cevoxp2.ico \
+	AI_Template\CevoDotNet\c-evo-x.ico \
 	AI_Template\CevoDotNet\Program.cs \
 	AI_Template\CevoDotNet\Protocol.cs \
 	\
@@ -180,6 +182,7 @@ src_configurator = \
 	Configurator\AddOnSelector.Designer.cs \
 	Configurator\AddOnSelector.resx \
 	Configurator\cevoxp2.ico \
+	Configurator\c-evo-x.ico \
 	Configurator\Configurator.csproj \
 	Configurator\Configurator.sln \
 	Configurator\DisplaySettings.cs \
@@ -281,7 +284,7 @@ src_game = \
 
 src_game_icon = \
 	Project\cevo.rc \
-	Project\cevoxp2.ico
+	Project\c-evo-x.ico
 
 src_game_res = \
 	Project\Res1.rc \
@@ -348,8 +351,11 @@ help :
 	@echo:
 	@echo all :: Build all components (default)
 	@echo clean :: Remove all build output
+	@echo:
 	@echo game :: Build game DLL, Win32 loader and copy resource files
 	@echo installer :: Build the MSI installer
+	@echo assets :: Generate assets
+	@echo clean-assets :: Remove generated assets
 
 
 clean :
@@ -372,6 +378,60 @@ game : \
 
 
 installer : tmp\C-evo-x.msi
+
+
+assets : \
+	AI_Template\CevoDotNet\c-evo-x.ico \
+	Configurator\c-evo-x.ico \
+	Project\c-evo-x.ico \
+	docs\assets\favicon.ico
+
+
+clean-assets : 
+	-del AI_Template\CevoDotNet\c-evo-x.ico
+	-del Configurator\c-evo-x.ico
+	-del Project\c-evo-x.ico
+	-del assets\icons\c-evo-x\c-evo-x.ico
+	-del docs\assets\favicon.ico
+	-del assets\icons\c-evo-x\favicon.ico
+
+
+# ----- Assets
+
+AI_Template\CevoDotNet\c-evo-x.ico : assets\icons\c-evo-x\c-evo-x.ico
+	copy assets\icons\c-evo-x\c-evo-x.ico AI_Template\CevoDotNet\c-evo-x.ico
+
+Configurator\c-evo-x.ico : assets\icons\c-evo-x\c-evo-x.ico
+	copy assets\icons\c-evo-x\c-evo-x.ico Configurator\c-evo-x.ico
+
+Project\c-evo-x.ico : assets\icons\c-evo-x\c-evo-x.ico
+	copy assets\icons\c-evo-x\c-evo-x.ico Project\c-evo-x.ico
+
+
+assets\icons\c-evo-x\c-evo-x.ico : \
+		assets\icons\c-evo-x\c-evo-x-16x16.ico \
+		assets\icons\c-evo-x\c-evo-x-32x32.ico
+	cd assets\icons\c-evo-x
+	convert \
+		c-evo-x-16x16.ico \
+		c-evo-x-32x32.ico \
+		c-evo-x.ico
+	cd ..\..\..
+
+
+docs\assets\favicon.ico : assets\icons\c-evo-x\favicon.ico
+	copy assets\icons\c-evo-x\favicon.ico docs\assets\favicon.ico
+
+
+assets\icons\c-evo-x\favicon.ico : \
+		assets\icons\c-evo-x\c-evo-x-16x16.ico \
+		assets\icons\c-evo-x\c-evo-x-32x32.ico
+	cd assets\icons\c-evo-x
+	convert \
+		c-evo-x-16x16.ico \
+		c-evo-x-32x32.ico \
+		favicon.ico
+	cd ..\..\..
 
 
 # ----- Components library
@@ -1081,6 +1141,10 @@ tmp\AI_Template\CevoDotNet\CevoDotNet.csproj : AI_Template\CevoDotNet\CevoDotNet
 tmp\AI_Template\CevoDotNet\cevoxp2.ico : AI_Template\CevoDotNet\cevoxp2.ico
 	-mkdir tmp\AI_Template\CevoDotNet
 	copy AI_Template\CevoDotNet\cevoxp2.ico tmp\AI_Template\CevoDotNet\cevoxp2.ico
+
+tmp\AI_Template\CevoDotNet\c-evo-x.ico : AI_Template\CevoDotNet\c-evo-x.ico
+	-mkdir tmp\AI_Template\CevoDotNet
+	copy AI_Template\CevoDotNet\c-evo-x.ico tmp\AI_Template\CevoDotNet\c-evo-x.ico
 
 tmp\AI_Template\CevoDotNet\Program.cs : AI_Template\CevoDotNet\Program.cs
 	-mkdir tmp\AI_Template\CevoDotNet

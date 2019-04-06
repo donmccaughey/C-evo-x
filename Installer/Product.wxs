@@ -174,6 +174,10 @@
                     Guid='BD059679-F954-4A51-A489-4A3AFDE49A12'>
                 <File Name='cevoxp2.ico' KeyPath='yes' />
             </Component>
+            <Component Id='Comp_AI_Template_c_evo_x.ico'
+                    Guid='80F6F23A-3323-4970-A488-712DEE63E3BE'>
+                <File Name='c-evo-x.ico' KeyPath='yes' />
+            </Component>
             <Component Id='Comp_AI_Template_Program.cs'
                     Guid='BBF51EB9-F846-4DCB-AB6C-7284946A29CE'>
                 <File Name='Program.cs' KeyPath='yes' />
@@ -751,6 +755,7 @@
             <ComponentRef Id='Comp_AI_Template_AIPlugin.cs' />
             <ComponentRef Id='Comp_AI_Template_CevoDotNet.csproj' />
             <ComponentRef Id='Comp_AI_Template_cevoxp2.ico' />
+            <ComponentRef Id='Comp_AI_Template_c_evo_x.ico' />
             <ComponentRef Id='Comp_AI_Template_Program.cs' />
             <ComponentRef Id='Comp_AI_Template_Protocol.cs_1' />
             <ComponentRef Id='Comp_AI_Template_AssemblyInfo.cs_1' />

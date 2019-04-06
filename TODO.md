@@ -4,6 +4,8 @@
    features
 
  - New program icon with modern resolutions
+
+ - On start form, replace C-evo icon in upper left hand with C-evo-x icon
  
  - Audit case of filenames, unit names and other file inclusions.
 
@@ -24,4 +26,10 @@
  - Relocate C# `obj\` directories out of source tree, into `tmp\`.
 
  - Audit use of $IFDEF in the Delphi source code.
+
+ - Include 48x48 and 256x256 resolution images in C-evo-x icon (Currently
+   unsupported by the Delphi 4 resource compiler).
+
+ - Make 8-bit and 4-bit color images for the C-evo-x icon in 16x16, 32x32 and
+   48x48 resolution.
 
