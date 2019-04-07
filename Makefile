@@ -384,7 +384,7 @@ assets : \
 	AI_Template\CevoDotNet\c-evo-x.ico \
 	Configurator\c-evo-x.ico \
 	Project\c-evo-x.ico \
-	docs\assets\favicon.ico
+	docs\favicon.ico
 
 
 clean-assets : 
@@ -392,7 +392,7 @@ clean-assets :
 	-del Configurator\c-evo-x.ico
 	-del Project\c-evo-x.ico
 	-del assets\icons\c-evo-x\c-evo-x.ico
-	-del docs\assets\favicon.ico
+	-del docs\favicon.ico
 	-del assets\icons\c-evo-x\favicon.ico
 
 
@@ -419,8 +419,8 @@ assets\icons\c-evo-x\c-evo-x.ico : \
 	cd ..\..\..
 
 
-docs\assets\favicon.ico : assets\icons\c-evo-x\favicon.ico
-	copy assets\icons\c-evo-x\favicon.ico docs\assets\favicon.ico
+docs\favicon.ico : assets\icons\c-evo-x\favicon.ico
+	copy assets\icons\c-evo-x\favicon.ico docs\favicon.ico
 
 
 assets\icons\c-evo-x\favicon.ico : \
