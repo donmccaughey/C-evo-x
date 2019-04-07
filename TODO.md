@@ -1,9 +1,9 @@
 # TODO
 
  - Installer: add publisher name for program entry in Settings | Apps &
-   features
+   features.
 
- - On start form, replace C-evo icon in upper left hand with C-evo-x icon
+ - On the start form, replace C-evo icon in upper left hand with C-evo-x icon.
  
  - Audit case of filenames, unit names and other file inclusions.
 
@@ -24,4 +24,14 @@
 
  - Make 8-bit and 4-bit color images for the C-evo-x icon in 16x16, 32x32 and
    48x48 resolution.
+
+ - In `Graphics\Templates.bmp`, replace the "c-evo" graphic with "c-evo-x".
+
+ - On the start form, add a link to `c-evo-x.org` to the help panel, below the
+   `c-evo.org` link.
+
+ - In the Configurator window title, change "C-evo" to "C-evo-x" and update the
+   version from 1.2.0.
+
+ - Update the Credits help file, adding C-evo-x credits.
 
