@@ -23,9 +23,7 @@
 
             <p>{{ site.github.project_tagline }}
 
-            {% if site.logo %}
-                <img src="{{site.logo | relative_url}}" alt=Logo>
-            {% endif %}
+            <img class=logo src="{{site.logo | relative_url}}" alt=Logo>
 
             {% if site.show_downloads %}
                 <ul class=downloads>

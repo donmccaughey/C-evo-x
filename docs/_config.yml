@@ -1,5 +1,6 @@
 encoding: utf-8
 exclude: [ Gemfile, Gemfile.lock, preview, README.md ]
+logo: /assets/img/logo.svg
 permalink: /dev-journal/:year-:month-:day-:title
 plugins:
     - jekyll-feed
