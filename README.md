@@ -52,6 +52,7 @@ The C-evo-x code is assembled from a number of different sources.
    the game; installed with [C-evo 1.2.0][32].
  - `StdAI\`: source for the standard AI, `StdAI.dll`, that ships with C-evo
    1.2.0; obtained directly from Steffen.
+ - `assets\`: source for additional graphics.
  - `docs\`: source for the [C-evo-x Docs][35] site.
  - `scripts\`: scripts used by the `Makefile` build.
 
