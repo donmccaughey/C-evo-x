@@ -3,6 +3,8 @@
 
 # ----- Independent variables
 
+version = 1.2.1
+
 out_ai_template = \
 	tmp\AI_Template\_aidev3.gif \
 	tmp\AI_Template\AI-development-manual.html \
@@ -354,6 +356,8 @@ help :
 	@echo:
 	@echo game :: Build game DLL, Win32 loader and copy resource files
 	@echo installer :: Build the MSI installer
+	@echo signed-installer :: Build and sign the MSI installer
+	@echo:
 	@echo assets :: Generate assets
 	@echo clean-assets :: Remove generated assets
 
@@ -378,6 +382,9 @@ game : \
 
 
 installer : tmp\C-evo-x.msi
+
+
+signed-installer : tmp\C-evo-x-$(version).msi
 
 
 assets : \
@@ -1307,4 +1314,78 @@ tmp\Installer\UI.wixobj : Installer\UI.wxs
 		-nologo \
 		-out tmp\Installer\UI.wixobj \
 		Installer\UI.wxs
+
+# ----- Signed Installer
+
+tmp\C-evo-x-$(version).msi : \
+		tmp\signed\Product.wixobj \
+		tmp\signed\UI.wixobj
+	light.exe \
+		-ext WixUIExtension \
+		-cultures:en-us \
+		-out tmp\C-evo-x-$(version).msi \
+		tmp\signed\Product.wixobj \
+		tmp\signed\UI.wixobj
+	scripts\sign_file.cmd tmp\C-evo-x-$(version).msi
+
+tmp\signed\Product.wixobj : \
+		Installer\Product.wxs \
+		\
+		tmp\signed\CevoWin32.exe \
+		tmp\signed\cevo.dll \
+		\
+		tmp\signed\CevoDotNet.exe \
+		tmp\signed\Configurator.exe \
+		\
+		tmp\fonts.txt \
+		tmp\language.txt \
+		tmp\language2.txt \
+		\
+		tmp\signed\StdAI.dll \
+		tmp\StdAI.ai.txt \
+		tmp\StdAI.bmp \
+		\
+		$(out_ai_template) \
+		tmp\AppData\Saved\(Example).cevo \
+		$(out_graphics) \
+		$(out_help) \
+		$(out_sounds) \
+		$(out_tribes)
+	-mkdir tmp\signed
+	candle.exe \
+		-nologo \
+		-out tmp\signed\Product.wixobj \
+		Installer\Product.wxs
+
+tmp\signed\UI.wixobj : Installer\UI.wxs
+	-mkdir tmp\signed
+	candle.exe \
+		-nologo \
+		-out tmp\signed\UI.wixobj \
+		Installer\UI.wxs
+
+tmp\signed\cevo.dll : tmp\release\cevo.dll
+	-mkdir tmp\signed
+	copy /y tmp\release\cevo.dll tmp\signed\cevo.dll
+	scripts\sign_file.cmd tmp\signed\cevo.dll
+
+tmp\signed\CevoDotNet.exe : tmp\release\CevoDotNet.exe
+	-mkdir tmp\signed
+	copy /y tmp\release\CevoDotNet.exe tmp\signed\CevoDotNet.exe
+	scripts\sign_file.cmd tmp\signed\CevoDotNet.exe
+
+tmp\signed\CevoWin32.exe : tmp\release\CevoWin32.exe
+	-mkdir tmp\signed
+	copy /y tmp\release\CevoWin32.exe tmp\signed\CevoWin32.exe
+	scripts\sign_file.cmd tmp\signed\CevoWin32.exe
+
+tmp\signed\Configurator.exe : tmp\release\Configurator.exe
+	-mkdir tmp\signed
+	copy /y tmp\release\Configurator.exe tmp\signed\Configurator.exe
+	scripts\sign_file.cmd tmp\signed\Configurator.exe
+
+tmp\signed\StdAI.dll : tmp\release\StdAI.dll
+	-mkdir tmp\signed
+	copy /y tmp\release\StdAI.dll tmp\signed\StdAI.dll
+	scripts\sign_file.cmd tmp\signed\StdAI.dll
 
