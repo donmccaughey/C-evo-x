@@ -1269,17 +1269,17 @@ tmp\AI_Template\Project\Properties\AssemblyInfo.cs : AI_Template\Project\Propert
 # ----- Installer
 
 tmp\C-evo-x.msi : \
-		tmp\Installer\Product.wixobj \
-		tmp\Installer\UI.wixobj
+		tmp\release\Product.wixobj \
+		tmp\release\UI.wixobj
 	light.exe \
 		-nologo \
 		-ext WixUIExtension \
 		-cultures:en-us \
 		-out tmp\C-evo-x.msi \
-		tmp\Installer\Product.wixobj \
-		tmp\Installer\UI.wixobj
+		tmp\release\Product.wixobj \
+		tmp\release\UI.wixobj
 
-tmp\Installer\Product.wixobj : \
+tmp\release\Product.wixobj : \
 		Installer\Product.wxs \
 		\
 		tmp\release\CevoWin32.exe \
@@ -1302,17 +1302,17 @@ tmp\Installer\Product.wixobj : \
 		$(out_help) \
 		$(out_sounds) \
 		$(out_tribes)
-	-mkdir tmp\Installer
+	-mkdir tmp\release
 	candle.exe \
 		-nologo \
-		-out tmp\Installer\Product.wixobj \
+		-out tmp\release\Product.wixobj \
 		Installer\Product.wxs
 
-tmp\Installer\UI.wixobj : Installer\UI.wxs
-	-mkdir tmp\Installer
+tmp\release\UI.wixobj : Installer\UI.wxs
+	-mkdir tmp\release
 	candle.exe \
 		-nologo \
-		-out tmp\Installer\UI.wixobj \
+		-out tmp\release\UI.wixobj \
 		Installer\UI.wxs
 
 # ----- Signed Installer
