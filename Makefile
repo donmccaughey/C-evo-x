@@ -1305,6 +1305,7 @@ tmp\release\Product.wixobj : \
 	-mkdir tmp\release
 	candle.exe \
 		-nologo \
+		-dConfig=release \
 		-out tmp\release\Product.wixobj \
 		Installer\Product.wxs
 
@@ -1312,6 +1313,7 @@ tmp\release\UI.wixobj : Installer\UI.wxs
 	-mkdir tmp\release
 	candle.exe \
 		-nologo \
+		-dConfig=release \
 		-out tmp\release\UI.wixobj \
 		Installer\UI.wxs
 
@@ -1354,6 +1356,7 @@ tmp\signed\Product.wixobj : \
 	-mkdir tmp\signed
 	candle.exe \
 		-nologo \
+		-dConfig=signed \
 		-out tmp\signed\Product.wixobj \
 		Installer\Product.wxs
 
@@ -1361,6 +1364,7 @@ tmp\signed\UI.wixobj : Installer\UI.wxs
 	-mkdir tmp\signed
 	candle.exe \
 		-nologo \
+		-dConfig=signed \
 		-out tmp\signed\UI.wixobj \
 		Installer\UI.wxs
 

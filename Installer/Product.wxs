@@ -27,7 +27,7 @@
         <Property Id='DiskPrompt' 
                 Value='C-evo-x $(var.Version) Installer' />
 
-        <Icon Id='CevoWin32.exe' SourceFile='tmp\release\CevoWin32.exe' />
+        <Icon Id='CevoWin32.exe' SourceFile='tmp\$(var.Config)\CevoWin32.exe' />
         <Property Id='ARPPRODUCTICON' Value='CevoWin32.exe' />
 
         <Property Id='ARPCOMMENTS' 
@@ -86,7 +86,7 @@
             <Component Id='Comp_CevoWin32.exe'
                     Guid='C75A30C2-94B2-4784-B3BA-3D80B506009F'>
                 <File Name='CevoWin32.exe'
-                        Source='tmp\release\CevoWin32.exe'
+                        Source='tmp\$(var.Config)\CevoWin32.exe'
                         KeyPath='yes'
                         Checksum='yes'>
                     <Shortcut Id='Shortcut_StartMenu_CevoWin32.exe'
@@ -101,19 +101,19 @@
             <Component Id='Comp_cevo.dll'
                     Guid='243257B9-C412-4A7D-987A-4C22BC9C1B00'>
                 <File Name='cevo.dll'
-                        Source='tmp\release\cevo.dll'
+                        Source='tmp\$(var.Config)\cevo.dll'
                         KeyPath='yes' />
             </Component>
             <Component Id='Comp_CevoDotNet.exe'
                     Guid='E78FC4A2-55D4-419D-848B-9EE08D41C300'>
                  <File Name='CevoDotNet.exe' 
-                         Source='tmp\release\CevoDotNet.exe'
+                         Source='tmp\$(var.Config)\CevoDotNet.exe'
                          KeyPath='yes' />
             </Component>
             <Component Id='Comp_Configurator.exe'
                     Guid='C0C18A09-69C3-4B48-B151-ADE8465A9078'>
                  <File Name='Configurator.exe' 
-                         Source='tmp\release\Configurator.exe'
+                         Source='tmp\$(var.Config)\Configurator.exe'
                          KeyPath='yes' />
             </Component>
             <Component Id='Comp_fonts.txt'
@@ -139,7 +139,7 @@
             <Component Id='Comp_StdAI.dll'
                     Guid='E3F97FF2-4831-4487-BF4B-EF6FDEA0380A'>
                  <File Name='StdAI.dll' 
-                         Source='tmp\release\StdAI.dll'
+                         Source='tmp\$(var.Config)\StdAI.dll'
                          KeyPath='yes' />
             </Component>
         </DirectoryRef>
