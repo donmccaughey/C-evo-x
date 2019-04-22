@@ -30,8 +30,9 @@
  - On the start form, add a link to `c-evo-x.org` to the help panel, below the
    `c-evo.org` link.
 
- - In the Configurator window title, change "C-evo" to "C-evo-x" and update the
-   version from 1.2.0.
-
  - Update the Credits help file, adding C-evo-x credits.
+
+ - Change directory where Configurator looks for C-evo.
+
+ - In the Configurator, add a way to find C-evo-x releases.
 
