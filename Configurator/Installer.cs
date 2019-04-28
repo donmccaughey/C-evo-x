@@ -26,7 +26,7 @@ namespace Configurator
 				appDataFolder = programFolder;
 			else
 			{
-				appDataFolder += "\\C-evo";
+				appDataFolder += "\\C-evo-x";
 				if (!Directory.Exists(appDataFolder))
 					Directory.CreateDirectory(appDataFolder);
 			}
@@ -89,7 +89,7 @@ namespace Configurator
 					return true;
 				else
 				{
-					message = "Adding or removing AI modules requires write access to the C-evo program folder. Please contact your administrator.";
+					message = "Adding or removing AI modules requires write access to the C-evo-x program folder. Please contact your administrator.";
 					return false;
 				}
 			}
