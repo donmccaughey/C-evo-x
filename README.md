@@ -42,27 +42,28 @@ The C-evo-x code is assembled from a number of different sources.
    Template][31].
  - `AI_Template\`: contains the C# AI template and source for the
    `CevoDotNet.exe` game loader; installed with [C-evo 1.2.0][32].
+ - `assets\`: source for additional graphics.
  - `Configurator\`: source for the C# `Configurator.exe` program; part of the
    [C-evo 1.2.0 source][33].
  - `Delphi_AI_Kit\`: source for the [Delphi AI Development Kit][34].
+ - `docs\`: source for the [C-evo-x Docs][35] site.
  - `Installer\`: source for the MSI installer, a replacement for the C-evo's
    Inno Setup installer.
  - `Project\`: Delphi code for the game; part of the [C-evo 1.2.0 source][33].
  - `Resources\`: external graphic, sound and text configuration files used by
    the game; installed with [C-evo 1.2.0][32].
+ - `scripts\`: scripts used by the `Makefile` build.
  - `StdAI\`: source for the standard AI, `StdAI.dll`, that ships with C-evo
    1.2.0; obtained directly from Steffen.
- - `assets\`: source for additional graphics.
- - `docs\`: source for the [C-evo-x Docs][35] site.
- - `scripts\`: scripts used by the `Makefile` build.
 
-See the [`LICENSE`][34] file for the list of contributors.
+See the [`LICENSE`][36] file for the list of contributors.
 
 [31]: http://c-evo.org/files/download.php?cevoaikitc.cevoaikitc.zip
 [32]: http://c-evo.org/files/download.php
 [33]: http://c-evo.org/files/download.php?cevosrc.cevosrc.zip
-[34]: https://github.com/donmccaughey/c_evo_x/blob/master/LICENSE
+[34]: http://c-evo.org/files/download.php?cevodelphiaikit.cevodelphiaikit.zip
 [35]: https://donmccaughey.github.io/C-evo-x/
+[36]: https://github.com/donmccaughey/c_evo_x/blob/master/LICENSE
 
 
 ## Build System
@@ -122,6 +123,47 @@ Some of the game assets are generated from the original artwork.  Since these
 build steps require additional tools and the outputs don't change often, the
 generated assets are checked in to the repository, making these build steps
 optional.  The `assets` and `clean-assets` make targets control the asset build.
+Before building these targets, install ImageMagick and check that `convert.exe`
+is available on the `PATH` of your command prompt.  This file is installed in a
+directory like `C:\Program Files\ImageMagick-7.0.8-Q16\`.
+
+### Installer Build Steps
+
+The `all` and `installer` make targets will build an unsigned [MSI
+installer][41] located at `tmp\C-evo-x.msi`.  You can double-click the
+`C-evo-x.msi` file to install it on your system.  To debug problems with the
+installer, run the following command to create an install log:
+
+    msiexec /i tmp\C-evo-x.msi /L*V tmp\install.log
+
+To uninstall C-evo-x, go to Settings | Apps (or Control Panel | Programs on
+older Windows versions) and click on "C-evo-x" in the list.  Alternately, you
+can run the following command:
+
+    msiexec /x tmp\C-evo-x.msi
+
+#### Signed Installer
+
+Optionally, if you have a [Microsoft Authenticode code signing certificate][42],
+you can create a signed MSI installer.  The `signed-installer` make target will
+build and sign the MSI installer, which is located at `tmp\C-evo-x-1.2.1.msi`;
+the `-1.2.1` suffix is the version of C-evo-x being installed.
+
+Signing requires that `signtool.exe` is available on the `PATH` of your command
+prompt. This file is part of the Windows SDK and is installed in a directory
+like `C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\`.  The make file
+uses a wrapper script around `signtool.exe` located at `scripts\sign_file.cmd`.
+The script requires that the following environment variables be set in your
+command prompt:
+
+* `CEVOX_CERT_PATH` - the location of your code signing certificate file
+* `CEVOX_CERT_PWD` - the password to your code signing certificate
+* `CEVOX_TIMESTAMP_URL` - the URL for your certificate provider's time stamp
+  server.
+
+[41]: https://en.wikipedia.org/wiki/Windows_Installer
+[42]: https://blogs.msdn.microsoft.com/ieinternals/2011/03/22/everything-you-need-to-know-about-authenticode-code-signing/
+[43]: https://docs.microsoft.com/en-us/windows/desktop/seccrypto/signtool
 
 ### Installing and Running the Game
 
