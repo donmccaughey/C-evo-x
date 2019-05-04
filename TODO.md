@@ -32,7 +32,16 @@
 
  - Update the Credits help file, adding C-evo-x credits.
 
- - Change directory where Configurator looks for C-evo.
+ - In the Configurator, read the Configurator version from its version info
+   instead of the constant defined in `MainForm.cs`.
 
  - In the Configurator, add a way to find C-evo-x releases.
+
+ - Remove `cevoxp2.ico` from the Configurator project.
+
+ - Centralize the location of shared assets that are currently duplicated into
+   project subdirectories:
+        * c-evo-x.ico
+        * Protocol.pas
+        * protocol.h
 

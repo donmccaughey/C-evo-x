@@ -12,7 +12,7 @@ namespace Configurator
 {
 	public partial class MainForm : Form
 	{
-		const int thisVersion = 1002000; // 1.2.0
+		const int thisVersion = 1002001; // 1.2.1
 		const string registryKeyPath = @"Software\cevo\RegVer9";
 
 
