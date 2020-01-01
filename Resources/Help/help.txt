@@ -143,30 +143,33 @@ $About This Game\
 &LOGO\\
 
 !The Project\
-C-evo is a non-commerical game project based on the famous "Sid Meier's
-Civilization" by Microprose. The ambition of C-evo is not, to compete with
-commercial games for the most exciting presentation. Instead, it aims at being a
-true, ageless strategy game that entertains by one thing above all:
-challenge. So the project focus is design of rules and AI. For more
-information, visit the project homepage:\
+C-evo-x is a fork of C-evo 1.2.0 by Steffen Gerlach. C-evo-x is a
+non-commerical game project based on the famous "Sid Meier's Civilization" by
+Microprose. The ambition of C-evo-x is not to compete with commercial games for
+the most exciting presentation. Instead it aims at being a true, ageless
+strategy game that entertains by one thing above all: challenge. So the project
+focus is design of rules and AI. For more information, visit the C-evo-x
+project homepage:\
+!http://c-evo-x.org\
+and the C-evo project homepage:\
 ::E2 c-evo.org\\
 
 !License\
-C-evo is a compilation of work by a number of authors. You are allowed
-to play the game and to distribute it without explicit permission. The compilation
-itself and all of its components (except for the graphics and the sounds) are in the Public
-Domain. Means you can do with it whatever you want. This also includes the binary
-code and the sources, which are available from the project homepage. As for
-the graphics, you should ask the author of an item before using it for another
-purpose than to play.\
+C-evo-x is a compilation of work by a number of authors. You are allowed to
+play the game and to distribute it without explicit permission. The compilation
+itself and all of its components (except for the graphics and the sounds) are
+in the Public Domain, which means you can do with it whatever you want. This
+also includes the binary code and the sources, which are available from the
+project homepage. As for the graphics, you should ask the author of an item
+before using it for another purpose than to play.\
 ::C Credits\\
 
 !Modular AI\
-The game has an open AI interface, which means the player can replace the standard AI
-contained in the package by other AI algorithms, either for all or for single
-nations. C-evo allows playing with up to 8 different AIs in the same
-game. The easiest way to develop an AI is to use the C# template. You can find it in the folder where
-you installed the game.\
+The game has an open AI interface, which means the player can replace the
+standard AI contained in the package by other AI algorithms, either for all or
+for single nations. C-evo-x allows playing with up to 8 different AIs in the
+same game. The easiest way to develop an AI is to use the C# template. You can
+find it in the folder where you installed the game.\
 ::E1 AI development manual\\
 
 !System Requirements\
@@ -266,16 +269,16 @@ to money funds and research depends on your management.\
 -Shift+Click on an item pops up a help screen about it in many situations.\\
 
 Note that this game has its own rules and concepts. It's not a true remake of
-another game. C-evo may remind a lot of the commercial "Civilization" series but it's
-different in many regards. This applies to the overall philosophy as well: Don't
-expect anything in this game to be CIVILIZED!\
+another game. C-evo-x may remind a lot of the commercial "Civilization" series
+but it's different in many regards. This applies to the overall philosophy as
+well: Don't expect anything in this game to be CIVILIZED!\
 
 
 #INTRO
 $Introduction\
 
 @@56\
-!!Welcome to C-evo\
+!!Welcome to C-evo-x\
 
 This game lets you replay the development of the human civilization.
 You're leading the nation of your choice through six millenia,
@@ -1155,11 +1158,11 @@ generated at the beginning of the game. On the "Maps" page, you can adjust two
 parameters of this world: its size and the percentage of land.\\
 
 Alternatively, it is possible to play on a special map that someone has
-designed for C-evo, e.g. a map of the real earth. The package does not
+designed for C-evo-x, e.g. a map of the real earth. The package does not
 contain maps, but there are several ones available from the project homepage.
-Move map files to the subfolder "Maps".
-You only need the map to start a game. The map is not necessary to open the
-book later, because the map is being saved within it.
+Move map files to the subfolder "Maps". You only need the map to start a game.
+The map is not necessary to open the book later, because the map is being saved
+within it.
 
 
 #MAPEDIT
@@ -1197,11 +1200,10 @@ $AI Tournament\
 
 If you have different AIs installed, you can let them compete against each
 other in a tournament. Switch to "Free Player Setup" on the start screen and
-choose "AI Tournament" in the middle box, then
-press "Start". This will make the game reduce itself to a small dialog.
-After pressing the play button, C-evo will start to play an endless series of
-complete games (rounds). The result are simple statistics, which are updated
-after each round:\\
+choose "AI Tournament" in the middle box, then press "Start". This will make
+the game reduce itself to a small dialog. After pressing the play button,
+C-evo-x will start to play an endless series of complete games (rounds). The
+result are simple statistics, which are updated after each round:\\
 
 @AITShot\
 
