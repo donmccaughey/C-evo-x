@@ -5,7 +5,7 @@
 
     <Product Name='C-evo-x $(var.Version)'
             Manufacturer='Don McCaughey'
-            Id='E0F2FD43-1B26-46FA-B0DA-93FF2CFFB7C1' 
+            Id='C5566177-E1C6-4F4B-93B5-DA4D79ECD388' 
             UpgradeCode='D1E02258-0353-478A-9B73-4EF7F006B675'
             Language='1033'
             Codepage='1252'

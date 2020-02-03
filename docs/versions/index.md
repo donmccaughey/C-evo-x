@@ -10,6 +10,10 @@ Here's a list of C-evo-x versions and the file property details for key files.
 
 This is the next (unreleased) version.
 
+The `<Product>` `Id` for the installer is
+`C5566177-E1C6-4F4B-93B5-DA4D79ECD388`.  The `UpgradeCode` is
+`D1E02258-0353-478A-9B73-4EF7F006B675`.
+
 * File `C-evo-x.msi`
     - Title: "Installation Database"
     - Subject: "C-evo-x 1.2.2 Installer"
@@ -64,6 +68,10 @@ This is the next (unreleased) version.
 
 [121]: https://github.com/donmccaughey/C-evo-x/releases
 
+The `<Product>` `Id` for the installer is
+`E0F2FD43-1B26-46FA-B0DA-93FF2CFFB7C1`.  The `UpgradeCode` is
+`D1E02258-0353-478A-9B73-4EF7F006B675`.
+
 * File `C-evo-x.msi`
     - Title: "Installation Database"
     - Subject: "C-evo-x 1.2.1 Installer"
@@ -117,6 +125,11 @@ This is the next (unreleased) version.
 [C-evo 1.2.0][120] was released on 6 April 2013.
 
 [120]: http://www.c-evo.org/files/download.php
+
+There's no `<Product>` `Id` or `UpgradeCode` for the [Inno Setup][1201]
+installer.
+
+[1201]: http://www.jrsoftware.org/isinfo.php
 
 Version resources are missing in from native executables and DLLs in C-evo 1.2.0
 and set to defaults in .NET executables, which accounts for the values being
