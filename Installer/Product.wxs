@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
 
-    <?define Version = "1.2.1" ?>
+    <?define Version = "1.2.2" ?>
 
     <Product Name='C-evo-x $(var.Version)'
             Manufacturer='Don McCaughey'

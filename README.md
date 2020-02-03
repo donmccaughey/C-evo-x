@@ -146,8 +146,8 @@ can run the following command:
 
 Optionally, if you have a [Microsoft Authenticode code signing certificate][42],
 you can create a signed MSI installer.  The `signed-installer` make target will
-build and sign the MSI installer, which is located at `tmp\C-evo-x-1.2.1.msi`;
-the `-1.2.1` suffix is the version of C-evo-x being installed.
+build and sign the MSI installer, which is located at `tmp\C-evo-x-1.2.2.msi`;
+the `-1.2.2` suffix is the version of C-evo-x being installed.
 
 Signing requires that `signtool.exe` is available on the `PATH` of your command
 prompt. This file is part of the Windows SDK and is installed in a directory

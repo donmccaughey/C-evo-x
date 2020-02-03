@@ -6,9 +6,63 @@ title: "Versions"
 
 Here's a list of C-evo-x versions and the file property details for key files.
 
+## C-evo-x 1.2.2
+
+This is the next (unreleased) version.
+
+* File `C-evo-x.msi`
+    - Title: "Installation Database"
+    - Subject: "C-evo-x 1.2.2 Installer"
+    - Categories: ""
+    - Tags: "Installer"
+    - Authors: "Don McCaughey"
+
+* File `CevoWin32.exe`
+    - File description: "C-evo-x Win32 Loader"
+    - File version: "1.2.2.0"
+    - Product name: "C-evo-x"
+    - Product version: "1.2.2"
+    - Copyright: "In the public domain"
+    - Language: "Language Neutral"
+
+* File `cevo.dll`
+    - File description: "C-evo-x Game Engine"
+    - File version: "1.2.2.0"
+    - Product name: "C-evo-x"
+    - Product version: "1.2.2"
+    - Copyright: "In the public domain"
+    - Language: "Language Neutral"
+
+* File `StdAI.dll`
+    - File description: "C-evo-x Standard AI"
+    - File version: "1.2.2.0"
+    - Product name: "C-evo-x"
+    - Product version: "1.2.2"
+    - Copyright: "In the public domain"
+    - Language: "Language Neutral"
+
+* File `CevoDotNet.exe`
+    - File description: "C-evo-x .NET Loader"
+    - File version: "1.2.2.0"
+    - Product name: "C-evo-x"
+    - Product version: "1.2.2.0"
+    - Copyright: "In the public domain"
+    - Language: "Language Neutral"
+
+* File `Configurator.exe`
+    - File description: "C-evo-x Configurator"
+    - File version: "1.2.2.0"
+    - Product name: "C-evo-x"
+    - Product version: "1.2.2.0"
+    - Copyright: "In the public domain"
+    - Language: "Language Neutral"
+
+
 ## C-evo-x 1.2.1
 
-This is the current, unreleased version.
+[C-evo-x 1.2.1][121] was released on d mmm 2020.
+
+[121]: https://github.com/donmccaughey/C-evo-x/releases
 
 * File `C-evo-x.msi`
     - Title: "Installation Database"

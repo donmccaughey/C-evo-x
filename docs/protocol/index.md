@@ -4,7 +4,7 @@ title: "The Protocol"
 
 # The Protocol
 
-    > C-evo 1.2.0, C-evo-x 1.2.1
+    > C-evo 1.2.0, C-evo-x 1.2.1 - 1.2.2
 
 One of the foundational goals of C-evo is to be a playground and testbed for
 creating AIs.  To make the playground open to other developers, C-evo is

@@ -1,6 +1,6 @@
 1 VERSIONINFO
-    FILEVERSION     1,2,1,0
-    PRODUCTVERSION  1,2,1,0
+    FILEVERSION     1,2,2,0
+    PRODUCTVERSION  1,2,2,0
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
@@ -8,12 +8,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName",        "Don McCaughey\0"
             VALUE "FileDescription",    "Stand-alone C-evo-x Game\0"
-            VALUE "FileVersion",        "1.2.1.0\0"
+            VALUE "FileVersion",        "1.2.2.0\0"
             VALUE "InternalName",       "Integrated\0"
             VALUE "LegalCopyright",     "In the public domain\0"
             VALUE "OriginalFilename",   "Integrated.exe\0"
             VALUE "ProductName",        "C-evo-x\0"
-            VALUE "ProductVersion",      "1.2.1\0"
+            VALUE "ProductVersion",      "1.2.2\0"
         END
     END
     BLOCK "VarFileInfo"

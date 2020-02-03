@@ -3,7 +3,7 @@
 
 # ----- Independent variables
 
-version = 1.2.1
+version = 1.2.2
 
 out_ai_template = \
 	tmp\AI_Template\_aidev3.gif \

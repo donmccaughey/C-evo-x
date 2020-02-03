@@ -4,7 +4,7 @@ title: "Resource Files"
 
 # Resource Files
 
-    > C-evo 1.2.0, C-evo-x 1.2.1
+    > C-evo 1.2.0, C-evo-x 1.2.1 - 1.2.2
 
 There are a small number of _internal_ resource files and around 100 _external_
 resource files.  The internal resources are icons and cursors that are compiled
