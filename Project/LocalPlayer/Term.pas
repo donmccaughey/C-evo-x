@@ -3007,10 +3007,10 @@ DefaultOptionChecked:= 1 shl 1 + 1 shl 7 + 1 shl 10 + 1 shl 12 + 1 shl 14 + 1 sh
 
 Reg:=TRegistry.Create;
 doinit:=true;
-if Reg.KeyExists('SOFTWARE\cevo\RegVer9') then
+if Reg.KeyExists('Software\C-evo-x\Config') then
   begin
   doinit:=false;
-  Reg.OpenKey('SOFTWARE\cevo\RegVer9',false);
+  Reg.OpenKey('Software\C-evo-x\Config',false);
   try
     xxt:=Reg.ReadInteger('TileWidth') div 2;
     yyt:=Reg.ReadInteger('TileHeight') div 2;
@@ -6877,7 +6877,7 @@ for i:=0 to ComponentCount-1 do if Components[i] is TMenuItem then
       inc(OptionChecked,1 shl j);
 
 Reg:=TRegistry.Create;
-Reg.OpenKey('SOFTWARE\cevo\RegVer9',true);
+Reg.OpenKey('Software\C-evo-x\Config',true);
 Reg.WriteInteger('TileWidth',xxt*2);
 Reg.WriteInteger('TileHeight',yyt*2);
 Reg.WriteInteger('OptionChecked', OptionChecked);

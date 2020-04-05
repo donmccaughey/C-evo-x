@@ -1229,7 +1229,7 @@ Reg: TRegistry;
 
 initialization
 Reg:=TRegistry.Create;
-Reg.OpenKey('SOFTWARE\cevo\RegVer9',true);
+Reg.OpenKey('Software\C-evo-x\Config',true);
 try
   Gamma:=Reg.ReadInteger('Gamma');
 except

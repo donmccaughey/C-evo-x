@@ -171,12 +171,12 @@ Reg: TRegistry;
 FirstStart: boolean;
 begin
 Reg:=TRegistry.Create;
-FirstStart:=not Reg.KeyExists('SOFTWARE\cevo\RegVer9\Start');
+FirstStart:=not Reg.KeyExists('Software\C-evo-x\Config\Start');
 
 if FirstStart then
   begin
   // initialize AI assignment
-  Reg.OpenKey('SOFTWARE\cevo\RegVer9\Start',true);
+  Reg.OpenKey('Software\C-evo-x\Config\Start',true);
   for i:=0 to nPlOffered-1 do
     begin
     if i=0 then s:=':StdIntf'
@@ -207,7 +207,7 @@ if FirstStart then
   end
 else
   begin
-  Reg.OpenKey('SOFTWARE\cevo\RegVer9\Start',false);
+  Reg.OpenKey('Software\C-evo-x\Config\Start',false);
   try
     WorldSize:=Reg.ReadInteger('WorldSize');
     StartLandMass:=Reg.ReadInteger('LandMass');
@@ -233,7 +233,7 @@ if FirstStart then
   end
 else
   begin
-  Reg.OpenKey('SOFTWARE\cevo\RegVer9',false);
+  Reg.OpenKey('Software\C-evo-x\Config',false);
   try
     ScreenMode:=Reg.ReadInteger('ScreenMode');
     FullScreen:= ScreenMode>0;
@@ -800,7 +800,7 @@ case Page of
       end;
 
     Reg:=TRegistry.Create;
-    Reg.OpenKey('SOFTWARE\cevo\RegVer9\Start',true);
+    Reg.OpenKey('Software\C-evo-x\Config\Start',true);
     try
       GameCount:=Reg.ReadInteger('GameCount');
     except
@@ -881,7 +881,7 @@ case Page of
   pgEditRandom: // new map
     begin
     Reg:=TRegistry.Create;
-    Reg.OpenKey('SOFTWARE\cevo\RegVer9\Start',true);
+    Reg.OpenKey('Software\C-evo-x\Config\Start',true);
     try
       MapCount:=Reg.ReadInteger('MapCount');
     except
@@ -1265,7 +1265,7 @@ case Page of
       if Page=pgStartRandom then
         begin // restore AI assignment of last start
         Reg:=TRegistry.Create;
-        Reg.OpenKey('SOFTWARE\cevo\RegVer9\Start',false);
+        Reg.OpenKey('Software\C-evo-x\Config\Start',false);
         for p1:=0 to nPlOffered-1 do
           begin
           bixView[p1]:=-1;

@@ -13,7 +13,7 @@ namespace Configurator
 	public partial class MainForm : Form
 	{
 		const int thisVersion = 1002001; // 1.2.1
-		const string registryKeyPath = @"Software\cevo\RegVer9";
+		const string registryKeyPath = @"Software\C-evo-x\Config";
 
 
 		public static string SizeString(long size)
