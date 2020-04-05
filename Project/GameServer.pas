@@ -236,6 +236,7 @@ if FindFirst(HomeDir+'*.ai.txt',$21,f)=0 then
       and ((Brain[nBrain].Flags and fDotNet=0) or (@DotNetClient<>nil)) then
       inc(nBrain);
   until FindNext(f)<>0;
+  FindClose(f);
 end;
 
 procedure Done;

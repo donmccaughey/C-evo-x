@@ -1216,6 +1216,7 @@ if FindFirst(DataDir+'Saved\*.cevo',$21,f)=0 then
     FormerGames.InsertObject(i,Copy(f.Name,1,Length(f.Name)-5),
       TObject(f.Time));
   until FindNext(f)<>0;
+  FindClose(f);
 ListIndex[2]:=FormerGames.Count-1;
 if (ShowTab=2) and (FormerGames.Count>0) then ShowTab:=3;
 TurnValid:=false;
@@ -1230,6 +1231,7 @@ if FindFirst(DataDir+'Maps\*.cevo map',$21,f)=0 then
   repeat
     Maps.Add(Copy(f.Name,1,Length(f.Name)-9));
   until FindNext(f)<>0;
+  FindClose(f);
 Maps.Sort;
 Maps.Insert(0,Phrases.Lookup('RANMAP'));
 ListIndex[0]:=Maps.IndexOf(Copy(MapFileName,1,Length(MapFileName)-9));

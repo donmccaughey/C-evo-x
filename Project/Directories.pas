@@ -35,6 +35,7 @@ var
 f: TSearchRec;
 begin
 result:=FindFirst(path,faDirectory,f)=0;
+FindClose(f);
 end;
 
 function LocalizedFilePath(path: string): string;
@@ -74,5 +75,7 @@ if FindFirst(HomeDir+'AppData\Saved\*.cevo',$21,src)=0 then
       or (dst.Time<src.Time) then
       CopyFile(PChar(HomeDir+'AppData\Saved\'+src.Name),
         PChar(DataDir+'Saved\'+src.Name),false);
+      FindClose(dst);
   until FindNext(src)<>0;
+  FindClose(src);
 end.
