@@ -87,6 +87,7 @@ end;
 
 procedure TDraftDlg.FormDestroy(Sender: TObject);
 begin
+Back.Free;
 Template.Free;
 end;
 
