@@ -1213,7 +1213,7 @@ if FindFirst(DataDir+'Saved\*.cevo',$21,f)=0 then
     i:=FormerGames.Count;
     while (i>0) and (f.Time<integer(FormerGames.Objects[i-1])) do
       dec(i);
-    FormerGames.InsertObject(i,Copy(f.Name,1,Length(f.Name)-5),
+    FormerGames.InsertObject(i,Copy(f.Name,1,Length(f.Name)-Length('.cevo')),
       TObject(f.Time));
   until FindNext(f)<>0;
   FindClose(f);
@@ -1229,7 +1229,7 @@ begin
 Maps.Clear;
 if FindFirst(DataDir+'Maps\*.cevo map',$21,f)=0 then
   repeat
-    Maps.Add(Copy(f.Name,1,Length(f.Name)-9));
+    Maps.Add(Copy(f.Name,1,Length(f.Name)-Length('.cevo map')));
   until FindNext(f)<>0;
   FindClose(f);
 Maps.Sort;

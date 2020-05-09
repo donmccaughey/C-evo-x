@@ -198,9 +198,9 @@ if FindFirst(HomeDir+'*.ai.txt',$21,f)=0 then
   repeat
     with Brain[nBrain] do
       begin
-      FileName:=Copy(f.Name,1,Length(f.Name)-7);
+      FileName:=Copy(f.Name,1,Length(f.Name)-Length('.ai.txt'));
       DLLName:=HomeDir+FileName;
-      Name:=Copy(f.Name,1,Length(f.Name)-7);
+      Name:=Copy(f.Name,1,Length(f.Name)-Length('.ai.txt'));
       Credits:='';
       Flags:=fMultiple;
       Client:=nil;
