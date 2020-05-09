@@ -187,19 +187,19 @@ if FirstStart then
   Reg.WriteInteger('MultiControl',0);
   Reg.closekey;
 
-  // register file type: "cevo Book" -- fails with no administrator rights!
+  // register file type: "C-evo-xBook" -- fails with no administrator rights!
   try
     Reg.RootKey:=HKEY_CLASSES_ROOT;
-    Reg.OpenKey ('.cevo',true);
-    Reg.WriteString ('','cevoBook');
+    Reg.OpenKey ('.c-evo-x',true);
+    Reg.WriteString ('','C-evo-xBook');
     Reg.closekey;
-    Reg.OpenKey ('cevoBook',true);
-    Reg.WriteString ('','cevo Book');
+    Reg.OpenKey ('C-evo-xBook',true);
+    Reg.WriteString ('','C-evo-x Book');
     Reg.closekey;
-    Reg.OpenKey ('cevoBook\DefaultIcon',true);
+    Reg.OpenKey ('C-evo-xBook\DefaultIcon',true);
     Reg.WriteString ('',ParamStr(0)+',0');
     Reg.closekey;
-    Reg.OpenKey ('cevoBook\shell\open\command',true);
+    Reg.OpenKey ('C-evo-xBook\shell\open\command',true);
     Reg.WriteString ('',ParamStr(0)+' "%1"');
     Reg.closekey;
   except
@@ -785,7 +785,7 @@ case Page of
   pgLoad:
     begin //load
     FileName:=List.Items[List.ItemIndex];
-    if LoadGame(DataDir+'Saved\', FileName+'.cevo', LoadTurn,false) then
+    if LoadGame(DataDir+'Saved\', FileName+'.c-evo-x', LoadTurn,false) then
       UnlistBackupFile(FileName)
     else SimpleMessage(Phrases.Lookup('LOADERR'));
     SlotAvailable:=-1;
@@ -871,7 +871,7 @@ case Page of
     Reg.closekey;
     Reg.Free;
 
-    StartNewGame(DataDir+'Saved\', FileName+'.cevo', MapFileName,
+    StartNewGame(DataDir+'Saved\', FileName+'.c-evo-x', MapFileName,
       lxpre[WorldSize], lypre[WorldSize], StartLandMass, MaxTurn);
     UnlistBackupFile(FileName);
     end;
@@ -891,7 +891,7 @@ case Page of
     Reg.WriteInteger('MapCount',MapCount);
     Reg.closekey;
     Reg.Free;
-    MapFileName:=Format(Phrases.Lookup('MAP'),[MapCount])+'.cevo map';
+    MapFileName:=Format(Phrases.Lookup('MAP'),[MapCount])+'.c-evo-x-map';
     EditMap(MapFileName, lxpre[WorldSize], lypre[WorldSize], StartLandMass);
     end
   end
@@ -998,7 +998,7 @@ case Page of
 
   pgLoad:
     begin
-    AssignFile(LogFile,DataDir+'Saved\'+List.Items[List.ItemIndex]+'.cevo');
+   AssignFile(LogFile,DataDir+'Saved\'+List.Items[List.ItemIndex]+'.c-evo-x');
     try
       Reset(LogFile,4);
       BlockRead(LogFile,s[1],2); {file id}
@@ -1044,7 +1044,7 @@ case Page of
   pgStartMap,pgEditMap:
     begin
     MiniMode:=mmPicture;
-    if Page=pgEditMap then MapFileName:=List.Items[List.ItemIndex]+'.cevo map';
+    if Page=pgEditMap then MapFileName:=List.Items[List.ItemIndex]+'.c-evo-x-map';
     if LoadGraphicFile(Mini, DataDir+'Maps\'+Copy(MapFileName,1,Length(MapFileName)-9), gfNoError) then
       begin
       if Mini.Width div 2>MaxWidthMapLogo then Mini.Width:=MaxWidthMapLogo*2;
@@ -1208,12 +1208,12 @@ i: integer;
 f: TSearchRec;
 begin
 FormerGames.Clear;
-if FindFirst(DataDir+'Saved\*.cevo',$21,f)=0 then
+if FindFirst(DataDir+'Saved\*.c-evo-x',$21,f)=0 then
   repeat
     i:=FormerGames.Count;
     while (i>0) and (f.Time<integer(FormerGames.Objects[i-1])) do
       dec(i);
-    FormerGames.InsertObject(i,Copy(f.Name,1,Length(f.Name)-Length('.cevo')),
+    FormerGames.InsertObject(i,Copy(f.Name,1,Length(f.Name)-Length('.c-evo-x')),
       TObject(f.Time));
   until FindNext(f)<>0;
   FindClose(f);
@@ -1227,9 +1227,9 @@ var
 f: TSearchRec;
 begin
 Maps.Clear;
-if FindFirst(DataDir+'Maps\*.cevo map',$21,f)=0 then
+if FindFirst(DataDir+'Maps\*.c-evo-x-map',$21,f)=0 then
   repeat
-    Maps.Add(Copy(f.Name,1,Length(f.Name)-Length('.cevo map')));
+    Maps.Add(Copy(f.Name,1,Length(f.Name)-Length('.c-evo-x-map')));
   until FindNext(f)<>0;
   FindClose(f);
 Maps.Sort;
@@ -1545,13 +1545,13 @@ if List.ItemIndex>=0 then
         exit
         end;
     if Page=pgLoad then
-      AssignFile(f,DataDir+'Saved\'+List.Items[List.ItemIndex]+'.cevo')
-    else AssignFile(f,DataDir+'Maps\'+List.Items[List.ItemIndex]+'.cevo map');
+      AssignFile(f,DataDir+'Saved\'+List.Items[List.ItemIndex]+'.c-evo-x')
+    else AssignFile(f,DataDir+'Maps\'+List.Items[List.ItemIndex]+'.c-evo-x-map');
     ok:=true;
     try
       if Page=pgLoad then
-        Rename(f,DataDir+'Saved\'+NewName+'.cevo')
-      else Rename(f,DataDir+'Maps\'+NewName+'.cevo map');
+        Rename(f,DataDir+'Saved\'+NewName+'.c-evo-x')
+      else Rename(f,DataDir+'Maps\'+NewName+'.c-evo-x-map');
     except
 //      Play('INVALID');
       ok:=false
@@ -1589,8 +1589,8 @@ if List.ItemIndex>=0 then
   if MessgDlg.ModalResult=mrOK then
     begin
     if Page=pgLoad then
-      AssignFile(f,DataDir+'Saved\'+List.Items[List.ItemIndex]+'.cevo')
-    else AssignFile(f,DataDir+'Maps\'+List.Items[List.ItemIndex]+'.cevo map');
+      AssignFile(f,DataDir+'Saved\'+List.Items[List.ItemIndex]+'.c-evo-x')
+    else AssignFile(f,DataDir+'Maps\'+List.Items[List.ItemIndex]+'.c-evo-x-map');
     Erase(f);
     iDel:=List.ItemIndex;
     if Page=pgLoad then FormerGames.Delete(iDel)
@@ -1759,7 +1759,7 @@ end;
 
 procedure TStartDlg.ReplayBtnClick(Sender: TObject);
 begin
-LoadGame(DataDir+'Saved\', List.Items[List.ItemIndex]+'.cevo', LastTurn, true);
+LoadGame(DataDir+'Saved\', List.Items[List.ItemIndex]+'.c-evo-x', LastTurn, true);
 SlotAvailable:=-1;
 end;
 

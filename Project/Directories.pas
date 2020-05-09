@@ -69,7 +69,7 @@ if not DirectoryExists(DataDir+'Maps') then
   CreateDir(DataDir+'Maps');
 
 // copy appdata if not done yet
-if FindFirst(HomeDir+'AppData\Saved\*.cevo',$21,src)=0 then
+if FindFirst(HomeDir+'AppData\Saved\*.c-evo-x',$21,src)=0 then
   repeat
     if (FindFirst(DataDir+'Saved\'+src.Name,$21,dst)<>0)
       or (dst.Time<src.Time) then

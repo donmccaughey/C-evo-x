@@ -1,5 +1,7 @@
 # TODO
 
+ - Add function for building saved game and map file paths
+
  - Installer: add publisher name for program entry in Settings | Apps &
    features.
 

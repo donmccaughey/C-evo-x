@@ -315,9 +315,9 @@
 
         <!-- Saved Game -->
         <DirectoryRef Id='Dir_AppData_Saved' FileSource='tmp\AppData\Saved'>
-            <Component Id='Comp_AppData_Saved__Example_.cevo'
+            <Component Id='Comp_AppData_Saved__Example_.c_evo_x'
                     Guid='84244C1E-2C49-4F94-BB18-E789F0789608'>
-                <File Name='(Example).cevo' KeyPath='yes' />
+                <File Name='(Example).c-evo-x' KeyPath='yes' />
             </Component>
         </DirectoryRef>
 
@@ -789,7 +789,7 @@
             <ComponentRef Id='Comp_AI_Template_AssemblyInfo.cs_2' />
 
             <!-- Saved game -->
-            <ComponentRef Id='Comp_AppData_Saved__Example_.cevo' />
+            <ComponentRef Id='Comp_AppData_Saved__Example_.c_evo_x' />
 
             <!-- Graphics -->
             <ComponentRef Id='Comp_Graphics_Background.bmp' />

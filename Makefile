@@ -301,7 +301,7 @@ out_resources = \
 	tmp\language.txt \
 	tmp\language2.txt \
 	\
-	tmp\AppData\Saved\(Example).cevo \
+	tmp\AppData\Saved\(Example).c-evo-x \
 	\
 	$(out_graphics) \
 	$(out_help) \
@@ -737,9 +737,9 @@ tmp\language2.txt : Resources\language2.txt
 	-mkdir tmp
 	copy Resources\language2.txt tmp\language2.txt
 
-tmp\AppData\Saved\(Example).cevo : Resources\AppData\Saved\(Example).cevo
+tmp\AppData\Saved\(Example).c-evo-x : Resources\AppData\Saved\(Example).c-evo-x
 	-mkdir tmp\AppData\Saved
-	copy Resources\AppData\Saved\(Example).cevo tmp\AppData\Saved\(Example).cevo
+	copy Resources\AppData\Saved\(Example).c-evo-x tmp\AppData\Saved\(Example).c-evo-x
 
 tmp\Graphics\Background.bmp : Resources\Graphics\Background.bmp
 	-mkdir tmp\Graphics
@@ -1297,7 +1297,7 @@ tmp\release\Product.wixobj : \
 		tmp\StdAI.bmp \
 		\
 		$(out_ai_template) \
-		tmp\AppData\Saved\(Example).cevo \
+		tmp\AppData\Saved\(Example).c-evo-x \
 		$(out_graphics) \
 		$(out_help) \
 		$(out_sounds) \
@@ -1348,7 +1348,7 @@ tmp\signed\Product.wixobj : \
 		tmp\StdAI.bmp \
 		\
 		$(out_ai_template) \
-		tmp\AppData\Saved\(Example).cevo \
+		tmp\AppData\Saved\(Example).c-evo-x \
 		$(out_graphics) \
 		$(out_help) \
 		$(out_sounds) \
