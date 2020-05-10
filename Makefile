@@ -419,7 +419,7 @@ assets\icons\c-evo-x\c-evo-x.ico : \
 		assets\icons\c-evo-x\c-evo-x-16x16.ico \
 		assets\icons\c-evo-x\c-evo-x-32x32.ico
 	cd assets\icons\c-evo-x
-	convert \
+	magick \
 		c-evo-x-16x16.ico \
 		c-evo-x-32x32.ico \
 		c-evo-x.ico
@@ -434,7 +434,7 @@ assets\icons\c-evo-x\favicon.ico : \
 		assets\icons\c-evo-x\c-evo-x-16x16.ico \
 		assets\icons\c-evo-x\c-evo-x-32x32.ico
 	cd assets\icons\c-evo-x
-	convert \
+	magick \
 		c-evo-x-16x16.ico \
 		c-evo-x-32x32.ico \
 		favicon.ico

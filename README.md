@@ -22,7 +22,7 @@ The following software is required to build C-evo-x.
 
 The following software is optional.
 
- - [ImageMagick 7.0.8-37][24].
+ - [ImageMagick 7.0.10-11][24].
 
 [YMMV][25] on other versions.  The build is tested on Windows 10 Pro (64-bit)
 version 1809.
@@ -123,9 +123,9 @@ Some of the game assets are generated from the original artwork.  Since these
 build steps require additional tools and the outputs don't change often, the
 generated assets are checked in to the repository, making these build steps
 optional.  The `assets` and `clean-assets` make targets control the asset build.
-Before building these targets, install ImageMagick and check that `convert.exe`
+Before building these targets, install ImageMagick and check that `magick.exe`
 is available on the `PATH` of your command prompt.  This file is installed in a
-directory like `C:\Program Files\ImageMagick-7.0.8-Q16\`.
+directory like `C:\Program Files\ImageMagick-7.0.10-Q16\`.
 
 ### Installer Build Steps
 
