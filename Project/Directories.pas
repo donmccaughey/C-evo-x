@@ -59,9 +59,9 @@ if AppDataDir='' then
   DataDir:=HomeDir
 else
   begin
-  if not DirectoryExists(AppDataDir+'\C-evo') then
-    CreateDir(AppDataDir+'\C-evo');
-  DataDir:=AppDataDir+'\C-evo\';
+  if not DirectoryExists(AppDataDir+'\C-evo-x') then
+    CreateDir(AppDataDir+'\C-evo-x');
+  DataDir:=AppDataDir+'\C-evo-x\';
   end;
 if not DirectoryExists(DataDir+'Saved') then
   CreateDir(DataDir+'Saved');
