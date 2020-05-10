@@ -192,7 +192,7 @@ begin
 Hide;
 if nBrain=3 then
   begin
-  Application.MessageBox(PChar(Phrases.Lookup('NOAI')), 'C-evo', 0);
+  Application.MessageBox(PChar(Phrases.Lookup('NOAI')), 'C-evo-x', 0);
   close;
   exit
   end;
@@ -234,7 +234,7 @@ end;
 procedure TDirectDlg.OnAIException(var Msg:TMessage);
 begin
 Application.MessageBox(PChar(Format(Phrases.Lookup('AIEXCEPTION'),
-  [Brain[Msg.WParam].Name])), 'C-evo', 0);
+  [Brain[Msg.WParam].Name])), 'C-evo-x', 0);
 end;
 
 procedure TDirectDlg.FormPaint(Sender: TObject);

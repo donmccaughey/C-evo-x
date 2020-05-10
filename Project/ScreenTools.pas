@@ -348,7 +348,7 @@ else
 if not result then
   begin
   if Options and gfNoError=0 then
-    Application.MessageBox(PChar(Format(Phrases.Lookup('FILENOTFOUND'),[Path])), 'C-evo', 0);
+    Application.MessageBox(PChar(Format(Phrases.Lookup('FILENOTFOUND'),[Path])), 'C-evo-x', 0);
   exit;
   end;
 if (Options and gfNoGamma=0) and (Gamma<>100) then
@@ -402,7 +402,7 @@ else
 if not result then
   begin
   if Options and gfNoError=0 then
-    Application.MessageBox(PChar(Format(Phrases.Lookup('FILENOTFOUND'),[Path])), 'C-evo', 0);
+    Application.MessageBox(PChar(Format(Phrases.Lookup('FILENOTFOUND'),[Path])), 'C-evo-x', 0);
   exit;
   end;
 if (Options and gfNoGamma=0) and (Gamma<>100) then
@@ -435,7 +435,7 @@ if i=nGrExt then
     Source.LoadFromFile(FileName+'.bmp')
   except
     result:=-1;
-    Application.MessageBox(PChar(Format(Phrases.Lookup('FILENOTFOUND'),['Graphics\'+Name])), 'C-evo', 0);
+    Application.MessageBox(PChar(Format(Phrases.Lookup('FILENOTFOUND'),['Graphics\'+Name])), 'C-evo-x', 0);
     exit;
     end;
 
