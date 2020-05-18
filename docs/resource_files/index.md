@@ -111,6 +111,8 @@ and `Cities96x48.bmp` and `Terrain96x48.bmp` are for the higher resolution.
 The five texture files `Texture0.bmp` through `Texture4.bmp` are used to change
 the game UI for each of the five ages of advancement.
 
+- [Templates.bmp](graphics/templates.md)
+
 ### Help
 
 The help text can also be localized, so the game will look in the following
