@@ -24,10 +24,57 @@ window menu.
     // part 2
     (155, 65) to (181, 74) [26 wide, 9 tall]
 
+## Right pointing triangles
+
+This is used on the first tab of the start dialog to call out the `cevo.org`
+website.
+
+    (1, 400) to (92, 425) [91 wide, 25 tall]
+
 ## Icon for game window menu
 
 This is the C-evo / C-evo-x icon for the game menu in the upper left corner of
 the game window menu.
 
-   (145, 38) to (181, 74) [36 wide, 36 tall] 
+    (145, 38) to (181, 74) [36 wide, 36 tall] 
+
+## Treasury icon 
+
+This is the icon for the payment option in diplomatic negotiations.
+
+    (145, 1) to (181, 37) [36 wide, 36 tall]
+
+## Refresh icon
+
+This is overlaid on the end turn button.
+
+    (124, 1) to (138, 15) [14 wide, 14 tall]
+
+## Research icon
+
+    (145, 75) to (181, 111) [36 wide, 36 tall]
+
+## Starship departed
+
+    (1, 279) to (141, 399) [140 wide, 120 tall]
+
+## Ground unit icon
+
+    (142, 246) to (178, 282) [36 wide, 36 tall]
+
+## Sea unit icon
+
+    (142, 283) to (178, 319) [36 wide, 36 tall]
+
+## Air unit icon
+
+    (142, 320) to (178, 356) [36 wide, 36 tall]
+
+## Weight icon, selected
+
+    (123, 400) to (141, 420) [18 wide, 20 tall]
+
+## Weight icon, unselected
+
+    (105, 400) to (123, 420) [18 wide, 20 tall]
 
