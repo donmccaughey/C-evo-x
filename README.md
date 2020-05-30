@@ -25,7 +25,7 @@ The following software is optional.
  - [ImageMagick 7.0.10-11][24].
 
 [YMMV][25] on other versions.  The build is tested on Windows 10 Pro (64-bit)
-version 1809.
+version 2004.
 
 [21]: https://winworldpc.com/product/delphi/4x
 [22]: https://visualstudio.microsoft.com/vs/older-downloads/
