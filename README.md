@@ -22,10 +22,22 @@ The following software is required to build C-evo-x.
 
 The following software is optional.
 
- - [ImageMagick 7.0.10-11][24].
+ - [ImageMagick 7.1.1][24].
 
-[YMMV][25] on other versions.  The build is tested on Windows 10 Pro (64-bit)
-version 2004.
+[YMMV][25] on other versions.
+
+These paths should have been added to your user or system `PATH` environment
+variable automatically by their respective installers:
+
+ - `C:\PROGRA~2\BORLAND\DELPHI4\BIN` -- added by Delphi 4.0
+ - `C:\Program Files\ImageMagick-<version>` -- added by ImageMagick
+
+You will need to manually add the following paths:
+
+ - `C:\Windows\Microsoft.NET\Framework\v4.0.30319` -- for `MSBuild.exe`
+ - `C:\Program Files (x86)\WiX Toolset v3.11\bin` -- for `candle.exe` and `light.exe`
+
+The build is tested on Windows 11 Pro (64-bit) build 22621.
 
 [21]: https://winworldpc.com/product/delphi/4x
 [22]: https://visualstudio.microsoft.com/vs/older-downloads/
