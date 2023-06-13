@@ -22,9 +22,10 @@ The following software is required to build C-evo-x.
 
 The following software is optional.
 
- - [ImageMagick 7.1.1][24].
+ - [ImageMagick 7.1.1][24], for rebuilding assets from source.
+ - [Windows SDK v7.0A][25] or later, for code signing.
 
-[YMMV][25] on other versions.
+[YMMV][26] on other versions.
 
 These paths should have been added to your user or system `PATH` environment
 variable automatically by their respective installers:
@@ -36,6 +37,7 @@ You will need to manually add the following paths:
 
  - `C:\Windows\Microsoft.NET\Framework\v4.0.30319` -- for `MSBuild.exe`
  - `C:\Program Files (x86)\WiX Toolset v3.11\bin` -- for `candle.exe` and `light.exe`
+ - `C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin` -- for `signtool.exe`
 
 The build is tested on Windows 11 Pro (64-bit) build 22621.
 
@@ -43,7 +45,8 @@ The build is tested on Windows 11 Pro (64-bit) build 22621.
 [22]: https://visualstudio.microsoft.com/vs/older-downloads/
 [23]: http://wixtoolset.org
 [24]: https://www.imagemagick.org/
-[25]: https://www.urbandictionary.com/define.php?term=ymmv
+[26]: https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/
+[26]: https://www.urbandictionary.com/define.php?term=ymmv
 
 
 ## Components
