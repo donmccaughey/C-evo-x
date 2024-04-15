@@ -8,6 +8,7 @@
 *.swp
 *.user
 .DS_Store
+.vscode
 _site
 ipch
 obj

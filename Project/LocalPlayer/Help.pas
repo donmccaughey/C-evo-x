@@ -1554,7 +1554,7 @@ begin
 if Sel>=0 then with THelpLineInfo(MainText.Objects[Sel+sb.si.npos]) do
   if Link shr 8 and $3F=hkInternet then
     case Link and $FF of
-      1: ShellExecute(Handle,'open',pchar(HomeDir+'AI Template\AI development manual.html'),'','',
+      1: ShellExecute(Handle,'open',pchar(HomeDir+'AI_Template\AI-development-manual.html'),'','',
         SW_SHOWNORMAL);
       2: ShellExecute(Handle,'open','http://c-evo.org','','',
         SW_SHOWNORMAL);

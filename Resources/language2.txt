@@ -34,7 +34,7 @@
 #ACTION_CREDITS See who contributed to this game
 #ACTIONHEADER_AIDEV AI Development
 #ACTION_AIDEV Learn how to code your own AI for this game
-#ACTIONHEADER_WEB On the web: c-evo.org
+#ACTIONHEADER_WEB On the web: c-evo-x.org
 
 'Message Text
 #BUSY_DEINIT Deinitializing %s...

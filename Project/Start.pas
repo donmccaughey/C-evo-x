@@ -252,7 +252,7 @@ Reg.Free;
 ActionsOffered:=[maManual,maCredits,maWeb];
 if FileExists(HomeDir+'Configurator.exe') then
   include(ActionsOffered,maConfig);
-if FileExists(HomeDir+'AI Template\AI development manual.html') then
+if FileExists(HomeDir+'AI_Template\AI-development-manual.html') then
   include(ActionsOffered,maAIDev);
 
 bixDefault:=-1;
@@ -1390,9 +1390,9 @@ else if page=pgMain then
     maManual: DirectHelp(cStartHelp);
     maCredits: DirectHelp(cStartCredits);
     maAIDev: ShellExecute(Handle,'open',
-      pchar(HomeDir+'AI Template\AI development manual.html'),'','',
+      pchar(HomeDir+'AI_Template\AI-development-manual.html'),'','',
       SW_SHOWNORMAL);
-    maWeb:ShellExecute(Handle,'open','http://c-evo.org','','',SW_SHOWNORMAL)
+    maWeb:ShellExecute(Handle,'open','http://c-evo-x.org','','',SW_SHOWNORMAL)
     end;
   end
 else if (AutoDiff<0) and ((page=pgStartRandom)
