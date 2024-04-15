@@ -12,7 +12,9 @@ _site
 ipch
 obj
 tmp
+GPATH
+GRTAGS
+GTAGS
 Project/CevoWin32.cfg
 Project/cevo.cfg
 StdAI/StdAI.cfg
-
